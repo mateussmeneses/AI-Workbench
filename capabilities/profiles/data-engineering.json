@@ -1,0 +1,17 @@
+{
+  "description": "Ingestion, ETL/ELT, orchestration and quality",
+  "skills": [
+    "wb-data-pipelines"
+  ],
+  "agents": [
+    "data-engineer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "python",
+    "sql"
+  ]
+}

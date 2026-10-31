@@ -1,0 +1,16 @@
+{
+  "description": "Game assets, patches, compatibility and mod distribution",
+  "skills": [
+    "wb-game-modding"
+  ],
+  "agents": [
+    "graphics-performance"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "git",
+    "python"
+  ]
+}

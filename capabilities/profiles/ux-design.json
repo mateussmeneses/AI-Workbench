@@ -1,0 +1,17 @@
+{
+  "description": "Interaction design, user research, accessibility and design systems",
+  "skills": [
+    "wb-ux-research"
+  ],
+  "agents": [
+    "ux-designer"
+  ],
+  "mcps": [
+    "playwright",
+    "chrome-devtools"
+  ],
+  "utilities": [
+    "figma",
+    "node"
+  ]
+}

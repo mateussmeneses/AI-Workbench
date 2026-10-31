@@ -1,0 +1,7 @@
+{
+  "description": "AI agents, MCP servers, provider integration, local inference and tools",
+  "skills": ["wb-repo-intake", "wb-debug-rigorous", "wb-capability-curation", "wb-context-handoff"],
+  "agents": ["triage-orchestrator", "code-reviewer"],
+  "mcps": ["github", "context7"],
+  "utilities": ["python", "node", "git", "gh"]
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Static/dynamic recompilation and behavioral equivalence",
+  "skills": [
+    "wb-binary-recompilation",
+    "wb-reverse-engineering"
+  ],
+  "agents": [
+    "reverse-engineer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "llvm",
+    "clang",
+    "cmake"
+  ]
+}

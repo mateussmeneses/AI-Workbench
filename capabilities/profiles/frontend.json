@@ -1,0 +1,20 @@
+{
+  "description": "Web UI, accessibility, state management and performance",
+  "skills": [
+    "wb-frontend-engineering",
+    "wb-ui-accessibility"
+  ],
+  "agents": [
+    "frontend-engineer"
+  ],
+  "mcps": [
+    "playwright",
+    "chrome-devtools",
+    "context7"
+  ],
+  "utilities": [
+    "node",
+    "npm",
+    "playwright"
+  ]
+}

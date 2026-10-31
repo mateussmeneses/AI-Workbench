@@ -1,0 +1,15 @@
+{
+  "description": "Processes, procedures, service delivery and automation",
+  "skills": [
+    "wb-operations-process"
+  ],
+  "agents": [
+    "operations-strategist"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "python"
+  ]
+}

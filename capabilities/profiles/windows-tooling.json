@@ -1,0 +1,20 @@
+{
+  "description": "Windows desktop tools, APIs, controls and peripheral input",
+  "skills": [
+    "wb-windows-input"
+  ],
+  "agents": [
+    "windows-engineer",
+    "root-cause-debugger",
+    "release-auditor"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "pwsh",
+    "git",
+    "dotnet"
+  ]
+}

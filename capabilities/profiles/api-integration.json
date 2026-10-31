@@ -1,0 +1,17 @@
+{
+  "description": "API contracts, webhooks, interoperability and third-party services",
+  "skills": [
+    "wb-api-integration"
+  ],
+  "agents": [
+    "backend-engineer"
+  ],
+  "mcps": [
+    "context7",
+    "github"
+  ],
+  "utilities": [
+    "curl",
+    "jq"
+  ]
+}

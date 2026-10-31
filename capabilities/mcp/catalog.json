@@ -1,0 +1,37 @@
+{
+  "github": {
+    "role": "issues, PRs, branches, commits e code review",
+    "scope": "global, preferir gh CLI quando a operação já estiver coberta",
+    "url": "https://github.com/github/github-mcp-server",
+    "enabledByDefault": false,
+    "activation": "quando operar GitHub remoto"
+  },
+  "azure-devops": {
+    "role": "Work items, sprints, builds, repos e test plans",
+    "scope": "qa-dotnet ou browser-extension com acesso ao Azure DevOps",
+    "url": "https://github.com/microsoft/azure-devops-mcp",
+    "enabledByDefault": false,
+    "activation": "quando precisar ler/atualizar Azure Boards; preferir servidor remoto oficial com OAuth"
+  },
+  "playwright": {
+    "role": "Navegação e validação de DOM e UI",
+    "scope": "qa-dotnet/browser-extension/mobile-web",
+    "url": "https://github.com/microsoft/playwright-mcp",
+    "enabledByDefault": false,
+    "activation": "somente tarefa que exige browser real"
+  },
+  "chrome-devtools": {
+    "role": "Performance, console, rede, traces e problemas visuais",
+    "scope": "browser-extension",
+    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "enabledByDefault": false,
+    "activation": "investigação browser e performance"
+  },
+  "context7": {
+    "role": "Documentação atual e versionada de bibliotecas",
+    "scope": "sob demanda",
+    "url": "https://github.com/upstash/context7",
+    "enabledByDefault": false,
+    "activation": "quando há dependência externa com API incerta"
+  }
+}

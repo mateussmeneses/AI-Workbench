@@ -1,0 +1,18 @@
+{
+  "description": "Services, domain logic, persistence, auth and scalable APIs",
+  "skills": [
+    "wb-backend-services"
+  ],
+  "agents": [
+    "backend-engineer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "python",
+    "docker",
+    "curl"
+  ]
+}

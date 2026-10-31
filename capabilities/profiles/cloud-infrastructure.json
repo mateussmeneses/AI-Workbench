@@ -1,0 +1,17 @@
+{
+  "description": "Infrastructure as code, cloud networking and observability",
+  "skills": [
+    "wb-cloud-infrastructure"
+  ],
+  "agents": [
+    "backend-engineer"
+  ],
+  "mcps": [
+    "context7",
+    "github"
+  ],
+  "utilities": [
+    "terraform",
+    "kubectl"
+  ]
+}

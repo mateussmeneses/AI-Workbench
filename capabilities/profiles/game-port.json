@@ -1,0 +1,24 @@
+{
+  "description": "Graphics, Vulkan rendering, shader caches, reverse engineering and game-port testing",
+  "skills": [
+    "wb-vulkan-frame-pacing",
+    "wb-shader-cache-triage",
+    "wb-reverse-engineering",
+    "wb-gameplay-acceptance"
+  ],
+  "agents": [
+    "graphics-performance",
+    "reverse-engineer",
+    "release-auditor"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "renderdoc",
+    "vulkan-validation-layers",
+    "ffmpeg",
+    "git"
+  ]
+}

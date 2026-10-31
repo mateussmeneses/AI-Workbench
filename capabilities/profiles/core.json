@@ -1,0 +1,32 @@
+{
+  "description": "Shared workflows for repository inspection, debugging, tests, continuity and releases",
+  "skills": [
+    "wb-repo-intake",
+    "wb-debug-rigorous",
+    "wb-change-review",
+    "wb-test-planning",
+    "wb-pr-release",
+    "wb-project-bootstrap",
+    "wb-project-continuity",
+    "wb-context-handoff",
+    "wb-capability-curation"
+  ],
+  "agents": [
+    "triage-orchestrator",
+    "code-reviewer",
+    "root-cause-debugger",
+    "release-auditor"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "git",
+    "gh",
+    "rg",
+    "fd",
+    "jq",
+    "python",
+    "node"
+  ]
+}

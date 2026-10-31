@@ -1,0 +1,12 @@
+{
+  "examples": {
+    "QA automation library": "qa-dotnet",
+    "Chromium extension": "browser-extension",
+    "Vulkan-based game port": "game-port",
+    "Android application": "mobile-app",
+    "Windows controller utility": "windows-tooling",
+    "LLM agent orchestrator": "ai-agents",
+    "GitHub CI tooling": "devops"
+  },
+  "note": "Illustrative project categories, never absolute paths or identifiers for automatic edits."
+}

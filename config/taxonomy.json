@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "profiles": {
+    "ai-agents": {"label": "IA, agentes e LLMs", "keywords": ["agent", "agents", "mcp", "llm", "rag", "langchain", "ollama", "codex", "prompt", "model context protocol", "inference", "deepseek", "claude", "hermes", "openclaude"]},
+    "qa-dotnet": {"label": "QA e automacao .NET", "keywords": ["quality assurance", "qa", "playwright", "selenium", "nunit", "reqnroll", "specflow", "azure devops", "azure boards", "test automation", "api testing", ".net", "csharp", "c#", "bdd", "appium"]},
+    "game-port": {"label": "Game porting e graficos", "keywords": ["vulkan", "directx", "dxvk", "game port", "emulator", "emulation", "shader", "render", "graphics", "frametime", "stuttering", "reverse engineering", "ghidra", "ida", "recompiler", "xenia", "ps4", "xbox 360"]},
+    "browser-extension": {"label": "Extensoes e web", "keywords": ["browser extension", "manifest v3", "chromium", "chrome extension", "requestly", "web extension", "devtools", "javascript", "typescript", "dom", "extension", "wip board"]},
+    "mobile-app": {"label": "Android e mobile", "keywords": ["android", "kotlin", "flutter", "react native", "gradle", "android studio", "apk", "aab", "mobile", "barcode", "appium"]},
+    "windows-tooling": {"label": "Windows e ferramentas desktop", "keywords": ["windows", "powershell", "win32", "xinput", "dinput", "vigem", "gamepad", "driver", "wpf", "winui", "ghelper", "debloat", "desktop"]},
+    "devops": {"label": "CI, Git e DevOps", "keywords": ["github action", "github actions", "ci/cd", "pipeline", "docker", "devops", "git", "release", "build system", "automated build"]}
+  }
+}

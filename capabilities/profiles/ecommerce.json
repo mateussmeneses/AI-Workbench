@@ -1,0 +1,15 @@
+{
+  "description": "Store operations, catalog, checkout, merchandising and analytics",
+  "skills": [
+    "wb-ecommerce-operations"
+  ],
+  "agents": [
+    "sales-strategist"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "node"
+  ]
+}

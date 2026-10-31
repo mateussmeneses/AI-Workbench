@@ -1,0 +1,18 @@
+{
+  "description": "Decompilation, source reconstruction and semantic verification",
+  "skills": [
+    "wb-decompilation-research",
+    "wb-reverse-engineering"
+  ],
+  "agents": [
+    "reverse-engineer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "ghidra",
+    "python"
+  ]
+}

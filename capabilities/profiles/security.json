@@ -1,0 +1,16 @@
+{
+  "description": "Threat models, defensive review and secure SDLC",
+  "skills": [
+    "wb-security-review"
+  ],
+  "agents": [
+    "code-reviewer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "git"
+  ]
+}

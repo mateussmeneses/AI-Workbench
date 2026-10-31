@@ -1,0 +1,16 @@
+{
+  "description": "Discovery, roadmap, prioritization and outcomes",
+  "skills": [
+    "wb-product-discovery"
+  ],
+  "agents": [
+    "product-strategist"
+  ],
+  "mcps": [
+    "github",
+    "azure-devops"
+  ],
+  "utilities": [
+    "git"
+  ]
+}

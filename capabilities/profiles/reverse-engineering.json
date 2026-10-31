@@ -1,0 +1,18 @@
+{
+  "description": "Static/dynamic analysis, binary formats and reproducible research",
+  "skills": [
+    "wb-reverse-engineering",
+    "wb-binary-analysis"
+  ],
+  "agents": [
+    "reverse-engineer"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "ghidra",
+    "python"
+  ]
+}

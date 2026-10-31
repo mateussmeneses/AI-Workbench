@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+reports/
+input/
+data/
+*.env
+.env
+*.log
+.workbench-state/
+
+# Private per-user resource catalog (outside the repository by default)
+.ai-workbench/
+.ai-workbench-hub/

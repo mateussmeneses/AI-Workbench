@@ -1,0 +1,7 @@
+{
+  "description": "Continuous integration, release engineering, infrastructure and GitHub workflows",
+  "skills": ["wb-repo-intake", "wb-test-planning", "wb-pr-release", "wb-project-continuity"],
+  "agents": ["release-auditor", "root-cause-debugger"],
+  "mcps": ["github"],
+  "utilities": ["git", "gh", "node", "python"]
+}

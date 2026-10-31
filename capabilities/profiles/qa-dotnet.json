@@ -1,0 +1,25 @@
+{
+  "description": "Software QA with .NET, NUnit, Reqnroll, browser automation and Azure DevOps",
+  "skills": [
+    "wb-bdd-reqnroll",
+    "wb-api-contract-qa",
+    "wb-azure-boards-qa",
+    "wb-ui-e2e"
+  ],
+  "agents": [
+    "qa-strategist",
+    "code-reviewer",
+    "root-cause-debugger"
+  ],
+  "mcps": [
+    "azure-devops",
+    "playwright",
+    "context7"
+  ],
+  "utilities": [
+    "dotnet",
+    "pwsh",
+    "node",
+    "git"
+  ]
+}

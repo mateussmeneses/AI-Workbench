@@ -1,0 +1,51 @@
+{
+  "note": "Manifesto de decisão do kit, não configuração nativa do Hermes/OpenClaude/Codex. Confirme cada modelo em runtime.",
+  "policy": {
+    "minimize_cost": "Use modelo rápido em triagem e sumarização; escale para modelo forte somente quando o problema exigir.",
+    "tool_calls": "Não selecione como agente autônomo sem teste real de function/tool calling.",
+    "fallback": "Na falha de API/limite, não troque de modelo silenciosamente; registre provedor/modelo.",
+    "validation": "Sempre compilar/testar com ferramentas reais; consenso entre modelos não substitui execução."
+  },
+  "lanes": {
+    "fast": {
+      "tasks": [
+        "triagem",
+        "resumo de logs",
+        "documentação curta"
+      ],
+      "provider": "custom-deploy (configurado pelo usuário)",
+      "model": "deepseek-ai/deepseek-v4.1-flash-1017",
+      "status": "a validar no Hermes/OpenClaude"
+    },
+    "deep": {
+      "tasks": [
+        "causa-raiz complexa",
+        "Vulkan e shaders",
+        "arquitetura e refatorações"
+      ],
+      "provider": "selecionar conforme capacidade real e custo",
+      "model": null,
+      "status": "não fixado"
+    },
+    "critic": {
+      "tasks": [
+        "review independente",
+        "segurança",
+        "preparo de release"
+      ],
+      "provider": "preferencialmente diferente do executor",
+      "model": null,
+      "status": "não fixado"
+    },
+    "local": {
+      "tasks": [
+        "pesquisa sem credenciais",
+        "classificação leve",
+        "tarefas offline"
+      ],
+      "provider": "Ollama/LM Studio se configurados",
+      "model": null,
+      "status": "opcional"
+    }
+  }
+}

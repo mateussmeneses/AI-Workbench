@@ -1,0 +1,19 @@
+{
+  "description": "Unit, integration, e2e, regression and performance testing",
+  "skills": [
+    "wb-test-planning",
+    "wb-qa-automation"
+  ],
+  "agents": [
+    "qa-strategist"
+  ],
+  "mcps": [
+    "playwright",
+    "chrome-devtools",
+    "azure-devops"
+  ],
+  "utilities": [
+    "pytest",
+    "node"
+  ]
+}

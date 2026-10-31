@@ -1,0 +1,23 @@
+{
+  "description": "Chromium Manifest V3 extensions, browser DOM, UI accessibility and board snapshots",
+  "skills": [
+    "wb-extension-mv3",
+    "wb-board-snapshots",
+    "wb-ui-accessibility"
+  ],
+  "agents": [
+    "browser-engineer",
+    "qa-strategist",
+    "code-reviewer"
+  ],
+  "mcps": [
+    "playwright",
+    "chrome-devtools",
+    "azure-devops"
+  ],
+  "utilities": [
+    "node",
+    "chrome-devtools-cli",
+    "git"
+  ]
+}

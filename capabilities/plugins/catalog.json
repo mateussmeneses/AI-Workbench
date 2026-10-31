@@ -1,0 +1,26 @@
+{
+  "github": {
+    "label": "GitHub",
+    "type": "external-app",
+    "scope": "repositories, issues, pull requests and code search",
+    "status": "optional-candidate"
+  },
+  "google-drive": {
+    "label": "Google Drive",
+    "type": "external-app",
+    "scope": "project documents and research notes",
+    "status": "optional-candidate"
+  },
+  "google-sheets": {
+    "label": "Google Sheets",
+    "type": "external-app",
+    "scope": "analytics, budgets, trackers and structured reports",
+    "status": "optional-candidate"
+  },
+  "figma": {
+    "label": "Figma",
+    "type": "external-app",
+    "scope": "design files and UI references",
+    "status": "optional-candidate"
+  }
+}

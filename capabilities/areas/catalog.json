@@ -1,0 +1,1062 @@
+{
+  "schema_version": 1,
+  "description": "Open-ended cross-domain capability catalog; categories are composable, not mutually exclusive.",
+  "areas": {
+    "frontend": {
+      "label": "Frontend Engineering",
+      "description": "Web UI, accessibility, state management and performance",
+      "signals": {
+        "files": [
+          "**/*.tsx",
+          "**/*.jsx",
+          "**/*.vue",
+          "**/*.svelte",
+          "vite.config.*",
+          "next.config.*"
+        ],
+        "keywords": [
+          "react",
+          "vue",
+          "svelte",
+          "nextjs",
+          "frontend",
+          "web ui",
+          "angular"
+        ]
+      },
+      "profiles": [
+        "frontend"
+      ],
+      "skills": [
+        "wb-frontend-engineering",
+        "wb-ui-accessibility"
+      ],
+      "agents": [
+        "frontend-engineer"
+      ],
+      "mcps": [
+        "playwright",
+        "chrome-devtools",
+        "context7"
+      ],
+      "plugins": [
+        "figma"
+      ],
+      "utilities": [
+        "node",
+        "npm",
+        "playwright"
+      ]
+    },
+    "backend": {
+      "label": "Backend Engineering",
+      "description": "Services, domain logic, persistence, auth and scalable APIs",
+      "signals": {
+        "files": [
+          "**/server.ts",
+          "**/server.js",
+          "**/api.py",
+          "**/main.py",
+          "**/*.csproj",
+          "**/pom.xml",
+          "**/go.mod",
+          "**/Cargo.toml"
+        ],
+        "keywords": [
+          "backend",
+          "fastapi",
+          "spring boot",
+          "asp.net",
+          "rest api",
+          "graphql",
+          "postgresql",
+          "prisma",
+          "django",
+          "express"
+        ]
+      },
+      "profiles": [
+        "backend"
+      ],
+      "skills": [
+        "wb-backend-services"
+      ],
+      "agents": [
+        "backend-engineer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "python",
+        "docker",
+        "curl"
+      ]
+    },
+    "fullstack": {
+      "label": "Full-stack Applications",
+      "description": "Frontend and backend system integration",
+      "signals": {
+        "files": [
+          "**/apps/web/**",
+          "**/apps/api/**",
+          "**/frontend/**",
+          "**/backend/**"
+        ],
+        "keywords": [
+          "full stack",
+          "fullstack",
+          "monorepo",
+          "web application"
+        ]
+      },
+      "profiles": [
+        "frontend",
+        "backend"
+      ],
+      "skills": [
+        "wb-frontend-engineering",
+        "wb-backend-services"
+      ],
+      "agents": [
+        "frontend-engineer",
+        "backend-engineer"
+      ],
+      "mcps": [
+        "playwright",
+        "context7"
+      ],
+      "plugins": [
+        "figma",
+        "github"
+      ],
+      "utilities": [
+        "node",
+        "docker"
+      ]
+    },
+    "api-integration": {
+      "label": "API & Integrations",
+      "description": "API contracts, webhooks, interoperability and third-party services",
+      "signals": {
+        "files": [
+          "**/openapi.yaml",
+          "**/openapi.json",
+          "**/swagger.json",
+          "**/proto/**"
+        ],
+        "keywords": [
+          "webhook",
+          "openapi",
+          "grpc",
+          "integration",
+          "rest api",
+          "api contract",
+          "oauth"
+        ]
+      },
+      "profiles": [
+        "api-integration"
+      ],
+      "skills": [
+        "wb-api-integration"
+      ],
+      "agents": [
+        "backend-engineer"
+      ],
+      "mcps": [
+        "context7",
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "curl",
+        "jq"
+      ]
+    },
+    "browser-extension": {
+      "label": "Browser Extensions",
+      "description": "Manifest V3, browser APIs and WebExtensions",
+      "signals": {
+        "files": [
+          "**/manifest.json",
+          "**/background.js",
+          "**/content.js"
+        ],
+        "keywords": [
+          "chrome extension",
+          "browser extension",
+          "manifest v3",
+          "webextension",
+          "bookmark organizer"
+        ]
+      },
+      "profiles": [
+        "browser-extension"
+      ],
+      "skills": [
+        "wb-extension-mv3",
+        "wb-ui-accessibility"
+      ],
+      "agents": [
+        "browser-engineer"
+      ],
+      "mcps": [
+        "chrome-devtools",
+        "playwright"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "node"
+      ]
+    },
+    "mobile-app": {
+      "label": "Mobile Apps",
+      "description": "Android, iOS, hybrid/mobile release pipelines",
+      "signals": {
+        "files": [
+          "**/AndroidManifest.xml",
+          "**/build.gradle.kts",
+          "**/pubspec.yaml",
+          "**/Podfile",
+          "**/*.xcodeproj/**"
+        ],
+        "keywords": [
+          "android",
+          "ios",
+          "kotlin",
+          "swift",
+          "flutter",
+          "react native",
+          "mobile app"
+        ]
+      },
+      "profiles": [
+        "mobile-app"
+      ],
+      "skills": [
+        "wb-android-release",
+        "wb-mobile-quality"
+      ],
+      "agents": [
+        "mobile-engineer"
+      ],
+      "mcps": [
+        "context7"
+      ],
+      "plugins": [
+        "figma"
+      ],
+      "utilities": [
+        "gradle",
+        "adb"
+      ]
+    },
+    "desktop": {
+      "label": "Desktop Applications",
+      "description": "Native or cross-platform desktop UI and lifecycle",
+      "signals": {
+        "files": [
+          "**/*.sln",
+          "**/*.vcxproj",
+          "**/electron-builder.json",
+          "**/src-tauri/**"
+        ],
+        "keywords": [
+          "electron",
+          "tauri",
+          "wpf",
+          "winui",
+          "qt",
+          "desktop application",
+          "win32"
+        ]
+      },
+      "profiles": [
+        "desktop"
+      ],
+      "skills": [
+        "wb-desktop-apps",
+        "wb-windows-input"
+      ],
+      "agents": [
+        "windows-engineer"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "powershell",
+        "git"
+      ]
+    },
+    "qa-testing": {
+      "label": "Quality Assurance & Testing",
+      "description": "Unit, integration, e2e, regression and performance testing",
+      "signals": {
+        "files": [
+          "**/*.feature",
+          "**/*test.ts",
+          "**/*spec.ts",
+          "**/playwright.config.*",
+          "**/*.Tests.csproj"
+        ],
+        "keywords": [
+          "qa automation",
+          "software testing",
+          "nunit",
+          "reqnroll",
+          "selenium",
+          "playwright",
+          "cypress",
+          "appium"
+        ]
+      },
+      "profiles": [
+        "qa-testing"
+      ],
+      "skills": [
+        "wb-test-planning",
+        "wb-qa-automation"
+      ],
+      "agents": [
+        "qa-strategist"
+      ],
+      "mcps": [
+        "playwright",
+        "chrome-devtools",
+        "azure-devops"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "pytest",
+        "node"
+      ]
+    },
+    "devops": {
+      "label": "DevOps & CI/CD",
+      "description": "Build pipelines, deployment, packaging and release",
+      "signals": {
+        "files": [
+          ".github/workflows/*.yml",
+          "**/azure-pipelines.yml",
+          "**/Dockerfile",
+          "**/docker-compose.yml"
+        ],
+        "keywords": [
+          "ci/cd",
+          "github actions",
+          "deployment",
+          "terraform",
+          "kubernetes",
+          "pipeline",
+          "devops"
+        ]
+      },
+      "profiles": [
+        "devops"
+      ],
+      "skills": [
+        "wb-pr-release",
+        "wb-deployment-operations"
+      ],
+      "agents": [
+        "release-auditor"
+      ],
+      "mcps": [
+        "github",
+        "azure-devops"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "git",
+        "docker"
+      ]
+    },
+    "cloud-infrastructure": {
+      "label": "Cloud & Infrastructure",
+      "description": "Infrastructure as code, cloud networking and observability",
+      "signals": {
+        "files": [
+          "**/*.tf",
+          "**/helm/**",
+          "**/Chart.yaml",
+          "**/kustomization.yaml"
+        ],
+        "keywords": [
+          "aws",
+          "azure cloud",
+          "gcp",
+          "infrastructure as code",
+          "cloud infrastructure",
+          "observability"
+        ]
+      },
+      "profiles": [
+        "cloud-infrastructure"
+      ],
+      "skills": [
+        "wb-cloud-infrastructure"
+      ],
+      "agents": [
+        "backend-engineer"
+      ],
+      "mcps": [
+        "context7",
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "terraform",
+        "kubectl"
+      ]
+    },
+    "security": {
+      "label": "Security Engineering",
+      "description": "Threat models, defensive review and secure SDLC",
+      "signals": {
+        "files": [
+          "**/SECURITY.md",
+          "**/.semgrep.yml",
+          "**/sast/**"
+        ],
+        "keywords": [
+          "security audit",
+          "vulnerability management",
+          "threat modeling",
+          "pentest",
+          "sast",
+          "dependency scanning"
+        ]
+      },
+      "profiles": [
+        "security"
+      ],
+      "skills": [
+        "wb-security-review"
+      ],
+      "agents": [
+        "code-reviewer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "git"
+      ]
+    },
+    "reverse-engineering": {
+      "label": "Reverse Engineering",
+      "description": "Static/dynamic analysis, binary formats and reproducible research",
+      "signals": {
+        "files": [
+          "**/*.idb",
+          "**/*.i64",
+          "**/*.gpr",
+          "**/disasm/**",
+          "**/symbols/**"
+        ],
+        "keywords": [
+          "reverse engineering",
+          "ghidra",
+          "ida pro",
+          "x64dbg",
+          "binary analysis",
+          "protocol reverse engineering"
+        ]
+      },
+      "profiles": [
+        "reverse-engineering"
+      ],
+      "skills": [
+        "wb-reverse-engineering",
+        "wb-binary-analysis"
+      ],
+      "agents": [
+        "reverse-engineer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "ghidra",
+        "python"
+      ]
+    },
+    "game-modding": {
+      "label": "Game Modding",
+      "description": "Game assets, patches, compatibility and mod distribution",
+      "signals": {
+        "files": [
+          "**/mods/**",
+          "**/*.pak",
+          "**/*.esp",
+          "**/*.bsa",
+          "**/mod.json"
+        ],
+        "keywords": [
+          "game modding",
+          "modding",
+          "mod loader",
+          "game assets",
+          "plugin loader",
+          "skyrim mod"
+        ]
+      },
+      "profiles": [
+        "game-modding"
+      ],
+      "skills": [
+        "wb-game-modding"
+      ],
+      "agents": [
+        "graphics-performance"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "git",
+        "python"
+      ]
+    },
+    "recompilation": {
+      "label": "Binary Recompilation",
+      "description": "Static/dynamic recompilation and behavioral equivalence",
+      "signals": {
+        "files": [
+          "**/recomp/**",
+          "**/recompiler/**",
+          "**/recompilation/**"
+        ],
+        "keywords": [
+          "recompilation",
+          "static recompilation",
+          "dynamic recompilation",
+          "recompiler",
+          "cpu emulation"
+        ]
+      },
+      "profiles": [
+        "recompilation"
+      ],
+      "skills": [
+        "wb-binary-recompilation",
+        "wb-reverse-engineering"
+      ],
+      "agents": [
+        "reverse-engineer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "llvm",
+        "clang",
+        "cmake"
+      ]
+    },
+    "decompilation": {
+      "label": "Decompilation Research",
+      "description": "Decompilation, source reconstruction and semantic verification",
+      "signals": {
+        "files": [
+          "**/decomp/**",
+          "**/decompiled/**",
+          "**/symbols/**"
+        ],
+        "keywords": [
+          "decompilation",
+          "decompile",
+          "decompiler",
+          "source reconstruction",
+          "matching decompilation"
+        ]
+      },
+      "profiles": [
+        "decompilation"
+      ],
+      "skills": [
+        "wb-decompilation-research",
+        "wb-reverse-engineering"
+      ],
+      "agents": [
+        "reverse-engineer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "ghidra",
+        "python"
+      ]
+    },
+    "game-port": {
+      "label": "Game Porting & Graphics",
+      "description": "Renderers, frame pacing, game compatibility and native ports",
+      "signals": {
+        "files": [
+          "**/renderer/**",
+          "**/shaders/**",
+          "**/vulkan/**"
+        ],
+        "keywords": [
+          "vulkan",
+          "shader cache",
+          "game port",
+          "frametime",
+          "porting games",
+          "graphics pipeline",
+          "the order 1886"
+        ]
+      },
+      "profiles": [
+        "game-port"
+      ],
+      "skills": [
+        "wb-vulkan-frame-pacing",
+        "wb-shader-cache-triage",
+        "wb-gameplay-acceptance"
+      ],
+      "agents": [
+        "graphics-performance"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "vulkaninfo",
+        "renderdoc"
+      ]
+    },
+    "ai-automation": {
+      "label": "AI, Agents & Automation",
+      "description": "LLMs, RAG, AI tools, skills, MCP orchestration",
+      "signals": {
+        "files": [
+          "**/AGENTS.md",
+          "**/mcp.json",
+          "**/skills/**/SKILL.md"
+        ],
+        "keywords": [
+          "llm",
+          "rag",
+          "ollama",
+          "agent orchestration",
+          "mcp server",
+          "ai agent",
+          "model context protocol"
+        ]
+      },
+      "profiles": [
+        "ai-agents"
+      ],
+      "skills": [
+        "wb-capability-curation",
+        "wb-ai-evaluation"
+      ],
+      "agents": [
+        "triage-orchestrator"
+      ],
+      "mcps": [
+        "context7",
+        "github"
+      ],
+      "plugins": [
+        "github"
+      ],
+      "utilities": [
+        "python",
+        "node"
+      ]
+    },
+    "data-engineering": {
+      "label": "Data Engineering",
+      "description": "Ingestion, ETL/ELT, orchestration and quality",
+      "signals": {
+        "files": [
+          "**/dbt_project.yml",
+          "**/airflow/**",
+          "**/models/*.sql",
+          "**/pipeline.py"
+        ],
+        "keywords": [
+          "data engineering",
+          "etl",
+          "elt",
+          "dbt",
+          "spark",
+          "data pipeline",
+          "airflow"
+        ]
+      },
+      "profiles": [
+        "data-engineering"
+      ],
+      "skills": [
+        "wb-data-pipelines"
+      ],
+      "agents": [
+        "data-engineer"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "google-drive"
+      ],
+      "utilities": [
+        "python",
+        "sql"
+      ]
+    },
+    "data-analytics": {
+      "label": "Analytics & BI",
+      "description": "Metrics, reporting, dashboards and experiments",
+      "signals": {
+        "files": [
+          "**/*.ipynb",
+          "**/dashboards/**",
+          "**/reports/**"
+        ],
+        "keywords": [
+          "data analysis",
+          "analytics",
+          "business intelligence",
+          "power bi",
+          "kpi",
+          "dashboard",
+          "experiment analysis"
+        ]
+      },
+      "profiles": [
+        "data-analytics"
+      ],
+      "skills": [
+        "wb-analytics-insights"
+      ],
+      "agents": [
+        "analytics-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-sheets",
+        "google-drive"
+      ],
+      "utilities": [
+        "python",
+        "sql"
+      ]
+    },
+    "ux-design": {
+      "label": "Design & UX",
+      "description": "Interaction design, user research, accessibility and design systems",
+      "signals": {
+        "files": [
+          "**/design-system/**",
+          "**/tokens.json",
+          "**/figma/**"
+        ],
+        "keywords": [
+          "ui ux",
+          "ux research",
+          "user experience",
+          "figma",
+          "design system",
+          "usability"
+        ]
+      },
+      "profiles": [
+        "ux-design"
+      ],
+      "skills": [
+        "wb-ux-research"
+      ],
+      "agents": [
+        "ux-designer"
+      ],
+      "mcps": [
+        "playwright",
+        "chrome-devtools"
+      ],
+      "plugins": [
+        "figma"
+      ],
+      "utilities": [
+        "figma",
+        "node"
+      ]
+    },
+    "marketing": {
+      "label": "Marketing & Growth",
+      "description": "Positioning, campaigns, channels, SEO and conversion",
+      "signals": {
+        "files": [
+          "**/campaigns/**",
+          "**/marketing/**",
+          "**/content-calendar.*"
+        ],
+        "keywords": [
+          "marketing",
+          "seo",
+          "campaign",
+          "growth marketing",
+          "brand positioning",
+          "lead generation",
+          "advertising"
+        ]
+      },
+      "profiles": [
+        "marketing"
+      ],
+      "skills": [
+        "wb-marketing-strategy"
+      ],
+      "agents": [
+        "marketing-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-drive",
+        "google-sheets"
+      ],
+      "utilities": [
+        "python"
+      ]
+    },
+    "sales": {
+      "label": "Sales & Revenue",
+      "description": "Lead qualification, pipeline, CRM, forecasting and follow-up",
+      "signals": {
+        "files": [
+          "**/sales/**",
+          "**/crm/**",
+          "**/pipeline.csv"
+        ],
+        "keywords": [
+          "sales pipeline",
+          "crm",
+          "salesforce",
+          "hubspot",
+          "sales enablement",
+          "revenue operations",
+          "lead qualification"
+        ]
+      },
+      "profiles": [
+        "sales"
+      ],
+      "skills": [
+        "wb-sales-process"
+      ],
+      "agents": [
+        "sales-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-sheets",
+        "google-drive"
+      ],
+      "utilities": [
+        "python"
+      ]
+    },
+    "ecommerce": {
+      "label": "E-commerce",
+      "description": "Store operations, catalog, checkout, merchandising and analytics",
+      "signals": {
+        "files": [
+          "**/shopify.*",
+          "**/products.csv",
+          "**/storefront/**"
+        ],
+        "keywords": [
+          "shopify",
+          "woocommerce",
+          "ecommerce",
+          "e-commerce",
+          "checkout conversion",
+          "storefront"
+        ]
+      },
+      "profiles": [
+        "ecommerce"
+      ],
+      "skills": [
+        "wb-ecommerce-operations"
+      ],
+      "agents": [
+        "sales-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-sheets"
+      ],
+      "utilities": [
+        "node"
+      ]
+    },
+    "product-management": {
+      "label": "Product Management",
+      "description": "Discovery, roadmap, prioritization and outcomes",
+      "signals": {
+        "files": [
+          "**/PRD.md",
+          "**/roadmap/**",
+          "**/user-stories/**"
+        ],
+        "keywords": [
+          "product management",
+          "product roadmap",
+          "feature prioritization",
+          "prd",
+          "user stories",
+          "backlog"
+        ]
+      },
+      "profiles": [
+        "product-management"
+      ],
+      "skills": [
+        "wb-product-discovery"
+      ],
+      "agents": [
+        "product-strategist"
+      ],
+      "mcps": [
+        "github",
+        "azure-devops"
+      ],
+      "plugins": [
+        "google-drive",
+        "google-sheets"
+      ],
+      "utilities": [
+        "git"
+      ]
+    },
+    "content-creation": {
+      "label": "Content & Publishing",
+      "description": "Editorial strategy, calendars, copy and quality assurance",
+      "signals": {
+        "files": [
+          "**/editorial/**",
+          "**/content/**",
+          "**/blog/**"
+        ],
+        "keywords": [
+          "content strategy",
+          "copywriting",
+          "content creation",
+          "editorial calendar",
+          "blog",
+          "social media"
+        ]
+      },
+      "profiles": [
+        "content-creation"
+      ],
+      "skills": [
+        "wb-content-publishing"
+      ],
+      "agents": [
+        "content-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-drive",
+        "google-sheets"
+      ],
+      "utilities": [
+        "python"
+      ]
+    },
+    "operations": {
+      "label": "Business Operations",
+      "description": "Processes, procedures, service delivery and automation",
+      "signals": {
+        "files": [
+          "**/sop/**",
+          "**/runbooks/**",
+          "**/operations/**"
+        ],
+        "keywords": [
+          "operations management",
+          "workflow automation",
+          "standard operating procedure",
+          "business process",
+          "customer operations"
+        ]
+      },
+      "profiles": [
+        "operations"
+      ],
+      "skills": [
+        "wb-operations-process"
+      ],
+      "agents": [
+        "operations-strategist"
+      ],
+      "mcps": [
+        "github"
+      ],
+      "plugins": [
+        "google-drive",
+        "google-sheets"
+      ],
+      "utilities": [
+        "python"
+      ]
+    }
+  }
+}

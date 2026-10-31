@@ -1,0 +1,16 @@
+{
+  "description": "Metrics, reporting, dashboards and experiments",
+  "skills": [
+    "wb-analytics-insights"
+  ],
+  "agents": [
+    "analytics-strategist"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "python",
+    "sql"
+  ]
+}

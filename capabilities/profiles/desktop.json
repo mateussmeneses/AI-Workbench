@@ -1,0 +1,17 @@
+{
+  "description": "Native or cross-platform desktop UI and lifecycle",
+  "skills": [
+    "wb-desktop-apps",
+    "wb-windows-input"
+  ],
+  "agents": [
+    "windows-engineer"
+  ],
+  "mcps": [
+    "github"
+  ],
+  "utilities": [
+    "powershell",
+    "git"
+  ]
+}

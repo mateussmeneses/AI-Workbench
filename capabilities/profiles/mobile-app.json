@@ -1,0 +1,20 @@
+{
+  "description": "Android builds, app releases and physical-device acceptance",
+  "skills": [
+    "wb-android-release"
+  ],
+  "agents": [
+    "mobile-engineer",
+    "qa-strategist",
+    "release-auditor"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "adb",
+    "gradle",
+    "git"
+  ]
+}
