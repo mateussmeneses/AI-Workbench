@@ -160,6 +160,14 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
         warnings.append("SELF generation is user-declared, not inferred from the header.")
     if selected_track == "matching-decomp":
         warnings.append("decompdecomp's current built-in agents replace the obsolete decomp.wtf MCP workflow.")
+    skills_by_track = {
+        "matching-decomp": ["wb-decompilation-research", "wb-reverse-engineering"],
+        "static-recomp": ["wb-binary-recompilation", "wb-reverse-engineering"],
+        "compatibility-runtime": ["wb-vulkan-frame-pacing", "wb-shader-cache-triage",
+                                  "wb-gameplay-acceptance"],
+        "triage": ["wb-binary-analysis", "wb-reverse-engineering"],
+    }
+    active_skills = skills_by_track[selected_track]
     active = data["tracks"][selected_track]
     return {
         "project": str(project_path),
@@ -179,6 +187,9 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
             "compatibility-runtime": {"game-port", "reverse-engineering"},
             "triage": {"reverse-engineering"},
         }[selected_track])),
+        "recommended_skills": active_skills,
+        "suggested_mcps": ["github", "context7"],
+        "mcp_policy": "suggest only; no server installed or activated",
         "agent_context": {
             "source": "read-only game-port assessment",
             "instructions": [
@@ -218,6 +229,8 @@ def game_port_markdown(plan):
         "- " + tool["name"] + " — " + tool["url"] + " (" + tool["maturity"] + "): " + tool["note"]
         for tool in plan["tools"]
     ] or ["- None selected without sufficient platform and workflow evidence."]
+    lines += ["", "## Workbench skills (not installed)", ""]
+    lines.extend("- " + skill for skill in plan["recommended_skills"])
     lines += ["", "## Validation checklist", ""]
     lines.extend("- " + item for item in plan["workflow"]["validation"])
     lines += ["", "## Agent handoff", ""]
