@@ -107,7 +107,7 @@ class GamePortingTests(unittest.TestCase):
         target = self.root / ".ai-workbench" / "GAME_PORT_PLAN.md"
         self.assertFalse(target.exists())
         written = save_game_plan(self.root, report)
-        self.assertEqual(written, target)
+        self.assertEqual(written.resolve(), target.resolve())
         self.assertIn("N64Recomp", target.read_text(encoding="utf-8"))
         self.assertEqual(rom.read_bytes()[:4], bytes.fromhex("80371240"))
 
