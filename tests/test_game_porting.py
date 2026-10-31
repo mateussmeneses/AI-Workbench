@@ -7,7 +7,7 @@ from pathlib import Path
 
 from aiwh.cli import main
 from aiwh.areas import recommend
-from aiwh.game_porting import assess_game_port, inspect_binary, validate_game_catalog
+from aiwh.game_porting import assess_game_port, inspect_binary, save_game_plan, validate_game_catalog
 
 
 class GamePortingTests(unittest.TestCase):
@@ -100,6 +100,16 @@ class GamePortingTests(unittest.TestCase):
         self.assertEqual(result["binary"]["sample_bytes"], 4096)
         self.assertEqual((path.stat().st_mtime_ns, path.stat().st_size), before)
         self.assertNotIn(str(path), json.dumps(result))
+
+    def test_private_handoff_requires_explicit_save(self):
+        rom = self.binary(bytes.fromhex("80371240") + b"\x00" * 64)
+        report = assess_game_port(self.root, binary=rom, track="static-recomp")
+        target = self.root / ".ai-workbench" / "GAME_PORT_PLAN.md"
+        self.assertFalse(target.exists())
+        written = save_game_plan(self.root, report)
+        self.assertEqual(written, target)
+        self.assertIn("N64Recomp", target.read_text(encoding="utf-8"))
+        self.assertEqual(rom.read_bytes()[:4], bytes.fromhex("80371240"))
 
     def test_area_integration_and_business_isolation(self):
         plan = recommend(self.root, selected=["game-port", "reverse-engineering"])

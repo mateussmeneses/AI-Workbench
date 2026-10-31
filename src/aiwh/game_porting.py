@@ -240,3 +240,17 @@ def game_port_markdown(plan):
         lines.extend("- " + w for w in plan["warnings"])
     lines += ["", "This is a read-only recommendation. No executables were run or changed.", ""]
     return "\n".join(lines)
+
+
+def save_game_plan(project, plan):
+    """Opt-in private handoff; never writes to or copies the game binary."""
+    root = Path(project).expanduser().resolve()
+    if not root.is_dir():
+        raise ValueError("Project directory not found: " + str(root))
+    private = root / ".ai-workbench"
+    private.mkdir(exist_ok=True)
+    target = private / "GAME_PORT_PLAN.md"
+    if target.is_symlink():
+        raise ValueError("Refusing to overwrite a symlinked game-port plan")
+    target.write_text(game_port_markdown(plan), encoding="utf-8")
+    return target

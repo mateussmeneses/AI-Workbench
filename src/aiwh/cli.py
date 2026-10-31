@@ -10,7 +10,7 @@ from .core import (DEFAULT_HOME, attach, browser_html_export, chromelike_bookmar
                    merged_index, project_profile, read_catalog, save_catalog)
 from .workbench import AGENTS, bootstrap, inspect_project, registry, resume, global_integration
 from .areas import catalog as area_catalog, recommend, markdown_plan, validate_catalog
-from .game_porting import assess_game_port, game_port_markdown, validate_game_catalog, game_catalog
+from .game_porting import assess_game_port, game_port_markdown, save_game_plan, validate_game_catalog, game_catalog
 
 
 def get_parser():
@@ -63,6 +63,7 @@ def get_parser():
     gp.add_argument('--track', choices=['auto','matching-decomp','static-recomp','compatibility-runtime','triage'], default='auto')
     gp.add_argument('--goal', default='', help='desired result: matching source, native port or runtime fixes')
     gp.add_argument('--json', action='store_true', help='machine-readable recommendation')
+    gp.add_argument('--save', action='store_true', help='write a private Workbench-owned agent handoff')
     sub.add_parser('capabilities', help='list available agents, skills and MCP catalog')
     sub.add_parser('report', help='summarize private resource catalog')
     d = sub.add_parser('doctor', help='check runtime and registry')
@@ -108,6 +109,8 @@ def main(argv=None):
         validate_game_catalog()
         result = assess_game_port(args.path, binary=args.binary, platform=args.platform,
                                   track=args.track, goal=args.goal)
+        if args.save:
+            result['saved_to'] = str(save_game_plan(args.path, result))
         print(json.dumps(result, indent=2, ensure_ascii=False) if args.json else game_port_markdown(result))
         return 0
     if args.command == 'capabilities':
