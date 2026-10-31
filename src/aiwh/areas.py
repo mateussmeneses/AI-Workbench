@@ -132,6 +132,10 @@ def recommend(project, *, goal='', selected=None, max_auto=4):
     result={**match,'profiles':union('profiles'), 'skills':union('skills'),
             'agents':union('agents'), 'mcps':union('mcps'),
             'plugins':union('plugins'), 'utilities':union('utilities')}
+    if any(area in ('game-port','reverse-engineering','decompilation',
+                    'recompilation','game-modding') for area in result['areas']):
+        from .game_porting import assess_game_port
+        result['game_porting'] = assess_game_port(project, goal=goal)
     result['execution']={
         'plugins':'suggest-only; connection requires explicit user action',
         'mcps':'recommend-only; no server enabled or credentials stored',
@@ -155,5 +159,9 @@ def markdown_plan(result):
         lines.append(f"- {r['id']} ({r['score']} points): "+('; '.join(why) or 'explicit selection'))
     for field in ('profiles','skills','agents','mcps','plugins','utilities'):
         lines.extend(['',field.title()+': '+(', '.join(result[field]) if result[field] else '(none)')])
+    if 'game_porting' in result:
+        gp=result['game_porting']
+        lines.extend(['', 'Game-porting triage: '+gp['workflow']['name']+'; platform: '+str(gp['platform'] or 'unverified'),
+                      'Run aiwh game-port <project> --binary <file> --track <mode> for evidence-based tool selection.'])
     lines.extend(['','Capabilities are proposed, not activated. Use aiwh init --area <name> for selected areas.'])
     return '\n'.join(lines)+'\n'

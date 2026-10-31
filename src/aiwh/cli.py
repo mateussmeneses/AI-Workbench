@@ -10,6 +10,7 @@ from .core import (DEFAULT_HOME, attach, browser_html_export, chromelike_bookmar
                    merged_index, project_profile, read_catalog, save_catalog)
 from .workbench import AGENTS, bootstrap, inspect_project, registry, resume, global_integration
 from .areas import catalog as area_catalog, recommend, markdown_plan, validate_catalog
+from .game_porting import assess_game_port, game_port_markdown, validate_game_catalog, game_catalog
 
 
 def get_parser():
@@ -55,6 +56,13 @@ def get_parser():
     rec.add_argument('--goal', default='', help='describe the intended project')
     rec.add_argument('--area', action='append', default=[], help='explicitly select one or more areas')
     rec.add_argument('--json', action='store_true', help='machine-readable plan')
+    gp = sub.add_parser('game-port', help='read-only console/binary and porting workflow triage')
+    gp.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    gp.add_argument('--binary', type=Path, help='inspect first 4 KiB of a game executable/ROM/disc')
+    gp.add_argument('--platform', choices=sorted(game_catalog()['platforms']), help='explicit platform declaration')
+    gp.add_argument('--track', choices=['auto','matching-decomp','static-recomp','compatibility-runtime','triage'], default='auto')
+    gp.add_argument('--goal', default='', help='desired result: matching source, native port or runtime fixes')
+    gp.add_argument('--json', action='store_true', help='machine-readable recommendation')
     sub.add_parser('capabilities', help='list available agents, skills and MCP catalog')
     sub.add_parser('report', help='summarize private resource catalog')
     d = sub.add_parser('doctor', help='check runtime and registry')
@@ -95,6 +103,12 @@ def main(argv=None):
         validate_catalog()
         result = recommend(args.path,goal=args.goal,selected=args.area)
         print(json.dumps(result,indent=2,ensure_ascii=False) if args.json else markdown_plan(result))
+        return 0
+    if args.command == 'game-port':
+        validate_game_catalog()
+        result = assess_game_port(args.path, binary=args.binary, platform=args.platform,
+                                  track=args.track, goal=args.goal)
+        print(json.dumps(result, indent=2, ensure_ascii=False) if args.json else game_port_markdown(result))
         return 0
     if args.command == 'capabilities':
         reg = registry()
