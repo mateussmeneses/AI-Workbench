@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0.dev0 — Game Reverse Engineering & Porting
+- Added bounded binary-header intake and explicit platform/architecture provenance.
+- Distinguished matching decompilation, static recompilation, and compatibility-runtime tracks.
+- Added platform-specific curated tools, limitations, recommended agent skills and MCP suggestions.
+- Added `aiwh game-port`, opt-in private assessment handoff, and new regression tests.
+- Does not execute or modify original game binaries.
+
 ## v0.3.0 — Multidisciplinary capability routing
 
 - Added 26 composable capability areas, with 28 mapped project profiles and 45 unique skills.

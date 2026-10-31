@@ -49,6 +49,19 @@ aiwh init "C:\projects\game-port" --agent codex --goal "Reverse engineering and 
 
 See [area reference](docs/AREAS.md), [community research](docs/RESEARCH.md), and [architecture](docs/ARCHITECTURE.md).
 
+## Game Reverse Engineering & Porting
+
+`aiwh game-port` examines bounded binary headers, distinguishes **matching decompilation**, **static recompilation** and **compatibility-runtime** work, then recommends platform-specific tools and relevant Workbench skills. The original game is not executed or modified.
+
+```powershell
+aiwh game-port "C:\projects\n64-port" --binary "C:\games\sample.z64" --track static-recomp --json
+aiwh game-port "C:\projects\ps4-port" --platform ps4 --goal "Fix Vulkan shader stutter"
+aiwh game-port "C:\projects\n64-port" --binary "C:\games\sample.z64" --track matching-decomp --save
+aiwh init "C:\projects\n64-port" --agent hermes --area reverse-engineering --area decompilation --dry-run
+```
+
+`--save` explicitly writes a private `.ai-workbench/GAME_PORT_PLAN.md` handoff; otherwise the assessment is read-only. MCP and plugin activation remain opt-in. See [Game Porting Guide](docs/GAME_PORTING.md).
+
 ## Start a new project
 
 ```powershell
