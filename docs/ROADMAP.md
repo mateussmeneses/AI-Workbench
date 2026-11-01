@@ -154,7 +154,7 @@ Documentation-only planning does not increment the product version. Release gate
 4. Confirm the task's local behavior and baseline checks; implement and validate only that scope.
 5. Update this queue and the completion note before ending. Suggest the next eligible task and leave version control actions pending unless authorized.
 
-The current resume scan reports at most 30 pending checklist items. This roadmap currently has 26 top-level checklist items, of which 15 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
+The current resume scan reports at most 30 pending checklist items. This roadmap currently has 26 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
 
 ## Completion notes
 
