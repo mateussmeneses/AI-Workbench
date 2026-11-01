@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "purpose": "Read-only, evidence-based game reverse-engineering and porting triage. No tools are installed or executed.",
+  "platforms": {
+    "n64": {
+      "label": "Nintendo 64",
+      "cpu": "MIPS R4300i",
+      "notes": "Matching C decomp and static recomp are different workflows."
+    },
+    "ps1": {
+      "label": "PlayStation 1",
+      "cpu": "MIPS R3000A",
+      "notes": "PS-X EXE is identifiable; disc images require their contents to be inspected."
+    },
+    "ps2": {
+      "label": "PlayStation 2",
+      "cpu": "MIPS R5900 / VU",
+      "notes": "EE/VU, graphics and runtime emulation remain project-specific."
+    },
+    "ps3": {
+      "label": "PlayStation 3",
+      "cpu": "PowerPC PPE/SPU",
+      "notes": "SELF files alone do not identify generation. Recompilation maturity varies by title."
+    },
+    "ps4": {
+      "label": "PlayStation 4",
+      "cpu": "x86-64",
+      "notes": "An ELF x86-64 header alone cannot prove PS4; porting often requires compatibility/runtime work."
+    },
+    "xbox360": {
+      "label": "Xbox 360",
+      "cpu": "PowerPC Xenon",
+      "notes": "XEX2 signatures identify Xbox 360 containers."
+    },
+    "gamecube": {
+      "label": "GameCube",
+      "cpu": "PowerPC Gekko",
+      "notes": "GC disc magic or verified game metadata is needed."
+    },
+    "wii": {
+      "label": "Wii",
+      "cpu": "PowerPC Broadway",
+      "notes": "Wii disc magic or verified game metadata is needed."
+    },
+    "nds": {
+      "label": "Nintendo DS",
+      "cpu": "ARM9 / ARM7",
+      "notes": "NDS filename alone is not enough to prove the platform."
+    },
+    "gba": {
+      "label": "Game Boy Advance",
+      "cpu": "ARM7TDMI",
+      "notes": "GBA filename alone is not enough to prove the platform."
+    },
+    "psp": {
+      "label": "PlayStation Portable",
+      "cpu": "MIPS Allegrex",
+      "notes": "PBP is a PSP package, not a verified code image."
+    },
+    "windows-pc": {
+      "label": "Windows PC",
+      "cpu": "x86 / x86-64 / other PE machine",
+      "notes": "Windows PE does not identify a particular game engine."
+    }
+  },
+  "tools": {
+    "decompdecomp": {
+      "url": "https://github.com/n-delic/decompdecomp",
+      "tracks": [
+        "matching-decomp"
+      ],
+      "platforms": [
+        "n64",
+        "ps1",
+        "ps2",
+        "psp",
+        "gamecube",
+        "wii",
+        "nds",
+        "gba",
+        "windows-pc"
+      ],
+      "maturity": "N64 recommended; other platforms vary, frequently beta",
+      "note": "AI-guided matching decompilation; built-in agents in current releases. Legacy decomp.wtf MCP instructions are obsolete."
+    },
+    "decomp.me": {
+      "url": "https://github.com/decompme/decomp.me",
+      "tracks": [
+        "matching-decomp"
+      ],
+      "platforms": [
+        "n64",
+        "ps1",
+        "ps2",
+        "gamecube",
+        "wii",
+        "nds",
+        "gba",
+        "psp"
+      ],
+      "maturity": "Community utility",
+      "note": "Compare individual functions, not a turnkey port."
+    },
+    "objdiff": {
+      "url": "https://github.com/encounter/objdiff",
+      "tracks": [
+        "matching-decomp"
+      ],
+      "platforms": [
+        "n64",
+        "ps1",
+        "ps2",
+        "gamecube",
+        "wii",
+        "nds",
+        "gba",
+        "psp",
+        "windows-pc"
+      ],
+      "maturity": "Community utility",
+      "note": "Compare generated object code against targets."
+    },
+    "N64Recomp": {
+      "url": "https://github.com/N64Recomp/N64Recomp",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "n64"
+      ],
+      "maturity": "Project-specific native ports exist",
+      "note": "MIPS static recompilation; graphics, audio, inputs and runtime still need integration."
+    },
+    "PSXRecomp": {
+      "url": "https://github.com/RetroPortingToolKit/psxrecomp",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "ps1"
+      ],
+      "maturity": "Experimental",
+      "note": "PS1 static recompilation ecosystem; not universal game compatibility."
+    },
+    "PS2Recomp": {
+      "url": "https://github.com/ran-j/PS2Recomp",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "ps2"
+      ],
+      "maturity": "Experimental",
+      "note": "Requires PS2 EE/VU and graphics/runtime integration."
+    },
+    "ps3recomp": {
+      "url": "https://github.com/sp00nznet/ps3recomp",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "ps3"
+      ],
+      "maturity": "Experimental",
+      "note": "PS3 static recompilation runtime building blocks; title-specific engineering required."
+    },
+    "XenonRecomp": {
+      "url": "https://github.com/hedge-dev/XenonRecomp",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "xbox360"
+      ],
+      "maturity": "Project-specific",
+      "note": "PPC-to-native static recompilation; runtime compatibility is separate."
+    },
+    "ReXGlue": {
+      "url": "https://github.com/rexglue/rexglue-sdk",
+      "tracks": [
+        "static-recomp"
+      ],
+      "platforms": [
+        "xbox360"
+      ],
+      "maturity": "Project-specific",
+      "note": "Xbox 360 recompilation runtime/toolkit, including supporting subsystems."
+    },
+    "shadPS4": {
+      "url": "https://github.com/shadps4-emu/shadPS4",
+      "tracks": [
+        "compatibility-runtime"
+      ],
+      "platforms": [
+        "ps4"
+      ],
+      "maturity": "Emulator/runtime reference, not a game port generator",
+      "note": "x86-64 PS4 service and graphics compatibility research, not a push-button native port."
+    }
+  },
+  "tracks": {
+    "matching-decomp": {
+      "label": "Matching decompilation",
+      "description": "Recover C/C++ that builds byte-identical code with the original toolchain.",
+      "validation": [
+        "Record original hash, build tag and compiler provenance.",
+        "Compare compiled functions/objects byte-for-byte.",
+        "Do not confuse matched code with a native PC port."
+      ]
+    },
+    "static-recomp": {
+      "label": "Static recompilation",
+      "description": "Translate original machine code to a different host ISA and provide a compatible runtime.",
+      "validation": [
+        "Prove architecture and executable identity.",
+        "Validate translated CPU behavior and imported functions.",
+        "Test graphics, audio, input, timing and runtime services on the target OS."
+      ]
+    },
+    "compatibility-runtime": {
+      "label": "Compatibility runtime",
+      "description": "Run existing machine code when the host CPU is compatible; implement missing OS, engine and graphics interfaces.",
+      "validation": [
+        "Verify CPU and executable ABI instead of guessing from extension.",
+        "Trace real runtime, graphics and shader failures.",
+        "Measure frame pacing and check gameplay regression scenes."
+      ]
+    },
+    "triage": {
+      "label": "Needs evidence",
+      "description": "Cannot responsibly select one engineering strategy from the supplied evidence.",
+      "validation": [
+        "Inspect a verified binary header or specify --platform.",
+        "Describe the actual goal: matching source, native PC executable or runtime fixes.",
+        "Choose the track explicitly before planning major changes."
+      ]
+    }
+  }
+}
