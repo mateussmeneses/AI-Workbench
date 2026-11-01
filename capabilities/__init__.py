@@ -1,0 +1,1 @@
+"""Canonical assets bundled as aiwh.capabilities in distributions."""

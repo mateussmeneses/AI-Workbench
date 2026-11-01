@@ -1,0 +1,2 @@
+include config/taxonomy.json
+include scripts/Verify-Package.py

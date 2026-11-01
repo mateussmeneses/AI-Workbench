@@ -13,9 +13,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install --no-deps -e .
+      - run: python -m pip install -e . build
       - run: python -m unittest discover -s tests -v
       - run: python -m aiwh doctor
+      - name: Build wheel and sdist
+        run: python -m build --outdir dist
+      - name: Prepare dependency wheelhouse
+        run: |
+          python -m pip download --only-binary=:all: --dest .package-wheels "PyYAML>=6.0.3,<7"
+      - name: Verify isolated package installation
+        shell: pwsh
+        run: |
+          $wheel = (Get-ChildItem dist/*.whl).FullName
+          $sdist = (Get-ChildItem dist/*.tar.gz).FullName
+          python scripts/Verify-Package.py --wheel $wheel --sdist $sdist --wheelhouse .package-wheels
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Publish verified GitHub release
         env:
           GH_TOKEN: ${{ github.token }}

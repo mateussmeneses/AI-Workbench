@@ -8,6 +8,30 @@
 4. **Resource Hub (`src/aiwh/core.py`)** — optional indexing of user bookmarks and GitHub stars with deduplication and heuristic project recommendations. It only reads input sources; classification is not LLM-based yet.
 5. **Adapters** — Codex (`AGENTS.md`, `.agents/skills`), Claude Code (`CLAUDE.md`, `.claude/skills`), Antigravity (`AGENTS.md`, `.agents/skills`), Hermes (`.agents/skills`, explicit trust), and OpenClaude (`.openclaude/skills`). MCP catalog entries are never activated automatically.
 
+## Registry validation
+
+`registry()` validates canonical source assets before returning the existing profile, skill-path, role-path and MCP mappings. It does not validate or overwrite user-modified installed skills.
+
+- Skills require UTF-8 `SKILL.md` files with opening/closing `---` frontmatter delimiters, non-empty string `name` and `description`, and a non-empty body. Names must match their directory and use lowercase alphanumeric segments separated by single hyphens, at most 64 characters.
+- An optional skill `version` must be a string in `major.minor.patch` format. Descriptions may use YAML block scalars. PyYAML's safe loader parses metadata; duplicate fields, non-string keys, malformed YAML and Python-specific object tags are rejected.
+- Profiles must be JSON objects with non-empty string descriptions. Optional `skills`, `agents`, `mcps` and `utilities` fields must be lists of unique non-empty strings. Skill, role and MCP references must resolve; utility names are recommendations, not executable availability checks.
+- Duplicate JSON keys are rejected, including nested objects. MCP entries must be objects with literal boolean `enabledByDefault: false`; catalog reading never activates them.
+- Required capability directories and the MCP catalog file must exist; role files must be readable, non-empty UTF-8 templates. Missing referenced skills or roles are reported as unresolved IDs.
+
+Invalid inputs raise `ValueError` with the source path and failing field or reference. Duplicate skill-directory IDs include both conflicting paths. This is structural validation, not proof that a skill's procedure is correct or compatible with a real agent runtime.
+
+## Distribution assets
+
+`pyproject.toml` maps the canonical `capabilities/` directory to the data package `aiwh.capabilities`, with explicit runtime asset patterns. Wheels include profiles, role templates, skills, area/MCP/plugin catalogs, routing policy and the bundled taxonomy. Source distributions additionally include the canonical taxonomy and verification script through `MANIFEST.in`; no private user catalog is a distribution input.
+
+At runtime, `workbench.py` prefers the capability directory beside the installed package and falls back to the repository's canonical directory for editable/source use. `core.py` retains its packaged taxonomy fallback. No bootstrap command copies or modifies the user's Python installation.
+
+`scripts/Verify-Package.py` checks expected archive paths and source bytes before installing. It rejects missing/stale runtime assets, unexpected payload files, private/generated paths and unsafe archive names. The smoke uses a temporary venv and project, offline pip installation and isolated module execution; an explicit host-dependency reuse option is reported separately from clean-wheelhouse mode.
+
+The existing CI and release workflows now install declared dependencies, build wheel/sdist artifacts and run the clean-wheelhouse verifier. Release publishing remains conditional on an explicitly authorized tag and passing checks; modifying workflow files does not execute or publish them.
+
+The Python floor remains 3.10. CI retains 3.10/3.12 and adds 3.14; local evidence is limited to Windows/Python 3.14.6 with PyYAML 6.0.3. Python 3.13/3.14 porting guidance was consulted for pathlib, subprocess and archive behavior; the verifier reads archives without extraction and uses APIs available on 3.10. Minimum-runtime and clean dependency-install evidence are still pending, not inferred from newer-runtime success.
+
 ## Data flow
 
 `Repository / project intent -> profile selection -> capability manifests -> native skills + instruction pointer -> local working session -> evidence scan -> .ai-workbench/CONTEXT.md -> next agent/session`

@@ -1,15 +1,191 @@
 import json
+import runpy
+import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from aiwh.workbench import (bootstrap, choose_profiles, inspect_project, global_integration, managed_text,
                             registry, resume, skill_paths)
 from aiwh.cli import main
 
 
+class PackageVerificationTests(unittest.TestCase):
+    def setUp(self):
+        self.source = Path(__file__).resolve().parents[1]
+        self.verifier = runpy.run_path(str(self.source / 'scripts/Verify-Package.py'))
+
+    def test_rejects_unsafe_and_private_archive_paths(self):
+        for name in ('../catalog.json', 'C:/catalog.json', 'root\\catalog.json',
+                     'root/.ai-workbench/CONTEXT.md', 'root/.git/config'):
+            with self.subTest(name=name):
+                with self.assertRaises(ValueError):
+                    self.verifier['check_member'](name)
+
+    def test_rejects_missing_wheel_assets(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            wheel = Path(temporary) / 'example.whl'
+            with zipfile.ZipFile(wheel, 'w'):
+                pass
+            with self.assertRaisesRegex(ValueError, 'Missing or stale wheel payload'):
+                self.verifier['inspect_distributions'](wheel, None, self.source)
+
+    def test_rejects_unexpected_wheel_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            wheel = Path(temporary) / 'example.whl'
+            with zipfile.ZipFile(wheel, 'w') as archive:
+                archive.writestr('catalog.json', '{}')
+            with self.assertRaisesRegex(ValueError, 'Unexpected wheel payload: catalog.json'):
+                self.verifier['inspect_distributions'](wheel, None, self.source)
+
+
+class RegistryTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        for directory in ('profiles', 'skills', 'agents', 'mcp'):
+            (self.root / directory).mkdir()
+        self.skill = self.root / 'skills' / 'wb-example' / 'SKILL.md'
+        self.skill.parent.mkdir()
+        self.skill.write_text('---\nname: wb-example\ndescription: Example workflow\n---\n# Example\n',
+                              encoding='utf-8')
+        self.profile = self.root / 'profiles' / 'core.json'
+        self.profile.write_text(json.dumps({'description': 'Core', 'skills': ['wb-example']}),
+                                encoding='utf-8')
+        (self.root / 'mcp' / 'catalog.json').write_text('{}', encoding='utf-8')
+        patcher = patch('aiwh.workbench.CAPABILITIES', self.root)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_skill_requires_description(self):
+        self.skill.write_text('---\nname: wb-example\n---\n# Example\n', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'SKILL.md.*description'):
+            registry()
+
+    def test_valid_metadata_and_optional_version(self):
+        self.assertIn('wb-example', registry()['skills'])
+        self.skill.write_text('---\nname: wb-example\ndescription: |\n  Multi-line workflow\n'
+                              'version: 1.0.0\n---\n# Example\n', encoding='utf-8')
+        self.assertIn('wb-example', registry()['skills'])
+
+    def test_invalid_skill_metadata(self):
+        cases = (
+            ('# No header\n', 'opening frontmatter'),
+            ('---\nname: wb-example\n', 'closing frontmatter'),
+            ('---\n- name\n---\nBody\n', 'mapping'),
+            ('---\nname: wb-example\ndescription: [broken\n---\nBody\n', 'Invalid skill'),
+            ('---\nname: wb-other\ndescription: Example\n---\nBody\n', 'match skill directory'),
+            ('---\nname: wb-example\ndescription: true\n---\nBody\n', 'description'),
+            ('---\nname: wb-example\ndescription: ""\n---\nBody\n', 'description'),
+            ('---\nname: wb-example\nname: wb-example\ndescription: Example\n---\nBody\n',
+             'duplicate metadata field: name'),
+            ('---\nname: wb-example\ndescription: Example\nversion: 1\n---\nBody\n', 'version'),
+            ('---\nname: wb-example\ndescription: Example\n---\n', 'body'),
+            ('---\nname: wb-example\ndescription: !!python/name:os.system\n---\nBody\n',
+             'Invalid skill'),
+        )
+        for content, message in cases:
+            with self.subTest(message=message, content=content):
+                self.skill.write_text(content, encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, message) as caught:
+                    registry()
+                self.assertIn(str(self.skill), str(caught.exception))
+
+    def test_duplicate_skill_directory_names(self):
+        duplicate = self.root / 'skills' / 'another-area' / 'wb-example' / 'SKILL.md'
+        duplicate.parent.mkdir(parents=True)
+        duplicate.write_text(self.skill.read_text(encoding='utf-8'), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Duplicate skill name: wb-example') as caught:
+            registry()
+        self.assertIn(str(self.skill.parent), str(caught.exception))
+        self.assertIn(str(duplicate.parent), str(caught.exception))
+
+    def test_invalid_profile_json_and_fields(self):
+        cases = (
+            ('{', 'Invalid registry JSON'),
+            ('[]', 'JSON object'),
+            ('{"description":"Core","description":"Duplicate"}', 'duplicate JSON field'),
+            ('{}', 'description'),
+            ('{"description":"Core","skills":"wb-example"}', 'skills must be a list'),
+            ('{"description":"Core","skills":[1]}', 'skills must be a list'),
+            ('{"description":"Core","skills":["wb-example","wb-example"]}', 'duplicate IDs'),
+        )
+        for content, message in cases:
+            with self.subTest(content=content):
+                self.profile.write_text(content, encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, message) as caught:
+                    registry()
+                self.assertIn(str(self.profile), str(caught.exception))
+
+    def test_missing_profile_references(self):
+        for field, label in (('skills', 'skill'), ('agents', 'agent'), ('mcps', 'MCP')):
+            with self.subTest(field=field):
+                self.profile.write_text(json.dumps({'description': 'Core', field: ['missing']}),
+                                        encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, f'missing {label} missing') as caught:
+                    registry()
+                self.assertIn(str(self.profile), str(caught.exception))
+
+    def test_missing_capability_directory(self):
+        (self.root / 'agents').rmdir()
+        with self.assertRaisesRegex(ValueError, 'Missing capability directory'):
+            registry()
+
+    def test_missing_skill_file(self):
+        self.skill.unlink()
+        with self.assertRaisesRegex(ValueError, 'missing skill wb-example'):
+            registry()
+
+    def test_empty_role_template(self):
+        role = self.root / 'agents' / 'example.md'
+        role.write_text('', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'example.md.*must not be empty'):
+            registry()
+
+    def test_mcp_catalog_validation(self):
+        path = self.root / 'mcp' / 'catalog.json'
+        cases = (
+            ('[]', 'JSON object'),
+            ('{"example":{},"example":{}}', 'duplicate JSON field'),
+            ('{"example":[]}', 'expected an object'),
+            ('{"example":{"enabledByDefault":true}}', 'enabledByDefault must be false'),
+            ('{"example":{"enabledByDefault":0}}', 'enabledByDefault must be false'),
+        )
+        for content, message in cases:
+            with self.subTest(content=content):
+                path.write_text(content, encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, message) as caught:
+                    registry()
+                self.assertIn(str(path), str(caught.exception))
+        path.unlink()
+        with self.assertRaisesRegex(ValueError, 'catalog.json'):
+            registry()
+
+
 class BootstrapTests(unittest.TestCase):
+    def test_bundled_assets_outside_checkout(self):
+        source = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as temporary:
+            installed = Path(temporary) / 'site-packages'
+            package = installed / 'aiwh'
+            shutil.copytree(source / 'src' / 'aiwh', package, ignore=shutil.ignore_patterns('__pycache__'))
+            shutil.copytree(source / 'capabilities', package / 'capabilities')
+            script = ('import sys; from pathlib import Path; '
+                      'sys.path.insert(0, sys.argv[1]); '
+                      'from aiwh.workbench import CAPABILITIES, registry; '
+                      'from aiwh.areas import validate_catalog; '
+                      'assert CAPABILITIES == Path(sys.argv[1]) / "aiwh" / "capabilities"; '
+                      'assert len(registry()["skills"]) == 45; '
+                      'assert validate_catalog()["areas"] == 26')
+            result = subprocess.run([sys.executable, '-I', '-c', script, str(installed)],
+                                    cwd=temporary, capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_registry_integrity(self):
         r = registry()
         self.assertEqual(len(r['profiles']), 28)
@@ -49,6 +225,9 @@ class BootstrapTests(unittest.TestCase):
             self.assertTrue((project / '.claude/skills/wb-api-contract-qa/SKILL.md').exists())
             self.assertTrue((project / '.openclaude/skills/wb-api-contract-qa/SKILL.md').exists())
             self.assertTrue((project / 'CLAUDE.md').exists())
+            guide = (project / 'AI-WORKBENCH.md').read_text(encoding='utf-8')
+            self.assertIn('`aiwh resume .`', guide)
+            self.assertNotIn('aiwh resume --project', guide)
             content = (project / 'AGENTS.md').read_text(encoding='utf-8')
             self.assertIn('Keep tests green.', content)
             self.assertEqual(content.count('<!-- AIWH:BEGIN -->'), 1)

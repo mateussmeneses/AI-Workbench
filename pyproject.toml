@@ -8,13 +8,28 @@ version = "0.3.0"
 description = "Local-first portable project bootstrap, continuity and AI capability registry"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-dependencies = []
+dependencies = ["PyYAML>=6.0.3,<7"]
 
 [project.scripts]
 aiwh = "aiwh.cli:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = ["aiwh", "aiwh.capabilities"]
+include-package-data = false
+
+[tool.setuptools.package-dir]
+"" = "src"
+"aiwh.capabilities" = "capabilities"
 
 [tool.setuptools.package-data]
 aiwh = ["taxonomy.json"]
+"aiwh.capabilities" = [
+	"agents/*.md",
+	"areas/catalog.json",
+	"mcp/catalog.json",
+	"plugins/catalog.json",
+	"profiles/*.json",
+	"routing/*.json",
+	"skills/*/*/*",
+	"skills/*/*/**/*",
+]

@@ -6,15 +6,15 @@ AI Workbench is an independent project. It does **not** modify your bookmarks, c
 
 ## What it already does
 
-- **Bootstrap:** `aiwh init` detects a project's technology profile (or accepts overrides), installs the relevant skills in native agent directories, preserves existing instructions, and suggests only the necessary MCPs.
-- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and documented TODOs, then creates an evidence-based handoff in the private `.ai-workbench/CONTEXT.md` directory.
+- **Bootstrap:** `aiwh init` detects a project's technology profile (or accepts overrides), installs the selected skills in agent-specific project directories, preserves existing instructions, and suggests MCP candidates for review.
+- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 30 documented pending items, then writes private `.ai-workbench/CONTEXT.md` and `state.json` snapshots. It does not retain snapshot history or an approved decision/task lifecycle yet.
 - **Audit:** `aiwh audit` reports the observed project state in JSON without changing anything.
 - **Capability registry:** 45 deduplicated skills, 20 agent role templates, 28 technical profiles, 26 composable areas, and opt-in MCP/plugin catalogs.
 - **Resource catalog:** optional read-only ingestion of GitHub stars (`gh` CLI), Chromium bookmarks, and Netscape HTML. Resource suggestions are local and never automatically installed or executed.
 
 ## Install (Windows 11)
 
-Requirements: Python 3.10+, optional Git, optional `gh` for GitHub stars.
+Requirements: Python 3.10+, PyYAML 6.0.3+ (below 7, declared as a package dependency), optional Git, optional `gh` for GitHub stars. Installing the package also installs its dependencies when needed.
 
 ```powershell
 # Extract the ZIP and open PowerShell inside AI-Workbench.
@@ -25,6 +25,48 @@ aiwh capabilities
 ```
 
 If `aiwh` is not on PATH immediately, reopen the terminal or use `py -m aiwh` after installation.
+
+These instructions use an editable install from the source checkout. Wheel/sdist assets and a temporary wheel installation outside the checkout have been verified locally on Windows/Python 3.14.6, reusing the existing PyYAML dependency. A clean dependency installation and execution on Python 3.10 remain pending in RM-003b in the [roadmap](docs/ROADMAP.md); configured CI jobs are not evidence of hosted success.
+
+## Distribution checks
+
+The canonical `capabilities/` tree is mapped into `aiwh.capabilities` during packaging; it is not maintained as a second source copy. Build tooling is separate from runtime dependencies and must be available in the selected development environment.
+
+After explicitly preparing the build tools and local dependency wheels, verify the artifacts with:
+
+```powershell
+python -m build --outdir dist
+$wheel = (Get-ChildItem dist/*.whl).FullName
+$sdist = (Get-ChildItem dist/*.tar.gz).FullName
+python scripts/Verify-Package.py --wheel $wheel --sdist $sdist --wheelhouse .package-wheels
+```
+
+Use a directory containing only the current build's wheel and sdist. The verifier never downloads dependencies: it inspects archive contents, creates a temporary venv, installs from local wheels, and exercises the installed `aiwh` launcher and module outside the checkout. It checks skill installation in all three directories, repeated bootstrap, previews and continuity using synthetic projects and a temporary private catalog.
+
+`--reuse-installed-dependencies` is an explicit offline fallback when dependencies are already installed on the host. Its result is reported as `host reuse`, not a clean dependency-install certification. Temporary verification environments are removed after the check.
+
+CI is configured for Ubuntu and Windows with Python 3.10, 3.12 and 3.14. Other Python 3.10+ releases remain declared-compatible but are not individually covered by that matrix. No hosted run was observed during this local packaging work.
+
+## CLI reference
+
+Use `aiwh --help` and `aiwh <command> --help` for current options. The global `--home` option precedes the command, for example `aiwh --home "C:\private\workbench" report`.
+
+| Command | Current behavior |
+| --- | --- |
+| `init` | Write selected project skills and managed instructions; `--dry-run` previews without writes |
+| `resume` | Write a private current-state handoff; `--dry-run` previews without writes |
+| `audit` | Print observed local project state as JSON, without writes |
+| `profiles` | List available technical profiles |
+| `areas` | List composable capability areas |
+| `recommend` | Print an explainable capability proposal; `--json` selects JSON output |
+| `capabilities` | List skill and role identifiers plus skill/role/profile counts |
+| `sync` | Read explicitly selected sources and update the private catalog; `--dry-run` skips catalog writes |
+| `attach` | Write private resource suggestions for a project; `--dry-run` previews without writes |
+| `report` | Summarize the private resource catalog, without writes |
+| `doctor` | Check registry references and report executable detection; not a runtime compatibility test |
+| `global-integration` | Preview a managed global instruction block; only `--apply` writes changes |
+
+`sync --github` requests GitHub star metadata through `gh`, even with `--dry-run`; dry-run prevents writes, not explicitly requested source reads or network access.
 
 ## Compose any kind of project from capability areas
 
@@ -56,7 +98,7 @@ aiwh init "C:\projetos\my-app" --create --agent codex --profile browser-extensio
 aiwh init "C:\projetos\my-app" --create --agent codex --profile browser-extension
 ```
 
-`--dry-run` previews file writes without creating directories. Omit `--profile` to autodetect technology for an existing repository. Use `--agent all` to install compatible project skills for Codex, Claude Code and OpenClaude simultaneously. Antigravity and Hermes can also consume the shared `.agents/skills` directory, subject to their own runtime trust and configuration rules.
+`--dry-run` previews file writes without creating directories. Omit `--profile` to autodetect technology for an existing repository. `--agent all` writes the three distinct skill locations: `.agents/skills`, `.claude/skills` and `.openclaude/skills`. Codex, Antigravity and Hermes share the first path in Workbench's adapter mapping; discovery and trust still depend on each runtime.
 
 ## Continue an existing project
 
@@ -88,17 +130,19 @@ aiwh attach --project "C:\projetos\neverdead-port"
 
 **Bookmark Organizer is a separate product.** It manages browser bookmarks directly; Workbench can optionally index relevant resources, but it must not rearrange folders or duplicate the browser extension's responsibilities.
 
-## Supported agent adapters
+## Implemented agent file adapters
 
 | Agent | Workspace instruction | Skill location | Notes |
 |---|---|---|---|
-| Codex | `AGENTS.md` | `.agents/skills/` | Native discovery |
+| Codex | `AGENTS.md` | `.agents/skills/` | Project path mapping |
 | Claude Code | `CLAUDE.md` | `.claude/skills/` | Also writes the shared `AGENTS.md` pointer |
 | Google Antigravity | `AGENTS.md` | `.agents/skills/` | Shared repo rules + skills |
 | Hermes Agent | Portable `AGENTS.md` pointer | `.agents/skills/` | Trust repository skills explicitly in Hermes |
 | OpenClaude | Portable `AGENTS.md` pointer | `.openclaude/skills/` | Role adapters remain templates |
 
 No tool is automatically granted access to GitHub/Azure DevOps, or configured with API keys.
+
+All five skill-path mappings have synthetic contract tests. Real-runtime skill discovery, instruction precedence and end-to-end workflows are not yet verified for any adapter. See [adapter evidence and sources](docs/AGENTS.md); `doctor` finding an executable does not certify support.
 
 ## Security and contributions
 
@@ -123,7 +167,9 @@ See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](d
 
 ## Project status
 
-Version **0.3.0 starter** — bootstrapping, continuation, local catalog and adapters are implemented and covered with synthetic unit/integration tests. Automatic startup hooks, universal MCP activation, live agent-session migration, background project monitoring and GitHub release automation are future milestones.
+Version **0.3.0 starter** — bootstrapping, continuation, local catalog and agent file adapters are implemented and covered with synthetic unit/integration tests. This is not certification of real agent runtimes or standalone release installation. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
+
+Managed capability updates/removal, durable decisions and session deltas are planned, not available commands. Native startup hooks and recurring monitoring are deferred opt-in opportunities. MCPs/plugins remain recommendations; proprietary chat-session migration is not supported.
 
 ## Optional global agent integration
 
