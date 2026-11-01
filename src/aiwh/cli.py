@@ -8,7 +8,8 @@ from pathlib import Path
 from .core import (DEFAULT_HOME, attach, browser_html_export, chromelike_bookmarks,
                    detect_browser_files, github_from_gh, github_stars, json_read,
                    merged_index, project_profile, read_catalog, save_catalog)
-from .workbench import AGENTS, bootstrap, inspect_project, registry, resume, global_integration
+from .workbench import (AGENTS, bootstrap, inspect_project, registry, resume,
+                        global_integration, remove_managed)
 from .areas import catalog as area_catalog, recommend, markdown_plan, validate_catalog
 from .game_porting import assess_game_port, game_port_markdown, save_game_plan, validate_game_catalog, game_catalog
 
@@ -39,6 +40,11 @@ def get_parser():
     b.add_argument('--goal', default='', help='plain-language project mission for area suggestions')
     b.add_argument('--auto-areas', action='store_true', help='opt in to top matching project areas')
     b.add_argument('--dry-run', action='store_true')
+    managed = sub.add_parser('managed', help='manage files recorded by aiwh init')
+    managed_sub = managed.add_subparsers(dest='managed_action', required=True)
+    managed_remove = managed_sub.add_parser('remove', help='remove only manifest-verified managed files')
+    managed_remove.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    managed_remove.add_argument('--dry-run', action='store_true')
     re = sub.add_parser('resume', help='generate an evidence-based next-session report')
     re.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     re.add_argument('--agent', choices=[*AGENTS, 'all'], default='codex')
@@ -79,6 +85,10 @@ def main(argv=None):
                            areas=args.area or None, goal=args.goal, auto_areas=args.auto_areas,
                            create=args.create, dry_run=args.dry_run, home=home)
         print(json.dumps(report, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'managed' and args.managed_action == 'remove':
+        result = remove_managed(args.path, dry_run=args.dry_run)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'resume':
         result = resume(args.path, agent=args.agent, dry_run=args.dry_run)

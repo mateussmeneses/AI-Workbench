@@ -7,7 +7,7 @@ AI Workbench is an independent project. It does **not** modify your bookmarks, c
 ## What it already does
 
 - **Bootstrap:** `aiwh init` detects a project's technology profile (or accepts overrides), installs the selected skills in agent-specific project directories, preserves existing instructions, and suggests MCP candidates for review.
-- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 30 documented pending items, then writes private `.ai-workbench/CONTEXT.md` and `state.json` snapshots. It does not retain snapshot history or an approved decision/task lifecycle yet.
+- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 30 documented pending items, then writes a private handoff and versioned `.ai-workbench/state.json`. It preserves approved decisions, task status and explicit resource choices, retaining up to 10 snapshots with session comparisons.
 - **Audit:** `aiwh audit` reports the observed project state in JSON without changing anything.
 - **Capability registry:** 45 deduplicated skills, 20 agent role templates, 28 technical profiles, 26 composable areas, and opt-in MCP/plugin catalogs.
 - **Resource catalog:** optional read-only ingestion of GitHub stars (`gh` CLI), Chromium bookmarks, and Netscape HTML. Resource suggestions are local and never automatically installed or executed.
@@ -53,15 +53,16 @@ Use `aiwh --help` and `aiwh <command> --help` for current options. The global `-
 
 | Command | Current behavior |
 | --- | --- |
-| `init` | Write selected project skills and managed instructions; `--dry-run` previews without writes |
-| `resume` | Write a private current-state handoff; `--dry-run` previews without writes |
+| `init` | Write or explicitly update selected project skills and managed instructions using the manifest; `--dry-run` reports added, unchanged, changed and conflicting paths |
+| `managed remove` | Remove only unchanged manifest-owned files; preserve shared instruction files and report conflicts; `--dry-run` previews |
+| `resume` | Write a private handoff and bounded state history; `--dry-run` previews without writes |
 | `audit` | Print observed local project state as JSON, without writes |
 | `profiles` | List available technical profiles |
 | `areas` | List composable capability areas |
 | `recommend` | Print an explainable capability proposal; `--json` selects JSON output |
 | `capabilities` | List skill and role identifiers plus skill/role/profile counts |
 | `sync` | Read explicitly selected sources and update the private catalog; `--dry-run` skips catalog writes |
-| `attach` | Write private resource suggestions for a project; `--dry-run` previews without writes |
+| `attach` | Write private resource suggestions and may add a managed `AGENTS.md` note plus `.gitignore` entry; `--dry-run` previews without writes |
 | `report` | Summarize the private resource catalog, without writes |
 | `doctor` | Check registry references and report executable detection; not a runtime compatibility test |
 | `global-integration` | Preview a managed global instruction block; only `--apply` writes changes |
@@ -163,7 +164,11 @@ See [Security](SECURITY.md) and [Contributing](CONTRIBUTING.md).
 
 ## Safety, privacy and portability
 
-- `.ai-workbench/` is local, gitignored context. `AI-WORKBENCH.md` and managed sections of agent instruction files are explicit, reviewable files.
+- `.ai-workbench/` is project-local context. Applying `aiwh init` or `aiwh attach` adds it to `.gitignore`; `attach` may also add a managed note to `AGENTS.md`. Standalone `aiwh resume` and `aiwh game-port --save` do not ensure the ignore entry, so verify/add it before committing their output. `AI-WORKBENCH.md` and managed instruction sections are explicit, reviewable files.
+- `aiwh init` records project-relative paths and SHA-256 hashes for files it creates or safely merges in `.ai-workbench/managed-files.json`. Existing unmanifested generated files with different content are reported as conflicts and preserved; legacy files are not silently adopted. Removal is a separate, hash-verified `aiwh managed remove` operation.
+- Re-running `aiwh init` is the explicit update operation: it updates a file only while its current bytes match the recorded hash. Use `aiwh managed remove PROJECT --dry-run` to preview removal and omit `--dry-run` to apply it. Removal deletes only hash-verified exclusive files; for AGENTS/CLAUDE and `.gitignore` it removes only the recognizable Workbench block/entry. Edited or unverified files remain and are reported as conflicts. Handoffs, state, game-port plans and unmanifested files are not removed.
+- Managed writes/removals use a private transaction journal and backups under `.ai-workbench/`; the next mutating `init`/`managed remove` rolls back an interrupted transaction before continuing. A dry-run refuses a pending transaction rather than changing files. Transactional recovery is not a guarantee against storage/hardware failure.
+- `.ai-workbench/state.json` schema version 2 separates refreshed observations from persistent tasks, explicitly approved decisions and selected/rejected resources, retaining up to 10 snapshots. Only user-confirmed usefulness is recorded; absent feedback is labeled unknown. Corrupt or unsupported future state is preserved and causes `resume` to fail before replacing the handoff.
 - Existing `AGENTS.md`/`CLAUDE.md` content is preserved. Re-running setup is idempotent; collisions with user-modified skills are reported, not overwritten.
 - Existing project code is never reformatted, built, committed, pushed, deleted or executed by bootstrap or continuity.
 - The continuation scan reports **test indicators**, not fake test results; it never runs project test commands.
@@ -182,7 +187,7 @@ See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](d
 
 Package version **0.4.0.dev0** is an unreleased development build; the latest documented stable changelog entry is **0.3.0**. Bootstrapping, continuation, local catalog and agent file adapters have synthetic test coverage. The distribution also passed a clean local wheelhouse install and 49 unit tests on Windows/Python 3.10.22. This does not certify real agent runtimes or hosted CI. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
 
-Managed capability updates/removal, durable decisions and session deltas are planned, not available commands. Native startup hooks and recurring monitoring are deferred opt-in opportunities. MCPs/plugins remain recommendations; proprietary chat-session migration is not supported.
+Managed capability updates/removal, versioned private state and bounded session history/deltas are available. Native startup hooks and recurring monitoring are deferred opt-in opportunities. MCPs/plugins remain recommendations; proprietary chat-session migration is not supported.
 
 ## Optional global agent integration
 

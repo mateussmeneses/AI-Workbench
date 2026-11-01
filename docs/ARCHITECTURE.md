@@ -45,12 +45,20 @@ Optional: `browser bookmarks / GitHub stars -> private catalog -> ranked referen
 - Private resource catalog: `~/.ai-workbench-hub/catalog.json` or `--home` override.
 - No token stores, global hooks, background daemons, network calls, or automatic execution during bootstrap or resume.
 
+`state.json` schema version 2 wraps the latest observation in `observed` and retains user-maintained `tasks`, `decisions` and `resources`, plus the latest comparison in `latest_delta`. Up to 10 snapshots retain their observations and explicit records. Deltas compare Git-status paths, documented pending items, task blockers/status, approved decisions and resource records. Resource outcomes without an explicit usefulness value are labeled unknown; selection does not imply use or success. Tasks have stable IDs, status, blockers, risks and milestone outcomes; checklist IDs are reused when present, otherwise IDs derive deterministically from source path and title. Decisions must be explicitly approved and include rationale. Resources record a selected/rejected choice and rationale; `usefulness` accepts only explicit `useful`/`not_useful` feedback. Migration from unversioned state or schema v1 preserves legacy data under `legacy_observation`. Corrupt or unsupported schemas fail before either handoff file is written, and state replacement uses a same-directory atomic replace. Resume remains non-executing and does not access agent chat history.
+
 ## Changes and conflict policy
 
 - The `<!-- AIWH:BEGIN --> ... <!-- AIWH:END -->` block marks managed instructions.
 - Existing material outside the marker is retained.
-- Skills that already exist with different bytes are left untouched and reported as conflicts.
-- Dry runs perform no writes. Existing project directories are never deleted or recreated.
+- `aiwh init` records SHA-256 hashes for project-relative files it creates or safely merges in `.ai-workbench/managed-files.json` (`schema_version: 1`). The manifest excludes itself and is private/gitignored.
+- Dry-run results classify managed paths as `added`, `unchanged`, `changed` or `conflicting`, and report whether the manifest would be created, updated or left unchanged. The classification is also used during apply.
+- Existing unmanifested files with differing content are treated as conflicts and preserved, except first-time append/merge of the AI Workbench instruction block and `.gitignore` entry, which retain all existing text. Identical unmanifested files are not claimed as owned.
+- Re-running `aiwh init` is the explicit update operation: a file is updated only if its current hash matches the manifest. A file whose current hash differs is reported as a conflict and left untouched. Corrupt, unsupported-version or symlinked manifests fail closed.
+- `aiwh managed remove PROJECT --dry-run` previews removal; omit `--dry-run` to apply it. Exclusive manifest-owned files are deleted only when their hash matches. For AGENTS/CLAUDE and `.gitignore`, removal strips only the recognizable Workbench block/entry and preserves remaining content. Missing files are forgotten; changed, symlinked or unrecognized content remains a conflict in the manifest.
+- Handoffs/state, game-port plans, other unmanifested files and the manifest itself are never deleted by this command; empty parent directories are retained.
+- Multi-file writes/removals use a private journal and per-file backups in `.ai-workbench/managed-files.transaction`. The manifest is updated within the same transaction. The next mutating `init` or `managed remove` recovers an interrupted operation before loading the manifest: it restores old bytes only if the target is still the transaction's expected output, and refuses to overwrite an intervening user change. Dry-run with a pending transaction fails without writes and directs the user to run an explicit mutating recovery. Successful transactions mark committed before cleaning backups, so interrupted cleanup does not roll back completed work. This protects against process interruption, not storage/hardware failure.
+- Existing project directories are never deleted or recreated.
 - Project metadata and MCP suggestions are non-authoritative; verify them during actual work.
 
 ## Limitations

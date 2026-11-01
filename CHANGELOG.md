@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- RM-008: Retained up to 10 private continuity snapshots and added session deltas for Git-status paths, pending items, task blockers/status, decisions and resource records; resource outcomes remain unknown until explicit user feedback.
+- RM-007: Added private `state.json` schema version 1 for observations, stable tasks, explicitly approved decisions and selected/rejected resources; legacy snapshots migrate without data loss and corrupt/future schemas fail closed.
+- RM-006: Added a private transaction journal, per-file backups and atomic replacements for managed writes/removals; the next mutating command rolls back an interrupted transaction without overwriting intervening edits.
+- Added failure-injection tests for interrupted init, interrupted removal, interrupted recovery, repeated retry, Unicode/spaced paths and dry-run refusal while a transaction is pending.
+- RM-005: Re-running `aiwh init` explicitly updates only hash-verified managed files; added `aiwh managed remove [PROJECT] [--dry-run]`, which deletes unchanged exclusive files and removes only Workbench-owned sections from shared instruction/ignore files. Edited or unverified files are preserved as conflicts.
+- RM-004: Added a version-1 project-local managed-file manifest with SHA-256 hashes and dry-run/apply categories for added, unchanged, changed and conflicting files.
+- Bootstrap preserves modified managed files and unmanifested generated-file collisions, safely merges first-time instruction and gitignore additions, and rejects invalid manifests; transactional recovery remains RM-006.
 - RM-003: Added `game-porting/catalog.json` to wheel assets after clean Python 3.10 installation exposed the missing runtime file; expanded package verification to require it.
 - Verified the v0.4.0.dev0 wheel and sdist on Windows/Python 3.10.22 with a clean temporary PyYAML 6.0.3 wheelhouse; all 49 unit tests and `aiwh doctor` passed. Hosted CI was not observed.
 - RM-003a: Bundled canonical capability assets in wheels/sdists, added installed-package asset resolution, and verified an offline wheel build and rebuild from sdist outside the checkout.

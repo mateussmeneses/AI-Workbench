@@ -125,9 +125,10 @@ def smoke_install(wheel, wheelhouse=None, reuse_dependencies=False):
         evidence = json.loads(run([executable, '-I', '-c', probe], directory))
         private = directory / 'private'
         cli = [executable, '-I', '-m', 'aiwh', '--home', private]
-        for command in ('init', 'resume', 'audit', 'profiles', 'areas', 'recommend',
+        for command in ('init', 'managed', 'resume', 'audit', 'profiles', 'areas', 'recommend',
                         'capabilities', 'sync', 'attach', 'report', 'doctor', 'global-integration'):
             run([*cli, command, '--help'], directory)
+        run([*cli, 'managed', 'remove', '--help'], directory)
         for command in ('profiles', 'areas', 'capabilities', 'report'):
             run([*cli, command], directory)
         project = directory / 'project with spaces'
