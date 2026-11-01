@@ -6,7 +6,7 @@ Make AI Workbench the portable, local-first preparation and continuity layer for
 
 Prioritize trustworthy bootstrap and handoffs over catalog size, autonomous orchestration, or a graphical interface. Success means less repeated setup, fewer lost decisions, and explainable recommendations, not more installed tools.
 
-This is the canonical development queue, not a claim that future features exist. Baseline: v0.3.0. Target versions below are provisional release boundaries, not calendar promises. Work proceeds during explicitly requested sessions; this document does not start unattended development.
+This is the canonical development queue, not a claim that future features exist. The delivered historical baseline is v0.3.0; current `pyproject.toml` declares v0.4.0.dev0, an unreleased development version. Target versions below are provisional release boundaries, not calendar promises or published releases. Reconcile the milestone table with package metadata before tagging. Work proceeds during explicitly requested sessions; this document does not start unattended development.
 
 ## Delivered baseline: v0.3.0
 
@@ -23,11 +23,11 @@ These checks describe implemented behavior and synthetic coverage. They do not c
 
 | Target | Priority | Outcome | Depends on |
 | --- | --- | --- | --- |
-| 0.3.1 | P0 | Trustworthy baseline and distribution | 0.3.0 |
+| 0.3.1 | P0 | Trustworthy baseline and distribution; local gates passed, release not issued | 0.3.0 |
 | 0.4.0 | P0 | Safe managed capability lifecycle | 0.3.1 |
-| 0.5.0 | P0 | Durable decisions, tasks and session deltas | 0.4.0 |
+| 0.5.0 | P0 | Durable decisions, resource choices, tasks and session deltas | 0.4.0 |
 | 0.6.0 | P1 | Explicit validation evidence | 0.5.0 |
-| 0.7.0 | P1 | Curated, measurable recommendations | 0.6.0 |
+| 0.7.0 | P1 | Contextual Resource Intelligence and capability comparison | 0.6.0, 0.5.0 |
 | 0.8.0 | P1 | Verified adapters and portable onboarding | 0.7.0 |
 | 0.9.0 | P1 | Release candidate and upgrade rehearsal | 0.8.0 |
 | 1.0.0 | Gate | Stable core contracts | 0.9.0 |
@@ -40,11 +40,11 @@ Scope: documentation, registry validation, packaging and test automation. No new
 
 - [x] RM-001 Reconcile README.md, CODEX_START_HERE.md and docs/AGENTS.md with CLI behavior; distinguish implemented, synthetically tested and runtime-verified support.
 - [x] RM-002 Validate skill metadata and registry references in src/aiwh/workbench.py and tests/test_workbench.py; report duplicate IDs, missing files and malformed metadata clearly.
-- [ ] RM-003 Verify pyproject.toml distribution assets in an isolated install outside this checkout; add Windows/Python 3.10+ CI and installation smoke checks without publishing.
+- [x] RM-003 Verify pyproject.toml distribution assets in an isolated install outside this checkout; add Windows/Python 3.10+ CI and installation smoke checks without publishing.
 - [x] RM-003a Bundle canonical assets, configure distribution checks in existing CI/release workflows, and verify local offline builds and wheel installation outside the checkout.
-- [ ] RM-003b Run clean-wheelhouse installation and the mandatory tests on Windows/Python 3.10; obtain prepared local dependencies/runtime or explicit download approval; record hosted CI results separately if observed.
+- [x] RM-003b Run clean-wheelhouse installation and the mandatory tests on Windows/Python 3.10; obtain prepared local dependencies/runtime or explicit download approval; record hosted CI results separately if observed.
 
-Acceptance: advertised commands work outside the source checkout; required capability assets are included; invalid registry fixtures fail with actionable messages; tests run on Windows and the minimum supported Python. Configure CI in-repo, but do not claim hosted runs until observed. Select a current Python version when implementing the matrix.
+Acceptance: advertised commands work outside the source checkout; required capability assets are included; invalid registry fixtures fail with actionable messages; tests run on Windows and the minimum supported Python. CI is configured for Ubuntu/Windows and Python 3.10/3.12/3.14; hosted runs were not observed locally and are not claimed.
 
 ## 0.4.0: Manage installed capabilities safely
 
@@ -58,13 +58,13 @@ Acceptance: repeated initialization produces zero effective changes; preview mat
 
 ## 0.5.0: Preserve durable project continuity
 
-Scope: inspect_project, resume and continuation_markdown in src/aiwh/workbench.py; reuse ContinuityTests in tests/test_workbench.py. Extract a separate module only when the implementation needs it.
+Scope: inspect_project, resume and continuation_markdown in src/aiwh/workbench.py; reuse ContinuityTests in tests/test_workbench.py. Extract a separate module only when the implementation needs it. Keep the durable state project-local and private.
 
-- [ ] RM-007 Define a versioned private state schema for approved decisions, stable task IDs, status, blockers, risks and milestone outcomes; migrate existing state.json non-destructively.
-- [ ] RM-008 Retain bounded snapshot history and compare sessions; separate observed changes, user-approved notes and unknown results without executing project code.
-- [ ] RM-009 Generate task-ready handoffs with the next eligible task, dependencies and evidence; preserve equivalent facts across adapters and report truncated pending-work scans.
+- [ ] RM-007 Define a versioned private state schema for approved decisions, stable task IDs, status, blockers, risks and milestone outcomes; record selected/rejected resource IDs, decision rationale and user-confirmed usefulness when provided; migrate existing state.json non-destructively.
+- [ ] RM-008 Retain bounded snapshot history and compare sessions; distinguish observed project changes, user-approved decisions/resource feedback and unknown outcomes without inferring that a recommendation helped or executing project code.
+- [ ] RM-009 Generate task-ready handoffs with the next eligible task, dependencies, relevant resources with reasons/known limits and validation evidence; preserve equivalent facts across adapters and report truncated pending-work scans.
 
-Acceptance: two sessions retain task identity and approved decisions; deltas distinguish new/resolved blockers and changed files; corrupt or future schemas fail safely; no chat-history access is implied. Private handoffs stay gitignored, and public summaries exclude private project data.
+Acceptance: two sessions retain task identity, approved decisions and explicitly recorded resource choices/usefulness; deltas distinguish new/resolved blockers and changed files; observed recommendation is not conflated with selected, used or helpful; corrupt or future schemas fail safely; no chat-history access is implied. Private handoffs stay gitignored, and public summaries exclude private project data.
 
 ## 0.6.0: Capture validation evidence explicitly
 
@@ -78,13 +78,13 @@ Acceptance: no validation runs without explicit approval; nonzero exit and timeo
 
 ## 0.7.0: Improve recommendation quality
 
-Scope: src/aiwh/areas.py, src/aiwh/core.py, canonical capabilities and tests/test_areas.py/test_core.py. Curate existing entries before expanding them.
+Scope: src/aiwh/areas.py, src/aiwh/core.py, canonical capabilities and tests/test_areas.py/test_core.py. Build on existing read-only bookmark/HTML/GitHub-star imports, project profiles and deterministic category heuristics; do not add another importer as a substitute for recommendation quality. Curate existing entries before expanding them.
 
 - [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository.
 - [ ] RM-014 Add synthetic labeled project scenarios and measure relevant-area hits, false positives and scan limits; improve ranking with explainable positive and negative signals.
-- [ ] RM-015 Improve private resource deduplication and relevance; support a user-selected reviewed bookmark export without reading browsing history or modifying bookmarks.
+- [ ] RM-015 Deliver deterministic Contextual Resource Intelligence: rank a small shortlist (target 3-5) of relevant references/tools using project evidence, detected profiles and the user's stated task; explain why each item was selected, known compatibility, limits and a sensible first consultation/action. Add a Skill & MCP Advisor that compares relevant alternatives and flags likely redundancy or scope/approval requirements; suggestions never install or activate anything.
 
-Acceptance: publish reproducible fixture metrics before and after ranking changes; include mixed-domain and ambiguous projects; preserve explicit overrides; unknown maintenance/compatibility remains unknown. External metadata refresh requires authorization and provenance, never automatic installation.
+Acceptance: publish reproducible fixture metrics before and after ranking changes; cover mixed-domain and ambiguous projects, explicit goals, irrelevant results and redundant alternatives; preserve explicit overrides; produce explainable reasons and a bounded shortlist; keep unknown maintenance/compatibility/limits unknown. Deterministic results remain available offline; user-selected resource sources and catalog data stay private. External metadata refresh requires authorization and provenance. References are untrusted data; no automatic fetch, install, connection or execution.
 
 ## 0.8.0: Verify portability and onboarding
 
@@ -142,21 +142,23 @@ Documentation-only planning does not increment the product version. Release gate
 
 1. Read AGENTS.md, README.md, docs/ARCHITECTURE.md and this roadmap.
 2. Run `aiwh resume . --dry-run`, inspect Git status and review the latest completion note.
-3. Choose the earliest incomplete, unblocked task in the execution order. Current next task: RM-003b clean dependency installation and minimum-Python verification; RM-004 remains gated on RM-003 acceptance.
+3. Choose the earliest incomplete, unblocked task in the execution order. Current next task: RM-004 managed-file manifest and dry-run diff; RM-003's local Windows/Python 3.10 distribution gates passed, while hosted CI remains unverified.
 4. Confirm the task's local behavior and baseline checks; implement and validate only that scope.
 5. Update this queue and the completion note before ending. Suggest the next eligible task and leave version control actions pending unless authorized.
 
-The current resume scan includes only the first 30 pending items, so this roadmap intentionally has 24 top-level tasks. Agents must still read the complete document for dependencies and acceptance criteria.
+The current resume scan reports at most 30 pending checklist items. This roadmap currently has 26 top-level checklist items, of which 21 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
 
 ## Completion notes
 
-Planning baseline: roadmap expanded from the original M0-M4 themes into versioned tasks. No future capability is marked delivered, and the product version remains 0.3.0.
+Planning baseline: roadmap expanded from the original M0-M4 themes into versioned tasks. The delivered historical baseline was v0.3.0; current package metadata declares unreleased v0.4.0.dev0. No future capability is marked delivered by planning alone.
 
 RM-001 completed: reconciled the 12 CLI commands, adapter evidence levels, current continuity limits and source-checkout installation guidance; replaced the outdated Codex milestone queue with this roadmap. Corrected the generated guide from `aiwh resume --project .` to `aiwh resume .` and added regression assertions to the existing bootstrap test. Evidence: 11 focused tests and 24 full-suite tests passed; `aiwh --help` matches the command reference; `aiwh doctor` completed; no editor errors in the touched Python files. Release status: Unreleased, version 0.3.0 unchanged; no commit, tag or publication. Remaining gates: real-runtime compatibility and standalone distribution are still unverified, not blockers for this documentation task. Next: RM-002 registry validation.
 
 RM-002 completed: canonical registry validation now rejects malformed/duplicate skill metadata, malformed/duplicate JSON, invalid profile lists, empty role templates, missing source directories/catalog files and unresolved skill/role/MCP IDs. MCP entries require explicit disabled-by-default booleans. The registry return structure and preservation of user-modified installed skills remain unchanged. Evidence: reproduced acceptance of a skill without description before the fix; 10 isolated registry tests and 34 full-suite tests passed after it; `aiwh doctor` accepted the real catalog; no editor errors in changed code or pyproject.toml. Dependency: PyYAML 6.0.3 was already available locally and is now declared; no package download or installation was performed. Release status: Unreleased, version 0.3.0 unchanged; no commit, tag or publication. Remaining gates: dependency distribution and minimum-Python installation must be checked in RM-003. Next: RM-003 packaging verification and CI.
 
-RM-003 split: RM-003a is delivered; RM-003b is pending, so the parent task remains unchecked. Evidence: cached setuptools 84.0.0 built a wheel and sdist offline; a wheel was rebuilt from extracted source distribution; the final verifier checked 106 runtime payload files plus source-support files and exercised a temporary installed package/launcher outside the checkout. Dependency mode was explicit host reuse of PyYAML 6.0.3, not a clean dependency installation. Four packaging tests were added to the existing test file; all 38 tests passed on Windows/Python 3.14.6, including a run with deprecation warnings visible; `aiwh doctor` passed and no editor errors remained. Existing CI/release workflows were updated, not executed. Only Python 3.14 is locally available, and required dependency wheels are absent from the cache. No download approval was received; no network package downloads, global installs, commit, tag or publication occurred. Release status: Unreleased, version 0.3.0 unchanged. Next: supply an offline wheelhouse and Python 3.10 or authorize temporary downloads for RM-003b before declaring RM-003 complete or preparing v0.3.1.
+RM-003 completed: RM-003a bundled canonical assets and configured CI; RM-003b passed on Windows using temporary Python 3.10.22 and an isolated PyYAML 6.0.3 wheelhouse. Interpreter, build environment, wheels and smoke-test venv were kept under the system temporary directory; no global installation was made. Built wheel and sdist for the current package declaration v0.4.0.dev0, checked their assets (108 runtime payload files), then installed the wheel into a fresh venv with `--no-index` and the local wheelhouse. The installed-package smoke covered CLI help, profiles/areas/capabilities, dry-run and applied bootstrap in a spaced path, idempotence, audit/recommend/resume/attach and `doctor`. The 49-test suite passed on Python 3.10.22 with `DeprecationWarning` visible; `aiwh doctor` also passed. A first smoke exposed omitted `game-porting/catalog.json`; `pyproject.toml` and the verifier were corrected and the clean smoke then passed. Hosted GitHub Actions were not run or observed; only their workflow configuration was checked. Release status: unreleased v0.4.0.dev0; no commit, tag or publication. Next: RM-004. Before any release tag, reconcile provisional milestone targets with the current package version.
+
+Roadmap proposal incorporated: user-provided analysis identifies the next product opportunity as Contextual Resource Intelligence, not another bookmark/star importer. Local source confirms existing read-only imports, profile detection and deterministic keyword/category ranking; learning from feedback, comparing alternatives, and durable resource decisions are not implemented yet. RM-015 now prioritizes explainable task/project ranking and a non-activating Skill/MCP comparison; RM-007/RM-009 preserve decisions, selected resources, user-confirmed usefulness, reasons and limits for cross-session handoff. Project Knowledge Packs and structured Knowledge Feedback remain a later P2, gated on the core state schema and evidence that recommendations are useful. Local Semantic Search remains P3 and optional, after deterministic baselines; no paid provider or external content execution is assumed. The proposal's personal bookmark/star inventory and counts are intentionally not copied into this repository. This was a planning-only update; the next task at that point remained RM-003b.
 
 When completing implementation work, append a short sanitized entry using: task ID; implemented behavior; checks and observed outcome; release status; blockers/risks; next task. Do not store raw private handoffs here.
 
@@ -164,7 +166,9 @@ When completing implementation work, append a short sanitized entry using: task 
 
 Reassess these after the core pilot, rather than automatically adding them to the critical path:
 
-- Optional local/custom semantic ranking with deterministic fallback, explicit data policy and measurable benefit over heuristics; no mandatory paid provider.
+- P2 Project Knowledge Packs: generate a small, user-approved project-local collection of relevant references and approved skills after RM-015 ranking and RM-007/RM-009 state/ownership contracts are stable. Keep it private, inspectable, refreshable and removable; never copy external repository code or silently install MCPs.
+- P2 Knowledge Feedback: let users record whether a recommendation was selected, used, useful or rejected and why. Persist only explicit feedback, keep it local and reversible, and measure recommendation changes against RM-014 fixtures before allowing it to affect rankings.
+- P3 Local Semantic Search: evaluate an optional local/custom embedding or model only after deterministic Resource Intelligence has measured baselines and a defined privacy/resource budget. Maintain offline deterministic fallback; no mandatory paid provider.
 - Explicit native MCP/plugin configuration with plan, approval, health check and reversible ownership; no automatic credential management.
 - Optional recurring audits and native startup hooks, disabled by default, with cancellation and uninstall tests.
 - Native subagent definitions only where documented runtime support exists; role templates remain templates until verified.

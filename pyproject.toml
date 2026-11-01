@@ -26,6 +26,7 @@ aiwh = ["taxonomy.json"]
 "aiwh.capabilities" = [
 	"agents/*.md",
 	"areas/catalog.json",
+	"game-porting/*.json",
 	"mcp/catalog.json",
 	"plugins/catalog.json",
 	"profiles/*.json",

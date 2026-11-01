@@ -26,7 +26,7 @@ aiwh capabilities
 
 If `aiwh` is not on PATH immediately, reopen the terminal or use `py -m aiwh` after installation.
 
-These instructions use an editable install from the source checkout. Wheel/sdist assets and a temporary wheel installation outside the checkout have been verified locally on Windows/Python 3.14.6, reusing the existing PyYAML dependency. A clean dependency installation and execution on Python 3.10 remain pending in RM-003b in the [roadmap](docs/ROADMAP.md); configured CI jobs are not evidence of hosted success.
+These instructions use an editable install from the source checkout. Wheel/sdist assets and a clean temporary wheel installation outside the checkout have been verified locally on Windows/Python 3.10.22 using an isolated PyYAML wheelhouse. The CI matrix includes Ubuntu/Windows and Python 3.10, 3.12 and 3.14; hosted CI results were not observed. See the [roadmap](docs/ROADMAP.md) for release gates.
 
 ## Distribution checks
 
@@ -180,7 +180,7 @@ See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](d
 
 ## Project status
 
-Version **0.3.0 starter** — bootstrapping, continuation, local catalog and agent file adapters are implemented and covered with synthetic unit/integration tests. This is not certification of real agent runtimes or standalone release installation. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
+Package version **0.4.0.dev0** is an unreleased development build; the latest documented stable changelog entry is **0.3.0**. Bootstrapping, continuation, local catalog and agent file adapters have synthetic test coverage. The distribution also passed a clean local wheelhouse install and 49 unit tests on Windows/Python 3.10.22. This does not certify real agent runtimes or hosted CI. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
 
 Managed capability updates/removal, durable decisions and session deltas are planned, not available commands. Native startup hooks and recurring monitoring are deferred opt-in opportunities. MCPs/plugins remain recommendations; proprietary chat-session migration is not supported.
 
