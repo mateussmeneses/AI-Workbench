@@ -189,9 +189,9 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
         warnings.append("shadPS4 is a compatibility research reference, not a push-button port generator.")
     if selected == "android":
         warnings.append("Android packages are routed to reverse-engineering: see wb-android-reverse-engineering "
-                        "and utilities (jadx, Apktool, Frida). Analyze only apps you own or are authorized to test.")
+                        "and utilities (jadx, Apktool, Frida).")
     if selected in ("ps5", "switch", "switch2"):
-        warnings.append("Platform is user-declared only; curated runtimes are experimental and title-specific. Use dumps of games you own.")
+        warnings.append("Platform is user-declared only; curated runtimes are experimental and title-specific.")
     if selected in ("ps3", "ps4") and observed and observed["format"] == "Sony SELF":
         warnings.append("SELF generation is user-declared, not inferred from the header.")
     if selected_track == "matching-decomp":

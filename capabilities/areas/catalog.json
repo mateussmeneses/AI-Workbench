@@ -331,7 +331,8 @@
       "skills": [
         "wb-test-planning",
         "wb-qa-automation",
-        "wb-ai-pr-review"
+        "wb-ai-pr-review",
+        "wb-oracle-testing"
       ],
       "agents": [
         "qa-strategist"
@@ -499,7 +500,12 @@
           "android reverse engineering",
           "smali",
           "jadx",
-          "frida"
+          "frida",
+          "clean room",
+          "clean-room",
+          "rebuild",
+          "teardown",
+          "oracle"
         ]
       },
       "profiles": [
@@ -509,7 +515,9 @@
         "wb-reverse-engineering",
         "wb-binary-analysis",
         "wb-android-reverse-engineering",
-        "wb-web-api-recon"
+        "wb-web-api-recon",
+        "wb-clean-room-rebuild",
+        "wb-oracle-testing"
       ],
       "agents": [
         "reverse-engineer"
@@ -520,7 +528,8 @@
         "ghidra-mcp",
         "rea",
         "x64dbg-mcp",
-        "apktool-mcp"
+        "apktool-mcp",
+        "ida-pro-mcp"
       ],
       "plugins": [
         "github"
@@ -537,7 +546,14 @@
         "binwalk",
         "kaitai-struct",
         "mitmproxy",
-        "webcrack"
+        "webcrack",
+        "detect-it-easy",
+        "capa",
+        "lief",
+        "angr",
+        "objection",
+        "wireshark",
+        "radare2"
       ]
     },
     "game-modding": {
@@ -605,7 +621,8 @@
       ],
       "skills": [
         "wb-binary-recompilation",
-        "wb-reverse-engineering"
+        "wb-reverse-engineering",
+        "wb-oracle-testing"
       ],
       "agents": [
         "reverse-engineer"
@@ -645,7 +662,9 @@
       ],
       "skills": [
         "wb-decompilation-research",
-        "wb-reverse-engineering"
+        "wb-reverse-engineering",
+        "wb-oracle-testing",
+        "wb-clean-room-rebuild"
       ],
       "agents": [
         "reverse-engineer"
@@ -654,7 +673,8 @@
         "github",
         "context7",
         "ghidra-mcp",
-        "rea"
+        "rea",
+        "ida-pro-mcp"
       ],
       "plugins": [
         "github"
@@ -847,14 +867,17 @@
           "user experience",
           "figma",
           "design system",
-          "usability"
+          "usability",
+          "teardown",
+          "competitor analysis"
         ]
       },
       "profiles": [
         "ux-design"
       ],
       "skills": [
-        "wb-ux-research"
+        "wb-ux-research",
+        "wb-behavior-teardown"
       ],
       "agents": [
         "ux-designer"
@@ -868,7 +891,9 @@
       ],
       "utilities": [
         "figma",
-        "node"
+        "node",
+        "ffmpeg",
+        "accessibility-inspector"
       ]
     },
     "marketing": {
@@ -1008,7 +1033,8 @@
         "product-management"
       ],
       "skills": [
-        "wb-product-discovery"
+        "wb-product-discovery",
+        "wb-behavior-teardown"
       ],
       "agents": [
         "product-strategist"
@@ -1130,7 +1156,8 @@
       ],
       "skills": [
         "wb-quant-research",
-        "wb-analytics-insights"
+        "wb-analytics-insights",
+        "wb-oracle-testing"
       ],
       "agents": [
         "quant-strategist",

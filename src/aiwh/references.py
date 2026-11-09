@@ -19,7 +19,7 @@ from .core import canonical_url
 from .workbench import CAPABILITIES, ROOT
 
 CATALOG_PATH = CAPABILITIES / 'references' / 'catalog.json'
-KINDS = {'repository', 'list', 'guide', 'site', 'tool'}
+KINDS = {'repository', 'list', 'guide', 'site', 'tool', 'book', 'paper', 'course'}
 DEFAULT_LIMIT = 10
 
 

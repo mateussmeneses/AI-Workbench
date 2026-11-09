@@ -10,7 +10,8 @@
 6. **Skill tools (`src/aiwh/skilltools.py`)** — skill lint (vague/boilerplate/near-duplicate), approximate context-cost estimates and provenance-tracked imports of local skills through the managed-file manifest.
 7. **MCP plans (`src/aiwh/mcp_plan.py`)** — per-agent configuration previews from catalog `server` entries; the only write is an explicit, manifest-owned project `.mcp.json` for Claude Code.
 8. **Exports (`src/aiwh/handoff_export.py`, `src/aiwh/html_report.py`)** — handoff exports (json, markdown, claude-memory, wiki) and an offline HTML catalog view, written only to explicit or private locations.
-9. **Adapters** — Codex (`AGENTS.md`, `.agents/skills`), Claude Code (`CLAUDE.md`, `.claude/skills`), Antigravity (`AGENTS.md`, `.agents/skills`), Hermes (`.agents/skills`, explicit trust), and OpenClaude (`.openclaude/skills`). MCP catalog entries are never activated automatically.
+9. **Clean room (`src/aiwh/cleanroom.py`, `src/aiwh/artifact.py`)** — target identification and method routing (`aiwh inspect`), behavior-only spec leak detection (`aiwh spec check`) and the two-room workspace with native Claude Code subagents whose tool lists separate analysis (REA) from rebuilding (`aiwh cleanroom init`).
+10. **Adapters** — Codex (`AGENTS.md`, `.agents/skills`), Claude Code (`CLAUDE.md`, `.claude/skills`), Antigravity (`AGENTS.md`, `.agents/skills`), Hermes (`.agents/skills`, explicit trust), and OpenClaude (`.openclaude/skills`). MCP catalog entries are never activated automatically.
 
 ## Registry validation
 

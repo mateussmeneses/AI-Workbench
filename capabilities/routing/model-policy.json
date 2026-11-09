@@ -47,5 +47,36 @@
       "model": null,
       "status": "optional"
     }
+  },
+  "effort_by_phase": {
+    "note": "Reasoning effort per phase for long agentic runs; adjust per model. Reading is cheap, gaps in a spec become bugs, verification decides truth.",
+    "read_and_map": "medium",
+    "write_spec": "high",
+    "implement": "medium",
+    "verify_and_oracles": "xhigh",
+    "pointer_heavy_or_numeric_code": "max",
+    "review": "high"
+  },
+  "clean_room_roles": {
+    "analyst": {
+      "lane": "deep",
+      "effort": "medium",
+      "tools": "read + REA analysis tools"
+    },
+    "spec_writer": {
+      "lane": "deep",
+      "effort": "high",
+      "tools": "Read, Write"
+    },
+    "rebuilder": {
+      "lane": "deep",
+      "effort": "medium",
+      "tools": "Read, Write, Edit, Bash (no REA)"
+    },
+    "verifier": {
+      "lane": "critic",
+      "effort": "xhigh",
+      "tools": "Read, Write, Bash; never edits"
+    }
   }
 }

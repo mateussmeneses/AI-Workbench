@@ -2,7 +2,8 @@
   "description": "Static/dynamic recompilation and behavioral equivalence",
   "skills": [
     "wb-binary-recompilation",
-    "wb-reverse-engineering"
+    "wb-reverse-engineering",
+    "wb-oracle-testing"
   ],
   "agents": [
     "reverse-engineer"

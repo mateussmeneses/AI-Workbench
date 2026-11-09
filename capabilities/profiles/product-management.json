@@ -1,7 +1,8 @@
 {
   "description": "Discovery, roadmap, prioritization and outcomes",
   "skills": [
-    "wb-product-discovery"
+    "wb-product-discovery",
+    "wb-behavior-teardown"
   ],
   "agents": [
     "product-strategist"

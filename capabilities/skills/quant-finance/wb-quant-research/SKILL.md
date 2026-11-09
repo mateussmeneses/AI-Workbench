@@ -21,6 +21,9 @@ Identify data sources, licensing, survivorship bias, timezone/session rules, cor
 - LLM or model signals are hypotheses, not guarantees; label backtests as simulations.
 - Nothing produced is financial advice.
 
+## Oracles
+A backtest is a statistical oracle: validate it with `wb-oracle-testing` planted failures (shifted signal by one bar, wrong fee constant, inverted condition) before trusting a result.
+
 ## Templates
 Use `templates/backtest-report.md` for every reported result and `templates/data-provenance-checklist.md` before trusting a dataset.
 

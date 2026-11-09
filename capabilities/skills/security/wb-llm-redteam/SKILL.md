@@ -18,5 +18,8 @@ List assets (system prompt, tools, connected data, credentials), trust boundarie
 4. **Mitigate** - least-privilege tools, confirmation for side-effecting actions, input/output filtering, separation of untrusted content, canary secrets and monitoring.
 5. **Regress** - rerun the full corpus after each mitigation and on every model or prompt change; track the attack success rate per category.
 
+## Agents that read untrusted artifacts
+Code-analysis and reverse-engineering agents read strings and comments written by third parties. Include cases where the analyzed artifact itself carries instructions (see "Automatically Attacking Software RE Agents" in docs/REFERENCES.md) and check that the agent reports them instead of following them.
+
 ## Deliverables
 Threat model, corpus manifest with versions, per-category success rates before/after mitigations, and open risks with owners. Store raw transcripts privately; never commit secrets or harmful generations to public repositories.

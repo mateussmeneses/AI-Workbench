@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Backlog C1-C14: clean-room rebuild method (`wb-clean-room-rebuild`, `wb-oracle-testing`, `wb-behavior-teardown`), `aiwh inspect`, `aiwh spec check`, `aiwh cleanroom init` with native Claude Code subagents, templates, run-team scripts and a firewalled devcontainer, evidence status and suggested `/goal` in handoffs, effort per phase in the routing policy, 54 new references with book/paper/course kinds, `docs/RE_LEARNING_PATH.md`, `ida-pro-mcp`, and REA/Ghidra detection in `aiwh doctor`.
+- Reverse-engineering skills, catalogs and docs now describe methods without usage disclaimers.
+
 - Backlog B1-B20: `aiwh curate`, structured reference catalog with generated `docs/REFERENCES.md`, risk labels in `recommend`/`attach`/reports, opt-in `aiwh catalog check`, `.gitattributes` LF normalization, Switch NSP/XCI/NRO/NSO and Android DEX/APK/AAB signatures (`android` platform), `aiwh skills lint`, init context-cost estimates, `aiwh mcp plan` with manifest-owned Claude `.mcp.json` apply, incremental sync (`first_seen`, `--show-new`, `report --since`), six new skills/templates (Android RE, AI PR review, LLM red-teaming, video pipeline, web API recon, quant templates), `aiwh skills import`, `aiwh handoff export`, `aiwh report --html`, and English-standardized catalogs, skills and roles.
 - Raised the documented pending-item scan limit from 30 to 60 with a truncation flag; clarified the repository privacy rule for curated public references (raw exports, star lists, folders, dates and account URLs stay private).
 

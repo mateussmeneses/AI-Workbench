@@ -147,6 +147,23 @@ Acceptance: reliable core workflows, reproducible installation, documented migra
 
 Follow-up found by B8: 22 generic skills share most of their body text and need domain-specific procedures (`aiwh skills lint`).
 
+## Backlog C1-C14: clean-room and oracle method (delivered 2026-11-09)
+
+- [x] C1 `wb-clean-room-rebuild` skill: analysis room, behavior-only spec, clean room, verifier loop with a 3-round limit.
+- [x] C2 `wb-oracle-testing` skill: byte, behavior, runtime and statistical oracles with three planted failures.
+- [x] C3 `aiwh spec check`: blocks addresses, decompiler names/types and assembly before the handoff.
+- [x] C4 Native Claude Code subagents (analyst, spec-writer, rebuilder without REA tools, verifier that only reports) via `aiwh cleanroom init`.
+- [x] C5 TEARDOWN.md, SPEC.md, evidence.md (confidence 1-10), NOTES.md and planted-failures templates; run-team.ps1/.sh.
+- [x] C6 `aiwh inspect`: target identification and method/tool/REA routing for files and app folders.
+- [x] C7 Evidence status (observed/inferred/unknown, open questions, verifier RESULT) in `aiwh resume`.
+- [x] C8 Suggested `/goal` line for the next documented task, using the project's documented test command.
+- [x] C9 Effort per phase and clean-room roles in `routing/model-policy.json`.
+- [x] C10 Clean-room devcontainer with default-deny outbound firewall and wall checks.
+- [x] C11 Agent-directed text: flagged by `aiwh inspect`, recorded by the analyst, covered in RE skills and `wb-llm-redteam`.
+- [x] C12 `wb-behavior-teardown` skill (screens, probes, frame measurement, sanitized HAR, numbered acceptance checks).
+- [x] C13 54 new references (identification/analysis tools, rebuild stack, courses, books, papers) with `book`/`paper`/`course` kinds.
+- [x] C14 `docs/RE_LEARNING_PATH.md`, REA setup notes, `ida-pro-mcp`, and REA/Ghidra/Java detection in `aiwh doctor`.
+
 ## Definition of done
 
 For each task:
@@ -179,7 +196,7 @@ Documentation-only planning does not increment the product version. Release gate
 4. Confirm the task's local behavior and baseline checks; implement and validate only that scope.
 5. Update this queue and the completion note before ending. Suggest the next eligible task and leave version control actions pending unless authorized.
 
-The current resume scan reports at most 60 pending checklist items (`PENDING_SCAN_LIMIT`) and flags truncation in the handoff. This roadmap currently has 52 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
+The current resume scan reports at most 60 pending checklist items (`PENDING_SCAN_LIMIT`) and flags truncation in the handoff. This roadmap currently has 66 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
 
 ## Completion notes
 

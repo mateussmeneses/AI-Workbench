@@ -119,6 +119,21 @@
       "areas": [
         "game-port"
       ]
+    },
+    "re-learning": {
+      "label": "Reverse engineering learning path",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ]
+    },
+    "rebuild-stack": {
+      "label": "Rebuild and teardown stack",
+      "areas": [
+        "content-creation",
+        "frontend",
+        "ux-design"
+      ]
     }
   },
   "references": {
@@ -1387,9 +1402,7 @@
         "reverse-engineering",
         "decompilation"
       ],
-      "risk": [
-        "authorized-only"
-      ]
+      "risk": []
     },
     "frida-frida": {
       "title": "Frida",
@@ -1400,9 +1413,7 @@
         "reverse-engineering",
         "decompilation"
       ],
-      "risk": [
-        "authorized-only"
-      ]
+      "risk": []
     },
     "kaitai-io-kaitai-struct": {
       "title": "Kaitai Struct",
@@ -1515,9 +1526,7 @@
         "api-integration",
         "security"
       ],
-      "risk": [
-        "authorized-only"
-      ]
+      "risk": []
     },
     "alufers-mitmproxy2swagger": {
       "title": "mitmproxy2swagger",
@@ -1529,9 +1538,7 @@
         "api-integration",
         "security"
       ],
-      "risk": [
-        "authorized-only"
-      ]
+      "risk": []
     },
     "d4vinci-scrapling": {
       "title": "Scrapling",
@@ -1554,6 +1561,661 @@
         "game-port"
       ],
       "risk": []
+    },
+    "horsicq-detect-it-easy": {
+      "title": "Detect-It-Easy",
+      "url": "https://github.com/horsicq/Detect-It-Easy",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Identify"
+    },
+    "mandiant-capa": {
+      "title": "capa",
+      "url": "https://github.com/mandiant/capa",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Identify"
+    },
+    "lief-project-lief": {
+      "title": "LIEF",
+      "url": "https://github.com/lief-project/LIEF",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Identify"
+    },
+    "angr-angr": {
+      "title": "angr",
+      "url": "https://github.com/angr/angr",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Read the logic"
+    },
+    "radareorg-radare2": {
+      "title": "radare2",
+      "url": "https://github.com/radareorg/radare2",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Read the logic"
+    },
+    "rizinorg-cutter": {
+      "title": "Cutter",
+      "url": "https://github.com/rizinorg/cutter",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Read the logic"
+    },
+    "mrexodia-ida-pro-mcp": {
+      "title": "ida-pro-mcp",
+      "url": "https://github.com/mrexodia/ida-pro-mcp",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Read the logic"
+    },
+    "sensepost-objection": {
+      "title": "objection",
+      "url": "https://github.com/sensepost/objection",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Watch it run"
+    },
+    "wireshark-wireshark": {
+      "title": "Wireshark",
+      "url": "https://github.com/wireshark/wireshark",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": [],
+      "group": "Follow the traffic"
+    },
+    "rea-tools": {
+      "title": "REA official site and guides",
+      "url": "https://rea.tools",
+      "category": "re-learning",
+      "kind": "site",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Start here"
+    },
+    "rea-tools-first-investigation": {
+      "title": "REA first investigation (Notes export)",
+      "url": "https://rea.tools/first-investigation/",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Start here"
+    },
+    "rea-tools-showcase": {
+      "title": "REA showcases (Notion, DX-Ball, Aegis APK, TH04)",
+      "url": "https://rea.tools/showcase/",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Start here"
+    },
+    "morluto-rea-blob-main-docs-mcp-prompts-md": {
+      "title": "REA MCP prompts",
+      "url": "https://github.com/morluto/rea/blob/main/docs/mcp-prompts.md",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Start here"
+    },
+    "rea-tools-blog-touhou-reconstruction": {
+      "title": "Touhou reconstruction with agents (oracle lessons)",
+      "url": "https://rea.tools/blog/touhou-reconstruction/",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Method"
+    },
+    "rea-tools-blog-reverse-engineering-models": {
+      "title": "Does reverse engineering need a bigger model?",
+      "url": "https://rea.tools/blog/reverse-engineering-models/",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Method"
+    },
+    "rea-library-vercel-app": {
+      "title": "REA Field Kit (targets, prompts, roadmap)",
+      "url": "https://rea-library.vercel.app",
+      "category": "re-learning",
+      "kind": "site",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Method"
+    },
+    "storytold-filmcraft-blob-main-agents-md": {
+      "title": "FilmCraft AGENTS.md (clean-room contributor rules)",
+      "url": "https://github.com/storytold/filmcraft/blob/main/AGENTS.md",
+      "category": "re-learning",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Method"
+    },
+    "storytold-lightcraft": {
+      "title": "LightCraft",
+      "url": "https://github.com/storytold/lightcraft",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Clean-room examples"
+    },
+    "storytold-filmcraft": {
+      "title": "FilmCraft",
+      "url": "https://github.com/storytold/filmcraft",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Clean-room examples"
+    },
+    "percyitchy-dolly": {
+      "title": "Dolly (screen recorder rebuilt from a spec)",
+      "url": "https://github.com/percyitchy/dolly",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Clean-room examples"
+    },
+    "morluto-awesome-reverse-engineering": {
+      "title": "awesome-reverse-engineering (morluto)",
+      "url": "https://github.com/morluto/awesome-reverse-engineering",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "sqwu-rea-gems": {
+      "title": "rea-gems",
+      "url": "https://github.com/sqwu/rea-gems",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "alexgaoth-awesome-reverse-engineered": {
+      "title": "awesome-reverse-engineered",
+      "url": "https://github.com/alexgaoth/awesome-reverse-engineered",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "mytechnotalent-reverse-engineering": {
+      "title": "mytechnotalent Reverse-Engineering tutorial",
+      "url": "https://github.com/mytechnotalent/Reverse-Engineering",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "wtsxdev-reverse-engineering": {
+      "title": "reverse-engineering (wtsxDev)",
+      "url": "https://github.com/wtsxDev/reverse-engineering",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "tylerha97-awesome-reversing": {
+      "title": "awesome-reversing",
+      "url": "https://github.com/tylerha97/awesome-reversing",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "onethawt-reverseengineering-reading-list": {
+      "title": "reverseengineering-reading-list",
+      "url": "https://github.com/onethawt/reverseengineering-reading-list",
+      "category": "re-learning",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Lists"
+    },
+    "guyinatuxedo-nightmare": {
+      "title": "Nightmare",
+      "url": "https://github.com/guyinatuxedo/nightmare",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "security"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "rpisec-mbe": {
+      "title": "RPISEC Modern Binary Exploitation",
+      "url": "https://github.com/RPISEC/MBE",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "security"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "pwn-college-intro-re-pwn-5933fc84-reversing": {
+      "title": "pwn.college reverse engineering",
+      "url": "https://pwn.college/intro-re-pwn~5933fc84/reversing/",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "pwn-college-reversing-hell": {
+      "title": "pwn.college Reversing Hell",
+      "url": "https://pwn.college/reversing-hell/",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "p-ost2-fyi": {
+      "title": "OpenSecurityTraining2 x86-64 assembly",
+      "url": "https://p.ost2.fyi",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "malwareunicorn-org-workshops-re101": {
+      "title": "Malware Unicorn RE101",
+      "url": "https://malwareunicorn.org/workshops/re101",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "security"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "mas-owasp-org": {
+      "title": "OWASP Mobile Application Security",
+      "url": "https://mas.owasp.org",
+      "category": "re-learning",
+      "kind": "course",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app",
+        "security"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "nostarch-com-ghidra-book-2e": {
+      "title": "The Ghidra Book, 2nd Edition",
+      "url": "https://nostarch.com/ghidra-book-2e",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "go-yurichev-com": {
+      "title": "Reverse Engineering for Beginners",
+      "url": "https://go.yurichev.com",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "nostarch-com-binaryanalysis": {
+      "title": "Practical Binary Analysis",
+      "url": "https://nostarch.com/binaryanalysis/",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "nostarch-com-malware": {
+      "title": "Practical Malware Analysis",
+      "url": "https://nostarch.com/malware",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "security"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "nostarch-com-androidmalwarehandbook": {
+      "title": "The Android Malware Handbook",
+      "url": "https://nostarch.com/androidmalwarehandbook",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "www-wiley-com-en-us-reversing-secrets-of-reverse-engineering-p-9": {
+      "title": "Reversing: Secrets of Reverse Engineering",
+      "url": "https://www.wiley.com/en-us/Reversing:+Secrets+of+Reverse+Engineering-p-9780764574818",
+      "category": "re-learning",
+      "kind": "book",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Books"
+    },
+    "arxiv-org-abs-2403-05286": {
+      "title": "LLM4Decompile",
+      "url": "https://arxiv.org/abs/2403.05286",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "arxiv-org-abs-2606-16162": {
+      "title": "AutoDecompiler",
+      "url": "https://arxiv.org/abs/2606.16162",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "arxiv-org-abs-2509-14646": {
+      "title": "SALT4Decompile",
+      "url": "https://arxiv.org/abs/2509.14646",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "www-usenix-org-conference-usenixsecurity22-presentation-burk": {
+      "title": "Decomperson (USENIX Security 2022)",
+      "url": "https://www.usenix.org/conference/usenixsecurity22/presentation/burk",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "www-usenix-org-system-files-sec22-chen-qibin-pdf": {
+      "title": "DIRTY (USENIX Security 2022)",
+      "url": "https://www.usenix.org/system/files/sec22-chen-qibin.pdf",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "arxiv-org-abs-2605-30667": {
+      "title": "Automatically Attacking Software RE Agents",
+      "url": "https://arxiv.org/abs/2605.30667",
+      "category": "re-learning",
+      "kind": "paper",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "security",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Papers"
+    },
+    "abi-screenshot-to-code": {
+      "title": "screenshot-to-code",
+      "url": "https://github.com/abi/screenshot-to-code",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "frontend",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "Observe"
+    },
+    "capsoftware-cap": {
+      "title": "Cap",
+      "url": "https://github.com/CapSoftware/Cap",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Observe"
+    },
+    "ggml-org-whisper-cpp": {
+      "title": "whisper.cpp",
+      "url": "https://github.com/ggml-org/whisper.cpp",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Rebuild"
+    },
+    "huggingface-transformers-js": {
+      "title": "transformers.js",
+      "url": "https://github.com/huggingface/transformers.js",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "frontend",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Rebuild"
+    },
+    "ffmpegwasm-ffmpeg-wasm": {
+      "title": "ffmpeg.wasm",
+      "url": "https://github.com/ffmpegwasm/ffmpeg.wasm",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Rebuild"
+    },
+    "mrdoob-three-js": {
+      "title": "three.js",
+      "url": "https://github.com/mrdoob/three.js",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "frontend",
+        "game-modding"
+      ],
+      "risk": [],
+      "group": "Rebuild"
+    },
+    "pmndrs-postprocessing": {
+      "title": "postprocessing",
+      "url": "https://github.com/pmndrs/postprocessing",
+      "category": "rebuild-stack",
+      "kind": "tool",
+      "areas": [
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Rebuild"
+    },
+    "runacapital-awesome-oss-alternatives": {
+      "title": "awesome-oss-alternatives",
+      "url": "https://github.com/RunaCapital/awesome-oss-alternatives",
+      "category": "rebuild-stack",
+      "kind": "list",
+      "areas": [
+        "product-management",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "Find an open-source base"
     }
   }
 }

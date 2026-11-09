@@ -75,6 +75,20 @@ def get_parser():
     he.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     he.add_argument('--format', choices=['json', 'markdown', 'claude-memory', 'wiki'], default='markdown')
     he.add_argument('--output', type=Path, help='directory to write files; omitted prints to stdout')
+    ins = sub.add_parser('inspect', help='identify an analysis target and route it to a method, tools and skills')
+    ins.add_argument('target', type=Path)
+    ins.add_argument('--json', action='store_true')
+    sp = sub.add_parser('spec', help='behavior-only specification checks')
+    sp_sub = sp.add_subparsers(dest='spec_action', required=True)
+    spc = sp_sub.add_parser('check', help='fail when a spec leaks addresses, decompiler names or assembly')
+    spc.add_argument('path', type=Path)
+    spc.add_argument('--json', action='store_true')
+    cr = sub.add_parser('cleanroom', help='clean-room rebuild workspace')
+    cr_sub = cr.add_subparsers(dest='cleanroom_action', required=True)
+    cri = cr_sub.add_parser('init', help='create lab/ and clean/ rooms, native subagents, templates and devcontainer')
+    cri.add_argument('path', type=Path)
+    cri.add_argument('--rea-tools', type=Path, help='file with REA tool names (e.g. rea doctor --json output)')
+    cri.add_argument('--dry-run', action='store_true')
     a = sub.add_parser('attach', help='attach private recommendations to an existing project')
     a.add_argument('--project', type=Path, default=Path.cwd())
     a.add_argument('--profile', action='append', default=[])
@@ -209,6 +223,28 @@ def main(argv=None):
             for item in fresh:
                 print(f'+ {item.get("title") or item["url"]} <{item["url"]}>')
         print('Preview only.' if args.dry_run else f'Private catalog saved: {save_catalog(merged, home, last_sync=stamp)}')
+        return 0
+    if args.command == 'inspect':
+        from .artifact import inspect_artifact, inspect_markdown
+        result = inspect_artifact(args.target)
+        print(json.dumps(result, indent=2, ensure_ascii=False) if args.json else inspect_markdown(result), end='' if not args.json else '\n')
+        return 0
+    if args.command == 'spec' and args.spec_action == 'check':
+        from .cleanroom import spec_check
+        result = spec_check(args.path)
+        if args.json:
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+        else:
+            for leak in result['leaks']:
+                print(f'{args.path}:{leak["line"]}: {leak["rule"]}: {leak["match"]}')
+            for warning in result['warnings']:
+                print('warning:', warning)
+            print('OK: no analysis details found.' if result['ok'] else f'{len(result["leaks"])} leaks found.')
+        return 0 if result['ok'] else 1
+    if args.command == 'cleanroom' and args.cleanroom_action == 'init':
+        from .cleanroom import cleanroom_init
+        result = cleanroom_init(args.path, dry_run=args.dry_run, rea_tools=args.rea_tools)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'curate':
         from .references import curate, curate_markdown
@@ -350,8 +386,11 @@ def main(argv=None):
         print('Capabilities root:', reg['skills'][next(iter(reg['skills']))].parents[2])
         print('Skills:', len(reg['skills']), 'profiles:', len(reg['profiles']), 'agent roles:', len(reg['agents']))
         print('Catalog path:', home)
-        for command in ('git','gh','codex','claude','hermes'):
+        for command in ('git','gh','codex','claude','hermes','rea','node','java'):
             print(f'{command}: {shutil.which(command) or "not detected"}')
+        import os
+        for variable in ('GHIDRA_INSTALL_DIR', 'JAVA_HOME'):
+            print(f'{variable}: {os.environ.get(variable) or "not set"}')
         print('Detected profiles:', ', '.join(project_profile(args.project)))
         return 0
     return 2

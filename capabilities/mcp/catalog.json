@@ -64,34 +64,42 @@
     "scope": "reverse-engineering/decompilation with Ghidra installed",
     "url": "https://github.com/LaurieWired/GhidraMCP",
     "enabledByDefault": false,
-    "activation": "only on owned or authorized binaries; broader alternative: https://github.com/bethington/ghidra-mcp"
+    "activation": "native binaries that need decompilation and xrefs; broader alternative: https://github.com/bethington/ghidra-mcp"
   },
   "x64dbg-mcp": {
     "role": "Dynamic debugging of Windows executables through an x64dbg plugin",
     "scope": "reverse-engineering on Windows",
     "url": "https://github.com/duty1g/x64dbg-mcp-server",
     "enabledByDefault": false,
-    "activation": "when static analysis is insufficient; never against third-party software without authorization"
+    "activation": "when static analysis is insufficient and runtime state is needed"
   },
   "apktool-mcp": {
     "role": "Decode, inspect and rebuild APKs through Apktool",
     "scope": "reverse-engineering/mobile-app on Android",
     "url": "https://github.com/zinja-coder/apktool-mcp-server",
     "enabledByDefault": false,
-    "activation": "only owned or authorized APKs"
+    "activation": "APK decoding, resource inspection and rebuilds"
   },
   "rea": {
     "role": "Multi-target reverse engineering (native, managed, Electron/JS, firmware, web) with evidence",
     "scope": "reverse-engineering/decompilation",
     "url": "https://github.com/morluto/rea",
     "enabledByDefault": false,
-    "activation": "when the task needs evidence from a shipped artifact; prefer plain CLI tools when sufficient"
+    "activation": "when the task needs evidence from a shipped artifact; prefer plain CLI tools when sufficient",
+    "setup_note": "Install with `npx rea-agents@latest setup` (shows a plan and backs up agent config before changing it); check with `rea doctor --provider ghidra --json` and `npx -y rea-agents@latest doctor --client claude_code --json`; update with `rea update`, then rerun setup so client registrations match the CLI version. Requirements reported by REA 6.8.0: Node 22.23.4+, 24.22.1+ or 26.12.1+; Ghidra 12.1.x (verified 12.1.4) with a 64-bit JDK 25+ (GHIDRA_INSTALL_DIR = the folder containing ghidraRun, JAVA_HOME = JDK root). On Windows the Ghidra provider is experimental and read-only. Electron, JavaScript and .NET need no engine. Versions move quickly; trust `rea doctor` over this note."
   },
   "mcp-reverse": {
     "role": "Process/memory inspection for game modding and reverse engineering",
-    "scope": "single-player game-modding on owned copies",
+    "scope": "game-modding and runtime memory inspection",
     "url": "https://github.com/1llu50ry/mcp-reverse",
     "enabledByDefault": false,
-    "activation": "never on online games, anti-cheat-protected titles or third-party software without authorization"
+    "activation": "when a modding task needs live process/memory state"
+  },
+  "ida-pro-mcp": {
+    "role": "Decompilation, xrefs and renaming through IDA Pro",
+    "scope": "reverse-engineering/decompilation with an IDA Pro license",
+    "url": "https://github.com/mrexodia/ida-pro-mcp",
+    "enabledByDefault": false,
+    "activation": "when IDA Pro is the available engine"
   }
 }

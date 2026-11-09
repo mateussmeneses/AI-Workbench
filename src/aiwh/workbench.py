@@ -849,6 +849,60 @@ def _git(project: Path, *args):
         return ''
 
 
+EVIDENCE_FILES = ('NOTES.md', 'analysis/evidence.md', 'lab/NOTES.md', 'lab/analysis/evidence.md',
+                  'handoff/SPEC.md', 'lab/handoff/SPEC.md', 'report.md', 'lab/report.md', 'TEARDOWN.md')
+TEST_COMMAND = re.compile(r'`((?:python|py|pytest|npm|pnpm|yarn|dotnet|cargo|go|gradle|\./gradlew|mvn|make|bun|deno)'
+                          r'\b[^`\n]{0,110}\btest[^`\n]{0,60})`')
+
+
+def _evidence_status(project):
+    """Count observation/inference/unknown tags, open questions and verifier results in known files."""
+    files = []
+    for name in EVIDENCE_FILES:
+        path = project / name
+        if not path.is_file() or path.stat().st_size > 2_000_000:
+            continue
+        text = path.read_text(encoding='utf-8', errors='replace')
+        counts = {tag: len(re.findall(rf'^\s*(?:[-*]\s*)?{tag}\b', text, re.IGNORECASE | re.MULTILINE))
+                  for tag in ('observation', 'inference', 'unknown')}
+        for tag, label in (('observation', 'Observed'), ('inference', 'Inferred'), ('unknown', 'Unknown')):
+            counts[tag] += len(re.findall(rf'^\s*[-*]\s*{label}:\s*\S', text, re.MULTILINE))
+        questions = 0
+        section = re.search(r'^#+\s*(?:\d+\.\s*)?Open questions\s*$(.*?)(?=^#|\Z)', text,
+                            re.IGNORECASE | re.MULTILINE | re.DOTALL)
+        if section:
+            questions = len(re.findall(r'^\s*(?:[-*]|\d+\.|\|)\s*\S', section.group(1), re.MULTILINE))
+        result = re.findall(r'^RESULT wrong=(\d+) crash=(\d+)\s*$', text, re.MULTILINE)
+        entry = {'path': name, **counts, 'open_questions': questions}
+        if result:
+            entry['verifier'] = {'wrong': int(result[-1][0]), 'crash': int(result[-1][1])}
+        if any(entry[k] for k in ('observation', 'inference', 'unknown', 'open_questions')) or result:
+            files.append(entry)
+    return files
+
+
+def _test_command(project):
+    for name in ('AGENTS.md', 'CLAUDE.md', 'README.md', 'CONTRIBUTING.md'):
+        path = project / name
+        if path.is_file() and path.stat().st_size <= 1_000_000:
+            match = TEST_COMMAND.search(path.read_text(encoding='utf-8', errors='replace'))
+            if match:
+                return match.group(1).strip()
+    return None
+
+
+def suggested_goal(data):
+    """A Claude Code /goal line for the next documented task: measurable, checked and turn-limited."""
+    tasks = data.get('pending_documented') or []
+    if not tasks:
+        return None
+    title = re.sub(r'^\s*[-*]\s*\[\s\]\s*', '', tasks[0]['text']).strip()
+    title = title[:160] + ('...' if len(title) > 160 else '')
+    check = f'`{data["test_command"]}` passes with no failures' if data.get('test_command') \
+        else 'the project test suite passes with no failures'
+    return f'/goal {title} is done, {check}, and no unrelated files changed. or stop after 25 turns.'
+
+
 def inspect_project(project):
     project = Path(project).expanduser().resolve()
     if not project.is_dir():
@@ -875,7 +929,8 @@ def inspect_project(project):
             'tracked_files': len(tracked), 'test_indicators': test_evidence,
             'instructions': instructions, 'pending_documented': todo[:PENDING_SCAN_LIMIT],
             'pending_scan_limit': PENDING_SCAN_LIMIT,
-            'pending_truncated': len(todo) >= PENDING_SCAN_LIMIT}
+            'pending_truncated': len(todo) >= PENDING_SCAN_LIMIT,
+            'test_command': _test_command(project), 'evidence_status': _evidence_status(project)}
 
 
 def continuation_markdown(data, agent='codex', delta=None):
@@ -896,6 +951,17 @@ def continuation_markdown(data, agent='codex', delta=None):
     lines += [f'- [{x["path"]}] {x["text"]}' for x in data['pending_documented']] or ['- No TODO items located in standard documents.']
     if data.get('pending_truncated'):
         lines.append(f'- Scan stopped at {data.get("pending_scan_limit")} items; read the full documents for remaining work.')
+    goal = suggested_goal(data)
+    if goal:
+        lines += ['', '## Suggested goal for the next task', '', '```', goal, '```']
+    if data.get('evidence_status'):
+        lines += ['', '## Evidence status (Observed / Inferred / Unknown)', '']
+        for entry in data['evidence_status']:
+            line = (f'- {entry["path"]}: {entry["observation"]} observed, {entry["inference"]} inferred, '
+                    f'{entry["unknown"]} unknown, {entry["open_questions"]} open questions')
+            if 'verifier' in entry:
+                line += f'; verifier wrong={entry["verifier"]["wrong"]} crash={entry["verifier"]["crash"]}'
+            lines.append(line)
     if delta:
         lines += ['', '## Since previous handoff', '']
         if delta['baseline']:

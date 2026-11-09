@@ -65,22 +65,22 @@
     "ps5": {
       "label": "PlayStation 5",
       "cpu": "x86-64 (AMD Zen 2)",
-      "notes": "Declared only; no PS5 signature is verified. Work only from decrypted dumps of games you own."
+      "notes": "Declared only; no PS5 signature is verified. Runtimes work from decrypted game dumps."
     },
     "switch": {
       "label": "Nintendo Switch",
       "cpu": "ARM Cortex-A57 (AArch64)",
-      "notes": "Declared only; NSP/XCI contents are not inspected. Work only from dumps of games you own."
+      "notes": "NSP/XCI/NRO/NSO containers are detected by signature; contents are not inspected."
     },
     "switch2": {
       "label": "Nintendo Switch 2",
       "cpu": "ARM (AArch64)",
-      "notes": "Declared only; emulation is at a very early experimental stage. Work only from dumps of games you own."
+      "notes": "Declared only; emulation is at a very early experimental stage. Switch containers accept this declaration."
     },
     "android": {
       "label": "Android",
       "cpu": "Dalvik/ART bytecode with optional ARM64/x86 native libraries",
-      "notes": "APK/AAB/DEX detected by signature. Analyze only apps you own or are authorized to test."
+      "notes": "APK/AAB/DEX detected by signature."
     }
   },
   "tools": {
@@ -281,7 +281,7 @@
         "switch"
       ],
       "maturity": "Experimental",
-      "note": "Runs owned Switch titles natively on Apple Silicon (iOS/iPadOS/macOS); AArch64-to-AArch64 runtime work."
+      "note": "Runs Switch titles natively on Apple Silicon (iOS/iPadOS/macOS); AArch64-to-AArch64 runtime work."
     },
     "NX2Apple": {
       "url": "https://github.com/LNPANDY/NX2Apple",
@@ -292,7 +292,7 @@
         "switch"
       ],
       "maturity": "Experimental",
-      "note": "macOS packaging front-end for running owned Switch titles on iPhone/iPad."
+      "note": "macOS packaging front-end for running Switch titles on iPhone/iPad."
     },
     "Eglantine": {
       "url": "https://github.com/Eglantine-Community/Eglantine",

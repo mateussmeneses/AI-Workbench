@@ -9,11 +9,14 @@ MCP wiring varies by client and credential. This kit **does not enable MCPs** an
 | Playwright | Real browser interaction | local Playwright/Selenium tests |
 | Chrome DevTools | Network, traces, console, performance | manual DevTools |
 | Context7 | Library/version docs that change | official docs |
-| Ghidra (`ghidra-mcp`) | Decompilation and xrefs on owned/authorized binaries | Ghidra GUI / headless scripts |
+| Ghidra (`ghidra-mcp`) | Decompilation and xrefs on native binaries | Ghidra GUI / headless scripts |
 | x64dbg (`x64dbg-mcp`) | Dynamic debugging on Windows | x64dbg GUI |
-| Apktool (`apktool-mcp`) | Decoding/rebuilding owned or authorized APKs | `apktool` CLI, jadx |
+| Apktool (`apktool-mcp`) | Decoding/rebuilding APKs | `apktool` CLI, jadx |
 | REA (`rea`) | Evidence from shipped native/managed/web artifacts | plain CLI tools (leanrea approach) |
-| mcp-reverse | Single-player modding on owned copies | ImHex, x64dbg |
+| IDA Pro (`ida-pro-mcp`) | Decompilation and xrefs when IDA Pro is the engine | IDA GUI |
+| mcp-reverse | Runtime memory inspection for modding | ImHex, x64dbg |
+
+REA installs itself with `npx rea-agents@latest setup` (plan, config backup, then changes) and is checked with `npx -y rea-agents@latest doctor --client claude_code --json`; see `setup_note` in the catalog and docs/RE_LEARNING_PATH.md.
 
 Entries with a `server` field have a known launch command; the others require manual setup from the project's README. On native Windows, `npx`-based servers are wrapped as `cmd /c npx ...`.
 

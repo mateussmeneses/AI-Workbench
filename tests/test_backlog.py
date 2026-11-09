@@ -211,7 +211,7 @@ class SkillToolTests(unittest.TestCase):
 
     def test_repository_lint_runs(self):
         result = lint_skills()
-        self.assertEqual(result['skills'], 51)
+        self.assertEqual(result['skills'], 54)
         self.assertIn('summary', result)
 
     def test_context_estimate_and_bootstrap_report(self):

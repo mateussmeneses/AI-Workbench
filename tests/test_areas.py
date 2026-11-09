@@ -12,7 +12,7 @@ class AreaTests(unittest.TestCase):
     def test_references_and_catalog(self):
         info = validate_catalog()
         self.assertEqual(info['areas'], 27)
-        self.assertEqual(info['skills'], 51)
+        self.assertEqual(info['skills'], 54)
         self.assertIn('marketing', catalog())
         self.assertIn('sales', catalog())
         self.assertIn('reverse-engineering', catalog())

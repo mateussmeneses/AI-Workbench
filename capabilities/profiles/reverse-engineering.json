@@ -4,7 +4,9 @@
     "wb-reverse-engineering",
     "wb-binary-analysis",
     "wb-android-reverse-engineering",
-    "wb-web-api-recon"
+    "wb-web-api-recon",
+    "wb-clean-room-rebuild",
+    "wb-oracle-testing"
   ],
   "agents": [
     "reverse-engineer"

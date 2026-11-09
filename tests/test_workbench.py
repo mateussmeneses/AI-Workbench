@@ -466,7 +466,7 @@ class BootstrapTests(unittest.TestCase):
                       'from aiwh.workbench import CAPABILITIES, registry; '
                       'from aiwh.areas import validate_catalog; '
                       'assert CAPABILITIES == Path(sys.argv[1]) / "aiwh" / "capabilities"; '
-                      'assert len(registry()["skills"]) == 51; '
+                      'assert len(registry()["skills"]) == 54; '
                       'assert validate_catalog()["areas"] == 27')
             result = subprocess.run([sys.executable, '-I', '-c', script, str(installed)],
                                     cwd=temporary, capture_output=True, text=True, timeout=30)
@@ -475,7 +475,7 @@ class BootstrapTests(unittest.TestCase):
     def test_registry_integrity(self):
         r = registry()
         self.assertEqual(len(r['profiles']), 29)
-        self.assertEqual(len(r['skills']), 51)
+        self.assertEqual(len(r['skills']), 54)
         self.assertEqual(len(r['agents']), 21)
         self.assertIn('ai-agents', r['profiles'])
 

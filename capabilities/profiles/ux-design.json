@@ -1,7 +1,8 @@
 {
   "description": "Interaction design, user research, accessibility and design systems",
   "skills": [
-    "wb-ux-research"
+    "wb-ux-research",
+    "wb-behavior-teardown"
   ],
   "agents": [
     "ux-designer"

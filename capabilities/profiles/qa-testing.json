@@ -3,7 +3,8 @@
   "skills": [
     "wb-test-planning",
     "wb-qa-automation",
-    "wb-ai-pr-review"
+    "wb-ai-pr-review",
+    "wb-oracle-testing"
   ],
   "agents": [
     "qa-strategist"
