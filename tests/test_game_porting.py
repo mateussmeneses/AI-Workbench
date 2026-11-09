@@ -51,6 +51,17 @@ class GamePortingTests(unittest.TestCase):
         self.assertEqual(result["platform"], "windows-pc")
         self.assertEqual(result["architecture"], "x86-64")
 
+    def test_ps4_and_ps5_self_magic(self):
+        ps4 = inspect_binary(self.binary(bytes.fromhex("4f153d1d00010112") + b"\x00" * 64, "eboot.bin"))
+        self.assertEqual((ps4["format"], ps4["platform"]), ("PS4 SELF", "ps4"))
+        ps5 = inspect_binary(self.binary(bytes.fromhex("5414f5ee") + b"\x00" * 64, "eboot.bin"))
+        self.assertEqual((ps5["format"], ps5["platform"]), ("PS5 SELF", "ps5"))
+        plan = assess_game_port(self.root, binary=self.root / "eboot.bin", platform="ps5",
+                                track="compatibility-runtime")
+        self.assertEqual(plan["platform"], "ps5")
+        with self.assertRaises(ValueError):
+            assess_game_port(self.root, binary=self.root / "eboot.bin", platform="ps4")
+
     def test_elf_machine_not_console_proof(self):
         elf = bytearray(64)
         elf[:6] = b"\x7fELF\x02\x01"

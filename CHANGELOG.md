@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Integration fixes found while attaching a PS4 port: `inspect`/`game-port` recognize PS4 (`4F 15 3D 1D`) and PS5 (`54 14 F5 EE`) SELF magic; `aiwh init --exclude-skill` leaves out profile/area skills that do not apply; `resume` also reads `NEXT_SESSION.md`/`docs/TODO.md` and list items under Next/Pending/TODO/Open items/Remaining headings (fenced code ignored); the CLI writes UTF-8 to Windows consoles and pipes; `managed remove` restores the original trailing newline of shared instruction files and deletes an instruction file that held only the managed block, then prunes directories its removals left empty.
+
 - Backlog C1-C14: clean-room rebuild method (`wb-clean-room-rebuild`, `wb-oracle-testing`, `wb-behavior-teardown`), `aiwh inspect`, `aiwh spec check`, `aiwh cleanroom init` with native Claude Code subagents, templates, run-team scripts and a firewalled devcontainer, evidence status and suggested `/goal` in handoffs, effort per phase in the routing policy, 54 new references with book/paper/course kinds, `docs/RE_LEARNING_PATH.md`, `ida-pro-mcp`, and REA/Ghidra detection in `aiwh doctor`.
 - Reverse-engineering skills, catalogs and docs now describe methods without usage disclaimers.
 

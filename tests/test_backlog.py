@@ -327,6 +327,46 @@ class PendingLimitTests(unittest.TestCase):
             self.assertTrue(data['pending_truncated'])
         self.assertGreaterEqual(PENDING_SCAN_LIMIT, 60)
 
+    def test_next_session_sections_are_pending(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            project = Path(temporary)
+            (project / 'docs').mkdir()
+            (project / 'docs' / 'NEXT_SESSION.md').write_text(
+                '# Handoff\n\n## State\n\n- Done thing\n\n## Next exact actions\n\n'
+                '1. Retest the fixed build\n   continuation line\n2. Write results\n- [x] Already done\n\n'
+                '```bash\n# not a heading\n- not an item\n```\n\n## Notes\n\n- Not pending\n',
+                encoding='utf-8')
+            (project / 'docs' / 'PROGRESS.md').write_text(
+                '# Log\n\n## 2026-11-01: PR pending\n\n- Historical entry\n', encoding='utf-8')
+            texts = [item['text'] for item in inspect_project(project)['pending_documented']]
+            self.assertEqual(texts, ['1. Retest the fixed build', '2. Write results'])
+
+    def test_managed_remove_restores_original_bytes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            project = Path(temporary)
+            original = b'# Rules\n\nKeep it small.\n'
+            (project / 'AGENTS.md').write_bytes(original)
+            (project / '.gitignore').write_bytes(b'out/\n')
+            bootstrap(project, agent='claude', profiles=['core'])
+            self.assertTrue((project / 'CLAUDE.md').is_file())
+            result = remove_managed(project)
+            self.assertEqual((project / 'AGENTS.md').read_bytes(), original)
+            self.assertEqual((project / '.gitignore').read_bytes(), b'out/\n')
+            self.assertFalse((project / 'CLAUDE.md').exists())
+            self.assertIn('CLAUDE.md', result['removed'])
+            self.assertFalse((project / '.claude' / 'skills').exists())
+            self.assertTrue((project / '.ai-workbench' / 'managed-files.json').is_file())
+
+    def test_init_exclude_skill(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            project = Path(temporary)
+            report = bootstrap(project, agent='claude', profiles=['reverse-engineering'],
+                               exclude_skills=['wb-web-api-recon'], dry_run=True)
+            self.assertNotIn('wb-web-api-recon', report['skills'])
+            self.assertEqual(report['excluded_skills'], ['wb-web-api-recon'])
+            with self.assertRaises(ValueError):
+                bootstrap(project, agent='claude', exclude_skills=['wb-no-such-skill'], dry_run=True)
+
 
 if __name__ == '__main__':
     unittest.main()

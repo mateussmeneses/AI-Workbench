@@ -547,9 +547,14 @@ class ManagedFilePlan:
                     conflicting.append(name)
                     self.operations.append(Operation('skip-conflict', str(target), 'Managed instruction markers are missing or ambiguous'))
                     continue
-                updated.append(name)
-                planned.append(('write', target, cleaned.encode('utf-8')))
-                self.operations.append(Operation('update', str(target), 'Removed only the managed instruction block'))
+                if not cleaned:
+                    removed.append(name)
+                    planned.append(('remove', target, None))
+                    self.operations.append(Operation('remove', str(target), 'Only the managed instruction block remained'))
+                else:
+                    updated.append(name)
+                    planned.append(('write', target, cleaned.encode('utf-8')))
+                    self.operations.append(Operation('update', str(target), 'Removed only the managed instruction block'))
             elif name == '.gitignore':
                 cleaned = _remove_managed_ignore_block(text)
                 if cleaned is None:
@@ -573,9 +578,22 @@ class ManagedFilePlan:
                     self._transactional_write(target, content)
         manifest_action = self._save_manifest()
         self.transaction.commit()
+        if not self.dry_run:
+            self._prune_empty_parents(target for action, target, _ in planned if action == 'remove')
         return {'removed': removed, 'updated': updated, 'missing': missing,
                 'conflicting': conflicting, 'manifest': manifest_action,
                 'dry_run': self.dry_run, 'operations': [vars(op) for op in self.operations]}
+
+    def _prune_empty_parents(self, removed_files):
+        """Remove directories left empty by managed removals, never the project root."""
+        for path in sorted({p.parent for p in removed_files}, key=lambda p: len(p.parts), reverse=True):
+            current = path
+            while current != self.project and self.project in current.parents:
+                try:
+                    current.rmdir()  # fails unless empty
+                except OSError:
+                    break
+                current = current.parent
 
 
 def _remove_managed_instruction_block(content):
@@ -584,6 +602,10 @@ def _remove_managed_instruction_block(content):
     start = content.index(BEGIN)
     end = content.index(END) + len(END)
     prefix, suffix = content[:start], content[end:]
+    if not suffix.strip('\n'):
+        # Appended block: init wrote original.rstrip() + blank line + block + newline.
+        stripped = prefix.rstrip('\n')
+        return stripped + '\n' if stripped else ''
     if prefix.endswith('\n\n'):
         prefix = prefix[:-2]
     elif prefix.endswith('\n'):
@@ -736,7 +758,7 @@ def _skill_copy(source: Path, destination: Path, file_plan: ManagedFilePlan):
 
 
 def bootstrap(project, *, agent='codex', profiles=None, areas=None, goal='', auto_areas=False,
-              create=False, dry_run=False, home=None):
+              create=False, dry_run=False, home=None, exclude_skills=None):
     project = Path(project).expanduser().resolve()
     if agent not in (*AGENTS, 'all'):
         raise ValueError(f'Unknown agent: {agent}')
@@ -755,7 +777,12 @@ def bootstrap(project, *, agent='codex', profiles=None, areas=None, goal='', aut
     else:
         chosen = choose_profiles(project, profiles)
     reg = registry()
-    skills = list(dict.fromkeys(name for p in chosen for name in reg['profiles'][p].get('skills', [])))
+    excluded = list(dict.fromkeys(exclude_skills or []))
+    unknown = [name for name in excluded if name not in reg['skills']]
+    if unknown:
+        raise ValueError('Unknown skill to exclude: ' + ', '.join(unknown))
+    skills = list(dict.fromkeys(name for p in chosen for name in reg['profiles'][p].get('skills', [])
+                                if name not in excluded))
     roles = list(dict.fromkeys(name for p in chosen for name in reg['profiles'][p].get('agents', [])))
     mcps = list(dict.fromkeys(name for p in chosen for name in reg['profiles'][p].get('mcps', [])))
     operations = file_plan.operations
@@ -834,7 +861,7 @@ def bootstrap(project, *, agent='codex', profiles=None, areas=None, goal='', aut
     from .skilltools import context_estimate
     return {'project': str(project), 'agent': agent, 'profiles': chosen,
             'context_estimate': context_estimate([reg['skills'][name] for name in skills]),
-            'areas': selected_areas, 'skills': skills, 'roles': roles,
+            'areas': selected_areas, 'skills': skills, 'excluded_skills': excluded, 'roles': roles,
             'mcps_suggested': mcps, 'plugins_suggested': recommendation['plugins'] if use_areas else [],
             'operations': [vars(op) for op in operations], 'managed_files': managed_files,
             'dry_run': dry_run}
@@ -903,6 +930,34 @@ def suggested_goal(data):
     return f'/goal {title} is done, {check}, and no unrelated files changed. or stop after 25 turns.'
 
 
+PENDING_DOCUMENTS = ('NEXT_SESSION.md', 'docs/NEXT_SESSION.md', 'TODO.md', 'docs/TODO.md',
+                     'docs/ROADMAP.md', 'docs/PROGRESS.md')
+_PENDING_HEADING = re.compile(r'^#{1,6}\s+(next\b|pending\b|todo\b|to do\b|open items\b|remaining\b)',
+                              re.IGNORECASE)
+_LIST_ITEM = re.compile(r'^(?:[-*]|\d+[.)])\s+(.*\S)')
+
+
+def _pending_lines(text):
+    """Unchecked boxes and TODO markers anywhere, plus top-level list items under a
+    heading that starts with Next/Pending/TODO/Open items/Remaining."""
+    in_section = in_fence = False
+    for line in text.splitlines():
+        if line.lstrip().startswith(('```', '~~~')):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        if re.match(r'^#{1,6}\s', line):
+            in_section = bool(_PENDING_HEADING.match(line))
+            continue
+        if re.search(r'^\s*[-*]\s*\[\s\]|\bTODO\b', line, flags=re.IGNORECASE):
+            yield line.strip()
+        elif in_section:
+            item = _LIST_ITEM.match(line)
+            if item and not re.match(r'\[[xX]\]', item.group(1)):
+                yield line.strip()
+
+
 def inspect_project(project):
     project = Path(project).expanduser().resolve()
     if not project.is_dir():
@@ -917,13 +972,14 @@ def inspect_project(project):
     test_evidence += [name for name in ('tests', 'test', '__tests__') if (project / name).is_dir()]
     instructions = [name for name in ('AGENTS.md','CLAUDE.md','GEMINI.md','README.md','AI-WORKBENCH.md') if (project / name).is_file()]
     todo = []
-    for path in (project / 'docs/ROADMAP.md', project / 'docs/PROGRESS.md', project / 'TODO.md'):
+    for path in (project / relative for relative in PENDING_DOCUMENTS):
+        if len(todo) >= PENDING_SCAN_LIMIT:
+            break
         if path.is_file() and path.stat().st_size <= 1_000_000:
-            for line in path.read_text(encoding='utf-8', errors='replace').splitlines():
-                if re.search(r'^\s*[-*]\s*\[\s\]|\bTODO\b', line, flags=re.IGNORECASE):
-                    todo.append({'path': str(path.relative_to(project)), 'text': line.strip()[:220]})
-                    if len(todo) >= PENDING_SCAN_LIMIT:
-                        break
+            for text in _pending_lines(path.read_text(encoding='utf-8', errors='replace')):
+                todo.append({'path': str(path.relative_to(project)), 'text': text[:220]})
+                if len(todo) >= PENDING_SCAN_LIMIT:
+                    break
     return {'project': str(project), 'generated_at': now(), 'profiles': choose_profiles(project),
             'branch': branch, 'working_tree_changes': changes, 'recent_commits': commits,
             'tracked_files': len(tracked), 'test_indicators': test_evidence,

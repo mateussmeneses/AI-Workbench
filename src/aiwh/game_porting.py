@@ -131,6 +131,12 @@ def inspect_binary(binary):
         else:
             info.update(format="ZIP archive",
                         evidence="ZIP container; Android markers were not found in the inspected 4 KiB prefix.")
+    elif magic == bytes.fromhex("4f153d1d"):
+        info.update(format="PS4 SELF", architecture="x86-64 (signed container; code not inspected)",
+                    platform="ps4", evidence="Verified PS4 SELF magic 4F 15 3D 1D.")
+    elif magic == bytes.fromhex("5414f5ee"):
+        info.update(format="PS5 SELF", architecture="x86-64 (signed container; code not inspected)",
+                    platform="ps5", evidence="Verified PS5 SELF magic 54 14 F5 EE.")
     elif header.startswith(b"SCE\x00"):
         info.update(format="Sony SELF", evidence="Sony SELF signature alone does not distinguish PS3 from PS4.")
     return info

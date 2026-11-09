@@ -2,6 +2,7 @@
 import argparse
 import json
 import shutil
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -102,6 +103,8 @@ def get_parser():
     b.add_argument('--area', action='append', default=[], help='composable area, e.g. frontend + sales')
     b.add_argument('--goal', default='', help='plain-language project mission for area suggestions')
     b.add_argument('--auto-areas', action='store_true', help='opt in to top matching project areas')
+    b.add_argument('--exclude-skill', action='append', default=[], metavar='SKILL',
+                   help='leave out a skill selected by a profile or area; repeatable')
     b.add_argument('--dry-run', action='store_true')
     managed = sub.add_parser('managed', help='manage files recorded by aiwh init')
     managed_sub = managed.add_subparsers(dest='managed_action', required=True)
@@ -143,13 +146,26 @@ def get_parser():
     return p
 
 
+def _utf8_stdout():
+    """Windows consoles and pipes default to a legacy code page; reports contain UTF-8 text."""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, 'reconfigure', None)
+        if reconfigure and (stream.encoding or '').replace('-', '').lower() != 'utf8':
+            try:
+                reconfigure(encoding='utf-8', errors='replace')
+            except (OSError, ValueError):
+                pass
+
+
 def main(argv=None):
+    _utf8_stdout()
     args = get_parser().parse_args(argv)
     home = args.home.expanduser()
     if args.command == 'init':
         report = bootstrap(args.path, agent=args.agent, profiles=args.profile or None,
                            areas=args.area or None, goal=args.goal, auto_areas=args.auto_areas,
-                           create=args.create, dry_run=args.dry_run, home=home)
+                           create=args.create, dry_run=args.dry_run, home=home,
+                           exclude_skills=args.exclude_skill)
         print(json.dumps(report, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'managed' and args.managed_action == 'remove':

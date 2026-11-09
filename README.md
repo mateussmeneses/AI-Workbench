@@ -53,7 +53,7 @@ Use `aiwh --help` and `aiwh <command> --help` for current options. The global `-
 
 | Command | Current behavior |
 | --- | --- |
-| `init` | Write or explicitly update selected project skills and managed instructions using the manifest; `--dry-run` reports added, unchanged, changed and conflicting paths |
+| `init` | Write or explicitly update selected project skills and managed instructions using the manifest; `--dry-run` reports added, unchanged, changed and conflicting paths; `--exclude-skill NAME` (repeatable) drops a profile/area skill |
 | `managed remove` | Remove only unchanged manifest-owned files; preserve shared instruction files and report conflicts; `--dry-run` previews |
 | `resume` | Write a private handoff and bounded state history; `--dry-run` previews without writes |
 | `audit` | Print observed local project state as JSON, without writes |
