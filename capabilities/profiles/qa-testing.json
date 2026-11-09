@@ -2,7 +2,8 @@
   "description": "Unit, integration, e2e, regression and performance testing",
   "skills": [
     "wb-test-planning",
-    "wb-qa-automation"
+    "wb-qa-automation",
+    "wb-ai-pr-review"
   ],
   "agents": [
     "qa-strategist"

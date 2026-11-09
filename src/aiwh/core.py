@@ -154,7 +154,9 @@ def categories_for(item, taxonomy=None):
     return sorted(points, key=lambda x: (-points[x]['score'], x))[:3], points
 
 
-def merged_index(old, incoming):
+def merged_index(old, incoming, seen_at=None):
+    """Merge resources; new IDs get ``first_seen`` so later reports can show deltas."""
+    seen_at = seen_at or now()
     db = {str(x['id']): x for x in old}
     for item in incoming:
         normalized = canonical_url(item.get('url'))
@@ -169,6 +171,10 @@ def merged_index(old, incoming):
             if v not in ('', None, [], {}):
                 target[k] = v
         target.update({'id': key, 'canonical_url': normalized, 'sources': sorted(sources)})
+        if not current:
+            target['first_seen'] = seen_at
+        elif current.get('first_seen'):
+            target['first_seen'] = current['first_seen']
         cats, reason = categories_for(target)
         target.update({'categories': cats, 'classification_reasons': reason,
                        'review_needed': len(cats) != 1 or (cats and reason[cats[0]]['score'] <= 1)})
@@ -176,17 +182,34 @@ def merged_index(old, incoming):
     return sorted(db.values(), key=lambda v: (v.get('title', '').lower(), v['id']))
 
 
+def new_since(items, since):
+    """Items first seen at/after an ISO date or timestamp; items without first_seen are excluded."""
+    since = str(since)
+    return [x for x in items if str(x.get('first_seen', '')) >= since]
+
+
+def catalog_metadata(home=DEFAULT_HOME):
+    path = Path(home) / 'catalog.json'
+    if not path.exists():
+        return {}
+    data = json_read(path)
+    return {k: v for k, v in data.items() if k != 'items'}
+
+
 def read_catalog(home=DEFAULT_HOME):
     path = Path(home) / 'catalog.json'
     return json_read(path).get('items', []) if path.exists() else []
 
 
-def save_catalog(items, home=DEFAULT_HOME):
+def save_catalog(items, home=DEFAULT_HOME, last_sync=None):
     home = Path(home)
     home.mkdir(parents=True, exist_ok=True)
     path = home / 'catalog.json'
     tmp = home / 'catalog.json.tmp'
-    tmp.write_text(json.dumps({'version': 1, 'updated_at': now(), 'items': items}, ensure_ascii=False, indent=2), encoding='utf-8')
+    payload = {'version': 1, 'updated_at': now(), 'items': items}
+    if last_sync:
+        payload['last_sync'] = last_sync
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
     tmp.replace(path)
     return path
 
@@ -236,17 +259,25 @@ def attach(repo, items, profiles=None, limit=25, dry_run=False):
         raise ValueError(f'No directory: {repo}')
     profiles = profiles or project_profile(repo)
     chosen = recommendations(items, profiles, limit)
+    try:
+        from .references import risk_index
+        risks = risk_index()
+    except (OSError, ValueError):
+        risks = {}
     plan = {'version': 1, 'generated_at': now(), 'profiles': profiles,
             'total_catalog': len(items), 'resources': [{'id': x['id'], 'url': x['url'],
              'title': x.get('title',''), 'categories': x.get('categories', []),
-             'sources': x.get('sources', []), 'archived': x.get('archived', False)} for x in chosen]}
+             'sources': x.get('sources', []), 'archived': x.get('archived', False),
+             'risk': risks.get(canonical_url(x['url']), [])} for x in chosen]}
     lines = ['# Recursos sugeridos pelo AI Workbench Hub', '',
              '> Gerado localmente. Estas referências não são recomendações para executar código automaticamente.',
              '', f'**Perfis detectados:** {", ".join(profiles)}',
              f'**Recursos selecionados:** {len(chosen)} / {len(items)}', '']
     for x in chosen:
         title = str(x.get('title', x['url'])).replace(']', r'\]')
-        lines.append(f'- [{title}]({x["url"]}) — {", ".join(x.get("categories", []))}')
+        labels = risks.get(canonical_url(x['url']), [])
+        risk = f' (risk: {", ".join(labels)})' if labels else ''
+        lines.append(f'- [{title}]({x["url"]}) — {", ".join(x.get("categories", []))}{risk}')
     if dry_run:
         return {'plan': plan, 'markdown': '\n'.join(lines) + '\n', 'written': False}
     root = repo / '.ai-workbench'

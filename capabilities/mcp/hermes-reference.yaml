@@ -1,5 +1,5 @@
-# Exemplo de MCPs para adicionar e adaptar ao ~/.hermes/config.yaml.
-# NÃO cole no config sem verificar configurações/credenciais e sem selecionar MCPs.
+# Example MCP servers to adapt into ~/.hermes/config.yaml.
+# Do NOT paste into your config without checking settings/credentials and selecting only the MCPs you need.
 mcp_servers:
   playwright:
     command: npx
@@ -11,8 +11,8 @@ mcp_servers:
     args: ["-y", "chrome-devtools-mcp@latest"]
     enabled: false
     lazy: true
-  # Azure DevOps: autenticação oficial de sua organização deve ser configurada.
+  # Azure DevOps: your organization's official authentication must be configured.
   # azure-devops:
-  #   url: https://mcp.dev.azure.com/SUA_ORGANIZACAO
+  #   url: https://mcp.dev.azure.com/YOUR_ORGANIZATION
   #   auth: oauth
   #   enabled: false

@@ -1,18 +1,20 @@
 ---
 name: wb-repo-intake
-description: Inspecionar repositório antes de qualquer alteração
-version: 1.0.0
+description: Inspect a repository before any change - structure, build, tests, instructions and risks
+version: 1.1.0
 ---
 # wb-repo-intake
 
-**Papel sugerido:** `triage-orchestrator`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `triage-orchestrator`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Ao entrar num repositório, retomar trabalho interrompido ou receber pedido de análise geral.
- ## Procedimento
- 1. Verifique `git status --short`, branch, remotes, linguagem, arquivos de build e instruções do projeto.
- 2. Identifique módulos, entradas, dependências, testes, CI e pontos de falha; leia arquivos antes de propor mudanças.
- 3. Busque histórico e issues relevantes; registre quais observações vêm do código, logs ou suposições.
- 4. Entregue mapa de arquitetura, caminhos críticos, riscos por severidade e backlog pequeno com evidências.
- ## Critérios de saída
- Não afirmar execução de testes, causa-raiz ou compatibilidade sem evidência. Não alterar arquivos nesta etapa sem pedido explícito.
+## When to use
+Entering a repository, resuming interrupted work or receiving a general analysis request.
+
+## Procedure
+1. Check `git status --short`, branch, remotes, language, build files and project instructions.
+2. Identify modules, entry points, dependencies, tests, CI and failure points; read files before proposing changes.
+3. Look up relevant history and issues; record which observations come from code, logs or assumptions.
+4. Deliver an architecture map, critical paths, risks by severity and a small evidence-backed backlog.
+
+## Exit criteria
+Do not claim test runs, root causes or compatibility without evidence. Do not change files at this stage without an explicit request.

@@ -30,7 +30,7 @@ By default, `aiwh game-port` does not write files. With `--save`, it creates `.a
 
 The detector reads at most **4,096 bytes** from the supplied executable/ROM/disc and records only the observed signature, architecture, size and SHA-256 of **that inspected prefix**. This is not a full-file hash or a unique build fingerprint.
 
-Recognized evidence includes Nintendo 64 ROM byte-order variants; PS-X EXE; Xbox 360 XEX2; GameCube/Wii disc markers; Windows MZ/PE; ELF machine architecture; PSP PBP and ambiguous Sony SELF. An x86-64 ELF alone is not proof of PS4; neither is a PowerPC ELF proof of PS3. Filename extensions are not trusted. Manual `--platform` declarations are labeled and conflicts with verified signatures are rejected.
+Recognized evidence includes Nintendo 64 ROM byte-order variants; PS-X EXE; Xbox 360 XEX2; GameCube/Wii disc markers; Windows MZ/PE; ELF machine architecture; PSP PBP and ambiguous Sony SELF; Nintendo Switch NSP (PFS0), XCI (HEAD at 0x100), NRO and NSO; Android DEX, and APK/AAB when their ZIP entries appear in the inspected prefix. Switch containers do not distinguish Switch 2, so a verified Switch container accepts an explicit `--platform switch2`. Android packages are routed to the reverse-engineering area and `wb-android-reverse-engineering`. An x86-64 ELF alone is not proof of PS4; neither is a PowerPC ELF proof of PS3. Filename extensions are not trusted. Manual `--platform` declarations are labeled and conflicts with verified signatures are rejected.
 
 ## Tool references (curated, never installed automatically)
 

@@ -1,18 +1,20 @@
 ---
 name: wb-ui-e2e
-description: Automatizar interface com locators estáveis
-version: 1.0.0
+description: Automate UI tests with stable locators and condition-based waits
+version: 1.1.0
 ---
 # wb-ui-e2e
 
-**Papel sugerido:** `qa-strategist`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `qa-strategist`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Testes Selenium, Appium, Playwright ou falhas intermitentes de interface.
- ## Procedimento
- 1. Escolha locator estável (`data-testid` quando disponível), evite indexação e esperas fixas.
- 2. Sincronize por condição observável; mantenha teste isolado, sem estado implícito.
- 3. Registre console, rede, screenshots, tempos e estado real apenas quando pertinente.
- 4. Execute teste repetido no pipeline/local e diferencie flake de regressão.
- ## Saída
- Teste reproduzível, qualidade de seletores e evidência de estabilidade.
+## When to use
+Selenium, Appium or Playwright tests, or intermittent UI failures.
+
+## Procedure
+1. Choose stable locators (`data-testid` when available); avoid indexing and fixed sleeps.
+2. Synchronize on observable conditions; keep tests isolated, without implicit state.
+3. Record console, network, screenshots, timings and real state only when relevant.
+4. Run tests repeatedly in the pipeline/locally and distinguish flakes from regressions.
+
+## Output
+Reproducible tests, selector quality and stability evidence.

@@ -1,18 +1,20 @@
 ---
 name: wb-windows-input
-description: Depurar controles e dispositivos Windows
-version: 1.0.0
+description: Debug Windows input devices, controllers, drivers and services
+version: 1.1.0
 ---
 # wb-windows-input
 
-**Papel sugerido:** `windows-engineer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `windows-engineer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Input USB/Bluetooth, controle de jogo, XInput/RawInput, serviço Windows ou portabilidade desktop.
- ## Procedimento
- 1. Mapeie dispositivos e versões de driver; colete logs sem alterar estado global.
- 2. Reproduza com controle USB e sem fio; diferencie camada de HID, emulação e aplicação.
- 3. Meça latência, reconexão, eventos duplicados, foco da janela, suspensão e hot-plug.
- 4. Verifique empacotamento, privilégios, persistência e rollback de mudanças de serviço.
- ## Saída
- Matriz de hardware/driver, diagnóstico, teste e riscos.
+## When to use
+USB/Bluetooth input, game controllers, XInput/RawInput, Windows services or desktop portability.
+
+## Procedure
+1. Map devices and driver versions; collect logs without changing global state.
+2. Reproduce with wired and wireless controllers; distinguish HID, emulation and application layers.
+3. Measure latency, reconnection, duplicate events, window focus, suspend and hot-plug.
+4. Check packaging, privileges, persistence and rollback of service changes.
+
+## Output
+Hardware/driver matrix, diagnosis, tests and risks.

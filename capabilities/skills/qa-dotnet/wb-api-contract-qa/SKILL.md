@@ -1,18 +1,20 @@
 ---
 name: wb-api-contract-qa
-description: Testar contratos HTTP e persistência de APIs
-version: 1.0.0
+description: Test HTTP API contracts and their persistence effects
+version: 1.1.0
 ---
 # wb-api-contract-qa
 
-**Papel sugerido:** `qa-strategist`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `qa-strategist`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Mudança em API, DTO, status HTTP, banco, XML/JSON ou regras de validação.
- ## Procedimento
- 1. Mapeie request, response, esquema, autenticação, idempotência, transações e efeitos no banco.
- 2. Compare antes/depois incluindo `null`, defaults, tipos, campos removidos e validação.
- 3. Teste autorização, paginação, filtros, ordenação, bordas, timeout e erros.
- 4. Colete evidência de API, logs e queries somente de leitura, exceto mudança aprovada.
- ## Saída
- Matriz de contrato e persistência, regressões e scripts de verificação.
+## When to use
+Changes to an API, DTO, HTTP status, database, XML/JSON or validation rules.
+
+## Procedure
+1. Map request, response, schema, authentication, idempotency, transactions and database effects.
+2. Compare before/after including `null`, defaults, types, removed fields and validation.
+3. Test authorization, pagination, filters, ordering, edge cases, timeouts and errors.
+4. Collect evidence from the API, logs and read-only queries, except for approved changes.
+
+## Output
+Contract and persistence matrix, regressions and verification scripts.

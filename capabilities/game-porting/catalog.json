@@ -76,6 +76,11 @@
       "label": "Nintendo Switch 2",
       "cpu": "ARM (AArch64)",
       "notes": "Declared only; emulation is at a very early experimental stage. Work only from dumps of games you own."
+    },
+    "android": {
+      "label": "Android",
+      "cpu": "Dalvik/ART bytecode with optional ARM64/x86 native libraries",
+      "notes": "APK/AAB/DEX detected by signature. Analyze only apps you own or are authorized to test."
     }
   },
   "tools": {

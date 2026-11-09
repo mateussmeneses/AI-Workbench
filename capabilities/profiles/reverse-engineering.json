@@ -2,7 +2,9 @@
   "description": "Static/dynamic analysis, binary formats and reproducible research",
   "skills": [
     "wb-reverse-engineering",
-    "wb-binary-analysis"
+    "wb-binary-analysis",
+    "wb-android-reverse-engineering",
+    "wb-web-api-recon"
   ],
   "agents": [
     "reverse-engineer"

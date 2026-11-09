@@ -1,7 +1,8 @@
 {
   "description": "Threat models, defensive review and secure SDLC",
   "skills": [
-    "wb-security-review"
+    "wb-security-review",
+    "wb-llm-redteam"
   ],
   "agents": [
     "code-reviewer"

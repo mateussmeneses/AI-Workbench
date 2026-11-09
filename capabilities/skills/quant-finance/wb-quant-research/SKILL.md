@@ -21,6 +21,9 @@ Identify data sources, licensing, survivorship bias, timezone/session rules, cor
 - LLM or model signals are hypotheses, not guarantees; label backtests as simulations.
 - Nothing produced is financial advice.
 
+## Templates
+Use `templates/backtest-report.md` for every reported result and `templates/data-provenance-checklist.md` before trusting a dataset.
+
 ## Deliverables
 Produce reproducible backtest reports, data-provenance notes, risk assumptions and a list of unvalidated claims.
 

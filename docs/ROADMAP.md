@@ -88,7 +88,7 @@ Acceptance: no validation runs without explicit approval; nonzero exit and timeo
 
 Scope: src/aiwh/areas.py, src/aiwh/core.py, canonical capabilities and tests/test_areas.py/test_core.py. Build on existing read-only bookmark/HTML/GitHub-star imports, project profiles and deterministic category heuristics; do not add another importer as a substitute for recommendation quality. Curate existing entries before expanding them.
 
-- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository.
+- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository. Partial: the curated reference catalog, risk labels and `aiwh catalog check` (B2-B4) exist; per-entry review dates and licensing notes remain.
 - [ ] RM-014 Add synthetic labeled project scenarios and measure relevant-area hits, false positives and scan limits; improve ranking with explainable positive and negative signals.
 - [ ] RM-015 Deliver deterministic Contextual Resource Intelligence: rank a small shortlist (target 3-5) of relevant references/tools using project evidence, detected profiles and the user's stated task; explain why each item was selected, known compatibility, limits and a sensible first consultation/action. Add a Skill & MCP Advisor that compares relevant alternatives and flags likely redundancy or scope/approval requirements; suggestions never install or activate anything.
 
@@ -122,6 +122,31 @@ Acceptance: candidate artifacts install cleanly, contain required assets and no 
 
 Acceptance: reliable core workflows, reproducible installation, documented migrations, no known destructive overwrite/privacy failures and no unsupported compatibility claims. Optional semantic models, recurring monitoring and native hooks are not prerequisites for 1.0.
 
+## Backlog B1-B20 (delivered 2026-11-09)
+
+- [x] B1 `aiwh curate`: read-only comparison of stars/bookmark exports with every URL the repository references, with suggested areas.
+- [x] B2 Structured reference catalog `capabilities/references/catalog.json`; `docs/REFERENCES.md` is generated and tested for drift.
+- [x] B3 Risk labels (`authorized-only`, `tos-check`, `licensing-check`, `experimental`, `financial-risk`) shown by `recommend`, `attach`, `references` and the HTML report.
+- [x] B4 `aiwh catalog check`: opt-in `gh` metadata check for archived, stale, missing, renamed and forked repositories.
+- [x] B5 `.gitattributes` normalizes text files to LF.
+- [x] B6 Switch NSP/XCI/NRO/NSO signatures; a verified Switch container accepts a `switch2` declaration.
+- [x] B7 Android DEX/APK/AAB signatures, `android` platform, reverse-engineering area signals and the `wb-android-reverse-engineering` skill.
+- [x] B8 `aiwh skills lint`: vague descriptions, oversized bodies, shared boilerplate and near-duplicate clusters.
+- [x] B9 `aiwh init` reports an approximate context cost for the selected skills.
+- [x] B10 `aiwh mcp plan`: per-agent previews; `--apply` writes only a manifest-owned Claude `.mcp.json`.
+- [x] B11 `first_seen`/`last_sync` in the private catalog; `aiwh sync --show-new` and `aiwh report --since`.
+- [x] B12 `wb-ai-pr-review` skill with an opt-in GitHub Actions template.
+- [x] B13 `wb-llm-redteam` skill for authorized robustness testing of owned LLM applications.
+- [x] B14 `wb-video-pipeline` skill (content-creation).
+- [x] B15 `wb-web-api-recon` skill (traffic capture to OpenAPI, bundle/asar inspection).
+- [x] B16 Quant-finance backtest report and data-provenance templates.
+- [x] B17 `aiwh skills import`: validated, provenance-tracked local skill import; scripts excluded by default; reversible through `aiwh managed remove`.
+- [x] B18 `aiwh handoff export`: json, markdown, claude-memory and wiki formats to an explicit output directory.
+- [x] B19 `aiwh report --html`: offline catalog view with filters and risk labels.
+- [x] B20 Capability catalogs, skills, roles and routing policy standardized in English.
+
+Follow-up found by B8: 22 generic skills share most of their body text and need domain-specific procedures (`aiwh skills lint`).
+
 ## Definition of done
 
 For each task:
@@ -154,7 +179,7 @@ Documentation-only planning does not increment the product version. Release gate
 4. Confirm the task's local behavior and baseline checks; implement and validate only that scope.
 5. Update this queue and the completion note before ending. Suggest the next eligible task and leave version control actions pending unless authorized.
 
-The current resume scan reports at most 30 pending checklist items. This roadmap currently has 26 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
+The current resume scan reports at most 60 pending checklist items (`PENDING_SCAN_LIMIT`) and flags truncation in the handoff. This roadmap currently has 52 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
 
 ## Completion notes
 

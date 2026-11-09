@@ -16,7 +16,7 @@ def expected_payload(source):
     files['aiwh/taxonomy.json'] = source / 'src/aiwh/taxonomy.json'
     capabilities = source / 'capabilities'
     patterns = ('__init__.py', 'agents/*.md', 'areas/catalog.json', 'game-porting/*.json', 'mcp/catalog.json',
-                'plugins/catalog.json', 'profiles/*.json', 'routing/*.json',
+                'plugins/catalog.json', 'references/catalog.json', 'profiles/*.json', 'routing/*.json',
                 'skills/*/*/*', 'skills/*/*/**/*')
     for pattern in patterns:
         for path in capabilities.glob(pattern):

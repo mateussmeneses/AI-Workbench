@@ -1,18 +1,20 @@
 ---
 name: wb-pr-release
-description: Preparar PR e checklist de release sem merge automático
-version: 1.0.0
+description: Prepare a PR and release checklist without automatic merges
+version: 1.1.0
 ---
 # wb-pr-release
 
-**Papel sugerido:** `release-auditor`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `release-auditor`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Planejar entrega, consolidar PR, release candidate ou regressão de versão.
- ## Procedimento
- 1. Verifique `git status`, branch de origem, changelog, matriz de compatibilidade e testes.
- 2. Garanta alterações rastreáveis, pequenas e reversíveis; identifique migrações e flags.
- 3. Prepare resumo do PR, evidências, limitações, rollback, aceite e testes manuais pendentes.
- 4. Não executar merge na branch principal sem autorização explícita.
- ## Saída
- Go/No-Go condicionado às evidências; pendências por severidade.
+## When to use
+Planning a delivery, consolidating a PR, a release candidate or a version regression.
+
+## Procedure
+1. Check `git status`, source branch, changelog, compatibility matrix and tests.
+2. Keep changes traceable, small and reversible; identify migrations and flags.
+3. Prepare the PR summary, evidence, limitations, rollback, acceptance and pending manual tests.
+4. Do not merge into the main branch without explicit authorization.
+
+## Output
+Go/No-Go conditioned on evidence; open items by severity.

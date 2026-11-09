@@ -1,0 +1,1559 @@
+{
+  "schema_version": 1,
+  "description": "Curated public references. Suggestions only: nothing is installed, cloned or executed. Risk labels are review prompts, not legal advice.",
+  "risk_labels": {
+    "authorized-only": "Use only on systems, software, devices, models or accounts you own or have written permission to test.",
+    "tos-check": "May conflict with provider or platform terms of service; review terms before use.",
+    "licensing-check": "May involve copyrighted content or unclear licensing; use only with content you are entitled to.",
+    "experimental": "Self-described or observed as experimental; verify claims before relying on it.",
+    "financial-risk": "Research/simulation reference; not financial advice. Live trading needs separate risk review and approval."
+  },
+  "categories": {
+    "agent-tooling": {
+      "label": "Agent skills, harnesses and workflows",
+      "areas": [
+        "ai-automation"
+      ]
+    },
+    "review-security": {
+      "label": "Code review and security",
+      "areas": [
+        "security",
+        "qa-testing"
+      ]
+    },
+    "reverse-engineering": {
+      "label": "Reverse engineering with agents",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ]
+    },
+    "llm-learning": {
+      "label": "LLM learning and local models",
+      "areas": [
+        "ai-automation"
+      ]
+    },
+    "content-media": {
+      "label": "Content, media and marketing",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ]
+    },
+    "quant-finance": {
+      "label": "Quantitative finance",
+      "areas": [
+        "quant-finance"
+      ]
+    },
+    "qa": {
+      "label": "QA (Portuguese-language)",
+      "areas": [
+        "qa-testing"
+      ]
+    },
+    "red-team": {
+      "label": "Security research and red-team",
+      "areas": [
+        "security"
+      ]
+    },
+    "llm-gateways": {
+      "label": "LLM gateways and providers",
+      "areas": [
+        "ai-automation"
+      ]
+    },
+    "desktop-tools": {
+      "label": "Desktop, mobile and productivity tools",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ]
+    },
+    "gaming": {
+      "label": "Gaming",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ]
+    },
+    "guides": {
+      "label": "Guides and threads",
+      "areas": [
+        "reverse-engineering"
+      ]
+    },
+    "other": {
+      "label": "Other projects",
+      "areas": [
+        "operations"
+      ]
+    },
+    "re-tools": {
+      "label": "Reverse-engineering tools",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ]
+    },
+    "android-managed": {
+      "label": "Managed and Android analysis",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ]
+    },
+    "web-api": {
+      "label": "Web, Electron and API analysis",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ]
+    },
+    "pc-gaming": {
+      "label": "Shader and PC gaming tools",
+      "areas": [
+        "game-port"
+      ]
+    }
+  },
+  "references": {
+    "mattpocock-skills": {
+      "title": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Skill collections"
+    },
+    "alirezarezvani-claude-skills": {
+      "title": "alirezarezvani/claude-skills",
+      "url": "https://github.com/alirezarezvani/claude-skills",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Skill collections"
+    },
+    "msitarzewski-agency-agents": {
+      "title": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Skill collections"
+    },
+    "dietrichgebert-ponytail": {
+      "title": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Skill collections"
+    },
+    "technomadcode-ai-product-development-toolkit": {
+      "title": "TechNomadCode/AI-Product-Development-Toolkit",
+      "url": "https://github.com/TechNomadCode/AI-Product-Development-Toolkit",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Skill collections"
+    },
+    "jqueryscript-awesome-claude-code": {
+      "title": "awesome-claude-code",
+      "url": "https://github.com/jqueryscript/awesome-claude-code",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "rohitg00-awesome-claude-code-toolkit": {
+      "title": "awesome-claude-code-toolkit",
+      "url": "https://github.com/rohitg00/awesome-claude-code-toolkit",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "shanraisshan-claude-code-best-practice": {
+      "title": "claude-code-best-practice",
+      "url": "https://github.com/shanraisshan/claude-code-best-practice",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "punkpeye-awesome-mcp-servers": {
+      "title": "awesome-mcp-servers",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "shubhamsaboo-awesome-llm-apps": {
+      "title": "awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "anomalyco-opencode": {
+      "title": "opencode",
+      "url": "https://github.com/anomalyco/opencode",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Harnesses"
+    },
+    "nousresearch-hermes-agent": {
+      "title": "hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Harnesses"
+    },
+    "1jehuang-jcode": {
+      "title": "jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Harnesses"
+    },
+    "deepseek-ai-deepseek-harness": {
+      "title": "deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Harnesses"
+    },
+    "akitaonrails-ai-memory": {
+      "title": "ai-memory",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Continuity and cost"
+    },
+    "microsoft-tokeneconomizer": {
+      "title": "TokenEconomizer",
+      "url": "https://github.com/microsoft/TokenEconomizer",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Continuity and cost"
+    },
+    "egonex-ai-understand-anything": {
+      "title": "Understand-Anything",
+      "url": "https://github.com/Egonex-AI/Understand-Anything",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Code understanding"
+    },
+    "storytold-craft-anything": {
+      "title": "craft-anything",
+      "url": "https://github.com/storytold/craft-anything",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Code understanding"
+    },
+    "codecrafters-io-build-your-own-x": {
+      "title": "build-your-own-x",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Code understanding"
+    },
+    "vercel-labs-agent-desktop": {
+      "title": "agent-desktop",
+      "url": "https://github.com/vercel-labs/agent-desktop",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Computer/browser use"
+    },
+    "lightpanda-io-browser": {
+      "title": "Lightpanda",
+      "url": "https://github.com/lightpanda-io/browser",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Computer/browser use"
+    },
+    "bridglabs-opencodereview": {
+      "title": "opencodereview",
+      "url": "https://github.com/BridgLabs/opencodereview",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "AI PR review"
+    },
+    "alibaba-open-code-review": {
+      "title": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "AI PR review"
+    },
+    "cloudflare-security-audit-skill": {
+      "title": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Audits and pentest automation"
+    },
+    "keygraphhq-shannon": {
+      "title": "Shannon",
+      "url": "https://github.com/KeygraphHQ/shannon",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Audits and pentest automation"
+    },
+    "zakirkun-guardian-cli": {
+      "title": "guardian-cli",
+      "url": "https://github.com/zakirkun/guardian-cli",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Audits and pentest automation"
+    },
+    "sagarbiswas-multihat-the-blackhat-roadmap": {
+      "title": "The-BlackHAT-roadmap",
+      "url": "https://github.com/SagarBiswas-MultiHAT/The-BlackHAT-roadmap",
+      "category": "review-security",
+      "kind": "list",
+      "areas": [
+        "security",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Learning path"
+    },
+    "morluto-rea": {
+      "title": "rea",
+      "url": "https://github.com/morluto/rea",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "aicodeking-leanrea": {
+      "title": "leanrea",
+      "url": "https://github.com/aicodeking/leanrea",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "joasasantos-rea-prompts": {
+      "title": "REA-Prompts",
+      "url": "https://github.com/JoasASantos/REA-Prompts",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "pablodiazjorge-rea-lab": {
+      "title": "rea-lab",
+      "url": "https://github.com/pablodiazjorge/rea-lab",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "reacher-z-awesome-rea": {
+      "title": "Awesome-REA",
+      "url": "https://github.com/reacher-z/Awesome-REA",
+      "category": "reverse-engineering",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "aishihzong-awesome-reverse-engineer-anything": {
+      "title": "awesome-reverse-engineer-anything",
+      "url": "https://github.com/AIshihzong/awesome-reverse-engineer-anything",
+      "category": "reverse-engineering",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "REA ecosystem"
+    },
+    "michaelshimeles-rec-rs": {
+      "title": "rec-rs",
+      "url": "https://github.com/michaelshimeles/rec-rs",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Example rebuilds"
+    },
+    "n0zom1z0-dx-ball": {
+      "title": "dx-ball",
+      "url": "https://github.com/N0zoM1z0/dx-ball",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Example rebuilds"
+    },
+    "rehan-remade-universal-modder": {
+      "title": "universal-modder",
+      "url": "https://github.com/rehan-remade/universal-modder",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Game modding"
+    },
+    "i12bp8-decomp-wtf": {
+      "title": "decomp.wtf",
+      "url": "https://github.com/i12bp8/decomp.wtf",
+      "category": "reverse-engineering",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [],
+      "group": "Game modding"
+    },
+    "mlabonne-llm-course": {
+      "title": "llm-course",
+      "url": "https://github.com/mlabonne/llm-course",
+      "category": "llm-learning",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "microsoft-ai-agents-for-beginners": {
+      "title": "ai-agents-for-beginners",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "category": "llm-learning",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "nirdiamant-rag-techniques": {
+      "title": "RAG_Techniques",
+      "url": "https://github.com/NirDiamant/RAG_Techniques",
+      "category": "llm-learning",
+      "kind": "list",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Courses"
+    },
+    "a-ghorbani-pocketpal-ai": {
+      "title": "pocketpal-ai",
+      "url": "https://github.com/a-ghorbani/pocketpal-ai",
+      "category": "llm-learning",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Local inference"
+    },
+    "fareedkhan-dev-kimi-k3-in-c": {
+      "title": "kimi-k3-in-c",
+      "url": "https://github.com/FareedKhan-dev/kimi-k3-in-c",
+      "category": "llm-learning",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Local inference"
+    },
+    "hexgrad-kokoro": {
+      "title": "kokoro",
+      "url": "https://github.com/hexgrad/kokoro",
+      "category": "llm-learning",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Local inference"
+    },
+    "debpalash-voicestudio": {
+      "title": "VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "category": "llm-learning",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Local inference"
+    },
+    "opencut-app-opencut": {
+      "title": "OpenCut",
+      "url": "https://github.com/OpenCut-app/OpenCut",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "harry0703-moneyprinterturbo": {
+      "title": "MoneyPrinterTurbo",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Video/media"
+    },
+    "segfault42-heliosgen": {
+      "title": "HeliosGen",
+      "url": "https://github.com/SegFault42/HeliosGen",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "juneyaooo-rea-video": {
+      "title": "rea-video",
+      "url": "https://github.com/JuneYaooo/rea-video",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "charlie947-motion-graphics-skills": {
+      "title": "motion-graphics-skills",
+      "url": "https://github.com/charlie947/motion-graphics-skills",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "wheresryan22-anatomy": {
+      "title": "anatomy",
+      "url": "https://github.com/wheresryan22/anatomy",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "mvanhorn-last30days-skill": {
+      "title": "last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Research skills"
+    },
+    "scrapecreators-social-media-research-skills": {
+      "title": "social-media-research-skills",
+      "url": "https://github.com/ScrapeCreators/social-media-research-skills",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Research skills"
+    },
+    "appllama-appllama-skills": {
+      "title": "appllama-skills",
+      "url": "https://github.com/Appllama/appllama-skills",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [],
+      "group": "Research skills"
+    },
+    "openbq-org-openbb": {
+      "title": "OpenBB",
+      "url": "https://github.com/openbq-org/OpenBB",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "freqtrade-freqtrade": {
+      "title": "freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "tauricresearch-tradingagents": {
+      "title": "TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "hkuds-vibe-trading": {
+      "title": "Vibe-Trading",
+      "url": "https://github.com/HKUDS/Vibe-Trading",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "shiyu-coder-kronos": {
+      "title": "Kronos",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "zhulinsen-daily-stock-analysis": {
+      "title": "daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "shy3130-tick-stock-panel": {
+      "title": "tick-stock-panel",
+      "url": "https://github.com/shy3130/tick-stock-panel",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "jakeschincariol-trader-skill": {
+      "title": "trader-skill",
+      "url": "https://github.com/Jakeschincariol/trader-skill",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "jakeschincariol-day-trader-skill": {
+      "title": "day-trader-skill",
+      "url": "https://github.com/Jakeschincariol/day-trader-skill",
+      "category": "quant-finance",
+      "kind": "repository",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "wilsonfreitas-awesome-quant": {
+      "title": "awesome-quant",
+      "url": "https://github.com/wilsonfreitas/awesome-quant",
+      "category": "quant-finance",
+      "kind": "list",
+      "areas": [
+        "quant-finance"
+      ],
+      "risk": [
+        "financial-risk"
+      ]
+    },
+    "juliodelimas-gen-ai-para-produtividade-em-testes": {
+      "title": "gen-ai-para-produtividade-em-testes",
+      "url": "https://github.com/juliodelimas/gen-ai-para-produtividade-em-testes",
+      "category": "qa",
+      "kind": "repository",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": []
+    },
+    "vinnypessoni-api-clientes-exemplo-microservico": {
+      "title": "api-clientes-exemplo-microservico",
+      "url": "https://github.com/vinnypessoni/api-clientes-exemplo-microservico",
+      "category": "qa",
+      "kind": "repository",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": []
+    },
+    "z4nzu-hackingtool": {
+      "title": "hackingtool",
+      "url": "https://github.com/Z4nzu/hackingtool",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Offensive toolkits and scanners"
+    },
+    "assetnote-php2shell-scanner": {
+      "title": "php2shell-scanner",
+      "url": "https://github.com/assetnote/php2shell-scanner",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Offensive toolkits and scanners"
+    },
+    "woshimaniubi8-cve-2026-43499-root-kernelsu": {
+      "title": "CVE-2026-43499-root-KernelSU",
+      "url": "https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Android privilege escalation research"
+    },
+    "togg53192-cmd-jailbreaks": {
+      "title": "togg53192-cmd/jailbreaks",
+      "url": "https://github.com/togg53192-cmd/jailbreaks",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "LLM safety/jailbreak corpora (red-teaming evaluation)"
+    },
+    "alejandros17487-ai-jailbreaks": {
+      "title": "ai-jailbreaks",
+      "url": "https://github.com/Alejandros17487/ai-jailbreaks",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "LLM safety/jailbreak corpora (red-teaming evaluation)"
+    },
+    "v1ktorrr0x-antigravity-filter-bypass": {
+      "title": "antigravity-filter-bypass",
+      "url": "https://github.com/v1ktorrr0x/antigravity-filter-bypass",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only",
+        "tos-check"
+      ],
+      "group": "LLM safety/jailbreak corpora (red-teaming evaluation)"
+    },
+    "alishahryar1-free-claude-code": {
+      "title": "free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "tashfeenahmed-freellmapi": {
+      "title": "freellmapi",
+      "url": "https://github.com/tashfeenahmed/freellmapi",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "cheaper-inference-omniroute": {
+      "title": "OmniRoute",
+      "url": "https://github.com/cheaper-inference/OmniRoute",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "zenmux-ai": {
+      "title": "ZenMux",
+      "url": "https://zenmux.ai",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "vyceai-com": {
+      "title": "Vyce AI",
+      "url": "https://vyceai.com",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "purpledoubled-locally-uncensored": {
+      "title": "locally-uncensored",
+      "url": "https://github.com/PurpleDoubleD/locally-uncensored",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ]
+    },
+    "seerge-g-helper": {
+      "title": "g-helper",
+      "url": "https://github.com/seerge/g-helper",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "blinue-magpie": {
+      "title": "Magpie",
+      "url": "https://github.com/Blinue/Magpie",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "zagitta-gpu-unlock": {
+      "title": "gpu-unlock",
+      "url": "https://github.com/Zagitta/gpu-unlock",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Windows/PC"
+    },
+    "nodix-tech-mfg-super-motion": {
+      "title": "MFG-SUPER-MOTION",
+      "url": "https://github.com/NODIX-TECH/MFG-SUPER-MOTION",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Windows/PC"
+    },
+    "xevrion-hatchzip": {
+      "title": "hatchzip",
+      "url": "https://github.com/xevrion/hatchzip",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "storytold-photocraft": {
+      "title": "photocraft",
+      "url": "https://github.com/storytold/photocraft",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "openselena-omniget": {
+      "title": "omniget",
+      "url": "https://github.com/OpenSelena/omniget",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Downloads/media"
+    },
+    "pablostanley-yoinks": {
+      "title": "yoinks",
+      "url": "https://github.com/pablostanley/yoinks",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Downloads/media"
+    },
+    "t8rin-imagetoolbox": {
+      "title": "ImageToolbox",
+      "url": "https://github.com/T8RIN/ImageToolbox",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Android/TV"
+    },
+    "pass-with-high-score-blockads-android": {
+      "title": "blockads-android",
+      "url": "https://github.com/pass-with-high-score/blockads-android",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Android/TV"
+    },
+    "gathin23-cleanyourtv": {
+      "title": "cleanyourtv",
+      "url": "https://github.com/Gathin23/cleanyourtv",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Android/TV"
+    },
+    "danielthejoker18-freemytvwebos": {
+      "title": "FreeMyTvWebOS",
+      "url": "https://github.com/danielthejoker18/FreeMyTvWebOS",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app"
+      ],
+      "risk": [],
+      "group": "Android/TV"
+    },
+    "crmne-zapfast": {
+      "title": "zapfast",
+      "url": "https://github.com/crmne/zapfast",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app",
+        "api-integration"
+      ],
+      "risk": [],
+      "group": "Messaging"
+    },
+    "mrifqidaffaaditya-wa-akg": {
+      "title": "WA-AKG",
+      "url": "https://github.com/mrifqidaffaaditya/WA-AKG",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop",
+        "mobile-app",
+        "api-integration"
+      ],
+      "risk": [],
+      "group": "Messaging"
+    },
+    "awesome-scripts-awesome-userscripts": {
+      "title": "awesome-userscripts",
+      "url": "https://github.com/awesome-scripts/awesome-userscripts",
+      "category": "desktop-tools",
+      "kind": "list",
+      "areas": [
+        "desktop",
+        "mobile-app",
+        "browser-extension"
+      ],
+      "risk": [],
+      "group": "Browser"
+    },
+    "hydralauncher-hydra": {
+      "title": "Hydra Launcher",
+      "url": "https://github.com/hydralauncher/hydra",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Launchers/catalogs (verify content licensing)"
+    },
+    "nookieai-ps3-game-scraper": {
+      "title": "PS3-Game-Scraper",
+      "url": "https://github.com/NookieAI/PS3-Game-Scraper",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Launchers/catalogs (verify content licensing)"
+    },
+    "gamebanana-com-mods-737074": {
+      "title": "Ocarina of Time controller UI mod",
+      "url": "https://gamebanana.com/mods/737074",
+      "category": "gaming",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Mods and community"
+    },
+    "mundoguitarhero-blogspot-com": {
+      "title": "Mundo Guitar Hero",
+      "url": "https://mundoguitarhero.blogspot.com",
+      "category": "gaming",
+      "kind": "guide",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [],
+      "group": "Mods and community"
+    },
+    "supermedo-bloodborne-pc": {
+      "title": "Supermedo/bloodborne_pc",
+      "url": "https://github.com/Supermedo/bloodborne_pc",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Additional ports/runtimes"
+    },
+    "cuesta4-shadps4": {
+      "title": "cuesta4/shadPS4",
+      "url": "https://github.com/cuesta4/shadPS4",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Additional ports/runtimes"
+    },
+    "x-com-gyome1-status-2111774069783720195": {
+      "title": "Claude Code para Reverse Engineering",
+      "url": "https://x.com/Gyome1_/status/2111774069783720195",
+      "category": "guides",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering"
+      ],
+      "risk": []
+    },
+    "x-com-0xmovez-status-2109604520770548146": {
+      "title": "Reverse Engineering com Opus",
+      "url": "https://x.com/0xMovez/status/2109604520770548146",
+      "category": "guides",
+      "kind": "guide",
+      "areas": [
+        "reverse-engineering"
+      ],
+      "risk": []
+    },
+    "topics-android-reverse-engineering": {
+      "title": "GitHub topic: android-reverse-engineering",
+      "url": "https://github.com/topics/android-reverse-engineering",
+      "category": "guides",
+      "kind": "list",
+      "areas": [
+        "reverse-engineering"
+      ],
+      "risk": []
+    },
+    "louvorja-desktop": {
+      "title": "louvorja/desktop",
+      "url": "https://github.com/louvorja/desktop",
+      "category": "other",
+      "kind": "repository",
+      "areas": [
+        "operations"
+      ],
+      "risk": []
+    },
+    "antoniomontanha-gerenciador-viagens": {
+      "title": "gerenciador-viagens",
+      "url": "https://github.com/AntonioMontanha/gerenciador-viagens",
+      "category": "other",
+      "kind": "repository",
+      "areas": [
+        "operations"
+      ],
+      "risk": []
+    },
+    "nationalsecurityagency-ghidra": {
+      "title": "Ghidra",
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": []
+    },
+    "werwolv-imhex": {
+      "title": "ImHex",
+      "url": "https://github.com/WerWolv/ImHex",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": []
+    },
+    "x64dbg-x64dbg": {
+      "title": "x64dbg",
+      "url": "https://github.com/x64dbg/x64dbg",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [
+        "authorized-only"
+      ]
+    },
+    "frida-frida": {
+      "title": "Frida",
+      "url": "https://github.com/frida/frida",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": [
+        "authorized-only"
+      ]
+    },
+    "kaitai-io-kaitai-struct": {
+      "title": "Kaitai Struct",
+      "url": "https://github.com/kaitai-io/kaitai_struct",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": []
+    },
+    "refirmlabs-binwalk": {
+      "title": "binwalk",
+      "url": "https://github.com/ReFirmLabs/binwalk",
+      "category": "re-tools",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "decompilation"
+      ],
+      "risk": []
+    },
+    "icsharpcode-ilspy": {
+      "title": "ILSpy",
+      "url": "https://github.com/icsharpcode/ILSpy",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": []
+    },
+    "skylot-jadx": {
+      "title": "jadx",
+      "url": "https://github.com/skylot/jadx",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": []
+    },
+    "ibotpeaches-apktool": {
+      "title": "Apktool",
+      "url": "https://github.com/iBotPeaches/Apktool",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": []
+    },
+    "ax-apk-sh": {
+      "title": "apk.sh",
+      "url": "https://github.com/ax/apk.sh",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": []
+    },
+    "reandroid-apkeditor": {
+      "title": "APKEditor",
+      "url": "https://github.com/REAndroid/APKEditor",
+      "category": "android-managed",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": []
+    },
+    "j4k0xb-webcrack": {
+      "title": "webcrack",
+      "url": "https://github.com/j4k0xb/webcrack",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": []
+    },
+    "electron-asar": {
+      "title": "asar",
+      "url": "https://github.com/electron/asar",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": []
+    },
+    "mitmproxy-mitmproxy": {
+      "title": "mitmproxy",
+      "url": "https://github.com/mitmproxy/mitmproxy",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ]
+    },
+    "alufers-mitmproxy2swagger": {
+      "title": "mitmproxy2swagger",
+      "url": "https://github.com/alufers/mitmproxy2swagger",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ]
+    },
+    "d4vinci-scrapling": {
+      "title": "Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "category": "web-api",
+      "kind": "tool",
+      "areas": [
+        "reverse-engineering",
+        "api-integration",
+        "security"
+      ],
+      "risk": []
+    },
+    "blueheisenberg-scskiller": {
+      "title": "SCSKiller",
+      "url": "https://github.com/BlueHeisenberg/SCSKiller",
+      "category": "pc-gaming",
+      "kind": "tool",
+      "areas": [
+        "game-port"
+      ],
+      "risk": []
+    }
+  }
+}

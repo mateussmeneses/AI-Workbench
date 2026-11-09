@@ -1,18 +1,20 @@
 ---
 name: wb-extension-mv3
-description: Revisar arquitetura e permissões de extensões MV3
-version: 1.0.0
+description: Review Manifest V3 browser extension architecture, permissions and lifecycle
+version: 1.1.0
 ---
 # wb-extension-mv3
 
-**Papel sugerido:** `browser-engineer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `browser-engineer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Extensão Chrome/Edge, manifest V3, service worker, content scripts e injeções.
- ## Procedimento
- 1. Inspecione `manifest.json`, escopo de host permissions, service worker e content scripts.
- 2. Identifique mensagens, ciclo de vida, persistência, versão de API e CSP.
- 3. Teste em DOM mutável, navegação SPA, aba recarregada, injeção duplicada e permissões negadas.
- 4. Valide acessibilidade, contraste, isolamento e degradação graciosa.
- ## Saída
- Riscos de permissão/estado, testes manuais/automatizados e recomendações mínimas.
+## When to use
+Chrome/Edge extensions, Manifest V3, service workers, content scripts and injection.
+
+## Procedure
+1. Inspect `manifest.json`, host-permission scope, the service worker and content scripts.
+2. Identify messaging, lifecycle, persistence, API version and CSP.
+3. Test with mutating DOM, SPA navigation, reloaded tabs, duplicate injection and denied permissions.
+4. Validate accessibility, contrast, isolation and graceful degradation.
+
+## Output
+Permission/state risks, manual and automated tests, and minimal recommendations.

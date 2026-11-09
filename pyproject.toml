@@ -29,6 +29,7 @@ aiwh = ["taxonomy.json"]
 	"game-porting/*.json",
 	"mcp/catalog.json",
 	"plugins/catalog.json",
+	"references/catalog.json",
 	"profiles/*.json",
 	"routing/*.json",
 	"skills/*/*/*",

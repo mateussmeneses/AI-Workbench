@@ -1,18 +1,20 @@
 ---
 name: wb-shader-cache-triage
-description: Diagnosticar cache de shaders e recompilação
-version: 1.0.0
+description: Diagnose shader cache misses, invalidation and recompilation stutter
+version: 1.1.0
 ---
 # wb-shader-cache-triage
 
-**Papel sugerido:** `graphics-performance`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `graphics-performance`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Micro-stutter, flicker, cache inválido, PSO e pré-compilação de shaders.
- ## Procedimento
- 1. Identifique pipeline, hashes de shader, driver, cache key, invalidação, artefatos e mapeamento de jogo.
- 2. Capture miss/hit, compilação por cena e tempo; diferencie descoberta em runtime de falha de persistência.
- 3. Compare cold start vs warm start e versão estável vs atual, com a mesma cena.
- 4. Valide reflexos, sombras, partículas, transparência e recursos de fallback após mudanças.
- ## Saída
- Métricas comparáveis, risco visual, recomendação e plano de rollback.
+## When to use
+Micro-stutter, flicker, invalid caches, PSOs and shader precompilation.
+
+## Procedure
+1. Identify the pipeline, shader hashes, driver, cache key, invalidation, artifacts and game mapping.
+2. Capture misses/hits, compilation per scene and timing; distinguish runtime discovery from persistence failures.
+3. Compare cold vs warm start and stable vs current version, with the same scene.
+4. Validate reflections, shadows, particles, transparency and fallback features after changes.
+
+## Output
+Comparable metrics, visual risk, recommendation and rollback plan.

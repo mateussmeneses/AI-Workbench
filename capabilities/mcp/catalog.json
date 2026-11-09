@@ -1,72 +1,97 @@
 {
   "github": {
-    "role": "issues, PRs, branches, commits e code review",
-    "scope": "global, preferir gh CLI quando a operação já estiver coberta",
+    "role": "Issues, pull requests, branches, commits and code review",
+    "scope": "global; prefer the gh CLI when it already covers the operation",
     "url": "https://github.com/github/github-mcp-server",
     "enabledByDefault": false,
-    "activation": "quando operar GitHub remoto"
+    "activation": "when operating on remote GitHub data",
+    "server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "setup_note": "Requires GitHub authentication configured in the agent; never store tokens in project files."
   },
   "azure-devops": {
-    "role": "Work items, sprints, builds, repos e test plans",
-    "scope": "qa-dotnet ou browser-extension com acesso ao Azure DevOps",
+    "role": "Work items, sprints, builds, repos and test plans",
+    "scope": "qa-dotnet or browser-extension projects with Azure DevOps access",
     "url": "https://github.com/microsoft/azure-devops-mcp",
     "enabledByDefault": false,
-    "activation": "quando precisar ler/atualizar Azure Boards; preferir servidor remoto oficial com OAuth"
+    "activation": "when reading/updating Azure Boards; prefer the official remote server with OAuth"
   },
   "playwright": {
-    "role": "Navegação e validação de DOM e UI",
-    "scope": "qa-dotnet/browser-extension/mobile-web",
+    "role": "Browser navigation and DOM/UI validation",
+    "scope": "qa-dotnet, browser-extension, mobile-web",
     "url": "https://github.com/microsoft/playwright-mcp",
     "enabledByDefault": false,
-    "activation": "somente tarefa que exige browser real"
+    "activation": "only for tasks that need a real browser",
+    "server": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    }
   },
   "chrome-devtools": {
-    "role": "Performance, console, rede, traces e problemas visuais",
+    "role": "Performance, console, network, traces and visual issues",
     "scope": "browser-extension",
     "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
     "enabledByDefault": false,
-    "activation": "investigação browser e performance"
+    "activation": "browser and performance investigation",
+    "server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    }
   },
   "context7": {
-    "role": "Documentação atual e versionada de bibliotecas",
-    "scope": "sob demanda",
+    "role": "Current, versioned library documentation",
+    "scope": "on demand",
     "url": "https://github.com/upstash/context7",
     "enabledByDefault": false,
-    "activation": "quando há dependência externa com API incerta"
+    "activation": "when an external dependency has an uncertain API",
+    "server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    }
   },
   "ghidra-mcp": {
-    "role": "Descompilação, símbolos, xrefs e renomeação via Ghidra",
-    "scope": "reverse-engineering/decompilation com Ghidra instalado",
+    "role": "Decompilation, symbols, xrefs and renaming through Ghidra",
+    "scope": "reverse-engineering/decompilation with Ghidra installed",
     "url": "https://github.com/LaurieWired/GhidraMCP",
     "enabledByDefault": false,
-    "activation": "somente em binários próprios ou autorizados; alternativa mais ampla: https://github.com/bethington/ghidra-mcp"
+    "activation": "only on owned or authorized binaries; broader alternative: https://github.com/bethington/ghidra-mcp"
   },
   "x64dbg-mcp": {
-    "role": "Depuração dinâmica de executáveis Windows via plugin x64dbg",
-    "scope": "reverse-engineering em Windows",
+    "role": "Dynamic debugging of Windows executables through an x64dbg plugin",
+    "scope": "reverse-engineering on Windows",
     "url": "https://github.com/duty1g/x64dbg-mcp-server",
     "enabledByDefault": false,
-    "activation": "quando a análise estática não bastar; nunca contra software de terceiros sem autorização"
+    "activation": "when static analysis is insufficient; never against third-party software without authorization"
   },
   "apktool-mcp": {
-    "role": "Decodificar, inspecionar e reempacotar APKs via Apktool",
-    "scope": "reverse-engineering/mobile-app Android",
+    "role": "Decode, inspect and rebuild APKs through Apktool",
+    "scope": "reverse-engineering/mobile-app on Android",
     "url": "https://github.com/zinja-coder/apktool-mcp-server",
     "enabledByDefault": false,
-    "activation": "somente APKs próprios ou autorizados"
+    "activation": "only owned or authorized APKs"
   },
   "rea": {
-    "role": "Engenharia reversa multi-alvo (nativo, managed, Electron/JS, firmware, web) com evidências",
+    "role": "Multi-target reverse engineering (native, managed, Electron/JS, firmware, web) with evidence",
     "scope": "reverse-engineering/decompilation",
     "url": "https://github.com/morluto/rea",
     "enabledByDefault": false,
-    "activation": "quando a tarefa exigir evidência de artefato distribuído; preferir CLI simples quando suficiente"
+    "activation": "when the task needs evidence from a shipped artifact; prefer plain CLI tools when sufficient"
   },
   "mcp-reverse": {
-    "role": "Inspeção de memória/processo para modding e engenharia reversa de jogos",
-    "scope": "game-modding single-player em cópias próprias",
+    "role": "Process/memory inspection for game modding and reverse engineering",
+    "scope": "single-player game-modding on owned copies",
     "url": "https://github.com/1llu50ry/mcp-reverse",
     "enabledByDefault": false,
-    "activation": "nunca em jogos online, anti-cheat ou software de terceiros sem autorização"
+    "activation": "never on online games, anti-cheat-protected titles or third-party software without authorization"
   }
 }

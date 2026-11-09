@@ -1,18 +1,20 @@
 ---
 name: wb-azure-boards-qa
-description: Rastrear critérios e evidências no Azure Boards
-version: 1.0.0
+description: Trace acceptance criteria and test evidence in Azure Boards work items
+version: 1.1.0
 ---
 # wb-azure-boards-qa
 
-**Papel sugerido:** `qa-strategist`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `qa-strategist`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Homologação associada a work item, feature, task, bug ou sprint no Azure DevOps.
- ## Procedimento
- 1. Leia o item e links relacionados via ferramenta autorizada; extraia critérios e estados oficiais.
- 2. Construa matriz item → regra → teste → evidência, separando bloqueios.
- 3. Verifique workflow de aprovação, sprint, dependências e regressões relevantes.
- 4. Proponha atualização no work item; não altere status automaticamente sem autorização.
- ## Saída
- Relatório de homologação e itens que exigem esclarecimento.
+## When to use
+Acceptance tied to a work item, feature, task, bug or sprint in Azure DevOps.
+
+## Procedure
+1. Read the item and related links through an authorized tool; extract official criteria and states.
+2. Build an item -> rule -> test -> evidence matrix, separating blockers.
+3. Check the approval workflow, sprint, dependencies and relevant regressions.
+4. Propose work item updates; never change status automatically without authorization.
+
+## Output
+Acceptance report and items that need clarification.

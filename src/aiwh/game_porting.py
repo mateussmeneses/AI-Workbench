@@ -14,6 +14,8 @@ from .workbench import CAPABILITIES
 CATALOG_PATH = CAPABILITIES / "game-porting" / "catalog.json"
 HEADER_BYTES = 4096
 TRACKS = ("auto", "matching-decomp", "static-recomp", "compatibility-runtime", "triage")
+# A verified container may be declared as a newer member of the same family.
+COMPATIBLE_DECLARATIONS = {"switch": {"switch2"}}
 GAME_AREAS = frozenset(("game-port", "reverse-engineering", "decompilation",
                         "recompilation", "game-modding"))
 
@@ -101,6 +103,34 @@ def inspect_binary(binary):
     elif header.startswith(b"\x00PBP"):
         info.update(format="PSP PBP package", architecture="MIPS Allegrex (package; executable not inspected)",
                     platform="psp", evidence="Verified PSP PBP container magic.")
+    elif magic == b"PFS0":
+        info.update(format="Nintendo Switch NSP (PFS0)", architecture="AArch64 (package; code not inspected)",
+                    platform="switch", evidence="Verified PFS0 partition magic; Switch 2 is not distinguished.")
+    elif len(header) >= 0x104 and header[0x100:0x104] == b"HEAD":
+        info.update(format="Nintendo Switch XCI", architecture="AArch64 (cartridge image; code not inspected)",
+                    platform="switch", evidence="Verified XCI HEAD magic at 0x100; Switch 2 is not distinguished.")
+    elif len(header) >= 0x14 and header[0x10:0x14] == b"NRO0":
+        info.update(format="Nintendo Switch NRO", architecture="AArch64",
+                    platform="switch", evidence="Verified NRO0 magic at 0x10 (homebrew executable).")
+    elif magic == b"NSO0":
+        info.update(format="Nintendo Switch NSO", architecture="AArch64",
+                    platform="switch", evidence="Verified NSO0 executable magic.")
+    elif len(header) >= 8 and header[:4] == b"dex\n" and header[7:8] == b"\x00":
+        info.update(format="Android DEX " + header[4:7].decode("ascii", "replace"),
+                    architecture="Dalvik/ART bytecode", platform="android",
+                    evidence="Verified DEX magic and version.")
+    elif magic == b"PK\x03\x04":
+        if b"BundleConfig.pb" in header or b"base/manifest/AndroidManifest.xml" in header:
+            info.update(format="Android App Bundle (AAB)",
+                        architecture="Dalvik/ART bytecode (+ optional native libraries)", platform="android",
+                        evidence="ZIP entries in the inspected prefix match an Android App Bundle.")
+        elif b"AndroidManifest.xml" in header or b"classes.dex" in header:
+            info.update(format="Android APK",
+                        architecture="Dalvik/ART bytecode (+ optional native libraries)", platform="android",
+                        evidence="ZIP entries in the inspected prefix match an Android APK.")
+        else:
+            info.update(format="ZIP archive",
+                        evidence="ZIP container; Android markers were not found in the inspected 4 KiB prefix.")
     elif header.startswith(b"SCE\x00"):
         info.update(format="Sony SELF", evidence="Sony SELF signature alone does not distinguish PS3 from PS4.")
     return info
@@ -134,7 +164,8 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
         raise ValueError("Unknown track: " + str(track))
     observed = inspect_binary(binary) if binary else None
     detected = observed["platform"] if observed else None
-    if detected and platform and detected != platform:
+    if (detected and platform and detected != platform
+            and platform not in COMPATIBLE_DECLARATIONS.get(detected, ())):
         raise ValueError("Explicit platform conflicts with verified binary signature: "
                          + platform + " versus " + detected)
     selected = platform or detected
@@ -156,6 +187,9 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
         warnings.append("No curated direct tool matches this platform/track; manual research is needed.")
     if selected == "ps4" and selected_track == "compatibility-runtime":
         warnings.append("shadPS4 is a compatibility research reference, not a push-button port generator.")
+    if selected == "android":
+        warnings.append("Android packages are routed to reverse-engineering: see wb-android-reverse-engineering "
+                        "and utilities (jadx, Apktool, Frida). Analyze only apps you own or are authorized to test.")
     if selected in ("ps5", "switch", "switch2"):
         warnings.append("Platform is user-declared only; curated runtimes are experimental and title-specific. Use dumps of games you own.")
     if selected in ("ps3", "ps4") and observed and observed["format"] == "Sony SELF":

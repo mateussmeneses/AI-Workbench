@@ -1,7 +1,8 @@
 {
   "description": "API contracts, webhooks, interoperability and third-party services",
   "skills": [
-    "wb-api-integration"
+    "wb-api-integration",
+    "wb-web-api-recon"
   ],
   "agents": [
     "backend-engineer"

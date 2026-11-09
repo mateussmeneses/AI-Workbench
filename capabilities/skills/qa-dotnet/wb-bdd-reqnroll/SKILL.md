@@ -1,18 +1,20 @@
 ---
 name: wb-bdd-reqnroll
-description: Especificar BDD com NUnit e Reqnroll
-version: 1.0.0
+description: Specify BDD scenarios with NUnit and Reqnroll in .NET projects
+version: 1.1.0
 ---
 # wb-bdd-reqnroll
 
-**Papel sugerido:** `qa-strategist`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `qa-strategist`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Casos BDD, automação .NET, step definitions e parametrização de features.
- ## Procedimento
- 1. Localize `.feature`, step definitions, pages, fixtures e convenções já usadas.
- 2. Escreva Given/When/Then orientado a regra, não a cliques; reutilize steps existentes.
- 3. Mantenha cenários independentes, dados explícitos e asserts do comportamento (incluindo toasts e permissões).
- 4. Execute `dotnet test` com filtro apropriado; registre falha ambiental separadamente da falha funcional.
- ## Saída
- Cenários novos/alterados, lacunas de cobertura e comandos/resultados.
+## When to use
+BDD cases, .NET automation, step definitions and feature parameterization.
+
+## Procedure
+1. Locate `.feature` files, step definitions, pages, fixtures and existing conventions.
+2. Write rule-oriented Given/When/Then, not click scripts; reuse existing steps.
+3. Keep scenarios independent, data explicit and assertions on behavior (including toasts and permissions).
+4. Run `dotnet test` with an appropriate filter; record environmental failures separately from functional ones.
+
+## Output
+New/changed scenarios, coverage gaps and commands/results.

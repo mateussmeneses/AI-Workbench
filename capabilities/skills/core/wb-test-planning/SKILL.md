@@ -1,18 +1,20 @@
 ---
 name: wb-test-planning
-description: Planejar testes a partir de riscos e requisitos
-version: 1.0.0
+description: Plan tests from risks and requirements, mapping each scenario to the right test layer
+version: 1.1.0
 ---
 # wb-test-planning
 
-**Papel sugerido:** `qa-strategist`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `qa-strategist`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Nova feature, bugfix, mudança de requisito ou plano de homologação.
- ## Procedimento
- 1. Extrair regras de negócio observáveis e critérios de aceite; separar lacunas de fatos.
- 2. Cobrir positivo, negativo, bordas, permissões, estados, persistência, falhas e concorrência.
- 3. Relacionar cada cenário à camada ideal: unitário, contrato/API, integração, UI, exploratório.
- 4. Definir dados de teste, pré-condições, pós-condições, prioridade e evidência de execução.
- ## Saída
- Matriz requisito × cenário × prioridade × automação × resultado, sem inventar evidências.
+## When to use
+New features, bug fixes, requirement changes or acceptance plans.
+
+## Procedure
+1. Extract observable business rules and acceptance criteria; separate gaps from facts.
+2. Cover positive, negative, edge, permission, state, persistence, failure and concurrency cases.
+3. Map each scenario to the ideal layer: unit, contract/API, integration, UI, exploratory.
+4. Define test data, preconditions, postconditions, priority and execution evidence.
+
+## Output
+Requirement x scenario x priority x automation x result matrix, without inventing evidence.

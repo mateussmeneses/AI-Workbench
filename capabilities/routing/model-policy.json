@@ -1,51 +1,51 @@
 {
-  "note": "Manifesto de decisão do kit, não configuração nativa do Hermes/OpenClaude/Codex. Confirme cada modelo em runtime.",
+  "note": "Kit decision manifest, not native Hermes/OpenClaude/Codex configuration. Confirm each model at runtime.",
   "policy": {
-    "minimize_cost": "Use modelo rápido em triagem e sumarização; escale para modelo forte somente quando o problema exigir.",
-    "tool_calls": "Não selecione como agente autônomo sem teste real de function/tool calling.",
-    "fallback": "Na falha de API/limite, não troque de modelo silenciosamente; registre provedor/modelo.",
-    "validation": "Sempre compilar/testar com ferramentas reais; consenso entre modelos não substitui execução."
+    "minimize_cost": "Use a fast model for triage and summarization; escalate to a strong model only when the problem requires it.",
+    "tool_calls": "Do not select a model as an autonomous agent without a real function/tool-calling test.",
+    "fallback": "On API failure or rate limits, do not switch models silently; record provider/model.",
+    "validation": "Always build/test with real tools; agreement between models does not replace execution."
   },
   "lanes": {
     "fast": {
       "tasks": [
-        "triagem",
-        "resumo de logs",
-        "documentação curta"
+        "triage",
+        "log summarization",
+        "short documentation"
       ],
-      "provider": "custom-deploy (configurado pelo usuário)",
+      "provider": "custom-deploy (user-configured)",
       "model": "deepseek-ai/deepseek-v4.1-flash-1017",
-      "status": "a validar no Hermes/OpenClaude"
+      "status": "to be validated in Hermes/OpenClaude"
     },
     "deep": {
       "tasks": [
-        "causa-raiz complexa",
-        "Vulkan e shaders",
-        "arquitetura e refatorações"
+        "complex root cause",
+        "Vulkan and shaders",
+        "architecture and refactoring"
       ],
-      "provider": "selecionar conforme capacidade real e custo",
+      "provider": "select by real capability and cost",
       "model": null,
-      "status": "não fixado"
+      "status": "not pinned"
     },
     "critic": {
       "tasks": [
-        "review independente",
-        "segurança",
-        "preparo de release"
+        "independent review",
+        "security",
+        "release preparation"
       ],
-      "provider": "preferencialmente diferente do executor",
+      "provider": "preferably different from the executor",
       "model": null,
-      "status": "não fixado"
+      "status": "not pinned"
     },
     "local": {
       "tasks": [
-        "pesquisa sem credenciais",
-        "classificação leve",
-        "tarefas offline"
+        "research without credentials",
+        "lightweight classification",
+        "offline tasks"
       ],
-      "provider": "Ollama/LM Studio se configurados",
+      "provider": "Ollama/LM Studio if configured",
       "model": null,
-      "status": "opcional"
+      "status": "optional"
     }
   }
 }

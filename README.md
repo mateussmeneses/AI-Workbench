@@ -7,9 +7,9 @@ AI Workbench is an independent project. It does **not** modify your bookmarks, c
 ## What it already does
 
 - **Bootstrap:** `aiwh init` detects a project's technology profile (or accepts overrides), installs the selected skills in agent-specific project directories, preserves existing instructions, and suggests MCP candidates for review.
-- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 30 documented pending items, then writes a private handoff and versioned `.ai-workbench/state.json`. It preserves approved decisions, task status and explicit resource choices, retaining up to 10 snapshots with session comparisons.
+- **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 60 documented pending items (truncation is flagged), then writes a private handoff and versioned `.ai-workbench/state.json`. It preserves approved decisions, task status and explicit resource choices, retaining up to 10 snapshots with session comparisons.
 - **Audit:** `aiwh audit` reports the observed project state in JSON without changing anything.
-- **Capability registry:** 46 deduplicated skills, 21 agent role templates, 29 technical profiles, 27 composable areas, and opt-in MCP/plugin catalogs.
+- **Capability registry:** 51 deduplicated skills, 21 agent role templates, 29 technical profiles, 27 composable areas, a curated reference catalog with risk labels, and opt-in MCP/plugin catalogs.
 - **Resource catalog:** optional read-only ingestion of GitHub stars (`gh` CLI), Chromium bookmarks, and Netscape HTML. Resource suggestions are local and never automatically installed or executed.
 
 ## Install (Windows 11)
@@ -66,8 +66,17 @@ Use `aiwh --help` and `aiwh <command> --help` for current options. The global `-
 | `report` | Summarize the private resource catalog, without writes |
 | `doctor` | Check registry references and report executable detection; not a runtime compatibility test |
 | `global-integration` | Preview a managed global instruction block; only `--apply` writes changes |
+| `references` | List curated public references by `--area`/`--risk`; `--markdown` prints the generated `docs/REFERENCES.md` |
+| `catalog check` | Opt-in network: check GitHub references through `gh` for archived, stale, missing or renamed repositories |
+| `curate` | Read-only: list stars/bookmark links that the repository does not reference yet, with suggested areas (`--baseline-html` skips an older export) |
+| `skills lint` | Report vague descriptions, oversized bodies, boilerplate and near-duplicate skills; `--strict` exits 1 on findings |
+| `skills import` | Copy validated local skills into a project's agent directory with provenance; scripts excluded unless `--allow-scripts`; `--dry-run` previews |
+| `mcp plan` | Preview MCP configuration for `claude`, `codex`, `hermes` or `generic`; `--apply` writes only a manifest-owned Claude `.mcp.json` |
+| `handoff export` | Export the continuity handoff as `json`, `markdown`, `claude-memory` or `wiki`, to stdout or an explicit `--output` directory |
 
-`sync --github` requests GitHub star metadata through `gh`, even with `--dry-run`; dry-run prevents writes, not explicitly requested source reads or network access.
+`sync --show-new` lists resources not seen before; `report --since YYYY-MM-DD|last` lists resources first seen since a date or the last sync; `report --html [PATH]` writes an offline catalog page (default `<home>/catalog.html`). `init` reports an approximate context cost (`context_estimate`) for the selected skills.
+
+`sync --github` and `curate --github` request GitHub star metadata through `gh`, even with `--dry-run`; dry-run prevents writes, not explicitly requested source reads or network access.
 
 ## Compose any kind of project from capability areas
 

@@ -1,18 +1,20 @@
 ---
 name: wb-vulkan-frame-pacing
-description: Investigar frame pacing e gargalos Vulkan
-version: 1.0.0
+description: Investigate Vulkan frame pacing and CPU/GPU/IO bottlenecks with A/B measurements
+version: 1.1.0
 ---
 # wb-vulkan-frame-pacing
 
-**Papel sugerido:** `graphics-performance`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `graphics-performance`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Stuttering, FPS irregular, spikes GPU/CPU, VRAM elevada ou sincronização Vulkan.
- ## Procedimento
- 1. Identifique build, driver, GPU, cena, resolução, renderer, captura e versão de referência.
- 2. Meça frametime p50/p95/p99, 1% lows, uso de VRAM/RAM, CPU/GPU, loading e tempo de compilação de shaders.
- 3. Separe GPU-bound, CPU-bound, IO-bound, shader compilation, PSO/cache e sincronização; formule testes A/B.
- 4. Evite otimização por intuição; compare uma variável por vez e registre instrumentos e configurações.
- ## Saída
- Hipóteses, coleta reproduzível, experimento e decisão de manter/reverter alteração.
+## When to use
+Stuttering, irregular FPS, GPU/CPU spikes, high VRAM or Vulkan synchronization issues.
+
+## Procedure
+1. Identify build, driver, GPU, scene, resolution, renderer, capture and reference version.
+2. Measure frametime p50/p95/p99, 1% lows, VRAM/RAM, CPU/GPU usage, loading and shader compilation time.
+3. Separate GPU-bound, CPU-bound, IO-bound, shader compilation, PSO/cache and synchronization; design A/B tests.
+4. Avoid optimizing by intuition; change one variable at a time and record instruments and settings.
+
+## Output
+Hypotheses, reproducible data collection, experiment and keep/revert decision.

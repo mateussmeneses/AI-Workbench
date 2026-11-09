@@ -1,18 +1,20 @@
 ---
 name: wb-ui-accessibility
-description: Auditar legibilidade e acessibilidade de UI
-version: 1.0.0
+description: Audit UI legibility and accessibility - contrast, focus states, zoom, themes and keyboard use
+version: 1.1.0
 ---
 # wb-ui-accessibility
 
-**Papel sugerido:** `browser-engineer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `browser-engineer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Texto invisível, contraste baixo, layout escuro, elementos sobrepostos ou navegação difícil.
- ## Procedimento
- 1. Verifique contraste, estados hover/focus/disabled, tipografia, overflow e tamanhos de alvo.
- 2. Teste zoom 125–200%, light/dark, teclado e responsividade sem seleção de texto como workaround.
- 3. Inspecione CSS computado e tokens; corrija na origem, não com exceções por componente.
- 4. Colete comparativos antes/depois e smoke test visual.
- ## Saída
- Achados com seletor, causa CSS e validação por viewport/tema.
+## When to use
+Invisible text, low contrast, dark layouts, overlapping elements or difficult navigation.
+
+## Procedure
+1. Check contrast, hover/focus/disabled states, typography, overflow and target sizes.
+2. Test 125-200% zoom, light/dark themes, keyboard use and responsiveness, without text selection as a workaround.
+3. Inspect computed CSS and tokens; fix at the source, not with per-component exceptions.
+4. Collect before/after comparisons and a visual smoke test.
+
+## Output
+Findings with selector, CSS cause and validation per viewport/theme.

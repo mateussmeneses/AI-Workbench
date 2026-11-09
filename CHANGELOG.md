@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Backlog B1-B20: `aiwh curate`, structured reference catalog with generated `docs/REFERENCES.md`, risk labels in `recommend`/`attach`/reports, opt-in `aiwh catalog check`, `.gitattributes` LF normalization, Switch NSP/XCI/NRO/NSO and Android DEX/APK/AAB signatures (`android` platform), `aiwh skills lint`, init context-cost estimates, `aiwh mcp plan` with manifest-owned Claude `.mcp.json` apply, incremental sync (`first_seen`, `--show-new`, `report --since`), six new skills/templates (Android RE, AI PR review, LLM red-teaming, video pipeline, web API recon, quant templates), `aiwh skills import`, `aiwh handoff export`, `aiwh report --html`, and English-standardized catalogs, skills and roles.
+- Raised the documented pending-item scan limit from 30 to 60 with a truncation flag; clarified the repository privacy rule for curated public references (raw exports, star lists, folders, dates and account URLs stay private).
+
 - Added the `quant-finance` area (27 areas): `wb-quant-research` skill, `quant-strategist` role and profile with backtesting/data-provenance and no-live-execution-without-approval rules.
 - Added declared-only `switch2` platform with very experimental emulators.
 - Curated new references from reviewed GitHub stars and bookmarks: five opt-in MCP candidates (Ghidra, x64dbg, Apktool, REA, game-memory inspection), reverse-engineering utilities in area routing, declared-only `ps5`/`switch` game-port platforms with experimental runtime tools, PCSX2 as a PS2 reference runtime, title-specific port case studies, and a categorized reference list in `docs/RESEARCH.md`. No tool is installed, enabled or executed.

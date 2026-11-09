@@ -1,18 +1,20 @@
 ---
 name: wb-change-review
-description: Revisar diffs e riscos antes de aprovação
-version: 1.0.0
+description: Review diffs and risks before approval, with file:line findings and reproducible failure scenarios
+version: 1.1.0
 ---
 # wb-change-review
 
-**Papel sugerido:** `code-reviewer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `code-reviewer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Revisar PR, comparar código antigo/novo, auditar refatoração ou verificar regressões.
- ## Procedimento
- 1. Identifique base, head, commits e arquivos alterados; examine o diff real e o contexto dos chamadores.
- 2. Classifique mudanças: comportamento, API, banco, UI, segurança, desempenho e compatibilidade.
- 3. Priorize achados P0 a P3 com caminho/linha, cenário que falha e prova reproduzível.
- 4. Sugira testes unitários, integração, E2E e homologação; informe se alguma verificação não pôde ser executada.
- ## Saída
- Resumo de mudanças, melhorias/pioras, riscos, testes indispensáveis e decisão fundamentada.
+## When to use
+Reviewing a PR, comparing old/new code, auditing a refactor or checking for regressions.
+
+## Procedure
+1. Identify base, head, commits and changed files; examine the real diff and the callers' context.
+2. Classify changes: behavior, API, database, UI, security, performance and compatibility.
+3. Prioritize findings P0 to P3 with path/line, failing scenario and reproducible proof.
+4. Suggest unit, integration, E2E and acceptance tests; state any verification that could not be run.
+
+## Output
+Change summary, improvements/regressions, risks, essential tests and a reasoned decision.

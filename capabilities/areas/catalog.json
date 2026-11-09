@@ -163,7 +163,8 @@
         "api-integration"
       ],
       "skills": [
-        "wb-api-integration"
+        "wb-api-integration",
+        "wb-web-api-recon"
       ],
       "agents": [
         "backend-engineer"
@@ -244,7 +245,8 @@
       ],
       "skills": [
         "wb-android-release",
-        "wb-mobile-quality"
+        "wb-mobile-quality",
+        "wb-android-reverse-engineering"
       ],
       "agents": [
         "mobile-engineer"
@@ -328,7 +330,8 @@
       ],
       "skills": [
         "wb-test-planning",
-        "wb-qa-automation"
+        "wb-qa-automation",
+        "wb-ai-pr-review"
       ],
       "agents": [
         "qa-strategist"
@@ -450,7 +453,9 @@
         "security"
       ],
       "skills": [
-        "wb-security-review"
+        "wb-security-review",
+        "wb-llm-redteam",
+        "wb-web-api-recon"
       ],
       "agents": [
         "code-reviewer"
@@ -476,7 +481,12 @@
           "**/*.i64",
           "**/*.gpr",
           "**/disasm/**",
-          "**/symbols/**"
+          "**/symbols/**",
+          "**/*.apk",
+          "**/*.aab",
+          "**/*.dex",
+          "**/smali/**",
+          "**/apktool.yml"
         ],
         "keywords": [
           "reverse engineering",
@@ -484,7 +494,12 @@
           "ida pro",
           "x64dbg",
           "binary analysis",
-          "protocol reverse engineering"
+          "protocol reverse engineering",
+          "apk",
+          "android reverse engineering",
+          "smali",
+          "jadx",
+          "frida"
         ]
       },
       "profiles": [
@@ -492,7 +507,9 @@
       ],
       "skills": [
         "wb-reverse-engineering",
-        "wb-binary-analysis"
+        "wb-binary-analysis",
+        "wb-android-reverse-engineering",
+        "wb-web-api-recon"
       ],
       "agents": [
         "reverse-engineer"
@@ -716,7 +733,8 @@
       ],
       "skills": [
         "wb-capability-curation",
-        "wb-ai-evaluation"
+        "wb-ai-evaluation",
+        "wb-llm-redteam"
       ],
       "agents": [
         "triage-orchestrator"
@@ -1029,7 +1047,8 @@
         "content-creation"
       ],
       "skills": [
-        "wb-content-publishing"
+        "wb-content-publishing",
+        "wb-video-pipeline"
       ],
       "agents": [
         "content-strategist"

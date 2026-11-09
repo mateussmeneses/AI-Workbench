@@ -26,6 +26,7 @@ if not CAPABILITIES.is_dir():
     CAPABILITIES = ROOT / 'capabilities'
 BEGIN, END = '<!-- AIWH:BEGIN -->', '<!-- AIWH:END -->'
 AGENTS = ('codex', 'claude', 'antigravity', 'hermes', 'openclaude')
+PENDING_SCAN_LIMIT = 60
 
 
 @dataclass
@@ -649,6 +650,15 @@ def registry():
             raise ValueError(f'Invalid MCP {key} in {mcp_path}: expected an object')
         if value.get('enabledByDefault') is not False:
             raise ValueError(f'Invalid MCP {key} in {mcp_path}: enabledByDefault must be false')
+        server = value.get('server')
+        if server is not None:
+            valid_stdio = (isinstance(server, dict) and isinstance(server.get('command'), str)
+                           and isinstance(server.get('args', []), list)
+                           and all(isinstance(arg, str) for arg in server.get('args', [])))
+            valid_http = (isinstance(server, dict) and server.get('type') == 'http'
+                          and str(server.get('url', '')).startswith('https://'))
+            if not (valid_stdio or valid_http):
+                raise ValueError(f'Invalid MCP {key} in {mcp_path}: server must be a stdio command or https endpoint')
     for key, value in profiles.items():
         path = CAPABILITIES / 'profiles' / f'{key}.json'
         for field, available, label in (('skills', skills, 'skill'), ('agents', agents, 'agent'),
@@ -821,7 +831,9 @@ def bootstrap(project, *, agent='codex', profiles=None, areas=None, goal='', aut
                     pass
             file_plan.write(target_plan, json.dumps(plan, indent=2, ensure_ascii=False) + '\n')
     managed_files = file_plan.finish()
+    from .skilltools import context_estimate
     return {'project': str(project), 'agent': agent, 'profiles': chosen,
+            'context_estimate': context_estimate([reg['skills'][name] for name in skills]),
             'areas': selected_areas, 'skills': skills, 'roles': roles,
             'mcps_suggested': mcps, 'plugins_suggested': recommendation['plugins'] if use_areas else [],
             'operations': [vars(op) for op in operations], 'managed_files': managed_files,
@@ -856,12 +868,14 @@ def inspect_project(project):
             for line in path.read_text(encoding='utf-8', errors='replace').splitlines():
                 if re.search(r'^\s*[-*]\s*\[\s\]|\bTODO\b', line, flags=re.IGNORECASE):
                     todo.append({'path': str(path.relative_to(project)), 'text': line.strip()[:220]})
-                    if len(todo) >= 30:
+                    if len(todo) >= PENDING_SCAN_LIMIT:
                         break
     return {'project': str(project), 'generated_at': now(), 'profiles': choose_profiles(project),
             'branch': branch, 'working_tree_changes': changes, 'recent_commits': commits,
             'tracked_files': len(tracked), 'test_indicators': test_evidence,
-            'instructions': instructions, 'pending_documented': todo[:30]}
+            'instructions': instructions, 'pending_documented': todo[:PENDING_SCAN_LIMIT],
+            'pending_scan_limit': PENDING_SCAN_LIMIT,
+            'pending_truncated': len(todo) >= PENDING_SCAN_LIMIT}
 
 
 def continuation_markdown(data, agent='codex', delta=None):
@@ -880,6 +894,8 @@ def continuation_markdown(data, agent='codex', delta=None):
     lines += [f'- {x}' for x in data['recent_commits']] or ['- No readable Git history.']
     lines += ['', '## Pending work explicitly documented', '']
     lines += [f'- [{x["path"]}] {x["text"]}' for x in data['pending_documented']] or ['- No TODO items located in standard documents.']
+    if data.get('pending_truncated'):
+        lines.append(f'- Scan stopped at {data.get("pending_scan_limit")} items; read the full documents for remaining work.')
     if delta:
         lines += ['', '## Since previous handoff', '']
         if delta['baseline']:

@@ -1,18 +1,20 @@
 ---
 name: wb-reverse-engineering
-description: Documentar engenharia reversa sem offsets inventados
-version: 1.0.0
+description: Document reverse engineering with provenance and verified offsets - never invented ones
+version: 1.1.0
 ---
 # wb-reverse-engineering
 
-**Papel sugerido:** `reverse-engineer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `reverse-engineer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Investigar formatos, símbolos, instruções, assets, executáveis e traduções de APIs em port.
- ## Procedimento
- 1. Registre origem e hash do binário, build tag, plataforma, versão e ferramentas usadas.
- 2. Diferencie endereços absolutos, RVA e file offsets; anexe prova do dump/desassemblagem.
- 3. Trace fluxo de controle, entradas/saídas, dependências e condições de erro; vincule descobertas ao build.
- 4. Mantenha hipótese e fato separados; documente testes que refutariam a interpretação.
- ## Saída
- Registro de evidências com paths, hashes, offsets verificados e testes mínimos.
+## When to use
+Investigating formats, symbols, instructions, assets, executables and API translation in ports.
+
+## Procedure
+1. Record binary origin and hash, build tag, platform, version and tools used.
+2. Distinguish absolute addresses, RVAs and file offsets; attach proof from the dump/disassembly.
+3. Trace control flow, inputs/outputs, dependencies and error conditions; tie findings to the build.
+4. Keep hypothesis and fact separate; document tests that would refute the interpretation.
+
+## Output
+Evidence log with paths, hashes, verified offsets and minimal tests.

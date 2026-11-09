@@ -1,18 +1,20 @@
 ---
 name: wb-gameplay-acceptance
-description: Homologar port por cenas e regressões
-version: 1.0.0
+description: Accept a game port scene by scene with regression evidence per build
+version: 1.1.0
 ---
 # wb-gameplay-acceptance
 
-**Papel sugerido:** `release-auditor`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `release-auditor`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- Testes após PR, mudanças em input, launcher, renderer, áudio ou recursos gráficos.
- ## Procedimento
- 1. Prepare matriz de cenas, hardware/driver, input mouse-teclado/controle, cold/warm launch.
- 2. Verifique menu, resolução, DLSS/FSR quando implementados, save/load, sombras, partículas, áudio e crashes.
- 3. Capture vídeo/log, baseline, versão, FPS/frametime e evidência de efeito colateral.
- 4. Separe defeito anterior do novo, anote bloqueadores e status de aceite por build.
- ## Saída
- Checklist de regressão, resultados conhecidos e riscos para release.
+## When to use
+Testing after a PR, or changes to input, launcher, renderer, audio or graphics features.
+
+## Procedure
+1. Prepare a matrix of scenes, hardware/driver, mouse-keyboard/controller input, cold/warm launch.
+2. Check menus, resolution, DLSS/FSR when implemented, save/load, shadows, particles, audio and crashes.
+3. Capture video/logs, baseline, version, FPS/frametime and evidence of side effects.
+4. Separate pre-existing defects from new ones; record blockers and acceptance status per build.
+
+## Output
+Regression checklist, known results and release risks.

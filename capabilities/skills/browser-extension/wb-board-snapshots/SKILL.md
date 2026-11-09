@@ -1,18 +1,20 @@
 ---
 name: wb-board-snapshots
-description: Validar contagem e snapshots de quadros Kanban
-version: 1.0.0
+description: Validate Kanban board counters and daily snapshots against what the UI actually shows
+version: 1.1.0
 ---
 # wb-board-snapshots
 
-**Papel sugerido:** `browser-engineer`. Este arquivo é portátil e não depende desse agente existir.
+**Suggested role:** `browser-engineer`. This file is portable and does not depend on that agent existing.
 
-## Acionamento
- WIP board, counters, snapshot diário, cartões invisíveis e progresso de sprint.
- ## Procedimento
- 1. Identifique board, colunas, estados e regras de negócio; diferencie total de cartões de contador exibido.
- 2. Conte cartões no DOM inclusive colunas sem badge/contador e regiões sob overlays quando acessíveis.
- 3. Compare resultado do snapshot com contagem visível sob filtros e agrupamentos.
- 4. Teste múltiplos boards isoladamente, resets, persistência, datas e sincronização de dados.
- ## Saída
- Matriz board × coluna × contagem UI × snapshot × divergência, com evidências.
+## When to use
+WIP boards, counters, daily snapshots, hidden cards and sprint progress.
+
+## Procedure
+1. Identify the board, columns, states and business rules; distinguish the total card count from the displayed counter.
+2. Count cards in the DOM, including columns without a badge/counter and regions under overlays when accessible.
+3. Compare the snapshot result with the visible count under filters and groupings.
+4. Test multiple boards in isolation, resets, persistence, dates and data synchronization.
+
+## Output
+Board x column x UI count x snapshot x divergence matrix, with evidence.

@@ -132,6 +132,11 @@ def recommend(project, *, goal='', selected=None, max_auto=4):
     result={**match,'profiles':union('profiles'), 'skills':union('skills'),
             'agents':union('agents'), 'mcps':union('mcps'),
             'plugins':union('plugins'), 'utilities':union('utilities')}
+    from .references import references_for
+    refs=references_for(match['areas'],limit=None) if match['areas'] else []
+    result['references_total']=len(refs)
+    result['references']=[{'title':r['title'],'url':r['url'],'kind':r['kind'],'risk':r.get('risk',[])}
+                          for r in refs[:10]]
     if any(area in ('game-port','reverse-engineering','decompilation',
                     'recompilation','game-modding') for area in result['areas']):
         from .game_porting import assess_game_port
@@ -142,6 +147,7 @@ def recommend(project, *, goal='', selected=None, max_auto=4):
         'skills':'copy only with explicit aiwh init; conflicts never overwritten',
         'agents':'role templates, not automatically registered subagents',
         'unknown_goal':'choose explicit --area when no evidence is found',
+        'references':'curated links with risk labels; read-only suggestions',
     }
     return result
 
@@ -159,6 +165,11 @@ def markdown_plan(result):
         lines.append(f"- {r['id']} ({r['score']} points): "+('; '.join(why) or 'explicit selection'))
     for field in ('profiles','skills','agents','mcps','plugins','utilities'):
         lines.extend(['',field.title()+': '+(', '.join(result[field]) if result[field] else '(none)')])
+    if result.get('references'):
+        lines.extend(['',f"References ({len(result['references'])} of {result['references_total']}; suggestions, never installed):"])
+        for ref in result['references']:
+            risk=f" (risk: {', '.join(ref['risk'])})" if ref['risk'] else ''
+            lines.append(f"- [{ref['title']}]({ref['url']}){risk}")
     if 'game_porting' in result:
         gp=result['game_porting']
         lines.extend(['', 'Game-porting triage: '+gp['workflow']['name']+'; platform: '+str(gp['platform'] or 'unverified'),
