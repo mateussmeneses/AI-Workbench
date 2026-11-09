@@ -115,7 +115,7 @@ def _infer_track(goal, platform):
     if any(term in text for term in ("static recomp", "recompil", "recompiler")):
         return "static-recomp"
     if "native pc port" in text or "native port" in text:
-        if platform in ("ps4", "windows-pc"):
+        if platform in ("ps4", "ps5", "switch", "switch2", "windows-pc"):
             return "compatibility-runtime"
         if platform in ("n64", "ps1", "ps2", "ps3", "xbox360"):
             return "static-recomp"
@@ -156,6 +156,8 @@ def assess_game_port(project, *, binary=None, platform=None, track="auto", goal=
         warnings.append("No curated direct tool matches this platform/track; manual research is needed.")
     if selected == "ps4" and selected_track == "compatibility-runtime":
         warnings.append("shadPS4 is a compatibility research reference, not a push-button port generator.")
+    if selected in ("ps5", "switch", "switch2"):
+        warnings.append("Platform is user-declared only; curated runtimes are experimental and title-specific. Use dumps of games you own.")
     if selected in ("ps3", "ps4") and observed and observed["format"] == "Sony SELF":
         warnings.append("SELF generation is user-declared, not inferred from the header.")
     if selected_track == "matching-decomp":

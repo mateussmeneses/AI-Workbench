@@ -9,7 +9,7 @@ AI Workbench is an independent project. It does **not** modify your bookmarks, c
 - **Bootstrap:** `aiwh init` detects a project's technology profile (or accepts overrides), installs the selected skills in agent-specific project directories, preserves existing instructions, and suggests MCP candidates for review.
 - **Continuity:** `aiwh resume` reads local Git state, recent commits, test indicators and up to 30 documented pending items, then writes a private handoff and versioned `.ai-workbench/state.json`. It preserves approved decisions, task status and explicit resource choices, retaining up to 10 snapshots with session comparisons.
 - **Audit:** `aiwh audit` reports the observed project state in JSON without changing anything.
-- **Capability registry:** 45 deduplicated skills, 20 agent role templates, 28 technical profiles, 26 composable areas, and opt-in MCP/plugin catalogs.
+- **Capability registry:** 46 deduplicated skills, 21 agent role templates, 29 technical profiles, 27 composable areas, and opt-in MCP/plugin catalogs.
 - **Resource catalog:** optional read-only ingestion of GitHub stars (`gh` CLI), Chromium bookmarks, and Netscape HTML. Resource suggestions are local and never automatically installed or executed.
 
 ## Install (Windows 11)
@@ -71,7 +71,7 @@ Use `aiwh --help` and `aiwh <command> --help` for current options. The global `-
 
 ## Compose any kind of project from capability areas
 
-Areas are **composable**, not exclusive. The catalog currently includes 26 extendable domains: frontend, backend, fullstack, API integration, extensions, mobile, desktop, QA, DevOps, cloud, security, reverse engineering, modding, recompilation, decompilation, game porting, AI automation, data engineering, analytics, UX, marketing, sales, ecommerce, product management, content and operations.
+Areas are **composable**, not exclusive. The catalog currently includes 27 extendable domains: frontend, backend, fullstack, API integration, extensions, mobile, desktop, QA, DevOps, cloud, security, reverse engineering, modding, recompilation, decompilation, game porting, AI automation, data engineering, analytics, UX, marketing, sales, ecommerce, product management, content, operations and quantitative finance.
 
 ```powershell
 aiwh areas

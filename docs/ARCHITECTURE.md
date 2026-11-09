@@ -72,6 +72,6 @@ Optional: `browser bookmarks / GitHub stars -> private catalog -> ranked referen
 
 ## Cross-domain routing (v0.3)
 
-`src/aiwh/areas.py` interprets `capabilities/areas/catalog.json` through bounded source-tree and project-metadata signals. It produces an explainable ranked proposal with 26 composable areas and six capability kinds: profiles, skills, agent-role templates, MCP candidates, plugin candidates, and CLI utilities. `aiwh recommend` is read-only; `aiwh init --area` and `--auto-areas` are deliberate opt-in installation of project-local skills only. External plugins and MCPs are never connected automatically.
+`src/aiwh/areas.py` interprets `capabilities/areas/catalog.json` through bounded source-tree and project-metadata signals. It produces an explainable ranked proposal with 27 composable areas and six capability kinds: profiles, skills, agent-role templates, MCP candidates, plugin candidates, and CLI utilities. `aiwh recommend` is read-only; `aiwh init --area` and `--auto-areas` are deliberate opt-in installation of project-local skills only. External plugins and MCPs are never connected automatically.
 
 The scan avoids recursive dependency trees and generated folders and does not execute foreign code. Because its classification is deterministic (not a trained model) users should verify ranked suggestions; agents can consume the recommendation plan as grounded context. References are catalogued, never silently fetched or run.

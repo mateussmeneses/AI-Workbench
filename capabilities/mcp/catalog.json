@@ -33,5 +33,40 @@
     "url": "https://github.com/upstash/context7",
     "enabledByDefault": false,
     "activation": "quando há dependência externa com API incerta"
+  },
+  "ghidra-mcp": {
+    "role": "Descompilação, símbolos, xrefs e renomeação via Ghidra",
+    "scope": "reverse-engineering/decompilation com Ghidra instalado",
+    "url": "https://github.com/LaurieWired/GhidraMCP",
+    "enabledByDefault": false,
+    "activation": "somente em binários próprios ou autorizados; alternativa mais ampla: https://github.com/bethington/ghidra-mcp"
+  },
+  "x64dbg-mcp": {
+    "role": "Depuração dinâmica de executáveis Windows via plugin x64dbg",
+    "scope": "reverse-engineering em Windows",
+    "url": "https://github.com/duty1g/x64dbg-mcp-server",
+    "enabledByDefault": false,
+    "activation": "quando a análise estática não bastar; nunca contra software de terceiros sem autorização"
+  },
+  "apktool-mcp": {
+    "role": "Decodificar, inspecionar e reempacotar APKs via Apktool",
+    "scope": "reverse-engineering/mobile-app Android",
+    "url": "https://github.com/zinja-coder/apktool-mcp-server",
+    "enabledByDefault": false,
+    "activation": "somente APKs próprios ou autorizados"
+  },
+  "rea": {
+    "role": "Engenharia reversa multi-alvo (nativo, managed, Electron/JS, firmware, web) com evidências",
+    "scope": "reverse-engineering/decompilation",
+    "url": "https://github.com/morluto/rea",
+    "enabledByDefault": false,
+    "activation": "quando a tarefa exigir evidência de artefato distribuído; preferir CLI simples quando suficiente"
+  },
+  "mcp-reverse": {
+    "role": "Inspeção de memória/processo para modding e engenharia reversa de jogos",
+    "scope": "game-modding single-player em cópias próprias",
+    "url": "https://github.com/1llu50ry/mcp-reverse",
+    "enabledByDefault": false,
+    "activation": "nunca em jogos online, anti-cheat ou software de terceiros sem autorização"
   }
 }

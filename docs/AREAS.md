@@ -1,6 +1,6 @@
 # Areas and context routing
 
-The catalog in `capabilities/areas/catalog.json` has 26 independent, composable disciplines. They can describe a software product, a business workflow, a media campaign, a game-porting project, or combinations of all of these.
+The catalog in `capabilities/areas/catalog.json` has 27 independent, composable disciplines. They can describe a software product, a business workflow, a media campaign, a game-porting project, or combinations of all of these.
 
 | Example | Areas | Activated artifacts |
 |---|---|---|

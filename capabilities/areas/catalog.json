@@ -463,7 +463,8 @@
         "github"
       ],
       "utilities": [
-        "git"
+        "git",
+        "mitmproxy"
       ]
     },
     "reverse-engineering": {
@@ -498,14 +499,28 @@
       ],
       "mcps": [
         "github",
-        "context7"
+        "context7",
+        "ghidra-mcp",
+        "rea",
+        "x64dbg-mcp",
+        "apktool-mcp"
       ],
       "plugins": [
         "github"
       ],
       "utilities": [
         "ghidra",
-        "python"
+        "python",
+        "imhex",
+        "frida",
+        "jadx",
+        "apktool",
+        "ilspy",
+        "x64dbg",
+        "binwalk",
+        "kaitai-struct",
+        "mitmproxy",
+        "webcrack"
       ]
     },
     "game-modding": {
@@ -538,14 +553,17 @@
         "graphics-performance"
       ],
       "mcps": [
-        "github"
+        "github",
+        "mcp-reverse"
       ],
       "plugins": [
         "github"
       ],
       "utilities": [
         "git",
-        "python"
+        "python",
+        "imhex",
+        "x64dbg"
       ]
     },
     "recompilation": {
@@ -617,14 +635,19 @@
       ],
       "mcps": [
         "github",
-        "context7"
+        "context7",
+        "ghidra-mcp",
+        "rea"
       ],
       "plugins": [
         "github"
       ],
       "utilities": [
         "ghidra",
-        "python"
+        "python",
+        "ilspy",
+        "jadx",
+        "objdiff"
       ]
     },
     "game-port": {
@@ -665,7 +688,8 @@
       ],
       "utilities": [
         "vulkaninfo",
-        "renderdoc"
+        "renderdoc",
+        "scskiller"
       ]
     },
     "ai-automation": {
@@ -1056,6 +1080,55 @@
       ],
       "utilities": [
         "python"
+      ]
+    },
+    "quant-finance": {
+      "label": "Quantitative Finance & Trading",
+      "description": "Market data, backtesting, trading bots and risk-aware strategy research",
+      "signals": {
+        "files": [
+          "**/backtest*/**",
+          "**/strategies/**",
+          "**/user_data/strategies/**",
+          "**/config/*exchange*.json"
+        ],
+        "keywords": [
+          "backtest",
+          "backtesting",
+          "trading bot",
+          "algorithmic trading",
+          "quant",
+          "quantitative finance",
+          "stock analysis",
+          "crypto trading",
+          "portfolio",
+          "freqtrade",
+          "openbb"
+        ]
+      },
+      "profiles": [
+        "quant-finance"
+      ],
+      "skills": [
+        "wb-quant-research",
+        "wb-analytics-insights"
+      ],
+      "agents": [
+        "quant-strategist",
+        "analytics-strategist"
+      ],
+      "mcps": [
+        "github",
+        "context7"
+      ],
+      "plugins": [
+        "google-sheets"
+      ],
+      "utilities": [
+        "python",
+        "jupyter",
+        "openbb",
+        "freqtrade"
       ]
     }
   }

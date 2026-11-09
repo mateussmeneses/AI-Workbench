@@ -1,0 +1,21 @@
+{
+  "description": "Quantitative finance research, backtesting and trading systems",
+  "skills": [
+    "wb-quant-research",
+    "wb-analytics-insights"
+  ],
+  "agents": [
+    "quant-strategist",
+    "analytics-strategist"
+  ],
+  "mcps": [
+    "github",
+    "context7"
+  ],
+  "utilities": [
+    "python",
+    "jupyter",
+    "openbb",
+    "freqtrade"
+  ]
+}

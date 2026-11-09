@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Added the `quant-finance` area (27 areas): `wb-quant-research` skill, `quant-strategist` role and profile with backtesting/data-provenance and no-live-execution-without-approval rules.
+- Added declared-only `switch2` platform with very experimental emulators.
+- Curated new references from reviewed GitHub stars and bookmarks: five opt-in MCP candidates (Ghidra, x64dbg, Apktool, REA, game-memory inspection), reverse-engineering utilities in area routing, declared-only `ps5`/`switch` game-port platforms with experimental runtime tools, PCSX2 as a PS2 reference runtime, title-specific port case studies, and a categorized reference list in `docs/RESEARCH.md`. No tool is installed, enabled or executed.
+
 - RM-008: Retained up to 10 private continuity snapshots and added session deltas for Git-status paths, pending items, task blockers/status, decisions and resource records; resource outcomes remain unknown until explicit user feedback.
 - RM-007: Added private `state.json` schema version 1 for observations, stable tasks, explicitly approved decisions and selected/rejected resources; legacy snapshots migrate without data loss and corrupt/future schemas fail closed.
 - RM-006: Added a private transaction journal, per-file backups and atomic replacements for managed writes/removals; the next mutating command rolls back an interrupted transaction without overwriting intervening edits.

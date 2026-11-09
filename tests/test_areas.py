@@ -11,8 +11,8 @@ from aiwh.cli import main
 class AreaTests(unittest.TestCase):
     def test_references_and_catalog(self):
         info = validate_catalog()
-        self.assertEqual(info['areas'], 26)
-        self.assertEqual(info['skills'], 45)
+        self.assertEqual(info['areas'], 27)
+        self.assertEqual(info['skills'], 46)
         self.assertIn('marketing', catalog())
         self.assertIn('sales', catalog())
         self.assertIn('reverse-engineering', catalog())

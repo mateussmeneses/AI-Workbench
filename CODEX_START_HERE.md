@@ -28,4 +28,4 @@ The term **continuity** does not imply that AI Workbench can read or export prop
 
 ## New: cross-domain area routing
 
-Use `aiwh areas` to list 26 areas. Use `aiwh recommend . --goal "..." --json` to inspect a read-only contextual plan; use multiple explicit `--area` values or opt in with `--auto-areas` during `aiwh init`. Agent roles are reference templates. MCP/plugin recommendations never activate external connections or require private tokens. See `docs/AREAS.md` and `docs/RESEARCH.md` before extending the catalog.
+Use `aiwh areas` to list 27 areas. Use `aiwh recommend . --goal "..." --json` to inspect a read-only contextual plan; use multiple explicit `--area` values or opt in with `--auto-areas` during `aiwh init`. Agent roles are reference templates. MCP/plugin recommendations never activate external connections or require private tokens. See `docs/AREAS.md` and `docs/RESEARCH.md` before extending the catalog.

@@ -84,6 +84,15 @@ class GamePortingTests(unittest.TestCase):
                 result = assess_game_port(self.root, platform=platform, track="static-recomp")
                 self.assertIn(tool, [t["name"] for t in result["tools"]])
 
+    def test_declared_ps5_and_switch_route_to_experimental_runtimes(self):
+        for platform, tool in (("ps5", "PortPS5"), ("switch", "nxnative"), ("switch2", "Eglantine")):
+            with self.subTest(platform=platform):
+                result = assess_game_port(self.root, platform=platform, goal="native port")
+                self.assertEqual(result["track"], "compatibility-runtime")
+                self.assertEqual(result["platform_provenance"], "user-declared")
+                self.assertIn(tool, [t["name"] for t in result["tools"]])
+                self.assertTrue(any("experimental" in w for w in result["warnings"]))
+
     def test_conflicting_platform_and_unknown_goal(self):
         with self.assertRaisesRegex(ValueError, "conflicts"):
             assess_game_port(self.root, binary=self.binary(b"XEX2" + b"\x00" * 64), platform="ps2")
