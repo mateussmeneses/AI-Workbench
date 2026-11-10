@@ -3353,6 +3353,247 @@
         "authorized-only"
       ],
       "group": "Windows setup"
+    },
+    "anyconv": {
+      "title": "AnyConv",
+      "url": "https://anyconv.com/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "clipconverter": {
+      "title": "ClipConverter",
+      "url": "https://www.clipconverter.cc/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Media and file utilities"
+    },
+    "mp3cut": {
+      "title": "MP3Cut",
+      "url": "https://mp3cut.net/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "y2meta": {
+      "title": "Y2meta",
+      "url": "https://y2meta.is/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Media and file utilities"
+    },
+    "scribd-downloader": {
+      "title": "Scribd Downloader",
+      "url": "https://scribd.vdownloaders.com/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Media and file utilities"
+    },
+    "slidesaver": {
+      "title": "SlideSaver",
+      "url": "https://slidesaver.app/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Media and file utilities"
+    },
+    "remove-bg": {
+      "title": "Remove.bg",
+      "url": "https://www.remove.bg/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "smallpdf": {
+      "title": "Smallpdf",
+      "url": "https://smallpdf.com/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "imagy-poster-print": {
+      "title": "Imagy poster print",
+      "url": "https://imagy.app/pt/print-image-on-multiple-pages/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "rasterbator": {
+      "title": "Rasterbator",
+      "url": "https://posterizer.online/rasterbator/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "myinstants": {
+      "title": "Myinstants",
+      "url": "https://www.myinstants.com/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "watch2gether": {
+      "title": "Watch2Gether",
+      "url": "https://w2g.tv/",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "cambridge-dictionary": {
+      "title": "Cambridge Dictionary",
+      "url": "https://dictionary.cambridge.org/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "google-translate": {
+      "title": "Google Translate",
+      "url": "https://translate.google.com/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "grammarly": {
+      "title": "Grammarly",
+      "url": "https://www.grammarly.com/grammar-check",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "reverso-context": {
+      "title": "Reverso Context",
+      "url": "https://context.reverso.net/traducao/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "mathway": {
+      "title": "Mathway",
+      "url": "https://www.mathway.com/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "escola-virtual-gov": {
+      "title": "Escola Virtual Gov",
+      "url": "https://www.escolavirtual.gov.br/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "invertexto-text-tools-temp-mail": {
+      "title": "Invertexto (text tools, temp mail)",
+      "url": "https://www.invertexto.com/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "temp-mail": {
+      "title": "Temp Mail",
+      "url": "https://etempmail.com/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "General utilities"
+    },
+    "gerador-de-chassi": {
+      "title": "Gerador de chassi",
+      "url": "https://geradornv.com.br/gerador-chassi/",
+      "category": "other",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "General utilities"
     }
   }
 }

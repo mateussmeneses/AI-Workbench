@@ -103,6 +103,18 @@ Areas: `content-creation`, `marketing`
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
 | [clonechat](https://github.com/felipeadeildo/clonechat) | repository | content-creation | tos-check, licensing-check | - |
+| Media and file utilities: [AnyConv](https://anyconv.com/) | site | content-creation | - | - |
+| Media and file utilities: [ClipConverter](https://www.clipconverter.cc/) | site | content-creation | tos-check | - |
+| Media and file utilities: [Imagy poster print](https://imagy.app/pt/print-image-on-multiple-pages/) | site | content-creation | - | - |
+| Media and file utilities: [MP3Cut](https://mp3cut.net/) | site | content-creation | - | - |
+| Media and file utilities: [Myinstants](https://www.myinstants.com/) | site | content-creation | - | - |
+| Media and file utilities: [Rasterbator](https://posterizer.online/rasterbator/) | site | content-creation | - | - |
+| Media and file utilities: [Remove.bg](https://www.remove.bg/) | site | content-creation | - | - |
+| Media and file utilities: [Scribd Downloader](https://scribd.vdownloaders.com/) | site | content-creation | tos-check | - |
+| Media and file utilities: [SlideSaver](https://slidesaver.app/) | site | content-creation | tos-check | - |
+| Media and file utilities: [Smallpdf](https://smallpdf.com/) | site | content-creation | - | - |
+| Media and file utilities: [Watch2Gether](https://w2g.tv/) | site | content-creation | - | - |
+| Media and file utilities: [Y2meta](https://y2meta.is/) | site | content-creation | tos-check | - |
 | Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
 | Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
 | Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
@@ -282,6 +294,15 @@ Areas: `operations`
 |---|---|---|---|---|
 | [gerenciador-viagens](https://github.com/AntonioMontanha/gerenciador-viagens) | repository | operations | - | - |
 | [louvorja/desktop](https://github.com/louvorja/desktop) | repository | operations | - | - |
+| General utilities: [Cambridge Dictionary](https://dictionary.cambridge.org/) | site | content-creation | - | - |
+| General utilities: [Escola Virtual Gov](https://www.escolavirtual.gov.br/) | site | content-creation | - | - |
+| General utilities: [Gerador de chassi](https://geradornv.com.br/gerador-chassi/) | site | qa-testing | - | - |
+| General utilities: [Google Translate](https://translate.google.com/) | site | content-creation | - | - |
+| General utilities: [Grammarly](https://www.grammarly.com/grammar-check) | site | content-creation | - | - |
+| General utilities: [Invertexto (text tools, temp mail)](https://www.invertexto.com/) | site | qa-testing | - | - |
+| General utilities: [Mathway](https://www.mathway.com/) | site | content-creation | - | - |
+| General utilities: [Reverso Context](https://context.reverso.net/traducao/) | site | content-creation | - | - |
+| General utilities: [Temp Mail](https://etempmail.com/) | site | qa-testing | tos-check | - |
 
 ## Reverse-engineering tools
 
