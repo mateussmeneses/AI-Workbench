@@ -28,6 +28,7 @@ Areas: `ai-automation`
 | Computer/browser use: [Lightpanda](https://github.com/lightpanda-io/browser) | repository | ai-automation, qa-testing | - | - |
 | Continuity and cost: [agent-second-brain](https://github.com/smixs/agent-second-brain) | repository | ai-automation | tos-check | 2026-11-10 (MIT) |
 | Continuity and cost: [ai-memory](https://github.com/akitaonrails/ai-memory) | repository | ai-automation | - | 2026-11-10 (MIT) |
+| Continuity and cost: [billion-context](https://github.com/ranxianglei/billion-context) | repository | ai-automation | experimental | - |
 | Continuity and cost: [COG-second-brain](https://github.com/huytieu/COG-second-brain) | repository | ai-automation | - | 2026-11-10 (MIT) |
 | Continuity and cost: [gbrain](https://github.com/garrytan/gbrain) | repository | ai-automation | - | 2026-11-10 (MIT) |
 | Continuity and cost: [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | guide | ai-automation | - | 2026-11-10 |
@@ -57,6 +58,7 @@ Areas: `security`, `qa-testing`
 |---|---|---|---|---|
 | AI PR review: [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | repository | security, qa-testing | - | - |
 | AI PR review: [opencodereview](https://github.com/BridgLabs/opencodereview) | repository | security, qa-testing | - | - |
+| Anti-AI reverse-engineering hardening: [BLA (Blind LLM Agents)](https://github.com/qybaihe/bla) | repository | security, reverse-engineering, desktop | experimental | - |
 | Audits and pentest automation: [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | repository | security, qa-testing | - | - |
 | Audits and pentest automation: [guardian-cli](https://github.com/zakirkun/guardian-cli) | repository | security, qa-testing | authorized-only | - |
 | Audits and pentest automation: [Shannon](https://github.com/KeygraphHQ/shannon) | repository | security, qa-testing | authorized-only | - |
@@ -85,6 +87,7 @@ Areas: `ai-automation`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [agents-towards-production](https://github.com/NirDiamant/agents-towards-production) | repository | ai-automation | - | - |
 | Courses: [ai-agents-for-beginners](https://github.com/microsoft/ai-agents-for-beginners) | list | ai-automation | - | - |
 | Courses: [llm-course](https://github.com/mlabonne/llm-course) | list | ai-automation | - | - |
 | Courses: [RAG_Techniques](https://github.com/NirDiamant/RAG_Techniques) | list | ai-automation | - | - |
@@ -99,6 +102,7 @@ Areas: `content-creation`, `marketing`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [clonechat](https://github.com/felipeadeildo/clonechat) | repository | content-creation | tos-check, licensing-check | - |
 | Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
 | Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
 | Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
@@ -143,10 +147,12 @@ Areas: `security`
 |---|---|---|---|---|
 | Android privilege escalation research: [CVE-2026-43499-root-KernelSU](https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU) | repository | security | authorized-only | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [ai-jailbreaks](https://github.com/Alejandros17487/ai-jailbreaks) | repository | security | authorized-only | - |
-| LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security | authorized-only, tos-check | - |
+| LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security, ai-automation | authorized-only, tos-check, experimental | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | repository | security | authorized-only | - |
+| OSINT: [sherlock](https://github.com/sherlock-project/sherlock) | repository | security | authorized-only | - |
 | Offensive toolkits and scanners: [hackingtool](https://github.com/Z4nzu/hackingtool) | repository | security | authorized-only | - |
 | Offensive toolkits and scanners: [php2shell-scanner](https://github.com/assetnote/php2shell-scanner) | repository | security | authorized-only | - |
+| Web payload references: [Ultimate XSS Polyglot (HackVault)](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot) | guide | security, frontend | authorized-only | - |
 
 ## LLM gateways and providers
 
@@ -158,8 +164,11 @@ Areas: `ai-automation`
 | [freellmapi](https://github.com/tashfeenahmed/freellmapi) | repository | ai-automation | tos-check | - |
 | [locally-uncensored](https://github.com/PurpleDoubleD/locally-uncensored) | repository | ai-automation | tos-check | - |
 | [OmniRoute](https://github.com/cheaper-inference/OmniRoute) | repository | ai-automation | tos-check | - |
+| [openclaude](https://github.com/Twigpine/openclaude) | repository | ai-automation | tos-check, experimental | - |
 | [Vyce AI](https://vyceai.com) | site | ai-automation | tos-check | - |
 | [ZenMux](https://zenmux.ai) | site | ai-automation | tos-check | - |
+| Free LLM API lists: [awesome-freellm-apis](https://github.com/open-free-llm-api/awesome-freellm-apis) | list | ai-automation, api-integration | tos-check, experimental | - |
+| Free LLM API lists: [BitLLM (P2P inference)](https://bitllm.org/) | site | ai-automation | experimental | - |
 
 ## Desktop, mobile and productivity tools
 
@@ -202,6 +211,7 @@ Areas: `reverse-engineering`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [Apple device model IDs](https://gist.github.com/adamawolf/3048717) | guide | mobile-app, reverse-engineering | - | - |
 | [Claude Code para Reverse Engineering](https://x.com/Gyome1_/status/2111774069783720195) | guide | reverse-engineering | - | - |
 | [GitHub topic: android-reverse-engineering](https://github.com/topics/android-reverse-engineering) | list | reverse-engineering | - | - |
 | [Reverse Engineering com Opus](https://x.com/0xMovez/status/2109604520770548146) | guide | reverse-engineering | - | - |
@@ -241,6 +251,7 @@ Areas: `reverse-engineering`, `mobile-app`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [apk-reverse](https://github.com/newliver666/apk-reverse) | repository | reverse-engineering, mobile-app | authorized-only, experimental | - |
 | [apk.sh](https://github.com/ax/apk.sh) | tool | reverse-engineering, mobile-app | - | - |
 | [APKEditor](https://github.com/REAndroid/APKEditor) | tool | reverse-engineering, mobile-app | - | - |
 | [Apktool](https://github.com/iBotPeaches/Apktool) | tool | reverse-engineering, mobile-app | - | - |
@@ -267,7 +278,10 @@ Areas: `game-port`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [bluewake](https://github.com/chrissotraidis/bluewake) | repository | game-port, reverse-engineering | licensing-check, experimental | - |
+| [PS-Game-Patch](https://github.com/illusionyy/PS-Game-Patch) | repository | game-modding | licensing-check | - |
 | [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - | - |
+| [shadPS4 (AYOUB1080p fork)](https://github.com/weshayoub92/shadPS4-AYOUB1080p) | repository | game-port | licensing-check, experimental | - |
 
 ## Reverse engineering learning path
 

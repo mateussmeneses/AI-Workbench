@@ -1049,11 +1049,13 @@
       "category": "red-team",
       "kind": "repository",
       "areas": [
-        "security"
+        "security",
+        "ai-automation"
       ],
       "risk": [
         "authorized-only",
-        "tos-check"
+        "tos-check",
+        "experimental"
       ],
       "group": "LLM safety/jailbreak corpora (red-teaming evaluation)"
     },
@@ -2299,6 +2301,189 @@
       ],
       "risk": [],
       "group": "Find an open-source base"
+    },
+    "ranxianglei-billion-context": {
+      "title": "billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Continuity and cost"
+    },
+    "qybaihe-bla": {
+      "title": "BLA (Blind LLM Agents)",
+      "url": "https://github.com/qybaihe/bla",
+      "category": "review-security",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "reverse-engineering",
+        "desktop"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Anti-AI reverse-engineering hardening"
+    },
+    "open-free-llm-api-awesome-freellm-apis": {
+      "title": "awesome-freellm-apis",
+      "url": "https://github.com/open-free-llm-api/awesome-freellm-apis",
+      "category": "llm-gateways",
+      "kind": "list",
+      "areas": [
+        "ai-automation",
+        "api-integration"
+      ],
+      "risk": [
+        "tos-check",
+        "experimental"
+      ],
+      "group": "Free LLM API lists"
+    },
+    "bitllm": {
+      "title": "BitLLM (P2P inference)",
+      "url": "https://bitllm.org/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Free LLM API lists"
+    },
+    "sherlock-project-sherlock": {
+      "title": "sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT"
+    },
+    "hackvault-xss-polyglot": {
+      "title": "Ultimate XSS Polyglot (HackVault)",
+      "url": "https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot",
+      "category": "red-team",
+      "kind": "guide",
+      "areas": [
+        "security",
+        "frontend"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Web payload references"
+    },
+    "newliver666-apk-reverse": {
+      "title": "apk-reverse",
+      "url": "https://github.com/newliver666/apk-reverse",
+      "category": "android-managed",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "mobile-app"
+      ],
+      "risk": [
+        "authorized-only",
+        "experimental"
+      ]
+    },
+    "illusionyy-ps-game-patch": {
+      "title": "PS-Game-Patch",
+      "url": "https://github.com/illusionyy/PS-Game-Patch",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "licensing-check"
+      ]
+    },
+    "weshayoub92-shadps4-ayoub1080p": {
+      "title": "shadPS4 (AYOUB1080p fork)",
+      "url": "https://github.com/weshayoub92/shadPS4-AYOUB1080p",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ]
+    },
+    "chrissotraidis-bluewake": {
+      "title": "bluewake",
+      "url": "https://github.com/chrissotraidis/bluewake",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port",
+        "reverse-engineering"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ]
+    },
+    "twigpine-openclaude": {
+      "title": "openclaude",
+      "url": "https://github.com/Twigpine/openclaude",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check",
+        "experimental"
+      ]
+    },
+    "nirdiamant-agents-towards-production": {
+      "title": "agents-towards-production",
+      "url": "https://github.com/NirDiamant/agents-towards-production",
+      "category": "llm-learning",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": []
+    },
+    "adamawolf-apple-device-model-ids": {
+      "title": "Apple device model IDs",
+      "url": "https://gist.github.com/adamawolf/3048717",
+      "category": "guides",
+      "kind": "guide",
+      "areas": [
+        "mobile-app",
+        "reverse-engineering"
+      ],
+      "risk": []
+    },
+    "felipeadeildo-clonechat": {
+      "title": "clonechat",
+      "url": "https://github.com/felipeadeildo/clonechat",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check",
+        "licensing-check"
+      ]
     }
   }
 }
