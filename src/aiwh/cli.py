@@ -42,6 +42,7 @@ def get_parser():
     rf.add_argument('--area', action='append', default=[])
     rf.add_argument('--risk', help='only references carrying this risk label')
     rf.add_argument('--json', action='store_true')
+    rf.add_argument('--unreviewed', action='store_true', help='only references without a recorded review date')
     rf.add_argument('--markdown', action='store_true', help='print the generated docs/REFERENCES.md')
     ca = sub.add_parser('catalog', help='curated reference catalog maintenance')
     ca_sub = ca.add_subparsers(dest='catalog_action', required=True)
@@ -76,6 +77,25 @@ def get_parser():
     he.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     he.add_argument('--format', choices=['json', 'markdown', 'claude-memory', 'wiki'], default='markdown')
     he.add_argument('--output', type=Path, help='directory to write files; omitted prints to stdout')
+    hp = ho_sub.add_parser('plan', help='self-contained execution plan for the next eligible task (read-only)')
+    hp.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hp.add_argument('--task', help='plan this task ID instead of the next eligible one')
+    hp.add_argument('--json', action='store_true')
+    hp.add_argument('--output', type=Path, help='file to write the plan; omitted prints to stdout')
+    hc = ho_sub.add_parser('check', help='exit 1 when HEAD moved since the last handoff or a plan was written')
+    hc.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hc.add_argument('--plan', type=Path, help='plan file whose source revision is the baseline')
+    hc.add_argument('--json', action='store_true')
+    hl = ho_sub.add_parser('lint', help='report orphaned tasks, unverified decisions and other stale state (read-only)')
+    hl.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hl.add_argument('--json', action='store_true')
+    hl.add_argument('--strict', action='store_true', help='exit 1 when findings exist')
+    hk = ho_sub.add_parser('claim', help='record that one agent owns a task; a task has one owner at a time')
+    hk.add_argument('task')
+    hk.add_argument('--by', required=True, help='agent or person taking the task')
+    hk.add_argument('--project', type=Path, default=Path.cwd())
+    hk.add_argument('--release', action='store_true', help='release a claim held by --by')
+    hk.add_argument('--dry-run', action='store_true')
     ins = sub.add_parser('inspect', help='identify an analysis target and route it to a method, tools and skills')
     ins.add_argument('target', type=Path)
     ins.add_argument('--json', action='store_true')
@@ -292,6 +312,8 @@ def main(argv=None):
             print(references_markdown(), end='')
             return 0
         rows = references_for(args.area or None, risk=args.risk)
+        if args.unreviewed:
+            rows = [row for row in rows if not row.get('reviewed')]
         if args.json:
             print(json.dumps(rows, indent=2, ensure_ascii=False))
         else:
@@ -352,6 +374,41 @@ def main(argv=None):
                 if len(result['files']) > 1:
                     print(f'===== {name}')
                 print(content, end='')
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'plan':
+        from .handoff_plan import build_plan, plan_markdown
+        plan = build_plan(args.path, task_id=args.task)
+        text = (json.dumps(plan, indent=2, ensure_ascii=False) + '\n') if args.json else plan_markdown(plan)
+        if args.output:
+            args.output.write_text(text, encoding='utf-8')
+            print(f'Plan written: {args.output}')
+        else:
+            print(text, end='')
+        return 0 if plan['task'] else 1
+    if args.command == 'handoff' and args.handoff_action == 'check':
+        from .handoff_plan import check_drift, drift_markdown
+        result = check_drift(args.path, plan=args.plan)
+        print(json.dumps(result, indent=2, ensure_ascii=False) if args.json else drift_markdown(result), end='\n' if args.json else '')
+        return {'current': 0, 'drifted': 1}.get(result['status'], 2)
+    if args.command == 'handoff' and args.handoff_action == 'lint':
+        from .handoff_plan import lint_handoff
+        result = lint_handoff(args.path)
+        if args.json:
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+        else:
+            for finding in result['findings']:
+                print(f'{finding["rule"]:<26} {finding["id"]}: {finding["detail"]}')
+            print(f'{len(result["findings"])} findings across {result["tasks"]} tasks and '
+                  f'{result["decisions"]} decisions')
+        return 1 if args.strict and result['findings'] else 0
+    if args.command == 'handoff' and args.handoff_action == 'claim':
+        from .handoff_plan import claim_task
+        try:
+            result = claim_task(args.project, args.task, args.by, release=args.release, dry_run=args.dry_run)
+        except ValueError as error:
+            print(f'Not claimed: {error}')
+            return 1
+        print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'report':
         items = read_catalog(home)

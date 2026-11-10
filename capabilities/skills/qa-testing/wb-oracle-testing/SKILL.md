@@ -21,7 +21,8 @@ An oracle is any check that compares a result with a reference you trust. The mo
 3. **Generate inputs** - spec cases, ordinary use, edge values (empty, maximum, unicode, negative, zero), malformed or corrupt input, and properties (round-trip, idempotence, monotonicity).
 4. **Plant failures** - create at least three wrong variants: change one constant, swap one branch, shift one boundary by one. Run the oracle on each. Every variant must be rejected. If any passes, fix the oracle first and treat every earlier green result as suspect.
 5. **Audit after an oracle fix** - re-run everything the weaker oracle accepted; search for the same defect class across the codebase (for example, every floating-point literal reference).
-6. **Report** - match rate per input group, divergences as input / reference output / candidate output, and the planted-failure results. End machine-readable reports with one summary line (for example `RESULT wrong=0 crash=0`).
+6. **Isolate the verifier** - whoever runs the oracle receives the candidate's path, the reference and the comparison rules, not the implementer's description of what was built. A verifier told what to expect tends to confirm it.
+7. **Report** - match rate per input group, divergences as input / reference output / candidate output, and the planted-failure results. End machine-readable reports with one summary line (for example `RESULT wrong=0 crash=0`).
 
 ## Templates
 `templates/planted-failures.md` - checklist and prompt for the three mutants.

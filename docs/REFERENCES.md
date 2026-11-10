@@ -4,6 +4,8 @@
 
 Public references curated from reviewed sources. They are evaluation candidates, not endorsements;
 nothing is installed, cloned or executed by AI Workbench. Descriptions are self-reported by authors.
+Reviewed is the date the entry was last read by a maintainer, with the license its README stated then;
+`-` means no review date is recorded.
 
 ## Risk labels
 
@@ -17,305 +19,311 @@ nothing is installed, cloned or executed by AI Workbench. Descriptions are self-
 
 Areas: `ai-automation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Code understanding: [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) | list | ai-automation | - |
-| Code understanding: [craft-anything](https://github.com/storytold/craft-anything) | repository | ai-automation | - |
-| Code understanding: [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything) | repository | ai-automation | - |
-| Computer/browser use: [agent-desktop](https://github.com/vercel-labs/agent-desktop) | repository | ai-automation, qa-testing | - |
-| Computer/browser use: [Lightpanda](https://github.com/lightpanda-io/browser) | repository | ai-automation, qa-testing | - |
-| Continuity and cost: [ai-memory](https://github.com/akitaonrails/ai-memory) | repository | ai-automation | - |
-| Continuity and cost: [TokenEconomizer](https://github.com/microsoft/TokenEconomizer) | repository | ai-automation | - |
-| Curated lists: [awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | list | ai-automation | - |
-| Curated lists: [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit) | list | ai-automation | - |
-| Curated lists: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | list | ai-automation | - |
-| Curated lists: [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | list | ai-automation | - |
-| Curated lists: [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | list | ai-automation | - |
-| Harnesses: [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | repository | ai-automation | - |
-| Harnesses: [hermes-agent](https://github.com/NousResearch/hermes-agent) | repository | ai-automation | - |
-| Harnesses: [jcode](https://github.com/1jehuang/jcode) | repository | ai-automation | - |
-| Harnesses: [opencode](https://github.com/anomalyco/opencode) | repository | ai-automation | - |
-| Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - |
-| Skill collections: [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | repository | ai-automation | - |
-| Skill collections: [mattpocock/skills](https://github.com/mattpocock/skills) | repository | ai-automation | - |
-| Skill collections: [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | repository | ai-automation | - |
-| Skill collections: [TechNomadCode/AI-Product-Development-Toolkit](https://github.com/TechNomadCode/AI-Product-Development-Toolkit) | repository | ai-automation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Code understanding: [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) | list | ai-automation | - | - |
+| Code understanding: [craft-anything](https://github.com/storytold/craft-anything) | repository | ai-automation | - | - |
+| Code understanding: [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything) | repository | ai-automation | - | - |
+| Computer/browser use: [agent-desktop](https://github.com/vercel-labs/agent-desktop) | repository | ai-automation, qa-testing | - | - |
+| Computer/browser use: [Lightpanda](https://github.com/lightpanda-io/browser) | repository | ai-automation, qa-testing | - | - |
+| Continuity and cost: [agent-second-brain](https://github.com/smixs/agent-second-brain) | repository | ai-automation | tos-check | 2026-11-10 (MIT) |
+| Continuity and cost: [ai-memory](https://github.com/akitaonrails/ai-memory) | repository | ai-automation | - | 2026-11-10 (MIT) |
+| Continuity and cost: [COG-second-brain](https://github.com/huytieu/COG-second-brain) | repository | ai-automation | - | 2026-11-10 (MIT) |
+| Continuity and cost: [gbrain](https://github.com/garrytan/gbrain) | repository | ai-automation | - | 2026-11-10 (MIT) |
+| Continuity and cost: [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | guide | ai-automation | - | 2026-11-10 |
+| Continuity and cost: [TokenEconomizer](https://github.com/microsoft/TokenEconomizer) | repository | ai-automation | - | - |
+| Curated lists: [awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | list | ai-automation | - | - |
+| Curated lists: [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit) | list | ai-automation | - | - |
+| Curated lists: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | list | ai-automation | - | - |
+| Curated lists: [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | list | ai-automation | - | - |
+| Curated lists: [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | list | ai-automation | - | - |
+| Harnesses: [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | repository | ai-automation | - | - |
+| Harnesses: [hermes-agent](https://github.com/NousResearch/hermes-agent) | repository | ai-automation | - | - |
+| Harnesses: [jcode](https://github.com/1jehuang/jcode) | repository | ai-automation | - | - |
+| Harnesses: [opencode](https://github.com/anomalyco/opencode) | repository | ai-automation | - | - |
+| Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - | - |
+| Skill collections: [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | repository | ai-automation | - | - |
+| Skill collections: [flawless-ui-ux](https://github.com/smokeeaasd/flawless-ui-ux) | repository | ux-design, frontend | - | 2026-11-10 (MIT) |
+| Skill collections: [improve](https://github.com/shadcn/improve) | repository | ai-automation, qa-testing | - | 2026-11-10 (MIT) |
+| Skill collections: [mattpocock/skills](https://github.com/mattpocock/skills) | repository | ai-automation | - | - |
+| Skill collections: [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | repository | ai-automation | - | - |
+| Skill collections: [TechNomadCode/AI-Product-Development-Toolkit](https://github.com/TechNomadCode/AI-Product-Development-Toolkit) | repository | ai-automation | - | - |
 
 ## Code review and security
 
 Areas: `security`, `qa-testing`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| AI PR review: [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | repository | security, qa-testing | - |
-| AI PR review: [opencodereview](https://github.com/BridgLabs/opencodereview) | repository | security, qa-testing | - |
-| Audits and pentest automation: [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | repository | security, qa-testing | - |
-| Audits and pentest automation: [guardian-cli](https://github.com/zakirkun/guardian-cli) | repository | security, qa-testing | authorized-only |
-| Audits and pentest automation: [Shannon](https://github.com/KeygraphHQ/shannon) | repository | security, qa-testing | authorized-only |
-| Learning path: [The-BlackHAT-roadmap](https://github.com/SagarBiswas-MultiHAT/The-BlackHAT-roadmap) | list | security, qa-testing | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| AI PR review: [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | repository | security, qa-testing | - | - |
+| AI PR review: [opencodereview](https://github.com/BridgLabs/opencodereview) | repository | security, qa-testing | - | - |
+| Audits and pentest automation: [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | repository | security, qa-testing | - | - |
+| Audits and pentest automation: [guardian-cli](https://github.com/zakirkun/guardian-cli) | repository | security, qa-testing | authorized-only | - |
+| Audits and pentest automation: [Shannon](https://github.com/KeygraphHQ/shannon) | repository | security, qa-testing | authorized-only | - |
+| Learning path: [The-BlackHAT-roadmap](https://github.com/SagarBiswas-MultiHAT/The-BlackHAT-roadmap) | list | security, qa-testing | - | - |
 
 ## Reverse engineering with agents
 
 Areas: `reverse-engineering`, `decompilation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Example rebuilds: [dx-ball](https://github.com/N0zoM1z0/dx-ball) | repository | reverse-engineering, decompilation | - |
-| Example rebuilds: [rec-rs](https://github.com/michaelshimeles/rec-rs) | repository | reverse-engineering, decompilation | - |
-| Game modding: [decomp.wtf](https://github.com/i12bp8/decomp.wtf) | repository | reverse-engineering, decompilation | - |
-| Game modding: [universal-modder](https://github.com/rehan-remade/universal-modder) | repository | reverse-engineering, decompilation | - |
-| REA ecosystem: [Awesome-REA](https://github.com/reacher-z/Awesome-REA) | list | reverse-engineering, decompilation | - |
-| REA ecosystem: [awesome-reverse-engineer-anything](https://github.com/AIshihzong/awesome-reverse-engineer-anything) | list | reverse-engineering, decompilation | - |
-| REA ecosystem: [leanrea](https://github.com/aicodeking/leanrea) | repository | reverse-engineering, decompilation | - |
-| REA ecosystem: [rea](https://github.com/morluto/rea) | repository | reverse-engineering, decompilation | - |
-| REA ecosystem: [rea-lab](https://github.com/pablodiazjorge/rea-lab) | repository | reverse-engineering, decompilation | - |
-| REA ecosystem: [REA-Prompts](https://github.com/JoasASantos/REA-Prompts) | repository | reverse-engineering, decompilation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Example rebuilds: [dx-ball](https://github.com/N0zoM1z0/dx-ball) | repository | reverse-engineering, decompilation | - | - |
+| Example rebuilds: [rec-rs](https://github.com/michaelshimeles/rec-rs) | repository | reverse-engineering, decompilation | - | - |
+| Game modding: [decomp.wtf](https://github.com/i12bp8/decomp.wtf) | repository | reverse-engineering, decompilation | - | - |
+| Game modding: [universal-modder](https://github.com/rehan-remade/universal-modder) | repository | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [Awesome-REA](https://github.com/reacher-z/Awesome-REA) | list | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [awesome-reverse-engineer-anything](https://github.com/AIshihzong/awesome-reverse-engineer-anything) | list | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [leanrea](https://github.com/aicodeking/leanrea) | repository | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [rea](https://github.com/morluto/rea) | repository | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [rea-lab](https://github.com/pablodiazjorge/rea-lab) | repository | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [REA-Prompts](https://github.com/JoasASantos/REA-Prompts) | repository | reverse-engineering, decompilation | - | - |
 
 ## LLM learning and local models
 
 Areas: `ai-automation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Courses: [ai-agents-for-beginners](https://github.com/microsoft/ai-agents-for-beginners) | list | ai-automation | - |
-| Courses: [llm-course](https://github.com/mlabonne/llm-course) | list | ai-automation | - |
-| Courses: [RAG_Techniques](https://github.com/NirDiamant/RAG_Techniques) | list | ai-automation | - |
-| Local inference: [kimi-k3-in-c](https://github.com/FareedKhan-dev/kimi-k3-in-c) | repository | ai-automation | experimental |
-| Local inference: [kokoro](https://github.com/hexgrad/kokoro) | repository | ai-automation | - |
-| Local inference: [pocketpal-ai](https://github.com/a-ghorbani/pocketpal-ai) | repository | ai-automation | - |
-| Local inference: [VoiceStudio](https://github.com/debpalash/VoiceStudio) | repository | ai-automation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Courses: [ai-agents-for-beginners](https://github.com/microsoft/ai-agents-for-beginners) | list | ai-automation | - | - |
+| Courses: [llm-course](https://github.com/mlabonne/llm-course) | list | ai-automation | - | - |
+| Courses: [RAG_Techniques](https://github.com/NirDiamant/RAG_Techniques) | list | ai-automation | - | - |
+| Local inference: [kimi-k3-in-c](https://github.com/FareedKhan-dev/kimi-k3-in-c) | repository | ai-automation | experimental | - |
+| Local inference: [kokoro](https://github.com/hexgrad/kokoro) | repository | ai-automation | - | - |
+| Local inference: [pocketpal-ai](https://github.com/a-ghorbani/pocketpal-ai) | repository | ai-automation | - | - |
+| Local inference: [VoiceStudio](https://github.com/debpalash/VoiceStudio) | repository | ai-automation | - | - |
 
 ## Content, media and marketing
 
 Areas: `content-creation`, `marketing`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - |
-| Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - |
-| Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - |
-| Video/media: [anatomy](https://github.com/wheresryan22/anatomy) | repository | content-creation, marketing | - |
-| Video/media: [HeliosGen](https://github.com/SegFault42/HeliosGen) | repository | content-creation, marketing | - |
-| Video/media: [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | repository | content-creation, marketing | licensing-check |
-| Video/media: [motion-graphics-skills](https://github.com/charlie947/motion-graphics-skills) | repository | content-creation, marketing | - |
-| Video/media: [OpenCut](https://github.com/OpenCut-app/OpenCut) | repository | content-creation, marketing | - |
-| Video/media: [rea-video](https://github.com/JuneYaooo/rea-video) | repository | content-creation, marketing | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
+| Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
+| Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
+| Video/media: [anatomy](https://github.com/wheresryan22/anatomy) | repository | content-creation, marketing | - | - |
+| Video/media: [HeliosGen](https://github.com/SegFault42/HeliosGen) | repository | content-creation, marketing | - | - |
+| Video/media: [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | repository | content-creation, marketing | licensing-check | - |
+| Video/media: [motion-graphics-skills](https://github.com/charlie947/motion-graphics-skills) | repository | content-creation, marketing | - | - |
+| Video/media: [OpenCut](https://github.com/OpenCut-app/OpenCut) | repository | content-creation, marketing | - | - |
+| Video/media: [rea-video](https://github.com/JuneYaooo/rea-video) | repository | content-creation, marketing | - | - |
 
 ## Quantitative finance
 
 Areas: `quant-finance`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [awesome-quant](https://github.com/wilsonfreitas/awesome-quant) | list | quant-finance | financial-risk |
-| [daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | repository | quant-finance | financial-risk |
-| [day-trader-skill](https://github.com/Jakeschincariol/day-trader-skill) | repository | quant-finance | financial-risk |
-| [freqtrade](https://github.com/freqtrade/freqtrade) | repository | quant-finance | financial-risk |
-| [Kronos](https://github.com/shiyu-coder/Kronos) | repository | quant-finance | financial-risk |
-| [OpenBB](https://github.com/openbq-org/OpenBB) | repository | quant-finance | financial-risk |
-| [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | repository | quant-finance | financial-risk |
-| [trader-skill](https://github.com/Jakeschincariol/trader-skill) | repository | quant-finance | financial-risk |
-| [TradingAgents](https://github.com/TauricResearch/TradingAgents) | repository | quant-finance | financial-risk |
-| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) | repository | quant-finance | financial-risk |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [awesome-quant](https://github.com/wilsonfreitas/awesome-quant) | list | quant-finance | financial-risk | - |
+| [daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | repository | quant-finance | financial-risk | - |
+| [day-trader-skill](https://github.com/Jakeschincariol/day-trader-skill) | repository | quant-finance | financial-risk | - |
+| [freqtrade](https://github.com/freqtrade/freqtrade) | repository | quant-finance | financial-risk | - |
+| [Kronos](https://github.com/shiyu-coder/Kronos) | repository | quant-finance | financial-risk | - |
+| [OpenBB](https://github.com/openbq-org/OpenBB) | repository | quant-finance | financial-risk | - |
+| [tick-stock-panel](https://github.com/shy3130/tick-stock-panel) | repository | quant-finance | financial-risk | - |
+| [trader-skill](https://github.com/Jakeschincariol/trader-skill) | repository | quant-finance | financial-risk | - |
+| [TradingAgents](https://github.com/TauricResearch/TradingAgents) | repository | quant-finance | financial-risk | - |
+| [Vibe-Trading](https://github.com/HKUDS/Vibe-Trading) | repository | quant-finance | financial-risk | - |
 
 ## QA (Portuguese-language)
 
 Areas: `qa-testing`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [api-clientes-exemplo-microservico](https://github.com/vinnypessoni/api-clientes-exemplo-microservico) | repository | qa-testing | - |
-| [gen-ai-para-produtividade-em-testes](https://github.com/juliodelimas/gen-ai-para-produtividade-em-testes) | repository | qa-testing | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [api-clientes-exemplo-microservico](https://github.com/vinnypessoni/api-clientes-exemplo-microservico) | repository | qa-testing | - | - |
+| [gen-ai-para-produtividade-em-testes](https://github.com/juliodelimas/gen-ai-para-produtividade-em-testes) | repository | qa-testing | - | - |
 
 ## Security research and red-team
 
 Areas: `security`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Android privilege escalation research: [CVE-2026-43499-root-KernelSU](https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU) | repository | security | authorized-only |
-| LLM safety/jailbreak corpora (red-teaming evaluation): [ai-jailbreaks](https://github.com/Alejandros17487/ai-jailbreaks) | repository | security | authorized-only |
-| LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security | authorized-only, tos-check |
-| LLM safety/jailbreak corpora (red-teaming evaluation): [togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | repository | security | authorized-only |
-| Offensive toolkits and scanners: [hackingtool](https://github.com/Z4nzu/hackingtool) | repository | security | authorized-only |
-| Offensive toolkits and scanners: [php2shell-scanner](https://github.com/assetnote/php2shell-scanner) | repository | security | authorized-only |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Android privilege escalation research: [CVE-2026-43499-root-KernelSU](https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU) | repository | security | authorized-only | - |
+| LLM safety/jailbreak corpora (red-teaming evaluation): [ai-jailbreaks](https://github.com/Alejandros17487/ai-jailbreaks) | repository | security | authorized-only | - |
+| LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security | authorized-only, tos-check | - |
+| LLM safety/jailbreak corpora (red-teaming evaluation): [togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | repository | security | authorized-only | - |
+| Offensive toolkits and scanners: [hackingtool](https://github.com/Z4nzu/hackingtool) | repository | security | authorized-only | - |
+| Offensive toolkits and scanners: [php2shell-scanner](https://github.com/assetnote/php2shell-scanner) | repository | security | authorized-only | - |
 
 ## LLM gateways and providers
 
 Areas: `ai-automation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [free-claude-code](https://github.com/Alishahryar1/free-claude-code) | repository | ai-automation | tos-check |
-| [freellmapi](https://github.com/tashfeenahmed/freellmapi) | repository | ai-automation | tos-check |
-| [locally-uncensored](https://github.com/PurpleDoubleD/locally-uncensored) | repository | ai-automation | tos-check |
-| [OmniRoute](https://github.com/cheaper-inference/OmniRoute) | repository | ai-automation | tos-check |
-| [Vyce AI](https://vyceai.com) | site | ai-automation | tos-check |
-| [ZenMux](https://zenmux.ai) | site | ai-automation | tos-check |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [free-claude-code](https://github.com/Alishahryar1/free-claude-code) | repository | ai-automation | tos-check | - |
+| [freellmapi](https://github.com/tashfeenahmed/freellmapi) | repository | ai-automation | tos-check | - |
+| [locally-uncensored](https://github.com/PurpleDoubleD/locally-uncensored) | repository | ai-automation | tos-check | - |
+| [OmniRoute](https://github.com/cheaper-inference/OmniRoute) | repository | ai-automation | tos-check | - |
+| [Vyce AI](https://vyceai.com) | site | ai-automation | tos-check | - |
+| [ZenMux](https://zenmux.ai) | site | ai-automation | tos-check | - |
 
 ## Desktop, mobile and productivity tools
 
 Areas: `desktop`, `mobile-app`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Android/TV: [blockads-android](https://github.com/pass-with-high-score/blockads-android) | repository | desktop, mobile-app | - |
-| Android/TV: [cleanyourtv](https://github.com/Gathin23/cleanyourtv) | repository | desktop, mobile-app | - |
-| Android/TV: [FreeMyTvWebOS](https://github.com/danielthejoker18/FreeMyTvWebOS) | repository | desktop, mobile-app | - |
-| Android/TV: [ImageToolbox](https://github.com/T8RIN/ImageToolbox) | repository | desktop, mobile-app | - |
-| Browser: [awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts) | list | desktop, mobile-app, browser-extension | - |
-| Downloads/media: [omniget](https://github.com/OpenSelena/omniget) | repository | desktop, mobile-app | licensing-check, tos-check |
-| Downloads/media: [yoinks](https://github.com/pablostanley/yoinks) | repository | desktop, mobile-app | licensing-check, tos-check |
-| Messaging: [WA-AKG](https://github.com/mrifqidaffaaditya/WA-AKG) | repository | desktop, mobile-app, api-integration | - |
-| Messaging: [zapfast](https://github.com/crmne/zapfast) | repository | desktop, mobile-app, api-integration | - |
-| Windows/PC: [g-helper](https://github.com/seerge/g-helper) | repository | desktop, mobile-app | - |
-| Windows/PC: [gpu-unlock](https://github.com/Zagitta/gpu-unlock) | repository | desktop, mobile-app | experimental |
-| Windows/PC: [hatchzip](https://github.com/xevrion/hatchzip) | repository | desktop, mobile-app | - |
-| Windows/PC: [Magpie](https://github.com/Blinue/Magpie) | repository | desktop, mobile-app | - |
-| Windows/PC: [MFG-SUPER-MOTION](https://github.com/NODIX-TECH/MFG-SUPER-MOTION) | repository | desktop, mobile-app | experimental |
-| Windows/PC: [photocraft](https://github.com/storytold/photocraft) | repository | desktop, mobile-app | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Android/TV: [blockads-android](https://github.com/pass-with-high-score/blockads-android) | repository | desktop, mobile-app | - | - |
+| Android/TV: [cleanyourtv](https://github.com/Gathin23/cleanyourtv) | repository | desktop, mobile-app | - | - |
+| Android/TV: [FreeMyTvWebOS](https://github.com/danielthejoker18/FreeMyTvWebOS) | repository | desktop, mobile-app | - | - |
+| Android/TV: [ImageToolbox](https://github.com/T8RIN/ImageToolbox) | repository | desktop, mobile-app | - | - |
+| Browser: [awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts) | list | desktop, mobile-app, browser-extension | - | - |
+| Downloads/media: [omniget](https://github.com/OpenSelena/omniget) | repository | desktop, mobile-app | licensing-check, tos-check | - |
+| Downloads/media: [yoinks](https://github.com/pablostanley/yoinks) | repository | desktop, mobile-app | licensing-check, tos-check | - |
+| Messaging: [WA-AKG](https://github.com/mrifqidaffaaditya/WA-AKG) | repository | desktop, mobile-app, api-integration | - | - |
+| Messaging: [zapfast](https://github.com/crmne/zapfast) | repository | desktop, mobile-app, api-integration | - | - |
+| Windows/PC: [g-helper](https://github.com/seerge/g-helper) | repository | desktop, mobile-app | - | - |
+| Windows/PC: [gpu-unlock](https://github.com/Zagitta/gpu-unlock) | repository | desktop, mobile-app | experimental | - |
+| Windows/PC: [hatchzip](https://github.com/xevrion/hatchzip) | repository | desktop, mobile-app | - | - |
+| Windows/PC: [Magpie](https://github.com/Blinue/Magpie) | repository | desktop, mobile-app | - | - |
+| Windows/PC: [MFG-SUPER-MOTION](https://github.com/NODIX-TECH/MFG-SUPER-MOTION) | repository | desktop, mobile-app | experimental | - |
+| Windows/PC: [photocraft](https://github.com/storytold/photocraft) | repository | desktop, mobile-app | - | - |
 
 ## Gaming
 
 Areas: `game-modding`, `game-port`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Additional ports/runtimes: [cuesta4/shadPS4](https://github.com/cuesta4/shadPS4) | repository | game-modding, game-port | experimental |
-| Additional ports/runtimes: [Supermedo/bloodborne_pc](https://github.com/Supermedo/bloodborne_pc) | repository | game-modding, game-port | experimental |
-| Launchers/catalogs (verify content licensing): [Hydra Launcher](https://github.com/hydralauncher/hydra) | repository | game-modding, game-port | licensing-check |
-| Launchers/catalogs (verify content licensing): [PS3-Game-Scraper](https://github.com/NookieAI/PS3-Game-Scraper) | repository | game-modding, game-port | licensing-check |
-| Mods and community: [Mundo Guitar Hero](https://mundoguitarhero.blogspot.com) | guide | game-modding, game-port | - |
-| Mods and community: [Ocarina of Time controller UI mod](https://gamebanana.com/mods/737074) | site | game-modding, game-port | licensing-check |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Additional ports/runtimes: [cuesta4/shadPS4](https://github.com/cuesta4/shadPS4) | repository | game-modding, game-port | experimental | - |
+| Additional ports/runtimes: [Supermedo/bloodborne_pc](https://github.com/Supermedo/bloodborne_pc) | repository | game-modding, game-port | experimental | - |
+| Launchers/catalogs (verify content licensing): [Hydra Launcher](https://github.com/hydralauncher/hydra) | repository | game-modding, game-port | licensing-check | - |
+| Launchers/catalogs (verify content licensing): [PS3-Game-Scraper](https://github.com/NookieAI/PS3-Game-Scraper) | repository | game-modding, game-port | licensing-check | - |
+| Mods and community: [Mundo Guitar Hero](https://mundoguitarhero.blogspot.com) | guide | game-modding, game-port | - | - |
+| Mods and community: [Ocarina of Time controller UI mod](https://gamebanana.com/mods/737074) | site | game-modding, game-port | licensing-check | - |
 
 ## Guides and threads
 
 Areas: `reverse-engineering`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [Claude Code para Reverse Engineering](https://x.com/Gyome1_/status/2111774069783720195) | guide | reverse-engineering | - |
-| [GitHub topic: android-reverse-engineering](https://github.com/topics/android-reverse-engineering) | list | reverse-engineering | - |
-| [Reverse Engineering com Opus](https://x.com/0xMovez/status/2109604520770548146) | guide | reverse-engineering | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [Claude Code para Reverse Engineering](https://x.com/Gyome1_/status/2111774069783720195) | guide | reverse-engineering | - | - |
+| [GitHub topic: android-reverse-engineering](https://github.com/topics/android-reverse-engineering) | list | reverse-engineering | - | - |
+| [Reverse Engineering com Opus](https://x.com/0xMovez/status/2109604520770548146) | guide | reverse-engineering | - | - |
 
 ## Other projects
 
 Areas: `operations`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [gerenciador-viagens](https://github.com/AntonioMontanha/gerenciador-viagens) | repository | operations | - |
-| [louvorja/desktop](https://github.com/louvorja/desktop) | repository | operations | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [gerenciador-viagens](https://github.com/AntonioMontanha/gerenciador-viagens) | repository | operations | - | - |
+| [louvorja/desktop](https://github.com/louvorja/desktop) | repository | operations | - | - |
 
 ## Reverse-engineering tools
 
 Areas: `reverse-engineering`, `decompilation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [binwalk](https://github.com/ReFirmLabs/binwalk) | tool | reverse-engineering, decompilation | - |
-| [Frida](https://github.com/frida/frida) | tool | reverse-engineering, decompilation | - |
-| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | tool | reverse-engineering, decompilation | - |
-| [ImHex](https://github.com/WerWolv/ImHex) | tool | reverse-engineering, decompilation | - |
-| [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) | tool | reverse-engineering, decompilation | - |
-| [x64dbg](https://github.com/x64dbg/x64dbg) | tool | reverse-engineering, decompilation | - |
-| Identify: [capa](https://github.com/mandiant/capa) | tool | reverse-engineering, decompilation | - |
-| Identify: [Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) | tool | reverse-engineering, decompilation | - |
-| Identify: [LIEF](https://github.com/lief-project/LIEF) | tool | reverse-engineering, decompilation | - |
-| Read the logic: [angr](https://github.com/angr/angr) | tool | reverse-engineering, decompilation | - |
-| Read the logic: [Cutter](https://github.com/rizinorg/cutter) | tool | reverse-engineering, decompilation | - |
-| Read the logic: [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) | tool | reverse-engineering, decompilation | - |
-| Read the logic: [radare2](https://github.com/radareorg/radare2) | tool | reverse-engineering, decompilation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [binwalk](https://github.com/ReFirmLabs/binwalk) | tool | reverse-engineering, decompilation | - | - |
+| [Frida](https://github.com/frida/frida) | tool | reverse-engineering, decompilation | - | - |
+| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | tool | reverse-engineering, decompilation | - | - |
+| [ImHex](https://github.com/WerWolv/ImHex) | tool | reverse-engineering, decompilation | - | - |
+| [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) | tool | reverse-engineering, decompilation | - | - |
+| [x64dbg](https://github.com/x64dbg/x64dbg) | tool | reverse-engineering, decompilation | - | - |
+| Identify: [capa](https://github.com/mandiant/capa) | tool | reverse-engineering, decompilation | - | - |
+| Identify: [Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) | tool | reverse-engineering, decompilation | - | - |
+| Identify: [LIEF](https://github.com/lief-project/LIEF) | tool | reverse-engineering, decompilation | - | - |
+| Read the logic: [angr](https://github.com/angr/angr) | tool | reverse-engineering, decompilation | - | - |
+| Read the logic: [Cutter](https://github.com/rizinorg/cutter) | tool | reverse-engineering, decompilation | - | - |
+| Read the logic: [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) | tool | reverse-engineering, decompilation | - | - |
+| Read the logic: [radare2](https://github.com/radareorg/radare2) | tool | reverse-engineering, decompilation | - | - |
 
 ## Managed and Android analysis
 
 Areas: `reverse-engineering`, `mobile-app`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [apk.sh](https://github.com/ax/apk.sh) | tool | reverse-engineering, mobile-app | - |
-| [APKEditor](https://github.com/REAndroid/APKEditor) | tool | reverse-engineering, mobile-app | - |
-| [Apktool](https://github.com/iBotPeaches/Apktool) | tool | reverse-engineering, mobile-app | - |
-| [ILSpy](https://github.com/icsharpcode/ILSpy) | tool | reverse-engineering, mobile-app | - |
-| [jadx](https://github.com/skylot/jadx) | tool | reverse-engineering, mobile-app | - |
-| Watch it run: [objection](https://github.com/sensepost/objection) | tool | reverse-engineering, mobile-app | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [apk.sh](https://github.com/ax/apk.sh) | tool | reverse-engineering, mobile-app | - | - |
+| [APKEditor](https://github.com/REAndroid/APKEditor) | tool | reverse-engineering, mobile-app | - | - |
+| [Apktool](https://github.com/iBotPeaches/Apktool) | tool | reverse-engineering, mobile-app | - | - |
+| [ILSpy](https://github.com/icsharpcode/ILSpy) | tool | reverse-engineering, mobile-app | - | - |
+| [jadx](https://github.com/skylot/jadx) | tool | reverse-engineering, mobile-app | - | - |
+| Watch it run: [objection](https://github.com/sensepost/objection) | tool | reverse-engineering, mobile-app | - | - |
 
 ## Web, Electron and API analysis
 
 Areas: `reverse-engineering`, `api-integration`, `security`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [asar](https://github.com/electron/asar) | tool | reverse-engineering, api-integration, security | - |
-| [mitmproxy](https://github.com/mitmproxy/mitmproxy) | tool | reverse-engineering, api-integration, security | - |
-| [mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) | tool | reverse-engineering, api-integration, security | - |
-| [Scrapling](https://github.com/D4Vinci/Scrapling) | tool | reverse-engineering, api-integration, security | - |
-| [webcrack](https://github.com/j4k0xb/webcrack) | tool | reverse-engineering, api-integration, security | - |
-| Follow the traffic: [Wireshark](https://github.com/wireshark/wireshark) | tool | reverse-engineering, api-integration, security | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [asar](https://github.com/electron/asar) | tool | reverse-engineering, api-integration, security | - | - |
+| [mitmproxy](https://github.com/mitmproxy/mitmproxy) | tool | reverse-engineering, api-integration, security | - | - |
+| [mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) | tool | reverse-engineering, api-integration, security | - | - |
+| [Scrapling](https://github.com/D4Vinci/Scrapling) | tool | reverse-engineering, api-integration, security | - | - |
+| [webcrack](https://github.com/j4k0xb/webcrack) | tool | reverse-engineering, api-integration, security | - | - |
+| Follow the traffic: [Wireshark](https://github.com/wireshark/wireshark) | tool | reverse-engineering, api-integration, security | - | - |
 
 ## Shader and PC gaming tools
 
 Areas: `game-port`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - | - |
 
 ## Reverse engineering learning path
 
 Areas: `reverse-engineering`, `decompilation`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Books: [Practical Binary Analysis](https://nostarch.com/binaryanalysis/) | book | reverse-engineering, decompilation | - |
-| Books: [Practical Malware Analysis](https://nostarch.com/malware) | book | reverse-engineering, decompilation, security | - |
-| Books: [Reverse Engineering for Beginners](https://go.yurichev.com) | book | reverse-engineering, decompilation | - |
-| Books: [Reversing: Secrets of Reverse Engineering](https://www.wiley.com/en-us/Reversing:+Secrets+of+Reverse+Engineering-p-9780764574818) | book | reverse-engineering, decompilation | - |
-| Books: [The Android Malware Handbook](https://nostarch.com/androidmalwarehandbook) | book | reverse-engineering, mobile-app | - |
-| Books: [The Ghidra Book, 2nd Edition](https://nostarch.com/ghidra-book-2e) | book | reverse-engineering, decompilation | - |
-| Courses: [Malware Unicorn RE101](https://malwareunicorn.org/workshops/re101) | course | reverse-engineering, decompilation, security | - |
-| Courses: [mytechnotalent Reverse-Engineering tutorial](https://github.com/mytechnotalent/Reverse-Engineering) | course | reverse-engineering, decompilation | - |
-| Courses: [Nightmare](https://github.com/guyinatuxedo/nightmare) | course | reverse-engineering, decompilation, security | - |
-| Courses: [OpenSecurityTraining2 x86-64 assembly](https://p.ost2.fyi) | course | reverse-engineering, decompilation | - |
-| Courses: [OWASP Mobile Application Security](https://mas.owasp.org) | course | reverse-engineering, mobile-app, security | - |
-| Courses: [pwn.college reverse engineering](https://pwn.college/intro-re-pwn~5933fc84/reversing/) | course | reverse-engineering, decompilation | - |
-| Courses: [pwn.college Reversing Hell](https://pwn.college/reversing-hell/) | course | reverse-engineering, decompilation | - |
-| Courses: [RPISEC Modern Binary Exploitation](https://github.com/RPISEC/MBE) | course | reverse-engineering, decompilation, security | - |
-| Lists: [awesome-reverse-engineered](https://github.com/alexgaoth/awesome-reverse-engineered) | list | reverse-engineering, decompilation | - |
-| Lists: [awesome-reverse-engineering (morluto)](https://github.com/morluto/awesome-reverse-engineering) | list | reverse-engineering, decompilation | - |
-| Lists: [awesome-reversing](https://github.com/tylerha97/awesome-reversing) | list | reverse-engineering, decompilation | - |
-| Lists: [rea-gems](https://github.com/sqwu/rea-gems) | list | reverse-engineering, decompilation | - |
-| Lists: [reverse-engineering (wtsxDev)](https://github.com/wtsxDev/reverse-engineering) | list | reverse-engineering, decompilation | - |
-| Lists: [reverseengineering-reading-list](https://github.com/onethawt/reverseengineering-reading-list) | list | reverse-engineering, decompilation | - |
-| Method: [Does reverse engineering need a bigger model?](https://rea.tools/blog/reverse-engineering-models/) | guide | reverse-engineering, decompilation | - |
-| Method: [FilmCraft AGENTS.md (clean-room contributor rules)](https://github.com/storytold/filmcraft/blob/main/AGENTS.md) | guide | reverse-engineering, decompilation, ai-automation | - |
-| Method: [REA Field Kit (targets, prompts, roadmap)](https://rea-library.vercel.app) | site | reverse-engineering, decompilation | - |
-| Method: [Touhou reconstruction with agents (oracle lessons)](https://rea.tools/blog/touhou-reconstruction/) | guide | reverse-engineering, decompilation, qa-testing | - |
-| Papers: [AutoDecompiler](https://arxiv.org/abs/2606.16162) | paper | reverse-engineering, decompilation | - |
-| Papers: [Automatically Attacking Software RE Agents](https://arxiv.org/abs/2605.30667) | paper | reverse-engineering, decompilation, security, ai-automation | - |
-| Papers: [Decomperson (USENIX Security 2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/burk) | paper | reverse-engineering, decompilation | - |
-| Papers: [DIRTY (USENIX Security 2022)](https://www.usenix.org/system/files/sec22-chen-qibin.pdf) | paper | reverse-engineering, decompilation | - |
-| Papers: [LLM4Decompile](https://arxiv.org/abs/2403.05286) | paper | reverse-engineering, decompilation | - |
-| Papers: [SALT4Decompile](https://arxiv.org/abs/2509.14646) | paper | reverse-engineering, decompilation | - |
-| Start here: [REA first investigation (Notes export)](https://rea.tools/first-investigation/) | guide | reverse-engineering, decompilation | - |
-| Start here: [REA MCP prompts](https://github.com/morluto/rea/blob/main/docs/mcp-prompts.md) | guide | reverse-engineering, decompilation | - |
-| Start here: [REA official site and guides](https://rea.tools) | site | reverse-engineering, decompilation | - |
-| Start here: [REA showcases (Notion, DX-Ball, Aegis APK, TH04)](https://rea.tools/showcase/) | guide | reverse-engineering, decompilation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Books: [Practical Binary Analysis](https://nostarch.com/binaryanalysis/) | book | reverse-engineering, decompilation | - | - |
+| Books: [Practical Malware Analysis](https://nostarch.com/malware) | book | reverse-engineering, decompilation, security | - | - |
+| Books: [Reverse Engineering for Beginners](https://go.yurichev.com) | book | reverse-engineering, decompilation | - | - |
+| Books: [Reversing: Secrets of Reverse Engineering](https://www.wiley.com/en-us/Reversing:+Secrets+of+Reverse+Engineering-p-9780764574818) | book | reverse-engineering, decompilation | - | - |
+| Books: [The Android Malware Handbook](https://nostarch.com/androidmalwarehandbook) | book | reverse-engineering, mobile-app | - | - |
+| Books: [The Ghidra Book, 2nd Edition](https://nostarch.com/ghidra-book-2e) | book | reverse-engineering, decompilation | - | - |
+| Courses: [Malware Unicorn RE101](https://malwareunicorn.org/workshops/re101) | course | reverse-engineering, decompilation, security | - | - |
+| Courses: [mytechnotalent Reverse-Engineering tutorial](https://github.com/mytechnotalent/Reverse-Engineering) | course | reverse-engineering, decompilation | - | - |
+| Courses: [Nightmare](https://github.com/guyinatuxedo/nightmare) | course | reverse-engineering, decompilation, security | - | - |
+| Courses: [OpenSecurityTraining2 x86-64 assembly](https://p.ost2.fyi) | course | reverse-engineering, decompilation | - | - |
+| Courses: [OWASP Mobile Application Security](https://mas.owasp.org) | course | reverse-engineering, mobile-app, security | - | - |
+| Courses: [pwn.college reverse engineering](https://pwn.college/intro-re-pwn~5933fc84/reversing/) | course | reverse-engineering, decompilation | - | - |
+| Courses: [pwn.college Reversing Hell](https://pwn.college/reversing-hell/) | course | reverse-engineering, decompilation | - | - |
+| Courses: [RPISEC Modern Binary Exploitation](https://github.com/RPISEC/MBE) | course | reverse-engineering, decompilation, security | - | - |
+| Lists: [awesome-reverse-engineered](https://github.com/alexgaoth/awesome-reverse-engineered) | list | reverse-engineering, decompilation | - | - |
+| Lists: [awesome-reverse-engineering (morluto)](https://github.com/morluto/awesome-reverse-engineering) | list | reverse-engineering, decompilation | - | - |
+| Lists: [awesome-reversing](https://github.com/tylerha97/awesome-reversing) | list | reverse-engineering, decompilation | - | - |
+| Lists: [rea-gems](https://github.com/sqwu/rea-gems) | list | reverse-engineering, decompilation | - | - |
+| Lists: [reverse-engineering (wtsxDev)](https://github.com/wtsxDev/reverse-engineering) | list | reverse-engineering, decompilation | - | - |
+| Lists: [reverseengineering-reading-list](https://github.com/onethawt/reverseengineering-reading-list) | list | reverse-engineering, decompilation | - | - |
+| Method: [Does reverse engineering need a bigger model?](https://rea.tools/blog/reverse-engineering-models/) | guide | reverse-engineering, decompilation | - | - |
+| Method: [FilmCraft AGENTS.md (clean-room contributor rules)](https://github.com/storytold/filmcraft/blob/main/AGENTS.md) | guide | reverse-engineering, decompilation, ai-automation | - | - |
+| Method: [REA Field Kit (targets, prompts, roadmap)](https://rea-library.vercel.app) | site | reverse-engineering, decompilation | - | - |
+| Method: [Touhou reconstruction with agents (oracle lessons)](https://rea.tools/blog/touhou-reconstruction/) | guide | reverse-engineering, decompilation, qa-testing | - | - |
+| Papers: [AutoDecompiler](https://arxiv.org/abs/2606.16162) | paper | reverse-engineering, decompilation | - | - |
+| Papers: [Automatically Attacking Software RE Agents](https://arxiv.org/abs/2605.30667) | paper | reverse-engineering, decompilation, security, ai-automation | - | - |
+| Papers: [Decomperson (USENIX Security 2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/burk) | paper | reverse-engineering, decompilation | - | - |
+| Papers: [DIRTY (USENIX Security 2022)](https://www.usenix.org/system/files/sec22-chen-qibin.pdf) | paper | reverse-engineering, decompilation | - | - |
+| Papers: [LLM4Decompile](https://arxiv.org/abs/2403.05286) | paper | reverse-engineering, decompilation | - | - |
+| Papers: [SALT4Decompile](https://arxiv.org/abs/2509.14646) | paper | reverse-engineering, decompilation | - | - |
+| Start here: [REA first investigation (Notes export)](https://rea.tools/first-investigation/) | guide | reverse-engineering, decompilation | - | - |
+| Start here: [REA MCP prompts](https://github.com/morluto/rea/blob/main/docs/mcp-prompts.md) | guide | reverse-engineering, decompilation | - | - |
+| Start here: [REA official site and guides](https://rea.tools) | site | reverse-engineering, decompilation | - | - |
+| Start here: [REA showcases (Notion, DX-Ball, Aegis APK, TH04)](https://rea.tools/showcase/) | guide | reverse-engineering, decompilation | - | - |
 
 ## Rebuild and teardown stack
 
 Areas: `content-creation`, `frontend`, `ux-design`
 
-| Reference | Kind | Areas | Risk |
-|---|---|---|---|
-| Clean-room examples: [Dolly (screen recorder rebuilt from a spec)](https://github.com/percyitchy/dolly) | repository | content-creation, desktop | - |
-| Clean-room examples: [FilmCraft](https://github.com/storytold/filmcraft) | repository | content-creation | - |
-| Clean-room examples: [LightCraft](https://github.com/storytold/lightcraft) | repository | content-creation | - |
-| Find an open-source base: [awesome-oss-alternatives](https://github.com/RunaCapital/awesome-oss-alternatives) | list | product-management, ux-design | - |
-| Observe: [Cap](https://github.com/CapSoftware/Cap) | repository | content-creation, desktop | - |
-| Observe: [screenshot-to-code](https://github.com/abi/screenshot-to-code) | tool | frontend, ux-design | - |
-| Rebuild: [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) | tool | frontend, content-creation | - |
-| Rebuild: [postprocessing](https://github.com/pmndrs/postprocessing) | tool | frontend | - |
-| Rebuild: [three.js](https://github.com/mrdoob/three.js) | tool | frontend, game-modding | - |
-| Rebuild: [transformers.js](https://github.com/huggingface/transformers.js) | tool | frontend, ai-automation | - |
-| Rebuild: [whisper.cpp](https://github.com/ggml-org/whisper.cpp) | tool | content-creation, ai-automation | - |
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Clean-room examples: [Dolly (screen recorder rebuilt from a spec)](https://github.com/percyitchy/dolly) | repository | content-creation, desktop | - | - |
+| Clean-room examples: [FilmCraft](https://github.com/storytold/filmcraft) | repository | content-creation | - | - |
+| Clean-room examples: [LightCraft](https://github.com/storytold/lightcraft) | repository | content-creation | - | - |
+| Find an open-source base: [awesome-oss-alternatives](https://github.com/RunaCapital/awesome-oss-alternatives) | list | product-management, ux-design | - | - |
+| Observe: [Cap](https://github.com/CapSoftware/Cap) | repository | content-creation, desktop | - | - |
+| Observe: [screenshot-to-code](https://github.com/abi/screenshot-to-code) | tool | frontend, ux-design | - | - |
+| Rebuild: [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) | tool | frontend, content-creation | - | - |
+| Rebuild: [postprocessing](https://github.com/pmndrs/postprocessing) | tool | frontend | - | - |
+| Rebuild: [three.js](https://github.com/mrdoob/three.js) | tool | frontend, game-modding | - | - |
+| Rebuild: [transformers.js](https://github.com/huggingface/transformers.js) | tool | frontend, ai-automation | - | - |
+| Rebuild: [whisper.cpp](https://github.com/ggml-org/whisper.cpp) | tool | content-creation, ai-automation | - | - |

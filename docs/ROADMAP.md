@@ -66,7 +66,7 @@ Scope: inspect_project, resume and continuation_markdown in src/aiwh/workbench.p
 
 - [x] RM-007 Define a versioned private state schema for approved decisions, stable task IDs, status, blockers, risks and milestone outcomes; record selected/rejected resource IDs, decision rationale and user-confirmed usefulness when provided; migrate existing state.json non-destructively.
 - [x] RM-008 Retain bounded snapshot history and compare sessions; distinguish observed project changes, user-approved decisions/resource feedback and unknown outcomes without inferring that a recommendation helped or executing project code.
-- [ ] RM-009 Generate task-ready handoffs with the next eligible task, dependencies, relevant resources with reasons/known limits and validation evidence; preserve equivalent facts across adapters and report truncated pending-work scans.
+- [ ] RM-009 Generate task-ready handoffs with the next eligible task, dependencies, relevant resources with reasons/known limits and validation evidence; preserve equivalent facts across adapters and report truncated pending-work scans. Partial: `aiwh handoff plan` selects the next eligible task and lists selected resources, decisions, rejections and gaps (D1-D6); explicit task dependencies are not modeled (only blockers) and validation evidence is limited to the documented test command until RM-010/RM-011.
 
 RM-007 acceptance: `.ai-workbench/state.json` schema version 2 separates refreshed observations from persistent tasks, explicitly approved decisions and selected/rejected resources. Tasks preserve stable IDs and status plus blockers, risks and milestone outcomes. User-confirmed usefulness is optional and never inferred. Unversioned state is preserved under `legacy_observation`; corrupt or unsupported future schemas fail before either handoff file is written.
 
@@ -88,7 +88,7 @@ Acceptance: no validation runs without explicit approval; nonzero exit and timeo
 
 Scope: src/aiwh/areas.py, src/aiwh/core.py, canonical capabilities and tests/test_areas.py/test_core.py. Build on existing read-only bookmark/HTML/GitHub-star imports, project profiles and deterministic category heuristics; do not add another importer as a substitute for recommendation quality. Curate existing entries before expanding them.
 
-- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository. Partial: the curated reference catalog, risk labels and `aiwh catalog check` (B2-B4) exist; per-entry review dates and licensing notes remain.
+- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository. Partial: the curated reference catalog, risk labels and `aiwh catalog check` (B2-B4) exist; optional per-entry `reviewed` dates and `license` notes are validated and rendered (D8) but recorded for only 7 of 180 entries (`aiwh references --unreviewed`); compatibility claims remain.
 - [ ] RM-014 Add synthetic labeled project scenarios and measure relevant-area hits, false positives and scan limits; improve ranking with explainable positive and negative signals.
 - [ ] RM-015 Deliver deterministic Contextual Resource Intelligence: rank a small shortlist (target 3-5) of relevant references/tools using project evidence, detected profiles and the user's stated task; explain why each item was selected, known compatibility, limits and a sensible first consultation/action. Add a Skill & MCP Advisor that compares relevant alternatives and flags likely redundancy or scope/approval requirements; suggestions never install or activate anything.
 
@@ -164,6 +164,25 @@ Follow-up found by B8: 22 generic skills share most of their body text and need 
 - [x] C13 54 new references (identification/analysis tools, rebuild stack, courses, books, papers) with `book`/`paper`/`course` kinds.
 - [x] C14 `docs/RE_LEARNING_PATH.md`, REA setup notes, `ida-pro-mcp`, and REA/Ghidra/Java detection in `aiwh doctor`.
 
+## Backlog D1-D12: ideas applied from curated references (delivered 2026-11-10)
+
+Each item names the reference whose README suggested the idea; no external code was copied, cloned or executed.
+
+- [x] D1 `aiwh handoff plan`: self-contained execution plan with exact source location, verification command, stop conditions and a planner/executor model-routing recommendation (shadcn/improve).
+- [x] D2 Source revision recorded in every handoff, `head_change` in session deltas and `aiwh handoff check [--plan FILE]` with exit codes for current/drifted/unknown (shadcn/improve).
+- [x] D3 `rejections` list in the private state, shown in handoffs and plans so discarded findings are not raised again (shadcn/improve).
+- [x] D4 Decision `source`, retraction with a required reason instead of deletion (gbrain).
+- [x] D5 "Known gaps" section in handoffs, plans and exports: what the scan does not know (gbrain).
+- [x] D6 Decision `last_verified` and `confidence`, with unverified/stale decisions reported (COG).
+- [x] D7 `aiwh handoff claim`: one owner per task, refused for a second owner until released (ai-memory).
+- [x] D8 Reference `reviewed` dates and `license` notes; `aiwh references --unreviewed` (COG; RM-013 partial).
+- [x] D9 Wiki export `index.md`, `gaps.md` and append-only `log.md` (Karpathy LLM Wiki).
+- [x] D10 `aiwh handoff lint`: orphaned tasks, blocked tasks without a blocker, duplicate titles, closed tasks still claimed, unverified/stale decisions (Karpathy LLM Wiki).
+- [x] D11 Skills: isolated verifier and rejection log in `wb-change-review` and `wb-oracle-testing`; plan/claim/drift procedure in `wb-context-handoff` (COG, shadcn/improve).
+- [x] D12 Skills: declared task modes and baseline comparison in `wb-ux-research` and `wb-ui-accessibility` (flawless-ui-ux).
+
+Fix found by D1: two documented items mentioning the same task ID made the second `aiwh resume` fail with a duplicate-ID error; the first mention now defines the task.
+
 ## Definition of done
 
 For each task:
@@ -196,7 +215,7 @@ Documentation-only planning does not increment the product version. Release gate
 4. Confirm the task's local behavior and baseline checks; implement and validate only that scope.
 5. Update this queue and the completion note before ending. Suggest the next eligible task and leave version control actions pending unless authorized.
 
-The current resume scan reports at most 60 pending checklist items (`PENDING_SCAN_LIMIT`) and flags truncation in the handoff. This roadmap currently has 66 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
+The current resume scan reports at most 60 pending checklist items (`PENDING_SCAN_LIMIT`) and flags truncation in the handoff. This roadmap currently has 78 top-level checklist items, of which 16 are pending; preserve headroom or raise the tested scan limit before adding enough open tasks to truncate the next-step queue. Agents must still read the complete document for dependencies and acceptance criteria.
 
 ## Completion notes
 
@@ -216,6 +235,8 @@ RM-007 completed: `resume` now writes private `.ai-workbench/state.json` schema 
 RM-008 completed: upgraded private continuity state to schema v2, migrating v1 without dropping records; `resume` keeps at most 10 snapshots and writes the latest delta to both state.json and CONTEXT.md. Comparisons separate observed Git-status path/pending-item changes from blocker/status changes and explicit decision/resource records. Resource outcomes without user-confirmed usefulness remain unknown, selection does not imply use/success, and dry-run leaves history unchanged. Evidence: focused migration and three-session comparison tests passed, including added/resolved file status, blockers, task-status and usefulness changes, unknown outcomes, bounded history and dry-run; all 66 repository tests passed; `aiwh doctor` passed; `aiwh resume . --dry-run` identified RM-009 as next; no diagnostics in touched Python files; `git diff --check` passed with only LF/CRLF warnings. Risk/limit: observed file deltas reflect tracked Git status and do not hash file contents; untracked files remain excluded by the existing scan. Release status: Unreleased v0.4.0.dev0; no commit, tag or publication. Next: RM-009 task-ready handoffs.
 
 Roadmap proposal incorporated: user-provided analysis identifies the next product opportunity as Contextual Resource Intelligence, not another bookmark/star importer. Local source confirms existing read-only imports, profile detection and deterministic keyword/category ranking; learning from feedback, comparing alternatives, and durable resource decisions are not implemented yet. RM-015 now prioritizes explainable task/project ranking and a non-activating Skill/MCP comparison; RM-007/RM-009 preserve decisions, selected resources, user-confirmed usefulness, reasons and limits for cross-session handoff. Project Knowledge Packs and structured Knowledge Feedback remain a later P2, gated on the core state schema and evidence that recommendations are useful. Local Semantic Search remains P3 and optional, after deterministic baselines; no paid provider or external content execution is assumed. The proposal's personal bookmark/star inventory and counts are intentionally not copied into this repository. This was a planning-only update; the next task at that point remained RM-003b.
+
+D1-D12 completed (2026-11-10): applied ideas from seven curated references to the continuity core; see the backlog section for the item list. Evidence: 18 new tests in `tests/test_handoff.py`; all 125 repository tests passed on Windows/Python 3.14; `aiwh doctor` passed; `aiwh handoff plan .` selected RM-009 at `docs/ROADMAP.md:69`. Only the READMEs of the references were read; licenses are as stated there. Risk/limit: state records are still edited by hand except for claims; plans recommend model routing but no runtime was launched to confirm a cheaper model can execute one; RM-009 and RM-013 remain partial. Release status: Unreleased v0.4.0.dev0; no commit, tag or publication. Next: RM-009 remainder (task dependencies) or RM-010.
 
 When completing implementation work, append a short sanitized entry using: task ID; implemented behavior; checks and observed outcome; release status; blockers/risks; next task. Do not store raw private handoffs here.
 

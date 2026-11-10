@@ -300,7 +300,9 @@
         "ai-automation"
       ],
       "risk": [],
-      "group": "Continuity and cost"
+      "group": "Continuity and cost",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
     },
     "microsoft-tokeneconomizer": {
       "title": "TokenEconomizer",
@@ -312,6 +314,87 @@
       ],
       "risk": [],
       "group": "Continuity and cost"
+    },
+    "garrytan-gbrain": {
+      "title": "gbrain",
+      "url": "https://github.com/garrytan/gbrain",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Continuity and cost",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
+    },
+    "karpathy-llm-wiki": {
+      "title": "LLM Wiki",
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+      "category": "agent-tooling",
+      "kind": "guide",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Continuity and cost",
+      "reviewed": "2026-11-10"
+    },
+    "smixs-agent-second-brain": {
+      "title": "agent-second-brain",
+      "url": "https://github.com/smixs/agent-second-brain",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Continuity and cost",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
+    },
+    "huytieu-cog-second-brain": {
+      "title": "COG-second-brain",
+      "url": "https://github.com/huytieu/COG-second-brain",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Continuity and cost",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
+    },
+    "smokeeaasd-flawless-ui-ux": {
+      "title": "flawless-ui-ux",
+      "url": "https://github.com/smokeeaasd/flawless-ui-ux",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ux-design",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Skill collections",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
+    },
+    "shadcn-improve": {
+      "title": "improve",
+      "url": "https://github.com/shadcn/improve",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "Skill collections",
+      "reviewed": "2026-11-10",
+      "license": "MIT"
     },
     "egonex-ai-understand-anything": {
       "title": "Understand-Anything",

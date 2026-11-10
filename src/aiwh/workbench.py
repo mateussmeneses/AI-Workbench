@@ -19,6 +19,7 @@ from pathlib import Path, PurePosixPath
 import yaml
 
 from .core import attach, now, project_profile, read_catalog
+from .handoff_checks import CONFIDENCE_LEVELS, handoff_gaps, open_tasks, parse_day
 
 ROOT = Path(__file__).resolve().parents[2]
 CAPABILITIES = Path(__file__).resolve().parent / 'capabilities'
@@ -981,7 +982,8 @@ def inspect_project(project):
                 if len(todo) >= PENDING_SCAN_LIMIT:
                     break
     return {'project': str(project), 'generated_at': now(), 'profiles': choose_profiles(project),
-            'branch': branch, 'working_tree_changes': changes, 'recent_commits': commits,
+            'branch': branch, 'head_commit': _git(project, 'rev-parse', '--verify', 'HEAD') or None,
+            'working_tree_changes': changes, 'recent_commits': commits,
             'tracked_files': len(tracked), 'test_indicators': test_evidence,
             'instructions': instructions, 'pending_documented': todo[:PENDING_SCAN_LIMIT],
             'pending_scan_limit': PENDING_SCAN_LIMIT,
@@ -989,12 +991,50 @@ def inspect_project(project):
             'test_command': _test_command(project), 'evidence_status': _evidence_status(project)}
 
 
-def continuation_markdown(data, agent='codex', delta=None):
+def documented_task_ids(data):
+    return {task['id'] for task in _documented_tasks(data)}
+
+
+def state_gaps(data, state):
+    """What the handoff does not know; see ``handoff_checks.handoff_gaps``."""
+    return handoff_gaps(data, state, documented_task_ids(data), PENDING_DOCUMENTS)
+
+
+def _record_sections(data, state):
+    """Handoff sections derived from private state records (claims, decisions, rejections, gaps)."""
+    lines = []
+    claimed = [task for task in open_tasks(state) if task.get('claimed_by')]
+    if claimed:
+        lines += ['', '## Claimed tasks (do not start these)', '']
+        lines += [f'- {task["id"]}: claimed by {task["claimed_by"]}'
+                  + (f' at {task["claimed_at"]}' if task.get('claimed_at') else '') for task in claimed]
+    if state.get('decisions'):
+        lines += ['', '## Approved decisions', '']
+        for decision in state['decisions']:
+            if decision.get('retracted'):
+                lines.append(f'- RETRACTED {decision["id"]}: {decision["text"]} '
+                             f'(reason: {decision["retraction_reason"]})')
+                continue
+            notes = [f'source: {decision["source"]}' if decision.get('source') else 'source: not recorded',
+                     f'last verified: {decision.get("last_verified") or "never"}']
+            if decision.get('confidence'):
+                notes.append(f'confidence: {decision["confidence"]}')
+            lines.append(f'- {decision["id"]}: {decision["text"]} ({"; ".join(notes)})')
+    if state.get('rejections'):
+        lines += ['', '## Rejected findings (do not re-raise)', '']
+        lines += [f'- {item["id"]}: {item["text"]} (why: {item["rationale"]})' for item in state['rejections']]
+    lines += ['', '## Known gaps', '']
+    lines += [f'- {gap}' for gap in state_gaps(data, state)] or ['- No gaps detected by the local scan.']
+    return lines
+
+
+def continuation_markdown(data, agent='codex', delta=None, state=None):
     lines = ['# AI Workbench — Project Continuity', '',
              f'Generated: {data["generated_at"]}',
              f'Agent: {agent}',
              f'Profiles: {", ".join(data["profiles"])}',
              f'Git branch: `{data["branch"]}`',
+             f'Source revision: `{data.get("head_commit") or "unknown"}`',
              f'Git tracked files: {data["tracked_files"]}', '',
              '## Local evidence', '',
              'These are observations from the local repository, not verified test results.',
@@ -1033,6 +1073,9 @@ def continuation_markdown(data, agent='codex', delta=None):
                 lines.extend(f'- {label}: [{item["path"]}] {item["text"]}' for item in observed[field])
             if observed['branch_change']:
                 lines.append(f'- Branch changed: `{observed["branch_change"]["from"]}` to `{observed["branch_change"]["to"]}`')
+            if observed.get('head_change'):
+                lines.append(f'- Source revision moved: `{observed["head_change"]["from"][:12]}` to '
+                             f'`{observed["head_change"]["to"][:12]}`; earlier plans and evidence may be stale.')
             tasks = delta['tasks']
             for label, field in (('New blockers', 'blockers_added'), ('Resolved blockers', 'blockers_resolved')):
                 lines.extend(f'- {label} for {item["task_id"]}: {item["blocker"]}' for item in tasks[field])
@@ -1050,6 +1093,7 @@ def continuation_markdown(data, agent='codex', delta=None):
                 any(observed[field] for field in ('files_added', 'files_resolved', 'files_status_changed',
                                                    'pending_added', 'pending_resolved'))
                 or observed['branch_change'] is not None
+                or observed.get('head_change') is not None
                 or any(tasks[field] for field in ('added', 'removed', 'changed', 'blockers_added',
                                                    'blockers_resolved', 'status_changed'))
                 or any(delta['decisions'][field] for field in ('added', 'removed', 'changed'))
@@ -1063,6 +1107,8 @@ def continuation_markdown(data, agent='codex', delta=None):
             lines.append(f'- Unknown resource outcomes (no user feedback): {", ".join(unknown)}')
         else:
             lines.append('- No unconfirmed outcomes for recorded resources.')
+    if state is not None:
+        lines += _record_sections(data, state)
     lines += ['', '## Next-session procedure', '',
               '1. Read the current AGENTS/CLAUDE instructions and project docs.',
               '2. Check the actual working tree and reproduce issues before editing.',
@@ -1101,12 +1147,30 @@ def _validate_records(records, kind):
             for field in ('blockers', 'risks', 'milestone_outcomes'):
                 if not isinstance(record.get(field), list) or not all(isinstance(item, str) for item in record[field]):
                     raise ValueError(f'Task {record["id"]} field {field} must be a list of strings')
+            for field in ('claimed_by', 'claimed_at'):
+                if field in record and (not isinstance(record[field], str) or not record[field].strip()):
+                    raise ValueError(f'Task {record["id"]} field {field} must be a non-empty string')
         elif kind == 'decisions':
             if record.get('approved') is not True:
                 raise ValueError(f'State decision {record["id"]} must be explicitly approved')
             for field in ('text', 'rationale'):
                 if not isinstance(record.get(field), str) or not record[field].strip():
                     raise ValueError(f'State decision {record["id"]} requires {field}')
+            if 'source' in record and (not isinstance(record['source'], str) or not record['source'].strip()):
+                raise ValueError(f'State decision {record["id"]} source must be a non-empty string')
+            if 'last_verified' in record and parse_day(record['last_verified']) is None:
+                raise ValueError(f'State decision {record["id"]} last_verified must be YYYY-MM-DD')
+            if 'confidence' in record and record['confidence'] not in CONFIDENCE_LEVELS:
+                raise ValueError(f'State decision {record["id"]} confidence must be one of {CONFIDENCE_LEVELS}')
+            if 'retracted' in record and type(record['retracted']) is not bool:
+                raise ValueError(f'State decision {record["id"]} retracted must be true or false')
+            if record.get('retracted') and (not isinstance(record.get('retraction_reason'), str)
+                                            or not record['retraction_reason'].strip()):
+                raise ValueError(f'Retracted decision {record["id"]} requires a retraction_reason')
+        elif kind == 'rejections':
+            for field in ('text', 'rationale'):
+                if not isinstance(record.get(field), str) or not record[field].strip():
+                    raise ValueError(f'State rejection {record["id"]} requires {field}')
         else:
             if not isinstance(record.get('selection'), str) or record['selection'] not in ('selected', 'rejected'):
                 raise ValueError(f'Invalid resource selection for {record["id"]}')
@@ -1118,7 +1182,12 @@ def _validate_records(records, kind):
 
 
 def _documented_tasks(data):
-    tasks = []
+    return [task for task, _ in _documented_pairs(data)]
+
+
+def _documented_pairs(data):
+    """(task, pending item) per documented task; a repeated ID keeps its first mention."""
+    tasks, seen = [], set()
     for item in data['pending_documented']:
         path, text = item['path'], item['text']
         title = re.sub(r'^\s*[-*]\s*\[\s\]\s*', '', text).strip()
@@ -1127,10 +1196,13 @@ def _documented_tasks(data):
             f'{path}\0{title}'.encode('utf-8')).hexdigest()[:16]
         if match:
             title = title[match.end():].strip(' :-') or title
-        tasks.append({
+        if task_id in seen:
+            continue
+        seen.add(task_id)
+        tasks.append(({
             'id': task_id, 'title': title, 'source': path, 'status': 'pending',
             'blockers': [], 'risks': [], 'milestone_outcomes': [],
-        })
+        }, item))
     return tasks
 
 
@@ -1185,7 +1257,7 @@ def _compare_snapshots(previous, current):
     if previous is None:
         observed_delta = {
             'files_added': [], 'files_resolved': [], 'files_status_changed': [],
-            'pending_added': [], 'pending_resolved': [], 'branch_change': None,
+            'pending_added': [], 'pending_resolved': [], 'branch_change': None, 'head_change': None,
         }
         task_delta = {**_record_delta([], []), 'blockers_added': [], 'blockers_resolved': [],
                   'status_changed': []}
@@ -1202,7 +1274,12 @@ def _compare_snapshots(previous, current):
         branch_change = None
         if old_observed.get('branch') != new_observed.get('branch'):
             branch_change = {'from': old_observed.get('branch'), 'to': new_observed.get('branch')}
+        head_change = None
+        old_head, new_head = old_observed.get('head_commit'), new_observed.get('head_commit')
+        if old_head and new_head and old_head != new_head:
+            head_change = {'from': old_head, 'to': new_head}
         observed_delta = {
+            'head_change': head_change,
             'files_added': sorted(new_files.keys() - old_files.keys()),
             'files_resolved': sorted(old_files.keys() - new_files.keys()),
             'files_status_changed': sorted(path for path in old_files.keys() & new_files.keys()
@@ -1250,13 +1327,15 @@ def _continuity_state(data, state_path):
     legacy_observation = None
     extras = {}
     history = []
+    rejections = []
     if previous is None:
         tasks, decisions, resources = [], [], []
     else:
+        rejections = previous.get('rejections', [])
         version = previous.get('schema_version')
         if 'schema_version' not in previous:
             legacy_observation = {key: value for key, value in previous.items()
-                                  if key not in ('tasks', 'decisions', 'resources')}
+                                  if key not in ('tasks', 'decisions', 'resources', 'rejections')}
             tasks = previous.get('tasks', [])
             decisions = previous.get('decisions', [])
             resources = previous.get('resources', [])
@@ -1287,11 +1366,12 @@ def _continuity_state(data, state_path):
                     raise ValueError('State latest_delta must be an object')
             extras = {key: value for key, value in previous.items() if key not in {
                 'schema_version', 'updated_at', 'observed', 'legacy_observation',
-                'tasks', 'decisions', 'resources', 'history', 'latest_delta'}}
+                'tasks', 'decisions', 'resources', 'rejections', 'history', 'latest_delta'}}
 
     _validate_records(tasks, 'tasks')
     _validate_records(decisions, 'decisions')
     _validate_records(resources, 'resources')
+    _validate_records(rejections, 'rejections')
     task_ids = {task['id'] for task in tasks}
     tasks = list(tasks) + [task for task in _documented_tasks(data) if task['id'] not in task_ids]
     snapshot = {
@@ -1308,6 +1388,7 @@ def _continuity_state(data, state_path):
         'tasks': tasks,
         'decisions': decisions,
         'resources': resources,
+        'rejections': rejections,
         'history': history,
         'latest_delta': latest_delta,
     }
@@ -1339,7 +1420,7 @@ def resume(project, *, agent='codex', dry_run=False):
     folder = Path(project).expanduser().resolve() / '.ai-workbench'
     state_path = folder / 'state.json'
     state = _continuity_state(data, state_path)
-    content = continuation_markdown(data, agent=agent, delta=state['latest_delta'])
+    content = continuation_markdown(data, agent=agent, delta=state['latest_delta'], state=state)
     if not dry_run:
         folder.mkdir(exist_ok=True)
         (folder / 'CONTEXT.md').write_text(content, encoding='utf-8')
