@@ -2484,6 +2484,875 @@
         "tos-check",
         "licensing-check"
       ]
+    },
+    "microsoft-activation-scripts": {
+      "title": "Microsoft Activation Scripts",
+      "url": "https://github.com/massgravel/microsoft-activation-scripts",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Windows setup"
+    },
+    "asn-lookup": {
+      "title": "ASN Lookup",
+      "url": "https://asnlookup.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "censys": {
+      "title": "Censys",
+      "url": "https://censys.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "crt-sh": {
+      "title": "crt.sh",
+      "url": "https://crt.sh/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "crunchbase": {
+      "title": "Crunchbase",
+      "url": "https://www.crunchbase.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "dns-issue-bulk-lookup": {
+      "title": "DNS Issue bulk lookup",
+      "url": "https://www.dnsissue.com/bulkdnslookup/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "dnsdumpster": {
+      "title": "DNSDumpster",
+      "url": "https://dnsdumpster.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "domaintools-whois": {
+      "title": "DomainTools Whois",
+      "url": "https://whois.domaintools.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "iana-root-zone-db": {
+      "title": "IANA Root Zone DB",
+      "url": "https://www.iana.org/domains/root/db",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "meta-ct-search": {
+      "title": "Meta CT search",
+      "url": "https://developers.facebook.com/tools/ct/search/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "netcraft-dns": {
+      "title": "Netcraft DNS",
+      "url": "https://searchdns.netcraft.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "osint-framework": {
+      "title": "OSINT Framework",
+      "url": "https://osintframework.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "registro-br-whois": {
+      "title": "Registro.br Whois",
+      "url": "https://registro.br/tecnologia/ferramentas/whois/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "reversewhois": {
+      "title": "ReverseWhois",
+      "url": "https://www.reversewhois.io/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "securitytrails": {
+      "title": "SecurityTrails",
+      "url": "https://securitytrails.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "shodan": {
+      "title": "Shodan",
+      "url": "https://www.shodan.io/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "url-to-domain": {
+      "title": "URL to Domain",
+      "url": "https://urltodomain.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "viewdns": {
+      "title": "ViewDNS",
+      "url": "https://viewdns.info/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "who-is": {
+      "title": "Who.is",
+      "url": "https://who.is/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "whoisxml-api": {
+      "title": "WhoisXML API",
+      "url": "https://whois.whoisxmlapi.com/lookup",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "whoxy": {
+      "title": "Whoxy",
+      "url": "https://www.whoxy.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "zoomeye": {
+      "title": "ZoomEye",
+      "url": "https://www.zoomeye.org/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "arquivo-pt": {
+      "title": "Arquivo.pt",
+      "url": "https://arquivo.pt/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "wayback-machine": {
+      "title": "Wayback Machine",
+      "url": "https://web.archive.org/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "have-i-been-pwned": {
+      "title": "Have I Been Pwned",
+      "url": "https://haveibeenpwned.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "nmap": {
+      "title": "Nmap",
+      "url": "https://nmap.org/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "portswigger-xss-cheat-sheet": {
+      "title": "PortSwigger XSS cheat sheet",
+      "url": "https://portswigger.net/web-security/cross-site-scripting/cheat-sheet",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "OSINT and recon"
+    },
+    "virustotal": {
+      "title": "VirusTotal",
+      "url": "https://www.virustotal.com/",
+      "category": "red-team",
+      "kind": "site",
+      "areas": [
+        "security"
+      ],
+      "risk": [],
+      "group": "OSINT and recon"
+    },
+    "achecker": {
+      "title": "AChecker",
+      "url": "https://achecker.achecks.ca/checker/index.php",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "android-core-app-quality": {
+      "title": "Android core app quality",
+      "url": "https://developer.android.com/docs/quality-guidelines/core-app-quality",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "t-pain-android-test-heuristic": {
+      "title": "T-PAIN Android test heuristic",
+      "url": "https://medium.com/revista-tspi/t-pain-heur%C3%ADstica-de-testes-para-aplica%C3%A7%C3%B5es-android-11260f9f98c1",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "apache-jmeter": {
+      "title": "Apache JMeter",
+      "url": "https://jmeter.apache.org/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "appium-inspector": {
+      "title": "Appium Inspector",
+      "url": "https://inspector.appiumpro.com/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "ases-acessibilidade": {
+      "title": "ASES acessibilidade",
+      "url": "https://asesweb.governoeletronico.gov.br/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "automation-panda": {
+      "title": "Automation Panda",
+      "url": "https://automationpanda.com/testing/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "broken-link-checker": {
+      "title": "Broken Link Checker",
+      "url": "https://www.brokenlinkcheck.com/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "browserstack": {
+      "title": "BrowserStack",
+      "url": "https://www.browserstack.com/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "hotjar": {
+      "title": "Hotjar",
+      "url": "https://www.hotjar.com/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "lambdatest": {
+      "title": "LambdaTest",
+      "url": "https://www.lambdatest.com/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "chaos-monkey": {
+      "title": "Chaos Monkey",
+      "url": "https://netflix.github.io/chaosmonkey/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "owasp-zap": {
+      "title": "OWASP ZAP",
+      "url": "https://www.zaproxy.org/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "QA tools"
+    },
+    "pagespeed-insights": {
+      "title": "PageSpeed Insights",
+      "url": "https://pagespeed.web.dev/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "pairwise-testing-tools": {
+      "title": "Pairwise testing tools",
+      "url": "https://www.pairwise.org/tools.html",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "sonarqube": {
+      "title": "SonarQube",
+      "url": "https://www.sonarqube.org/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "testdatahub": {
+      "title": "TestDataHub",
+      "url": "https://testdatahub.com/generate_files",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "xdecision": {
+      "title": "xDecision",
+      "url": "https://juliodelima.com.br/xdecision/pt",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "4devs-test-data": {
+      "title": "4Devs test data",
+      "url": "https://www.4devs.com.br/",
+      "category": "qa",
+      "kind": "site",
+      "areas": [
+        "qa-testing"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "arm-converter": {
+      "title": "ARM converter",
+      "url": "https://armconverter.com/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "reverse-engineering"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "base64-decode": {
+      "title": "Base64 decode",
+      "url": "https://www.base64decode.org/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "convertcsv": {
+      "title": "ConvertCSV",
+      "url": "https://www.convertcsv.com/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "diffchecker": {
+      "title": "Diffchecker",
+      "url": "https://www.diffchecker.com/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "json-formatter": {
+      "title": "JSON Formatter",
+      "url": "https://jsonformatter.org/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "mdn-web-docs": {
+      "title": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/en-US/docs/Web",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "swagger-editor": {
+      "title": "Swagger Editor",
+      "url": "https://editor.swagger.io/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "primeng": {
+      "title": "PrimeNG",
+      "url": "https://primeng.org/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "xpath-cheatsheet": {
+      "title": "XPath cheatsheet",
+      "url": "https://devhints.io/xpath",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "codesandbox": {
+      "title": "CodeSandbox",
+      "url": "https://codesandbox.io/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "css-diner": {
+      "title": "CSS Diner",
+      "url": "https://flukeout.github.io/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "replit": {
+      "title": "Replit",
+      "url": "https://replit.com/",
+      "category": "web-api",
+      "kind": "site",
+      "areas": [
+        "api-integration",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
+    },
+    "deepseek-chat": {
+      "title": "DeepSeek Chat",
+      "url": "https://chat.deepseek.com/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "grok": {
+      "title": "Grok",
+      "url": "https://grok.com/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "google-gemini": {
+      "title": "Google Gemini",
+      "url": "https://gemini.google.com/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "chatgpt": {
+      "title": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "microsoft-365-copilot-chat": {
+      "title": "Microsoft 365 Copilot Chat",
+      "url": "https://m365.cloud.microsoft/chat",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "deploy-com-models": {
+      "title": "Deploy.com models",
+      "url": "https://deploy.com/explore",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Chat UIs and routers"
+    },
+    "larprouter": {
+      "title": "LarpRouter",
+      "url": "https://larprouter.com/",
+      "category": "llm-gateways",
+      "kind": "site",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check",
+        "experimental"
+      ],
+      "group": "Chat UIs and routers"
+    },
+    "evox-pegasus-store": {
+      "title": "evoX Pegasus Store",
+      "url": "https://nexgen999.github.io/evoX-CoreOS-WebUI/pegasus-store_en.html",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Console homebrew"
+    },
+    "can-i-root-my-tv": {
+      "title": "Can I Root My TV?",
+      "url": "https://cani.rootmy.tv/",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Console homebrew"
+    },
+    "prospero-patches": {
+      "title": "Prospero Patches",
+      "url": "https://prosperopatches.com/",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Console homebrew"
+    },
+    "ps3-updates-aldostools": {
+      "title": "PS3 updates (aldostools)",
+      "url": "https://ps3.aldostools.org/updates.html",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Console homebrew"
+    },
+    "schneegans-unattend-generator": {
+      "title": "Schneegans unattend generator",
+      "url": "https://schneegans.de/windows/unattend-generator/",
+      "category": "desktop-tools",
+      "kind": "site",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Windows setup"
+    },
+    "winstall": {
+      "title": "winstall",
+      "url": "https://winstall.app/",
+      "category": "desktop-tools",
+      "kind": "site",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Windows setup"
+    },
+    "heidoc-windows-office-iso-downloader": {
+      "title": "HeiDoc Windows/Office ISO downloader",
+      "url": "https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool",
+      "category": "desktop-tools",
+      "kind": "site",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Windows setup"
+    },
+    "offline-nt-password-registry-editor": {
+      "title": "Offline NT Password & Registry Editor",
+      "url": "https://pogostick.net/~pnh/ntpasswd/",
+      "category": "desktop-tools",
+      "kind": "site",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "group": "Windows setup"
     }
   }
 }

@@ -138,6 +138,25 @@ Areas: `qa-testing`
 |---|---|---|---|---|
 | [api-clientes-exemplo-microservico](https://github.com/vinnypessoni/api-clientes-exemplo-microservico) | repository | qa-testing | - | - |
 | [gen-ai-para-produtividade-em-testes](https://github.com/juliodelimas/gen-ai-para-produtividade-em-testes) | repository | qa-testing | - | - |
+| QA tools: [4Devs test data](https://www.4devs.com.br/) | site | qa-testing | - | - |
+| QA tools: [AChecker](https://achecker.achecks.ca/checker/index.php) | site | qa-testing | - | - |
+| QA tools: [Android core app quality](https://developer.android.com/docs/quality-guidelines/core-app-quality) | site | qa-testing | - | - |
+| QA tools: [Apache JMeter](https://jmeter.apache.org/) | site | qa-testing | - | - |
+| QA tools: [Appium Inspector](https://inspector.appiumpro.com/) | site | qa-testing | - | - |
+| QA tools: [ASES acessibilidade](https://asesweb.governoeletronico.gov.br/) | site | qa-testing | - | - |
+| QA tools: [Automation Panda](https://automationpanda.com/testing/) | site | qa-testing | - | - |
+| QA tools: [Broken Link Checker](https://www.brokenlinkcheck.com/) | site | qa-testing | - | - |
+| QA tools: [BrowserStack](https://www.browserstack.com/) | site | qa-testing | - | - |
+| QA tools: [Chaos Monkey](https://netflix.github.io/chaosmonkey/) | site | qa-testing | - | - |
+| QA tools: [Hotjar](https://www.hotjar.com/) | site | qa-testing | - | - |
+| QA tools: [LambdaTest](https://www.lambdatest.com/) | site | qa-testing | - | - |
+| QA tools: [OWASP ZAP](https://www.zaproxy.org/) | site | qa-testing | authorized-only | - |
+| QA tools: [PageSpeed Insights](https://pagespeed.web.dev/) | site | qa-testing | - | - |
+| QA tools: [Pairwise testing tools](https://www.pairwise.org/tools.html) | site | qa-testing | - | - |
+| QA tools: [SonarQube](https://www.sonarqube.org/) | site | qa-testing | - | - |
+| QA tools: [T-PAIN Android test heuristic](https://medium.com/revista-tspi/t-pain-heur%C3%ADstica-de-testes-para-aplica%C3%A7%C3%B5es-android-11260f9f98c1) | site | qa-testing | - | - |
+| QA tools: [TestDataHub](https://testdatahub.com/generate_files) | site | qa-testing | - | - |
+| QA tools: [xDecision](https://juliodelima.com.br/xdecision/pt) | site | qa-testing | - | - |
 
 ## Security research and red-team
 
@@ -150,6 +169,33 @@ Areas: `security`
 | LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security, ai-automation | authorized-only, tos-check, experimental | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | repository | security | authorized-only | - |
 | OSINT: [sherlock](https://github.com/sherlock-project/sherlock) | repository | security | authorized-only | - |
+| OSINT and recon: [Arquivo.pt](https://arquivo.pt/) | site | security | - | - |
+| OSINT and recon: [ASN Lookup](https://asnlookup.com/) | site | security | - | - |
+| OSINT and recon: [Censys](https://censys.com/) | site | security | authorized-only | - |
+| OSINT and recon: [crt.sh](https://crt.sh/) | site | security | - | - |
+| OSINT and recon: [Crunchbase](https://www.crunchbase.com/) | site | security | - | - |
+| OSINT and recon: [DNS Issue bulk lookup](https://www.dnsissue.com/bulkdnslookup/) | site | security | - | - |
+| OSINT and recon: [DNSDumpster](https://dnsdumpster.com/) | site | security | authorized-only | - |
+| OSINT and recon: [DomainTools Whois](https://whois.domaintools.com/) | site | security | - | - |
+| OSINT and recon: [Have I Been Pwned](https://haveibeenpwned.com/) | site | security | - | - |
+| OSINT and recon: [IANA Root Zone DB](https://www.iana.org/domains/root/db) | site | security | - | - |
+| OSINT and recon: [Meta CT search](https://developers.facebook.com/tools/ct/search/) | site | security | - | - |
+| OSINT and recon: [Netcraft DNS](https://searchdns.netcraft.com/) | site | security | - | - |
+| OSINT and recon: [Nmap](https://nmap.org/) | site | security | authorized-only | - |
+| OSINT and recon: [OSINT Framework](https://osintframework.com/) | site | security | authorized-only | - |
+| OSINT and recon: [PortSwigger XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) | site | security | authorized-only | - |
+| OSINT and recon: [Registro.br Whois](https://registro.br/tecnologia/ferramentas/whois/) | site | security | - | - |
+| OSINT and recon: [ReverseWhois](https://www.reversewhois.io/) | site | security | authorized-only | - |
+| OSINT and recon: [SecurityTrails](https://securitytrails.com/) | site | security | authorized-only | - |
+| OSINT and recon: [Shodan](https://www.shodan.io/) | site | security | authorized-only | - |
+| OSINT and recon: [URL to Domain](https://urltodomain.com/) | site | security | - | - |
+| OSINT and recon: [ViewDNS](https://viewdns.info/) | site | security | - | - |
+| OSINT and recon: [VirusTotal](https://www.virustotal.com/) | site | security | - | - |
+| OSINT and recon: [Wayback Machine](https://web.archive.org/) | site | security | - | - |
+| OSINT and recon: [Who.is](https://who.is/) | site | security | - | - |
+| OSINT and recon: [WhoisXML API](https://whois.whoisxmlapi.com/lookup) | site | security | - | - |
+| OSINT and recon: [Whoxy](https://www.whoxy.com/) | site | security | - | - |
+| OSINT and recon: [ZoomEye](https://www.zoomeye.org/) | site | security | authorized-only | - |
 | Offensive toolkits and scanners: [hackingtool](https://github.com/Z4nzu/hackingtool) | repository | security | authorized-only | - |
 | Offensive toolkits and scanners: [php2shell-scanner](https://github.com/assetnote/php2shell-scanner) | repository | security | authorized-only | - |
 | Web payload references: [Ultimate XSS Polyglot (HackVault)](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot) | guide | security, frontend | authorized-only | - |
@@ -167,6 +213,13 @@ Areas: `ai-automation`
 | [openclaude](https://github.com/Twigpine/openclaude) | repository | ai-automation | tos-check, experimental | - |
 | [Vyce AI](https://vyceai.com) | site | ai-automation | tos-check | - |
 | [ZenMux](https://zenmux.ai) | site | ai-automation | tos-check | - |
+| Chat UIs and routers: [ChatGPT](https://chatgpt.com/) | site | ai-automation | - | - |
+| Chat UIs and routers: [DeepSeek Chat](https://chat.deepseek.com/) | site | ai-automation | - | - |
+| Chat UIs and routers: [Deploy.com models](https://deploy.com/explore) | site | ai-automation | experimental | - |
+| Chat UIs and routers: [Google Gemini](https://gemini.google.com/) | site | ai-automation | - | - |
+| Chat UIs and routers: [Grok](https://grok.com/) | site | ai-automation | - | - |
+| Chat UIs and routers: [LarpRouter](https://larprouter.com/) | site | ai-automation | tos-check, experimental | - |
+| Chat UIs and routers: [Microsoft 365 Copilot Chat](https://m365.cloud.microsoft/chat) | site | ai-automation | - | - |
 | Free LLM API lists: [awesome-freellm-apis](https://github.com/open-free-llm-api/awesome-freellm-apis) | list | ai-automation, api-integration | tos-check, experimental | - |
 | Free LLM API lists: [BitLLM (P2P inference)](https://bitllm.org/) | site | ai-automation | experimental | - |
 
@@ -185,6 +238,11 @@ Areas: `desktop`, `mobile-app`
 | Downloads/media: [yoinks](https://github.com/pablostanley/yoinks) | repository | desktop, mobile-app | licensing-check, tos-check | - |
 | Messaging: [WA-AKG](https://github.com/mrifqidaffaaditya/WA-AKG) | repository | desktop, mobile-app, api-integration | - | - |
 | Messaging: [zapfast](https://github.com/crmne/zapfast) | repository | desktop, mobile-app, api-integration | - | - |
+| Windows setup: [HeiDoc Windows/Office ISO downloader](https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool) | site | desktop | tos-check | - |
+| Windows setup: [Microsoft Activation Scripts](https://github.com/massgravel/microsoft-activation-scripts) | repository | desktop | licensing-check, tos-check | - |
+| Windows setup: [Offline NT Password & Registry Editor](https://pogostick.net/~pnh/ntpasswd/) | site | desktop | authorized-only | - |
+| Windows setup: [Schneegans unattend generator](https://schneegans.de/windows/unattend-generator/) | site | desktop | - | - |
+| Windows setup: [winstall](https://winstall.app/) | site | desktop | - | - |
 | Windows/PC: [g-helper](https://github.com/seerge/g-helper) | repository | desktop, mobile-app | - | - |
 | Windows/PC: [gpu-unlock](https://github.com/Zagitta/gpu-unlock) | repository | desktop, mobile-app | experimental | - |
 | Windows/PC: [hatchzip](https://github.com/xevrion/hatchzip) | repository | desktop, mobile-app | - | - |
@@ -270,6 +328,18 @@ Areas: `reverse-engineering`, `api-integration`, `security`
 | [mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) | tool | reverse-engineering, api-integration, security | - | - |
 | [Scrapling](https://github.com/D4Vinci/Scrapling) | tool | reverse-engineering, api-integration, security | - | - |
 | [webcrack](https://github.com/j4k0xb/webcrack) | tool | reverse-engineering, api-integration, security | - | - |
+| Dev utilities: [ARM converter](https://armconverter.com/) | site | reverse-engineering | - | - |
+| Dev utilities: [Base64 decode](https://www.base64decode.org/) | site | api-integration, frontend | - | - |
+| Dev utilities: [CodeSandbox](https://codesandbox.io/) | site | api-integration, frontend | - | - |
+| Dev utilities: [ConvertCSV](https://www.convertcsv.com/) | site | api-integration, frontend | - | - |
+| Dev utilities: [CSS Diner](https://flukeout.github.io/) | site | api-integration, frontend | - | - |
+| Dev utilities: [Diffchecker](https://www.diffchecker.com/) | site | api-integration, frontend | - | - |
+| Dev utilities: [JSON Formatter](https://jsonformatter.org/) | site | api-integration, frontend | - | - |
+| Dev utilities: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web) | site | api-integration, frontend | - | - |
+| Dev utilities: [PrimeNG](https://primeng.org/) | site | api-integration, frontend | - | - |
+| Dev utilities: [Replit](https://replit.com/) | site | api-integration, frontend | - | - |
+| Dev utilities: [Swagger Editor](https://editor.swagger.io/) | site | api-integration, frontend | - | - |
+| Dev utilities: [XPath cheatsheet](https://devhints.io/xpath) | site | api-integration, frontend | - | - |
 | Follow the traffic: [Wireshark](https://github.com/wireshark/wireshark) | tool | reverse-engineering, api-integration, security | - | - |
 
 ## Shader and PC gaming tools
@@ -282,6 +352,10 @@ Areas: `game-port`
 | [PS-Game-Patch](https://github.com/illusionyy/PS-Game-Patch) | repository | game-modding | licensing-check | - |
 | [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - | - |
 | [shadPS4 (AYOUB1080p fork)](https://github.com/weshayoub92/shadPS4-AYOUB1080p) | repository | game-port | licensing-check, experimental | - |
+| Console homebrew: [Can I Root My TV?](https://cani.rootmy.tv/) | site | game-modding, game-port | authorized-only | - |
+| Console homebrew: [evoX Pegasus Store](https://nexgen999.github.io/evoX-CoreOS-WebUI/pegasus-store_en.html) | site | game-modding, game-port | experimental | - |
+| Console homebrew: [Prospero Patches](https://prosperopatches.com/) | site | game-modding, game-port | licensing-check | - |
+| Console homebrew: [PS3 updates (aldostools)](https://ps3.aldostools.org/updates.html) | site | game-modding, game-port | licensing-check | - |
 
 ## Reverse engineering learning path
 
