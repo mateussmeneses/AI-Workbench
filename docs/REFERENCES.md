@@ -109,6 +109,7 @@ Areas: `content-creation`, `marketing`
 | Media and file utilities: [AnyConv](https://anyconv.com/) | site | content-creation | - | - |
 | Media and file utilities: [chidiwilliams/buzz](https://github.com/chidiwilliams/buzz) | repository | content-creation | - | - |
 | Media and file utilities: [ClipConverter](https://www.clipconverter.cc/) | site | content-creation | tos-check | - |
+| Media and file utilities: [Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI) | repository | content-creation, ai-automation | - | - |
 | Media and file utilities: [danielgatis/rembg](https://github.com/danielgatis/rembg) | repository | content-creation, ux-design | - | - |
 | Media and file utilities: [Imagy poster print](https://imagy.app/pt/print-image-on-multiple-pages/) | site | content-creation | - | - |
 | Media and file utilities: [MP3Cut](https://mp3cut.net/) | site | content-creation | - | - |
@@ -129,9 +130,11 @@ Areas: `content-creation`, `marketing`
 | Video/media: [HeliosGen](https://github.com/SegFault42/HeliosGen) | repository | content-creation, marketing | - | - |
 | Video/media: [iv-org/invidious](https://github.com/iv-org/invidious) | repository | content-creation | tos-check | - |
 | Video/media: [jellyfin/jellyfin](https://github.com/jellyfin/jellyfin) | repository | operations | licensing-check | - |
+| Video/media: [Likely7/Veyra-NRVideo](https://github.com/Likely7/Veyra-NRVideo) | repository | content-creation | experimental | - |
 | Video/media: [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | repository | content-creation, marketing | licensing-check | - |
 | Video/media: [motion-graphics-skills](https://github.com/charlie947/motion-graphics-skills) | repository | content-creation, marketing | - | - |
 | Video/media: [OpenCut](https://github.com/OpenCut-app/OpenCut) | repository | content-creation, marketing | - | - |
+| Video/media: [RafaelGodoyEbert/ViralCutter](https://github.com/RafaelGodoyEbert/ViralCutter) | repository | content-creation, marketing | tos-check | - |
 | Video/media: [rea-video](https://github.com/JuneYaooo/rea-video) | repository | content-creation, marketing | - | - |
 
 ## Quantitative finance
@@ -396,6 +399,7 @@ Areas: `game-port`
 | [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - | - |
 | [shadPS4 (AYOUB1080p fork)](https://github.com/weshayoub92/shadPS4-AYOUB1080p) | repository | game-port | licensing-check, experimental | - |
 | Additional ports/runtimes: [adriadam10/mkw-recomp](https://github.com/adriadam10/mkw-recomp) | repository | game-port, decompilation | licensing-check, experimental | - |
+| Additional ports/runtimes: [Frizti/Fritchii](https://github.com/Frizti/Fritchii) | repository | game-port | licensing-check, experimental | - |
 | Console homebrew: [Can I Root My TV?](https://cani.rootmy.tv/) | site | game-modding, game-port | authorized-only | - |
 | Console homebrew: [evoX Pegasus Store](https://nexgen999.github.io/evoX-CoreOS-WebUI/pegasus-store_en.html) | site | game-modding, game-port | experimental | - |
 | Console homebrew: [Prospero Patches](https://prosperopatches.com/) | site | game-modding, game-port | licensing-check | - |

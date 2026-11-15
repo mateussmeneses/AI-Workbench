@@ -3935,6 +3935,59 @@
       ],
       "risk": [],
       "group": "Dev utilities"
+    },
+    "fritchii": {
+      "title": "Frizti/Fritchii",
+      "url": "https://github.com/Frizti/Fritchii",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ],
+      "group": "Additional ports/runtimes"
+    },
+    "veyra-nrvideo": {
+      "title": "Likely7/Veyra-NRVideo",
+      "url": "https://github.com/Likely7/Veyra-NRVideo",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Video/media"
+    },
+    "comfyui": {
+      "title": "Comfy-Org/ComfyUI",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "viralcutter": {
+      "title": "RafaelGodoyEbert/ViralCutter",
+      "url": "https://github.com/RafaelGodoyEbert/ViralCutter",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Video/media"
     }
   }
 }
