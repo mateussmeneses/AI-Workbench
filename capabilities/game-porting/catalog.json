@@ -326,6 +326,17 @@
       ],
       "maturity": "Community fork",
       "note": "Fork of shadPS4; compare against upstream before use."
+    },
+    "Fritchii": {
+      "url": "https://github.com/Frizti/Fritchii",
+      "tracks": [
+        "compatibility-runtime"
+      ],
+      "platforms": [
+        "switch2"
+      ],
+      "maturity": "Very experimental emulator (Lichii fork)",
+      "note": "Specialized Lichii fork; verify independent progress before relying on it."
     }
   },
   "tracks": {

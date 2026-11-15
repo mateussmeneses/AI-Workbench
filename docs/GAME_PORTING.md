@@ -45,7 +45,7 @@ Recognized evidence includes Nintendo 64 ROM byte-order variants; PS-X EXE; Xbox
 | PlayStation 4, compatibility runtime | [shadPS4](https://github.com/shadps4-emu/shadPS4) | Emulator/runtime research reference, not a port generator |
 | PlayStation 2, reference runtime | [PCSX2](https://github.com/PCSX2/pcsx2) | Mature emulator; useful for behavior comparison while validating recompiled output |
 | PlayStation 5, compatibility runtime | [PortPS5](https://github.com/ymatrix1/PortPS5), [AnyPS5](https://github.com/boykopovar/AnyPS5), [KytyPS5](https://github.com/KytyPS5/KytyPS5) ([chenxiao07 fork](https://github.com/chenxiao07/KytyPS5)), [sharpemu](https://github.com/sharpemu/sharpemu) | Experimental; platform is user-declared only (no PS5 signature detection) and works from decrypted game dumps |
-| Nintendo Switch 2, compatibility runtime | [Eglantine](https://github.com/Eglantine-Community/Eglantine), [Lichii](https://github.com/zortos293/Lichii) | Very experimental emulators; platform is user-declared only |
+| Nintendo Switch 2, compatibility runtime | [Eglantine](https://github.com/Eglantine-Community/Eglantine), [Lichii](https://github.com/zortos293/Lichii) ([Fritchii fork](https://github.com/Frizti/Fritchii)) | Very experimental emulators; platform is user-declared only |
 | Nintendo Switch → Apple Silicon | [nxnative](https://github.com/seedds/nxnative), [NX2Apple](https://github.com/LNPANDY/NX2Apple) | Experimental; platform is user-declared only, NSP/XCI contents are not inspected |
 
 ### Title-specific case studies (reference only)
@@ -54,6 +54,7 @@ These projects show what a finished, title-specific result looks like. They are 
 
 | Project | Track | Notes |
 |---|---|---|
+| [mkw-recomp](https://github.com/adriadam10/mkw-recomp) | static-recomp | Static recompilation of *Mario Kart World* (Switch 2) to native PC |
 | [Hookshot](https://github.com/NotRexed/Hookshot) | static-recomp | Native recompilation of *Ocarina of Time* (Switch 2 remaster) |
 | [ocarina-recomp](https://github.com/sostenesfreitas/ocarina-recomp) | static-recomp | *Ocarina of Time* built natively for Windows from the user's own ROM |
 | [SpartanPort](https://github.com/FelipePrado0/SpartanPort) | compatibility-runtime | Unofficial PC port of *God of War III Remastered* (PS4) |

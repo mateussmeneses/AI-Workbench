@@ -6,7 +6,8 @@
     "tos-check": "May conflict with provider or platform terms of service; review terms before use.",
     "licensing-check": "May involve copyrighted content or unclear licensing; use only with content you are entitled to.",
     "experimental": "Self-described or observed as experimental; verify claims before relying on it.",
-    "financial-risk": "Research/simulation reference; not financial advice. Live trading needs separate risk review and approval."
+    "financial-risk": "Research/simulation reference; not financial advice. Live trading needs separate risk review and approval.",
+    "piracy": "Indexes or distributes unlicensed copies; legal exposure and frequent malware/adware. Prefer content you own or that is legally free."
   },
   "categories": {
     "agent-tooling": {
@@ -133,6 +134,14 @@
         "content-creation",
         "frontend",
         "ux-design"
+      ]
+    },
+    "piracy-indexes": {
+      "label": "Piracy indexes and communities (high risk)",
+      "areas": [
+        "game-modding",
+        "mobile-app",
+        "content-creation"
       ]
     }
   },
@@ -3988,6 +3997,824 @@
         "tos-check"
       ],
       "group": "Video/media"
+    },
+    "piracy-1337x-to": {
+      "title": "1337x — general torrent index",
+      "url": "https://1337x.to/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-thepiratebay-org": {
+      "title": "The Pirate Bay — general torrent index",
+      "url": "https://thepiratebay.org/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-rarbg-to": {
+      "title": "RARBG — defunct torrent index (legacy link)",
+      "url": "https://rarbg.to/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-torrentleech-org": {
+      "title": "TorrentLeech — private tracker",
+      "url": "https://www.torrentleech.org/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-speedapp-io": {
+      "title": "SpeedApp — private tracker",
+      "url": "https://speedapp.io/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-brsociety-club": {
+      "title": "BrSociety — Brazilian private tracker",
+      "url": "https://brsociety.club/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Torrent trackers and indexes"
+    },
+    "piracy-fitgirl-repacks-site": {
+      "title": "FitGirl Repacks — compressed PC game repacks",
+      "url": "https://fitgirl-repacks.site/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-dodi-repacks-site": {
+      "title": "DODI Repacks — PC game repacks",
+      "url": "https://dodi-repacks.site/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-dodi-repacks-download": {
+      "title": "DODI Repacks — alternate domain",
+      "url": "https://dodi-repacks.download/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-elamigos-site": {
+      "title": "ElAmigos — PC game releases",
+      "url": "https://elamigos.site/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-elamigos-games-com": {
+      "title": "ElAmigos Games — mirror/index",
+      "url": "https://www.elamigos-games.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-gnarly-repacks-site": {
+      "title": "Gnarly Repacks — PC game repacks",
+      "url": "https://www.gnarly-repacks.site/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-game-repack-site": {
+      "title": "Game Repack — PC game repacks",
+      "url": "https://game-repack.site/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-repack-me": {
+      "title": "Repack.me — repack notices",
+      "url": "https://repack.me/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-kaoskrew-org": {
+      "title": "KaOsKrew — PC game repacks",
+      "url": "https://kaoskrew.org/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-online-fix-me": {
+      "title": "Online-Fix — multiplayer fixes for unlicensed copies",
+      "url": "https://online-fix.me/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-skidrowreloaded-com": {
+      "title": "Skidrow & Reloaded — scene release mirror",
+      "url": "https://www.skidrowreloaded.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-plazapcgames-com": {
+      "title": "Plaza PC Games — direct-download index",
+      "url": "https://plazapcgames.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-dlxbgame-com": {
+      "title": "DLXBGame — direct-download index",
+      "url": "https://dlxbgame.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-allvoices38-com-games": {
+      "title": "AllVoices Games — direct-download index",
+      "url": "https://allvoices38.com/games",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-emersonlinogames-blogspot-com": {
+      "title": "Emerson Lino Games — Brazilian download blog",
+      "url": "https://emersonlinogames.blogspot.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · PC game repacks"
+    },
+    "piracy-coolrom-com-au": {
+      "title": "CoolROM — retro ROM archive",
+      "url": "https://coolrom.com.au/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-retrostic-com-pt": {
+      "title": "Retrostic — retro ROM archive",
+      "url": "https://www.retrostic.com/pt",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-romspedia-com": {
+      "title": "Romspedia — retro ROM archive",
+      "url": "https://www.romspedia.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-romsfun-com": {
+      "title": "ROMsFun — console ROM archive",
+      "url": "https://romsfun.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-dlpsgame-com-category-ps5": {
+      "title": "DLPSGame — PS4/PS5 dump index",
+      "url": "https://dlpsgame.com/category/ps5/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-pspkg-com": {
+      "title": "PSPKG — PlayStation package index",
+      "url": "https://pspkg.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-superpsx-com": {
+      "title": "SuperPSX — PlayStation dump index",
+      "url": "https://www.superpsx.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-viking-fd06-onrender-com": {
+      "title": "Viking Games — console dump index",
+      "url": "https://viking-fd06.onrender.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-zerodaysofficial-github-io-zer0game": {
+      "title": "ZER0GAME — console dump index",
+      "url": "https://zerodaysofficial.github.io/zer0game/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · ROMs and console dumps"
+    },
+    "piracy-liteapks-com": {
+      "title": "LiteAPKs — modded APKs",
+      "url": "https://liteapks.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Modded APK sites"
+    },
+    "piracy-modder-me": {
+      "title": "Modder — modded APKs",
+      "url": "https://modder.me/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Modded APK sites"
+    },
+    "piracy-modyolo-com": {
+      "title": "Modyolo — modded APKs",
+      "url": "https://modyolo.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Modded APK sites"
+    },
+    "piracy-apkvision-org": {
+      "title": "ApkVision — modded APKs",
+      "url": "https://apkvision.org/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Modded APK sites"
+    },
+    "piracy-acervoapkbr-blogspot-com": {
+      "title": "Acervo Videojogos — Android APKs and emulators",
+      "url": "https://acervoapkbr.blogspot.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Modded APK sites"
+    },
+    "piracy-topflix-fm": {
+      "title": "TopFlix — unofficial movie/series streaming",
+      "url": "https://topflix.fm/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Unofficial streaming and IPTV"
+    },
+    "piracy-multicanaisk-com": {
+      "title": "Multicanais — unofficial live TV",
+      "url": "https://multicanaisk.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Unofficial streaming and IPTV"
+    },
+    "piracy-portaldarmc-com-br-futebol-ao-vivo-online": {
+      "title": "Portal RMC — unofficial live football",
+      "url": "https://portaldarmc.com.br/futebol-ao-vivo-online/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Unofficial streaming and IPTV"
+    },
+    "piracy-libgen-is": {
+      "title": "Library Genesis — shadow library",
+      "url": "https://libgen.is/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-z-library-sk": {
+      "title": "Z-Library — shadow library",
+      "url": "https://z-library.sk/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-pt-z-lib-fm": {
+      "title": "Z-Library — Portuguese mirror",
+      "url": "https://pt.z-lib.fm/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-welib-org": {
+      "title": "WeLib — shadow library search",
+      "url": "https://welib.org/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-readanybook-com": {
+      "title": "ReadAnyBook — online book reader",
+      "url": "https://www.readanybook.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-doceru-com": {
+      "title": "Doceru — document sharing",
+      "url": "https://doceru.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Shadow libraries (books)"
+    },
+    "piracy-downloadcursos-gratis": {
+      "title": "DownloadCursos.gratis — paid-course downloads",
+      "url": "https://downloadcursos.gratis/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Course downloads"
+    },
+    "piracy-downloadcursos-top": {
+      "title": "DownloadCursos.top — paid-course downloads",
+      "url": "https://downloadcursos.top/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Course downloads"
+    },
+    "piracy-fmhy-net": {
+      "title": "FMHY — Free Media Heck Yeah wiki",
+      "url": "https://fmhy.net/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-reddit-com-r-piracy-wiki-megathread": {
+      "title": "r/Piracy megathread",
+      "url": "https://www.reddit.com/r/Piracy/wiki/megathread/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-rentry-org-pgames": {
+      "title": "Pirated Games megathread (rentry)",
+      "url": "https://rentry.org/pgames",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-ripped-guide-pc-software-games": {
+      "title": "Ripped Guide — PC games section",
+      "url": "https://ripped.guide/PC-Software/Games/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-pirataria-link": {
+      "title": "Pirataria.link — Brazilian link index",
+      "url": "https://pirataria.link/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-hacksnation-com": {
+      "title": "HacksNation — cheats and cracks forum",
+      "url": "https://hacksnation.com/",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-lemmy-dbzer0-com-c-pirataria": {
+      "title": "Lemmy c/pirataria — Brazilian community",
+      "url": "https://lemmy.dbzer0.com/c/pirataria",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
+    },
+    "piracy-phtn-app-c-pirataria-lemmy-dbzer0-com": {
+      "title": "Photon — c/pirataria web client",
+      "url": "https://phtn.app/c/pirataria@lemmy.dbzer0.com",
+      "category": "piracy-indexes",
+      "kind": "site",
+      "areas": [
+        "game-modding",
+        "content-creation"
+      ],
+      "risk": [
+        "piracy",
+        "licensing-check",
+        "tos-check"
+      ],
+      "group": "Piracy · Megathreads, wikis and communities"
     }
   }
 }

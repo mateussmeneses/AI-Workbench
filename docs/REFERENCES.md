@@ -14,6 +14,7 @@ Reviewed is the date the entry was last read by a maintainer, with the license i
 - `licensing-check`: May involve copyrighted content or unclear licensing; use only with content you are entitled to.
 - `experimental`: Self-described or observed as experimental; verify claims before relying on it.
 - `financial-risk`: Research/simulation reference; not financial advice. Live trading needs separate risk review and approval.
+- `piracy`: Indexes or distributes unlicensed copies; legal exposure and frequent malware/adware. Prefer content you own or that is legally free.
 
 ## Agent skills, harnesses and workflows
 
@@ -467,3 +468,64 @@ Areas: `content-creation`, `frontend`, `ux-design`
 | Rebuild: [three.js](https://github.com/mrdoob/three.js) | tool | frontend, game-modding | - | - |
 | Rebuild: [transformers.js](https://github.com/huggingface/transformers.js) | tool | frontend, ai-automation | - | - |
 | Rebuild: [whisper.cpp](https://github.com/ggml-org/whisper.cpp) | tool | content-creation, ai-automation | - | - |
+
+## Piracy indexes and communities (high risk)
+
+Areas: `game-modding`, `mobile-app`, `content-creation`
+
+| Reference | Kind | Areas | Risk | Reviewed |
+|---|---|---|---|---|
+| Piracy · Course downloads: [DownloadCursos.gratis — paid-course downloads](https://downloadcursos.gratis/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Course downloads: [DownloadCursos.top — paid-course downloads](https://downloadcursos.top/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [FMHY — Free Media Heck Yeah wiki](https://fmhy.net/) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [HacksNation — cheats and cracks forum](https://hacksnation.com/) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [Lemmy c/pirataria — Brazilian community](https://lemmy.dbzer0.com/c/pirataria) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [Photon — c/pirataria web client](https://phtn.app/c/pirataria@lemmy.dbzer0.com) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [Pirataria.link — Brazilian link index](https://pirataria.link/) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [Pirated Games megathread (rentry)](https://rentry.org/pgames) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [r/Piracy megathread](https://www.reddit.com/r/Piracy/wiki/megathread/) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Megathreads, wikis and communities: [Ripped Guide — PC games section](https://ripped.guide/PC-Software/Games/) | site | game-modding, content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Modded APK sites: [Acervo Videojogos — Android APKs and emulators](https://acervoapkbr.blogspot.com/) | site | mobile-app | piracy, licensing-check, tos-check | - |
+| Piracy · Modded APK sites: [ApkVision — modded APKs](https://apkvision.org/) | site | mobile-app | piracy, licensing-check, tos-check | - |
+| Piracy · Modded APK sites: [LiteAPKs — modded APKs](https://liteapks.com/) | site | mobile-app | piracy, licensing-check, tos-check | - |
+| Piracy · Modded APK sites: [Modder — modded APKs](https://modder.me/) | site | mobile-app | piracy, licensing-check, tos-check | - |
+| Piracy · Modded APK sites: [Modyolo — modded APKs](https://modyolo.com/) | site | mobile-app | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [AllVoices Games — direct-download index](https://allvoices38.com/games) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [DLXBGame — direct-download index](https://dlxbgame.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [DODI Repacks — alternate domain](https://dodi-repacks.download/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [DODI Repacks — PC game repacks](https://dodi-repacks.site/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [ElAmigos Games — mirror/index](https://www.elamigos-games.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [ElAmigos — PC game releases](https://elamigos.site/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Emerson Lino Games — Brazilian download blog](https://emersonlinogames.blogspot.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [FitGirl Repacks — compressed PC game repacks](https://fitgirl-repacks.site/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Game Repack — PC game repacks](https://game-repack.site/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Gnarly Repacks — PC game repacks](https://www.gnarly-repacks.site/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [KaOsKrew — PC game repacks](https://kaoskrew.org/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Online-Fix — multiplayer fixes for unlicensed copies](https://online-fix.me/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Plaza PC Games — direct-download index](https://plazapcgames.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Repack.me — repack notices](https://repack.me/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · PC game repacks: [Skidrow & Reloaded — scene release mirror](https://www.skidrowreloaded.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [CoolROM — retro ROM archive](https://coolrom.com.au/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [DLPSGame — PS4/PS5 dump index](https://dlpsgame.com/category/ps5/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [PSPKG — PlayStation package index](https://pspkg.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [Retrostic — retro ROM archive](https://www.retrostic.com/pt) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [ROMsFun — console ROM archive](https://romsfun.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [Romspedia — retro ROM archive](https://www.romspedia.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [SuperPSX — PlayStation dump index](https://www.superpsx.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [Viking Games — console dump index](https://viking-fd06.onrender.com/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · ROMs and console dumps: [ZER0GAME — console dump index](https://zerodaysofficial.github.io/zer0game/) | site | game-modding | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [Doceru — document sharing](https://doceru.com/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [Library Genesis — shadow library](https://libgen.is/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [ReadAnyBook — online book reader](https://www.readanybook.com/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [WeLib — shadow library search](https://welib.org/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [Z-Library — Portuguese mirror](https://pt.z-lib.fm/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Shadow libraries (books): [Z-Library — shadow library](https://z-library.sk/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [1337x — general torrent index](https://1337x.to/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [BrSociety — Brazilian private tracker](https://brsociety.club/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [RARBG — defunct torrent index (legacy link)](https://rarbg.to/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [SpeedApp — private tracker](https://speedapp.io/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [The Pirate Bay — general torrent index](https://thepiratebay.org/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Torrent trackers and indexes: [TorrentLeech — private tracker](https://www.torrentleech.org/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Unofficial streaming and IPTV: [Multicanais — unofficial live TV](https://multicanaisk.com/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Unofficial streaming and IPTV: [Portal RMC — unofficial live football](https://portaldarmc.com.br/futebol-ao-vivo-online/) | site | content-creation | piracy, licensing-check, tos-check | - |
+| Piracy · Unofficial streaming and IPTV: [TopFlix — unofficial movie/series streaming](https://topflix.fm/) | site | content-creation | piracy, licensing-check, tos-check | - |
