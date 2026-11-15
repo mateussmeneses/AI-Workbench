@@ -22,7 +22,7 @@ This is a standalone repository consolidated from the previous **AI Workbench St
 
 ## Current continuity limits
 
-`resume` scans local Git metadata, test/build indicators and documented pending work, then writes `.ai-workbench/CONTEXT.md` and `state.json` unless `--dry-run` is used. It includes up to 30 pending items and does not execute tests, keep snapshot history, or persist an approved decision/task lifecycle yet.
+`resume` scans local Git metadata, test/build indicators and documented pending work, then writes `.ai-workbench/CONTEXT.md` and `state.json` unless `--dry-run` is used. It includes up to 60 documented pending items (a scan that hits the limit is flagged as truncated), keeps up to 10 state snapshots with comparisons between sessions, and persists approved decisions and task status in `state.json` (schema v2). It does not execute tests.
 
 The term **continuity** does not imply that AI Workbench can read or export proprietary agent chat histories. It preserves portable, local context and code evidence instead.
 

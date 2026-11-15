@@ -21,7 +21,15 @@ from .workbench import CAPABILITIES, ROOT
 
 CATALOG_PATH = CAPABILITIES / 'references' / 'catalog.json'
 KINDS = {'repository', 'list', 'guide', 'site', 'tool', 'book', 'paper', 'course'}
+REFERENCE_KEYS = {'title', 'url', 'category', 'kind', 'areas', 'risk', 'group', 'reviewed', 'license'}
 DEFAULT_LIMIT = 10
+DEFAULT_DOCUMENT = ROOT / 'docs' / 'REFERENCES.md'
+
+
+def _string_list(key, name, value):
+    if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
+        raise ValueError(f'Reference {key} {name} must be a list of strings')
+    return value
 
 
 def reference_catalog():
@@ -44,6 +52,14 @@ def validate_references(data=None):
         if not entry.get('label') or missing:
             raise ValueError(f'Invalid reference category {category}: label or areas {sorted(missing)}')
     for key, ref in data.get('references', {}).items():
+        if not isinstance(ref, dict):
+            raise ValueError(f'Reference {key} must be an object')
+        unknown_keys = set(ref) - REFERENCE_KEYS
+        if unknown_keys:
+            raise ValueError(f'Reference {key} has unknown keys {sorted(unknown_keys)}')
+        for field in ('url', 'title', 'category', 'kind'):
+            if not isinstance(ref.get(field, ''), str):
+                raise ValueError(f'Reference {key} {field} must be a string')
         url = ref.get('url', '')
         if not url.startswith('https://'):
             raise ValueError(f'Reference {key} must use an https URL')
@@ -51,13 +67,17 @@ def validate_references(data=None):
             raise ValueError(f'Reference {key} has unknown category {ref.get("category")}')
         if ref.get('kind') not in KINDS:
             raise ValueError(f'Reference {key} has invalid kind {ref.get("kind")}')
-        if not ref.get('title') or not ref.get('areas'):
+        ref_areas = _string_list(key, 'areas', ref.get('areas', []))
+        ref_risk = _string_list(key, 'risk', ref.get('risk', []))
+        if not ref.get('title') or not ref_areas:
             raise ValueError(f'Reference {key} needs a title and at least one area')
-        if set(ref['areas']) - areas:
-            raise ValueError(f'Reference {key} has unknown areas {sorted(set(ref["areas"]) - areas)}')
-        if set(ref.get('risk', [])) - labels:
+        if set(ref_areas) - areas:
+            raise ValueError(f'Reference {key} has unknown areas {sorted(set(ref_areas) - areas)}')
+        if set(ref_risk) - labels:
             raise ValueError(f'Reference {key} has unknown risk labels')
-        if 'reviewed' in ref and parse_day(ref['reviewed']) is None:
+        if 'group' in ref and (not isinstance(ref['group'], str) or not ref['group'].strip()):
+            raise ValueError(f'Reference {key} group must be a non-empty string when present')
+        if 'reviewed' in ref and (not isinstance(ref['reviewed'], str) or parse_day(ref['reviewed']) is None):
             raise ValueError(f'Reference {key} reviewed date must be YYYY-MM-DD')
         if 'license' in ref and (not isinstance(ref['license'], str) or not ref['license'].strip()):
             raise ValueError(f'Reference {key} license note must be a non-empty string')
@@ -114,7 +134,7 @@ def references_markdown():
             continue
         lines += ['', f'## {entry["label"]}', '', f'Areas: {", ".join(f"`{a}`" for a in entry["areas"])}', '',
                   '| Reference | Kind | Areas | Risk | Reviewed |', '|---|---|---|---|---|']
-        for ref in sorted(rows, key=lambda r: (r.get('group', ''), r['title'].lower())):
+        for ref in sorted(rows, key=lambda r: (r.get('group') or '', r['title'].lower())):
             title = ref['title'].replace('|', '\\|')
             group = f'{ref["group"]}: ' if ref.get('group') else ''
             review = ref.get('reviewed', '-')
@@ -123,6 +143,22 @@ def references_markdown():
             lines.append(f'| {group}[{title}]({ref["url"]}) | {ref["kind"]} | {", ".join(ref["areas"])} | '
                          f'{", ".join(ref.get("risk", [])) or "-"} | {review} |')
     return '\n'.join(lines) + '\n'
+
+
+def write_document(path=DEFAULT_DOCUMENT):
+    """Write the generated document with LF line endings; returns the path written."""
+    path = Path(path)
+    path.write_text(references_markdown(), encoding='utf-8', newline='\n')
+    return path
+
+
+def document_is_current(path=DEFAULT_DOCUMENT):
+    """True only when the file exists and matches the generated output byte-for-byte."""
+    try:
+        current = Path(path).read_bytes()
+    except FileNotFoundError:
+        return False
+    return current == references_markdown().encode('utf-8')
 
 
 GITHUB_RESERVED = {'topics', 'collections', 'orgs', 'users', 'marketplace', 'sponsors', 'features',

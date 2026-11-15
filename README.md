@@ -66,7 +66,7 @@ Use `aiwh --help` and `aiwh <command> --help` for current options. The global `-
 | `report` | Summarize the private resource catalog, without writes |
 | `doctor` | Check registry references and report executable detection; not a runtime compatibility test |
 | `global-integration` | Preview a managed global instruction block; only `--apply` writes changes |
-| `references` | List curated public references by `--area`/`--risk`; `--markdown` prints the generated `docs/REFERENCES.md` |
+| `references` | List curated public references by `--area`/`--risk`; `--markdown` prints the generated `docs/REFERENCES.md`; `--write` regenerates it and `--check` exits 1 when it is out of date |
 | `catalog check` | Opt-in network: check GitHub references through `gh` for archived, stale, missing or renamed repositories |
 | `curate` | Read-only: list stars/bookmark links that the repository does not reference yet, with suggested areas (`--baseline-html` skips an older export) |
 | `skills lint` | Report vague descriptions, oversized bodies, boilerplate and near-duplicate skills; `--strict` exits 1 on findings |

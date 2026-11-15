@@ -14,7 +14,7 @@ Workbench implements file adapters, not a guarantee that every runtime discovers
 
 `test_preserves_custom_agents_and_can_run_twice` checks generated files and idempotence for the three distinct directories through `--agent all`; it does not launch any agent. `test_opt_in_global_activation_is_reversible` exercises the global managed block with a temporary Codex home, not every runtime's configuration.
 
-`aiwh doctor` reports executable detection for Git, GitHub CLI, Codex, Claude and Hermes. It neither launches those agents nor checks their versions, discovery, trust settings or instruction precedence. It does not probe Antigravity or OpenClaude executables.
+`aiwh doctor` reports executable detection for Git, GitHub CLI, Codex, Claude, Hermes, REA, Node and Java, and whether `GHIDRA_INSTALL_DIR` and `JAVA_HOME` are set. It neither launches those agents nor checks their versions, discovery, trust settings or instruction precedence. It does not probe Antigravity or OpenClaude executables.
 
 Real-runtime verification is tracked in RM-016/RM-017 in [the roadmap](ROADMAP.md). When performed, record runtime version, date, scenario and observed result; leave unavailable runtimes explicitly unverified.
 

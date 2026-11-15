@@ -44,6 +44,10 @@ def get_parser():
     rf.add_argument('--json', action='store_true')
     rf.add_argument('--unreviewed', action='store_true', help='only references without a recorded review date')
     rf.add_argument('--markdown', action='store_true', help='print the generated docs/REFERENCES.md')
+    rf.add_argument('--write', nargs='?', type=Path, const=True, default=None, metavar='PATH',
+                    help='regenerate docs/REFERENCES.md (or PATH) with LF line endings')
+    rf.add_argument('--check', nargs='?', type=Path, const=True, default=None, metavar='PATH',
+                    help='exit 1 unless docs/REFERENCES.md (or PATH) matches the generated output')
     ca = sub.add_parser('catalog', help='curated reference catalog maintenance')
     ca_sub = ca.add_subparsers(dest='catalog_action', required=True)
     cc = ca_sub.add_parser('check', help='opt-in network: check GitHub references for archived/stale/missing repos via gh')
@@ -82,7 +86,7 @@ def get_parser():
     hp.add_argument('--task', help='plan this task ID instead of the next eligible one')
     hp.add_argument('--json', action='store_true')
     hp.add_argument('--output', type=Path, help='file to write the plan; omitted prints to stdout')
-    hc = ho_sub.add_parser('check', help='exit 1 when HEAD moved since the last handoff or a plan was written')
+    hc = ho_sub.add_parser('check', help='exit 0 when current, 1 when HEAD moved since the last handoff or plan was written, 2 when unknown')
     hc.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     hc.add_argument('--plan', type=Path, help='plan file whose source revision is the baseline')
     hc.add_argument('--json', action='store_true')
@@ -167,14 +171,24 @@ def get_parser():
 
 
 def _utf8_stdout():
-    """Windows consoles and pipes default to a legacy code page; reports contain UTF-8 text."""
+    """Windows consoles and pipes default to a legacy code page; reports contain UTF-8 text.
+
+    stdout also uses LF newlines on every platform so emitted Markdown matches the committed docs.
+    Streams without reconfigure() (for example io.StringIO) are left untouched.
+    """
     for stream in (sys.stdout, sys.stderr):
         reconfigure = getattr(stream, 'reconfigure', None)
-        if reconfigure and (stream.encoding or '').replace('-', '').lower() != 'utf8':
-            try:
-                reconfigure(encoding='utf-8', errors='replace')
-            except (OSError, ValueError):
-                pass
+        if not reconfigure:
+            continue
+        options = {'errors': 'replace'}
+        if (stream.encoding or '').replace('-', '').lower() != 'utf8':
+            options['encoding'] = 'utf-8'
+        if stream is sys.stdout:
+            options['newline'] = '\n'
+        try:
+            reconfigure(**options)
+        except (OSError, ValueError):
+            pass
 
 
 def main(argv=None):
@@ -306,8 +320,22 @@ def main(argv=None):
             print(text, end='')
         return 0
     if args.command == 'references':
-        from .references import references_for, references_markdown, risk_suffix, validate_references
+        from .references import (DEFAULT_DOCUMENT, document_is_current, references_for, references_markdown,
+                                 risk_suffix, validate_references, write_document)
         validate_references()
+        if args.write is not None and args.check is not None:
+            print('Use either --write or --check, not both.')
+            return 2
+        if args.write is not None:
+            print(f'Written: {write_document(DEFAULT_DOCUMENT if args.write is True else args.write)}')
+            return 0
+        if args.check is not None:
+            target = DEFAULT_DOCUMENT if args.check is True else args.check
+            if document_is_current(target):
+                print(f'Current: {target}')
+                return 0
+            print(f'Out of date: {target} (run aiwh references --write)')
+            return 1
         if args.markdown:
             print(references_markdown(), end='')
             return 0

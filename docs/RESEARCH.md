@@ -26,6 +26,6 @@ X/Twitter queries during this research did not yield sufficiently verifiable, re
 
 ## Curated references
 
-Curated public references (previously listed here) now live in the structured catalog `capabilities/references/catalog.json`, with areas, kind and risk labels. The human-readable list is generated as [REFERENCES.md](REFERENCES.md) by `aiwh references --markdown`; `aiwh recommend` surfaces up to 10 per selected area and `aiwh catalog check` reports archived, stale or missing repositories.
+Curated public references (previously listed here) now live in the structured catalog `capabilities/references/catalog.json`, with areas, kind and risk labels. The human-readable list is generated as [REFERENCES.md](REFERENCES.md) by `aiwh references --write`; `aiwh recommend` surfaces up to 10 per selected area and `aiwh catalog check` reports archived, stale or missing repositories.
 
 New candidates are found with `aiwh curate`, which compares GitHub stars and bookmark exports against everything the repository already references. Only reviewed public URLs are added; personal folders, dates, account-specific links and raw exports stay private (see AGENTS.md).
