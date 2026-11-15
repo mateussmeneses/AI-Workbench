@@ -34,19 +34,31 @@ Areas: `ai-automation`
 | Continuity and cost: [gbrain](https://github.com/garrytan/gbrain) | repository | ai-automation | - | 2026-11-10 (MIT) |
 | Continuity and cost: [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | guide | ai-automation | - | 2026-11-10 |
 | Continuity and cost: [TokenEconomizer](https://github.com/microsoft/TokenEconomizer) | repository | ai-automation | - | - |
+| Curated lists: [10 Claude Code plugins to install on day one (X thread)](https://x.com/yurshevv/status/2115880049379364982) | guide | ai-automation | - | - |
 | Curated lists: [awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | list | ai-automation | - | - |
 | Curated lists: [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit) | list | ai-automation | - | - |
 | Curated lists: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | list | ai-automation | - | - |
 | Curated lists: [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | list | ai-automation | - | - |
 | Curated lists: [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | list | ai-automation | - | - |
+| Design skills: [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design) | repository | ux-design, frontend | - | - |
+| Design skills: [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | repository | ux-design, frontend | - | - |
+| Design skills: [dominikmartn/nothing-design-skill](https://github.com/dominikmartn/nothing-design-skill) | repository | ux-design, frontend | - | - |
+| Design skills: [kaankiziltug/logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) | repository | ux-design, frontend | - | - |
+| Design skills: [nexu-io/open-design](https://github.com/nexu-io/open-design) | repository | ux-design, frontend | - | - |
+| Design skills: [Nutlope/hallmark](https://github.com/Nutlope/hallmark) | repository | ux-design, frontend | - | - |
+| Design skills: [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill) | repository | ux-design, frontend | - | - |
+| Design skills: [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | repository | ux-design, frontend | - | - |
 | Harnesses: [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | repository | ai-automation | - | - |
 | Harnesses: [hermes-agent](https://github.com/NousResearch/hermes-agent) | repository | ai-automation | - | - |
 | Harnesses: [jcode](https://github.com/1jehuang/jcode) | repository | ai-automation | - | - |
 | Harnesses: [opencode](https://github.com/anomalyco/opencode) | repository | ai-automation | - | - |
 | Research skills: [dansugc/reverse-engineer-marketing](https://github.com/dansugc/reverse-engineer-marketing) | repository | marketing, ai-automation | tos-check | - |
 | Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - | - |
+| Skill collections: [anthropics/skills](https://github.com/anthropics/skills) | repository | ai-automation | - | - |
+| Skill collections: [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) | repository | ai-automation | - | - |
 | Skill collections: [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | repository | ai-automation | - | - |
 | Skill collections: [flawless-ui-ux](https://github.com/smokeeaasd/flawless-ui-ux) | repository | ux-design, frontend | - | 2026-11-10 (MIT) |
+| Skill collections: [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills) | repository | ai-automation | - | - |
 | Skill collections: [improve](https://github.com/shadcn/improve) | repository | ai-automation, qa-testing | - | 2026-11-10 (MIT) |
 | Skill collections: [mattpocock/skills](https://github.com/mattpocock/skills) | repository | ai-automation | - | - |
 | Skill collections: [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | repository | ai-automation | - | - |
@@ -106,6 +118,23 @@ Areas: `content-creation`, `marketing`
 |---|---|---|---|---|
 | [clonechat](https://github.com/felipeadeildo/clonechat) | repository | content-creation | tos-check, licensing-check | - |
 | Android/TV: [TeamNewPipe/NewPipe](https://github.com/TeamNewPipe/NewPipe) | repository | mobile-app | tos-check | - |
+| Audio and speech: [audacity/audacity](https://github.com/audacity/audacity) | repository | content-creation | - | - |
+| Audio and speech: [csteinmetz1/pyloudnorm](https://github.com/csteinmetz1/pyloudnorm) | repository | content-creation | - | - |
+| Audio and speech: [facebookresearch/audiocraft](https://github.com/facebookresearch/audiocraft) | repository | content-creation | - | - |
+| Audio and speech: [facebookresearch/demucs](https://github.com/facebookresearch/demucs) | repository | content-creation | - | - |
+| Audio and speech: [fishaudio/fish-speech](https://github.com/fishaudio/fish-speech) | repository | content-creation | - | - |
+| Audio and speech: [jiaaro/pydub](https://github.com/jiaaro/pydub) | repository | content-creation | - | - |
+| Audio and speech: [librosa/librosa](https://github.com/librosa/librosa) | repository | content-creation | - | - |
+| Audio and speech: [m-bain/whisperX](https://github.com/m-bain/whisperX) | repository | content-creation | - | - |
+| Audio and speech: [myshell-ai/OpenVoice](https://github.com/myshell-ai/OpenVoice) | repository | content-creation | tos-check | - |
+| Audio and speech: [openai/whisper](https://github.com/openai/whisper) | repository | content-creation | - | - |
+| Audio and speech: [pyannote/pyannote-audio](https://github.com/pyannote/pyannote-audio) | repository | content-creation | - | - |
+| Audio and speech: [RVC — retrieval-based voice conversion WebUI](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) | repository | content-creation | tos-check | - |
+| Audio and speech: [spotify/basic-pitch](https://github.com/spotify/basic-pitch) | repository | content-creation | - | - |
+| Audio and speech: [spotify/pedalboard](https://github.com/spotify/pedalboard) | repository | content-creation | - | - |
+| Audio and speech: [suno-ai/bark](https://github.com/suno-ai/bark) | repository | content-creation | - | - |
+| Audio and speech: [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper) | repository | content-creation | - | - |
+| Audio and speech: [Tonejs/Tone.js](https://github.com/Tonejs/Tone.js) | repository | content-creation | - | - |
 | Downloads/media: [OpenSelena/libreget](https://github.com/OpenSelena/libreget) | repository | content-creation | tos-check, licensing-check | - |
 | Media and file utilities: [AnyConv](https://anyconv.com/) | site | content-creation | - | - |
 | Media and file utilities: [chidiwilliams/buzz](https://github.com/chidiwilliams/buzz) | repository | content-creation | - | - |
@@ -123,9 +152,35 @@ Areas: `content-creation`, `marketing`
 | Media and file utilities: [upscayl/upscayl](https://github.com/upscayl/upscayl) | repository | content-creation | - | - |
 | Media and file utilities: [Watch2Gether](https://w2g.tv/) | site | content-creation | - | - |
 | Media and file utilities: [Y2meta](https://y2meta.is/) | site | content-creation | tos-check | - |
+| Media and scientific libraries: [FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg) | repository | content-creation | - | - |
+| Media and scientific libraries: [numba/numba](https://github.com/numba/numba) | repository | content-creation | - | - |
+| Media and scientific libraries: [numpy/numpy](https://github.com/numpy/numpy) | repository | content-creation | - | - |
+| Media and scientific libraries: [opencv/opencv](https://github.com/opencv/opencv) | repository | content-creation | - | - |
+| Media and scientific libraries: [python-pillow/Pillow](https://github.com/python-pillow/Pillow) | repository | content-creation | - | - |
+| Media and scientific libraries: [scipy/scipy](https://github.com/scipy/scipy) | repository | content-creation | - | - |
+| Motion and video generation: [Build your own AI production studio (X thread)](https://x.com/francescoinweb3/status/2108882188624121896) | guide | content-creation, ai-automation | - | - |
+| Motion and video generation: [Building a 2.5D motion studio with Opus 5 (X thread)](https://x.com/Y0urDumble/status/2115164938884862375) | guide | content-creation, ai-automation | - | - |
+| Motion and video generation: [greensock/GSAP](https://github.com/greensock/GSAP) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [greensock/gsap-skills](https://github.com/greensock/gsap-skills) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [Motion engineering: what Opus 5.5 gets wrong (X thread)](https://x.com/m4lkxx/status/2116504147465757161) | guide | content-creation, ai-automation | - | - |
+| Motion and video generation: [mromidev/claude-animated-shorts](https://github.com/mromidev/claude-animated-shorts) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [oil-oil/oil-motion](https://github.com/oil-oil/oil-motion) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [OpenMontageInc/OpenMontage](https://github.com/OpenMontageInc/OpenMontage) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [patch-gg/pixelfx](https://github.com/patch-gg/pixelfx) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [remotion-dev/remotion](https://github.com/remotion-dev/remotion) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [remotion-dev/skills](https://github.com/remotion-dev/skills) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [Vincentwei1021/anything2explainer](https://github.com/Vincentwei1021/anything2explainer) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | repository | content-creation, frontend | - | - |
 | Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
 | Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
 | Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
+| Short-form clipping: [divyaprakash0426/autoshorts](https://github.com/divyaprakash0426/autoshorts) | repository | content-creation, marketing | tos-check | - |
+| Short-form clipping: [JayWebtech/autoshorts](https://github.com/JayWebtech/autoshorts) | repository | content-creation, marketing | tos-check | - |
+| Short-form clipping: [kamilstanuch/Autocrop-vertical](https://github.com/kamilstanuch/Autocrop-vertical) | repository | content-creation, marketing | tos-check | - |
+| Short-form clipping: [MinightDev/Autoshorts](https://github.com/MinightDev/Autoshorts) | repository | content-creation, marketing | tos-check | - |
+| Short-form clipping: [mutonby/openshorts](https://github.com/mutonby/openshorts) | repository | content-creation, marketing | tos-check | - |
+| Short-form clipping: [zhouxiaoka/autoclip](https://github.com/zhouxiaoka/autoclip) | repository | content-creation, marketing | tos-check | - |
 | Video/media: [anatomy](https://github.com/wheresryan22/anatomy) | repository | content-creation, marketing | - | - |
 | Video/media: [Editar vídeo com o Claude — Matheus Gobbi](https://matheusgobbi.com/edit) | site | content-creation, ai-automation | - | - |
 | Video/media: [HeliosGen](https://github.com/SegFault42/HeliosGen) | repository | content-creation, marketing | - | - |
@@ -179,6 +234,7 @@ Areas: `qa-testing`
 | QA tools: [PageSpeed Insights](https://pagespeed.web.dev/) | site | qa-testing | - | - |
 | QA tools: [Pairwise testing tools](https://www.pairwise.org/tools.html) | site | qa-testing | - | - |
 | QA tools: [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | repository | qa-testing, security, ai-automation | - | - |
+| QA tools: [puppeteer/puppeteer](https://github.com/puppeteer/puppeteer) | repository | qa-testing, frontend | - | - |
 | QA tools: [SonarQube](https://www.sonarqube.org/) | site | qa-testing | - | - |
 | QA tools: [T-PAIN Android test heuristic](https://medium.com/revista-tspi/t-pain-heur%C3%ADstica-de-testes-para-aplica%C3%A7%C3%B5es-android-11260f9f98c1) | site | qa-testing | - | - |
 | QA tools: [TestDataHub](https://testdatahub.com/generate_files) | site | qa-testing | - | - |
@@ -267,6 +323,7 @@ Areas: `desktop`, `mobile-app`
 | Browser: [awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts) | list | desktop, mobile-app, browser-extension | - | - |
 | Downloads/media: [omniget](https://github.com/OpenSelena/omniget) | repository | desktop, mobile-app | licensing-check, tos-check | - |
 | Downloads/media: [yoinks](https://github.com/pablostanley/yoinks) | repository | desktop, mobile-app | licensing-check, tos-check | - |
+| General utilities: [0xCodez/DuoDesk](https://github.com/0xCodez/DuoDesk) | repository | desktop | experimental | - |
 | General utilities: [localsend/localsend](https://github.com/localsend/localsend) | repository | desktop | - | - |
 | General utilities: [pi-hole/pi-hole](https://github.com/pi-hole/pi-hole) | repository | operations, security | - | - |
 | Media and file utilities: [immich-app/immich](https://github.com/immich-app/immich) | repository | operations | - | - |
@@ -292,6 +349,10 @@ Areas: `game-modding`, `game-port`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| 3D and game-engine agents: [ahujasid/mcp-for-blender](https://github.com/ahujasid/mcp-for-blender) | repository | game-modding, ai-automation | - | - |
+| 3D and game-engine agents: [blender/blender](https://github.com/blender/blender) | repository | game-modding, ai-automation | - | - |
+| 3D and game-engine agents: [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | repository | game-modding, ai-automation | - | - |
+| 3D and game-engine agents: [gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) | repository | game-modding, ai-automation | - | - |
 | Additional ports/runtimes: [cuesta4/shadPS4](https://github.com/cuesta4/shadPS4) | repository | game-modding, game-port | experimental | - |
 | Additional ports/runtimes: [Supermedo/bloodborne_pc](https://github.com/Supermedo/bloodborne_pc) | repository | game-modding, game-port | experimental | - |
 | Launchers/catalogs (verify content licensing): [Hydra Launcher](https://github.com/hydralauncher/hydra) | repository | game-modding, game-port | licensing-check | - |
