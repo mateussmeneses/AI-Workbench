@@ -199,7 +199,7 @@ See [Security](SECURITY.md) and [Contributing](CONTRIBUTING.md).
 py -m unittest discover -s tests -v
 ```
 
-See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](docs/AGENTS.md), [publishing tutorial](docs/PUBLISHING.md), and [Codex handoff](CODEX_START_HERE.md).
+See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](docs/AGENTS.md), [publishing](docs/PUBLISHING.md), and [Codex handoff](CODEX_START_HERE.md).
 
 ## Project status
 

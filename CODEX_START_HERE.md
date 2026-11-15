@@ -4,7 +4,7 @@ This is a standalone repository consolidated from the previous **AI Workbench St
 
 ## Current baseline
 
-- Version 0.3.0. Python CLI (`src/aiwh`) with `init`, `resume`, `audit`, `profiles`, `areas`, `recommend`, `capabilities`, `sync`, `attach`, `report`, `doctor` and `global-integration`. Use `aiwh --help` and command-specific `--help` for current options.
+- Version 0.4.0.dev0. Python CLI (`src/aiwh`) with `init`, `resume`, `audit`, `profiles`, `areas`, `recommend`, `capabilities`, `sync`, `attach`, `report`, `doctor` and `global-integration`. Use `aiwh --help` and command-specific `--help` for current options.
 - Canonical library in `capabilities/`; use `aiwh capabilities` and `aiwh areas` for current counts and identifiers rather than relying on cached totals.
 - CLI installs only relevant project skills; private handoffs and optional bookmark/GitHub catalogs are not committed.
 - Project file adapters for Codex, Claude Code, Google Antigravity, Hermes and OpenClaude have synthetic path tests, not real-runtime certification. See [adapter evidence](docs/AGENTS.md).

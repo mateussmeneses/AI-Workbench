@@ -1,12 +1,10 @@
-# Publishing to GitHub
+# Publishing releases
 
-AI Workbench has not been pushed to the user's GitHub by the assistant because the connected GitHub integration does not expose repository creation. The source is ready for publication using GitHub CLI on Windows.
+The repository is published at `mateussmeneses/AI-Workbench`. Regular changes are pushed to `main` after tests pass:
 
 ```powershell
-cd C:\projetos\AI-Workbench
-py -m pip install -e .
 py -m unittest discover -s tests -v
-.\scripts\Publish-GitHub.ps1 -Repository mateussmeneses/ai-workbench
+git push
 ```
 
-The script checks tests and GitHub authentication, stages the explicitly allowlisted source paths, creates a public repository if missing, or pushes `main` to an existing remote. Review `git status` and staged files before publication. Private browser bookmarks, stars catalog, local handoffs, tokens and credentials must not be committed. The script pushes a `v0.3.0` tag. `.github/workflows/release.yml` runs tests on the tag and creates the GitHub release only if verification passes. Inspect GitHub Actions for the outcome.
+For a release, `scripts/Publish-GitHub.ps1` checks tests and GitHub authentication, stages only allowlisted source paths and pushes `main` plus a version tag. `.github/workflows/release.yml` runs tests on the tag and creates the GitHub release only if verification passes. Private browser bookmarks, the stars catalog, local handoffs, tokens and credentials must never be committed.
