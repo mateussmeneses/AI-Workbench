@@ -40,6 +40,7 @@ Areas: `ai-automation`
 | Curated lists: [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) | list | ai-automation | - | - |
 | Curated lists: [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | list | ai-automation | - | - |
 | Curated lists: [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | list | ai-automation | - | - |
+| Curated lists: [elder-plinius/CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) | repository | ai-automation | licensing-check | - |
 | Design skills: [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design) | repository | ux-design, frontend | - | - |
 | Design skills: [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | repository | ux-design, frontend | - | - |
 | Design skills: [dominikmartn/nothing-design-skill](https://github.com/dominikmartn/nothing-design-skill) | repository | ux-design, frontend | - | - |
@@ -126,6 +127,7 @@ Areas: `content-creation`, `marketing`
 | Audio and speech: [facebookresearch/audiocraft](https://github.com/facebookresearch/audiocraft) | repository | content-creation | - | - |
 | Audio and speech: [facebookresearch/demucs](https://github.com/facebookresearch/demucs) | repository | content-creation | - | - |
 | Audio and speech: [fishaudio/fish-speech](https://github.com/fishaudio/fish-speech) | repository | content-creation | - | - |
+| Audio and speech: [jamiepine/voicebox](https://github.com/jamiepine/voicebox) | repository | content-creation | - | - |
 | Audio and speech: [jiaaro/pydub](https://github.com/jiaaro/pydub) | repository | content-creation | - | - |
 | Audio and speech: [librosa/librosa](https://github.com/librosa/librosa) | repository | content-creation | - | - |
 | Audio and speech: [m-bain/whisperX](https://github.com/m-bain/whisperX) | repository | content-creation | - | - |
@@ -144,6 +146,7 @@ Areas: `content-creation`, `marketing`
 | Media and file utilities: [ClipConverter](https://www.clipconverter.cc/) | site | content-creation | tos-check | - |
 | Media and file utilities: [Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI) | repository | content-creation, ai-automation | - | - |
 | Media and file utilities: [danielgatis/rembg](https://github.com/danielgatis/rembg) | repository | content-creation, ux-design | - | - |
+| Media and file utilities: [fknt-dev/zimatise_docs](https://github.com/fknt-dev/zimatise_docs) | repository | content-creation | - | - |
 | Media and file utilities: [Imagy poster print](https://imagy.app/pt/print-image-on-multiple-pages/) | site | content-creation | - | - |
 | Media and file utilities: [MP3Cut](https://mp3cut.net/) | site | content-creation | - | - |
 | Media and file utilities: [Myinstants](https://www.myinstants.com/) | site | content-creation | - | - |
@@ -175,9 +178,11 @@ Areas: `content-creation`, `marketing`
 | Motion and video generation: [remotion-dev/skills](https://github.com/remotion-dev/skills) | repository | content-creation, frontend | - | - |
 | Motion and video generation: [Vincentwei1021/anything2explainer](https://github.com/Vincentwei1021/anything2explainer) | repository | content-creation, frontend | - | - |
 | Motion and video generation: [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | repository | content-creation, frontend | - | - |
+| Motion and video generation: [zhuyansen/awesome-claude-video-skills](https://github.com/zhuyansen/awesome-claude-video-skills) | list | content-creation, ai-automation | - | - |
 | Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
 | Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
 | Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
+| Short-form clipping: [CelticMatheus: AI-only YouTube channel walkthrough (X thread)](https://x.com/CelticMatheus/status/2121649610951110914) | guide | content-creation, marketing | experimental | - |
 | Short-form clipping: [divyaprakash0426/autoshorts](https://github.com/divyaprakash0426/autoshorts) | repository | content-creation, marketing | tos-check | - |
 | Short-form clipping: [JayWebtech/autoshorts](https://github.com/JayWebtech/autoshorts) | repository | content-creation, marketing | tos-check | - |
 | Short-form clipping: [kamilstanuch/Autocrop-vertical](https://github.com/kamilstanuch/Autocrop-vertical) | repository | content-creation, marketing | tos-check | - |
@@ -417,6 +422,7 @@ Areas: `reverse-engineering`, `decompilation`
 | Identify: [capa](https://github.com/mandiant/capa) | tool | reverse-engineering, decompilation | - | - |
 | Identify: [Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) | tool | reverse-engineering, decompilation | - | - |
 | Identify: [LIEF](https://github.com/lief-project/LIEF) | tool | reverse-engineering, decompilation | - | - |
+| REA ecosystem: [1llu50ry/Decompile](https://github.com/1llu50ry/Decompile) | repository | reverse-engineering, decompilation, ai-automation | authorized-only, experimental | - |
 | Read the logic: [angr](https://github.com/angr/angr) | tool | reverse-engineering, decompilation | - | - |
 | Read the logic: [Cutter](https://github.com/rizinorg/cutter) | tool | reverse-engineering, decompilation | - | - |
 | Read the logic: [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) | tool | reverse-engineering, decompilation | - | - |
@@ -475,6 +481,7 @@ Areas: `game-port`
 | [shadPS4 (AYOUB1080p fork)](https://github.com/weshayoub92/shadPS4-AYOUB1080p) | repository | game-port | licensing-check, experimental | - |
 | Additional ports/runtimes: [adriadam10/mkw-recomp](https://github.com/adriadam10/mkw-recomp) | repository | game-port, decompilation | licensing-check, experimental | - |
 | Additional ports/runtimes: [Frizti/Fritchii](https://github.com/Frizti/Fritchii) | repository | game-port | licensing-check, experimental | - |
+| Additional ports/runtimes: [imnotsharingmyname/pcportastrobot](https://github.com/imnotsharingmyname/pcportastrobot) | repository | game-port | licensing-check, experimental | - |
 | Console homebrew: [Can I Root My TV?](https://cani.rootmy.tv/) | site | game-modding, game-port | authorized-only | - |
 | Console homebrew: [evoX Pegasus Store](https://nexgen999.github.io/evoX-CoreOS-WebUI/pegasus-store_en.html) | site | game-modding, game-port | experimental | - |
 | Console homebrew: [Prospero Patches](https://prosperopatches.com/) | site | game-modding, game-port | licensing-check | - |

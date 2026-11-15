@@ -5693,6 +5693,97 @@
       ],
       "risk": [],
       "group": "Design skills"
+    },
+    "elder-plinius-cl4r1t4s": {
+      "title": "elder-plinius/CL4R1T4S",
+      "url": "https://github.com/elder-plinius/CL4R1T4S",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Curated lists"
+    },
+    "imnotsharingmyname-pcportastrobot": {
+      "title": "imnotsharingmyname/pcportastrobot",
+      "url": "https://github.com/imnotsharingmyname/pcportastrobot",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ],
+      "group": "Additional ports/runtimes"
+    },
+    "1llu50ry-decompile": {
+      "title": "1llu50ry/Decompile",
+      "url": "https://github.com/1llu50ry/Decompile",
+      "category": "re-tools",
+      "kind": "repository",
+      "areas": [
+        "reverse-engineering",
+        "decompilation",
+        "ai-automation"
+      ],
+      "risk": [
+        "authorized-only",
+        "experimental"
+      ],
+      "group": "REA ecosystem"
+    },
+    "zhuyansen-awesome-claude-video-skills": {
+      "title": "zhuyansen/awesome-claude-video-skills",
+      "url": "https://github.com/zhuyansen/awesome-claude-video-skills",
+      "category": "content-media",
+      "kind": "list",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Motion and video generation"
+    },
+    "jamiepine-voicebox": {
+      "title": "jamiepine/voicebox",
+      "url": "https://github.com/jamiepine/voicebox",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Audio and speech"
+    },
+    "fknt-dev-zimatise-docs": {
+      "title": "fknt-dev/zimatise_docs",
+      "url": "https://github.com/fknt-dev/zimatise_docs",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "x-com-celticmatheus-status-2121649610951110914": {
+      "title": "CelticMatheus: AI-only YouTube channel walkthrough (X thread)",
+      "url": "https://x.com/CelticMatheus/status/2121649610951110914",
+      "category": "content-media",
+      "kind": "guide",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Short-form clipping"
     }
   }
 }
