@@ -43,6 +43,7 @@ Areas: `ai-automation`
 | Design skills: [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design) | repository | ux-design, frontend | - | - |
 | Design skills: [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) | repository | ux-design, frontend | - | - |
 | Design skills: [dominikmartn/nothing-design-skill](https://github.com/dominikmartn/nothing-design-skill) | repository | ux-design, frontend | - | - |
+| Design skills: [emilkowalski/skills](https://github.com/emilkowalski/skills) | repository | ux-design, frontend | - | - |
 | Design skills: [kaankiziltug/logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) | repository | ux-design, frontend | - | - |
 | Design skills: [nexu-io/open-design](https://github.com/nexu-io/open-design) | repository | ux-design, frontend | - | - |
 | Design skills: [Nutlope/hallmark](https://github.com/Nutlope/hallmark) | repository | ux-design, frontend | - | - |
@@ -52,6 +53,8 @@ Areas: `ai-automation`
 | Harnesses: [hermes-agent](https://github.com/NousResearch/hermes-agent) | repository | ai-automation | - | - |
 | Harnesses: [jcode](https://github.com/1jehuang/jcode) | repository | ai-automation | - | - |
 | Harnesses: [opencode](https://github.com/anomalyco/opencode) | repository | ai-automation | - | - |
+| Motion and video generation: [cth9191/animate](https://github.com/cth9191/animate) | repository | ux-design, content-creation | - | - |
+| Motion and video generation: [studioigor/3d-animator-skill](https://github.com/studioigor/3d-animator-skill) | repository | ux-design, content-creation | - | - |
 | Research skills: [dansugc/reverse-engineer-marketing](https://github.com/dansugc/reverse-engineer-marketing) | repository | marketing, ai-automation | tos-check | - |
 | Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - | - |
 | Skill collections: [anthropics/skills](https://github.com/anthropics/skills) | repository | ai-automation | - | - |
@@ -192,6 +195,14 @@ Areas: `content-creation`, `marketing`
 | Video/media: [OpenCut](https://github.com/OpenCut-app/OpenCut) | repository | content-creation, marketing | - | - |
 | Video/media: [RafaelGodoyEbert/ViralCutter](https://github.com/RafaelGodoyEbert/ViralCutter) | repository | content-creation, marketing | tos-check | - |
 | Video/media: [rea-video](https://github.com/JuneYaooo/rea-video) | repository | content-creation, marketing | - | - |
+| Web 3D and graphics libraries: [ashima/webgl-noise](https://github.com/ashima/webgl-noise) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [elalish/manifold](https://github.com/elalish/manifold) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [kripken/ammo.js](https://github.com/kripken/ammo.js) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [metafizzy/zdog](https://github.com/metafizzy/zdog) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [mkkellogg/GaussianSplats3D](https://github.com/mkkellogg/GaussianSplats3D) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [N8python/n8ao](https://github.com/N8python/n8ao) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [veltman/flubber](https://github.com/veltman/flubber) | repository | frontend, content-creation | - | - |
+| Web 3D and graphics libraries: [zeux/meshoptimizer](https://github.com/zeux/meshoptimizer) | repository | frontend, content-creation | - | - |
 
 ## Quantitative finance
 
@@ -352,7 +363,9 @@ Areas: `game-modding`, `game-port`
 | 3D and game-engine agents: [ahujasid/mcp-for-blender](https://github.com/ahujasid/mcp-for-blender) | repository | game-modding, ai-automation | - | - |
 | 3D and game-engine agents: [blender/blender](https://github.com/blender/blender) | repository | game-modding, ai-automation | - | - |
 | 3D and game-engine agents: [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | repository | game-modding, ai-automation | - | - |
+| 3D and game-engine agents: [DLR-RM/BlenderProc](https://github.com/DLR-RM/BlenderProc) | repository | game-modding, ai-automation | - | - |
 | 3D and game-engine agents: [gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) | repository | game-modding, ai-automation | - | - |
+| 3D and game-engine agents: [JannisX11/blockbench](https://github.com/JannisX11/blockbench) | repository | game-modding, ux-design | - | - |
 | Additional ports/runtimes: [cuesta4/shadPS4](https://github.com/cuesta4/shadPS4) | repository | game-modding, game-port | experimental | - |
 | Additional ports/runtimes: [Supermedo/bloodborne_pc](https://github.com/Supermedo/bloodborne_pc) | repository | game-modding, game-port | experimental | - |
 | Launchers/catalogs (verify content licensing): [Hydra Launcher](https://github.com/hydralauncher/hydra) | repository | game-modding, game-port | licensing-check | - |

@@ -5537,6 +5537,162 @@
       ],
       "risk": [],
       "group": "Curated lists"
+    },
+    "ashima-webgl-noise": {
+      "title": "ashima/webgl-noise",
+      "url": "https://github.com/ashima/webgl-noise",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "elalish-manifold": {
+      "title": "elalish/manifold",
+      "url": "https://github.com/elalish/manifold",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "kripken-ammo-js": {
+      "title": "kripken/ammo.js",
+      "url": "https://github.com/kripken/ammo.js",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "metafizzy-zdog": {
+      "title": "metafizzy/zdog",
+      "url": "https://github.com/metafizzy/zdog",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "mkkellogg-gaussiansplats3d": {
+      "title": "mkkellogg/GaussianSplats3D",
+      "url": "https://github.com/mkkellogg/GaussianSplats3D",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "n8python-n8ao": {
+      "title": "N8python/n8ao",
+      "url": "https://github.com/N8python/n8ao",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "veltman-flubber": {
+      "title": "veltman/flubber",
+      "url": "https://github.com/veltman/flubber",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "zeux-meshoptimizer": {
+      "title": "zeux/meshoptimizer",
+      "url": "https://github.com/zeux/meshoptimizer",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "jannisx11-blockbench": {
+      "title": "JannisX11/blockbench",
+      "url": "https://github.com/JannisX11/blockbench",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "3D and game-engine agents"
+    },
+    "dlr-rm-blenderproc": {
+      "title": "DLR-RM/BlenderProc",
+      "url": "https://github.com/DLR-RM/BlenderProc",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-modding",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "3D and game-engine agents"
+    },
+    "cth9191-animate": {
+      "title": "cth9191/animate",
+      "url": "https://github.com/cth9191/animate",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ux-design",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Motion and video generation"
+    },
+    "studioigor-3d-animator-skill": {
+      "title": "studioigor/3d-animator-skill",
+      "url": "https://github.com/studioigor/3d-animator-skill",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ux-design",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Motion and video generation"
+    },
+    "emilkowalski-skills": {
+      "title": "emilkowalski/skills",
+      "url": "https://github.com/emilkowalski/skills",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ux-design",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Design skills"
     }
   }
 }
