@@ -15,7 +15,7 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .core import canonical_url
+from .core import canonical_url, md_target, md_text, repo_key
 from .handoff_checks import parse_day
 from .workbench import CAPABILITIES, ROOT
 
@@ -169,7 +169,10 @@ def _github_slug(url):
     match = re.match(r'https://github\.com/([^/#?]+)/([^/#?]+)/?$', url.rstrip('/'))
     if not match or match.group(1).lower() in GITHUB_RESERVED:
         return None
-    return f'{match.group(1)}/{match.group(2)}'
+    name = match.group(2)
+    if name.lower().endswith('.git'):
+        name = name[:-4]
+    return f'{match.group(1)}/{name}' if name else None
 
 
 def _gh_repo(slug):
@@ -184,6 +187,8 @@ def check_references(*, stale_days=365, fetch=None, today=None):
     """Explicit, read-only freshness check of GitHub references (network via gh)."""
     fetch = fetch or _gh_repo
     today = today or datetime.now(timezone.utc)
+    if today.tzinfo is None:
+        today = today.replace(tzinfo=timezone.utc)
     report = []
     for key, ref in reference_catalog()['references'].items():
         slug = _github_slug(ref['url'])
@@ -196,14 +201,20 @@ def check_references(*, stale_days=365, fetch=None, today=None):
         except (OSError, subprocess.TimeoutExpired, ValueError) as error:
             repo = {'_error': str(error)[:200]}
         if '_error' in repo:
-            missing = 'Not Found' in repo['_error'] or '404' in repo['_error']
+            missing = bool(re.search(r'HTTP 404\b|\bNot Found\b', repo['_error']))
             report.append({'id': key, 'url': ref['url'], 'status': 'missing' if missing else 'error',
                            'reason': repo['_error']})
             continue
         pushed = repo.get('pushed_at') or ''
         age = None
         if pushed:
-            age = (today - datetime.fromisoformat(pushed.replace('Z', '+00:00'))).days
+            try:
+                parsed = datetime.fromisoformat(pushed.replace('Z', '+00:00'))
+                if parsed.tzinfo is None:
+                    parsed = parsed.replace(tzinfo=timezone.utc)
+                age = (today - parsed).days
+            except ValueError:
+                age = None
         status = 'archived' if repo.get('archived') else 'stale' if age is not None and age > stale_days else 'ok'
         moved = canonical_url(repo.get('html_url', ref['url'])) != canonical_url(ref['url'])
         report.append({'id': key, 'url': ref['url'], 'status': status, 'pushed_at': pushed,
@@ -220,7 +231,7 @@ def known_urls():
         if path.is_file():
             text.append(path.read_text(encoding='utf-8', errors='replace'))
     found = re.findall(r'https?://[^\s)\]"\'<>|]+', '\n'.join(text))
-    return {canonical_url(url.rstrip('.,;')) for url in found}
+    return {repo_key(url.rstrip('.,;')) for url in found}
 
 
 def suggest_areas(item, area_entries=None):
@@ -240,11 +251,11 @@ def suggest_areas(item, area_entries=None):
 def curate(incoming, *, baseline=(), known=None):
     """Return reference candidates that are new to the repository (and baseline)."""
     known = known if known is not None else known_urls()
-    skip = known | {canonical_url(item.get('url')) for item in baseline}
+    skip = {repo_key(url) for url in known} | {repo_key(item.get('url')) for item in baseline}
     candidates, seen = [], set()
     for item in incoming:
-        url = canonical_url(item.get('url'))
-        if not url.startswith('http') or url in skip or url in seen:
+        url = repo_key(item.get('url'))
+        if not canonical_url(item.get('url')).startswith('http') or url in skip or url in seen:
             continue
         seen.add(url)
         candidates.append({'url': item.get('url'), 'title': item.get('title', ''),
@@ -266,9 +277,9 @@ def curate_markdown(candidates):
     for area in sorted(groups, key=lambda a: (a == '(unclassified)', a)):
         lines += [f'## {area}', '']
         for item in groups[area]:
-            title = (item['title'] or item['url']).replace(']', r'\]')
+            title = md_text(item['title'] or item['url'])
             why = '; '.join(f'{s["area"]}: {", ".join(s["terms"])}' for s in item['suggested_areas'])
             desc = f' — {item["description"]}' if item['description'] else ''
-            lines.append(f'- [{title}]({item["url"]}){desc}' + (f' _(signals: {why})_' if why else ''))
+            lines.append(f'- [{title}]({md_target(item["url"])}){desc}' + (f' _(signals: {why})_' if why else ''))
         lines.append('')
     return '\n'.join(lines).rstrip() + '\n'

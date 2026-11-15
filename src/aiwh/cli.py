@@ -8,7 +8,7 @@ from pathlib import Path
 
 from .core import (DEFAULT_HOME, attach, browser_html_export, catalog_metadata,
                    chromelike_bookmarks, detect_browser_files, github_from_gh, github_stars,
-                   json_read, merged_index, new_since, now, project_profile, read_catalog,
+                   json_read, last_new_batch, merged_index, new_since, record_sync, now, project_profile, read_catalog,
                    save_catalog)
 from .workbench import (AGENTS, bootstrap, inspect_project, registry, resume,
                         global_integration, remove_managed)
@@ -260,8 +260,18 @@ def main(argv=None):
             incoming += github_stars(json_read(path))
         if args.github:
             incoming += github_from_gh()
-        if not (args.browser_auto or args.browser_json or args.html or args.stars_json or args.github):
-            print('Specify a source: aiwh sync --browser-auto --github')
+        has_source = bool(args.browser_auto or args.browser_json or args.html or args.stars_json or args.github)
+        if not has_source and args.show_new:
+            since, batch = last_new_batch(read_catalog(home), catalog_metadata(home))
+            if not batch:
+                print('No new resources recorded in any earlier sync.')
+                return 0
+            for item in batch:
+                print(f'+ {item.get("title") or item["url"]} <{item["url"]}>')
+            print(f'{len(batch)} resources added in the most recent sync that added items ({since})')
+            return 0
+        if not has_source:
+            print('Specify a source: aiwh sync --browser-auto --github (or --show-new to list the last batch)')
             return 2
         old = read_catalog(home)
         stamp = now()
@@ -272,7 +282,13 @@ def main(argv=None):
         if args.show_new:
             for item in fresh:
                 print(f'+ {item.get("title") or item["url"]} <{item["url"]}>')
-        print('Preview only.' if args.dry_run else f'Private catalog saved: {save_catalog(merged, home, last_sync=stamp)}')
+            if not fresh:
+                print('No new resources in this sync; run aiwh sync --show-new without sources to list the previous batch.')
+        if args.dry_run:
+            print('Preview only.')
+        else:
+            history = record_sync(catalog_metadata(home), stamp, len(fresh))
+            print(f'Private catalog saved: {save_catalog(merged, home, last_sync=stamp, sync_history=history)}')
         return 0
     if args.command == 'inspect':
         from .artifact import inspect_artifact, inspect_markdown
@@ -307,9 +323,12 @@ def main(argv=None):
             incoming += github_stars(json_read(path))
         if args.github:
             incoming += github_from_gh()
-        if not incoming:
+        if not (args.github or args.html or args.browser_json or args.stars_json):
             print('Specify a source: aiwh curate --github --html bookmarks.html')
             return 2
+        if not incoming:
+            print('The specified sources yielded 0 items.')
+            return 0
         baseline = [x for path in args.baseline_html for x in browser_html_export(path)]
         candidates = curate(incoming, baseline=baseline)
         text = (json.dumps(candidates, indent=2, ensure_ascii=False) + '\n') if args.json else curate_markdown(candidates)
@@ -449,14 +468,19 @@ def main(argv=None):
             print(f'HTML report written: {target}')
             return 0
         if args.since:
-            since = catalog_metadata(home).get('last_sync', '') if args.since == 'last' else args.since
+            if args.since == 'last':
+                since, fresh = last_new_batch(items, catalog_metadata(home))
+            else:
+                since = args.since
+                fresh = new_since(items, since) if since else []
             if not since:
                 print('No recorded sync yet; run aiwh sync first.')
                 return 2
-            fresh = new_since(items, since)
             for item in fresh:
                 print(f'+ {item.get("title") or item["url"]} <{item["url"]}> ({", ".join(item.get("categories", []))})')
             print(f'{len(fresh)} resources first seen since {since}')
+            if not fresh:
+                print('Hint: 0 new resources; use aiwh sync --show-new to list the last batch that added items.')
             return 0
         source_counts = Counter(k for x in items for k in x.get('sources', []))
         categories = Counter(k for x in items for k in x.get('categories', []))

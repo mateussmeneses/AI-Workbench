@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from aiwh.areas import recommend  # noqa: E402
-from aiwh.core import attach, merged_index, new_since  # noqa: E402
+from aiwh.core import attach, merged_index, new_since, repo_key  # noqa: E402
 from aiwh.game_porting import assess_game_port, inspect_binary  # noqa: E402
 from aiwh.handoff_export import export_handoff  # noqa: E402
 from aiwh.html_report import catalog_html  # noqa: E402
@@ -138,6 +138,113 @@ class IncrementalSyncTests(unittest.TestCase):
                                   capture_output=True, text=True, encoding='utf-8', timeout=60)
             self.assertEqual(html.returncode, 0, html.stderr)
             self.assertTrue((home / 'catalog.html').is_file())
+
+
+class SyncHistoryTests(unittest.TestCase):
+    def run_cli(self, home, *args):
+        return subprocess.run([sys.executable, '-m', 'aiwh', '--home', str(home), *args], cwd=str(ROOT / 'src'),
+                              capture_output=True, text=True, encoding='utf-8', timeout=60)
+
+    def test_noop_sync_does_not_hide_previous_batch(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            home = Path(temporary) / 'home'
+            stars = Path(temporary) / 'stars.json'
+            stars.write_text(json.dumps([{'html_url': 'https://github.com/a/b', 'full_name': 'a/b'}]), encoding='utf-8')
+            self.assertEqual(self.run_cli(home, 'sync', '--stars-json', str(stars)).returncode, 0)
+            noop = self.run_cli(home, 'sync', '--stars-json', str(stars), '--show-new')
+            self.assertIn('0 new', noop.stdout)
+            self.assertIn('previous batch', noop.stdout)
+            listed = self.run_cli(home, 'sync', '--show-new')
+            self.assertEqual(listed.returncode, 0, listed.stderr)
+            self.assertIn('+ a/b', listed.stdout)
+            report = self.run_cli(home, 'report', '--since', 'last')
+            self.assertIn('1 resources first seen since', report.stdout)
+            history = json.loads((home / 'catalog.json').read_text(encoding='utf-8'))['sync_history']
+            self.assertEqual([h['new_count'] for h in history], [1, 0])
+
+    def test_history_is_bounded_and_legacy_catalog_falls_back(self):
+        from aiwh.core import last_new_batch, record_sync
+        meta = {}
+        for n in range(30):
+            meta['sync_history'] = record_sync(meta, f'2026-01-{n + 1:02d}', n % 2)
+        self.assertEqual(len(meta['sync_history']), 20)
+        items = [{'id': '1', 'first_seen': '2026-01-30'}, {'id': '2', 'first_seen': '2026-01-01'}]
+        self.assertEqual(last_new_batch(items, meta)[0], '2026-01-30')
+        since, batch = last_new_batch(items, {'last_sync': '2026-02-01'})
+        self.assertEqual((since, [x['id'] for x in batch]), ('2026-01-30', ['1']))
+        self.assertEqual(last_new_batch([{'id': 'x'}], {}), ('', []))
+
+
+class RobustnessTests(unittest.TestCase):
+    def test_repo_key_and_curate_variants(self):
+        for url in ('http://www.GitHub.com/Foo/Bar.git', 'https://github.com/foo/bar/tree/main/x',
+                    'https://github.com/foo/bar/blob/main/a.md#L3', 'https://github.com/foo/bar/?tab=readme'):
+            self.assertEqual(repo_key(url), 'github.com/foo/bar', url)
+        self.assertEqual(curate([{'url': 'https://github.com/Foo/Bar.git'}, {'url': 'https://github.com/foo/bar/'}],
+                                known={'https://github.com/foo/bar'}), [])
+        self.assertEqual(len(curate([{'url': 'https://github.com/foo/new.git'}, {'url': 'https://github.com/foo/new'}],
+                                    known=set())), 1)
+
+    def test_markdown_titles_and_urls_are_sanitized(self):
+        from aiwh.references import curate_markdown
+        title, url = 'Evil\n## Injected [x](y)', 'https://example.com/a)b c'
+        with tempfile.TemporaryDirectory() as temporary:
+            result = attach(temporary, [{'id': '1', 'url': url, 'title': title, 'categories': ['devops'], 'sources': []}],
+                            profiles=['devops'], dry_run=True)
+        text = curate_markdown([{'url': url, 'title': title, 'description': '', 'suggested_areas': []}])
+        for markdown in (result['markdown'], text):
+            self.assertNotIn('\n## Injected', markdown)
+            self.assertIn(r'Evil ## Injected \[x\]\(y\)', markdown)
+            self.assertIn('(https://example.com/a%29bc)', markdown)
+
+    def test_attach_preserves_line_endings(self):
+        items = [{'id': '1', 'url': 'https://example.com/a', 'title': 'A', 'categories': ['devops'], 'sources': []}]
+        for eol in (b'\n', b'\r\n'):
+            with tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                (root / 'AGENTS.md').write_bytes(b'# Agents' + eol + b'rules' + eol)
+                (root / '.gitignore').write_bytes(b'dist/' + eol)
+                attach(root, items, profiles=['devops'])
+                for name in ('AGENTS.md', '.gitignore'):
+                    data = (root / name).read_bytes()
+                    self.assertIn(b'AIWH:BEGIN' if name == 'AGENTS.md' else b'.ai-workbench/', data)
+                    rest = data.replace(b'\r\n', b'\n') if eol == b'\r\n' else data
+                    self.assertEqual(data.count(b'\r\n') * 2 if eol == b'\r\n' else data.count(b'\r'),
+                                     data.count(b'\n') * 2 if eol == b'\r\n' else 0, name)
+                    self.assertTrue(rest.endswith(b'\n'))
+                attach(root, items, profiles=['devops'])
+                self.assertEqual((root / 'AGENTS.md').read_bytes().count(b'AIWH:BEGIN'), 1)
+        with tempfile.TemporaryDirectory() as temporary:
+            attach(temporary, items, profiles=['devops'])
+            self.assertNotIn(b'\r', (Path(temporary) / 'AGENTS.md').read_bytes())
+
+    def test_check_references_hardening(self):
+        from aiwh.references import _github_slug
+        self.assertEqual(_github_slug('https://github.com/a/b.git'), 'a/b')
+        naive = datetime(2026, 11, 1)
+
+        def checked(report):
+            return [r for r in report if r['status'] != 'not-checked']
+        bad_date = checked(check_references(
+            fetch=lambda slug: {'pushed_at': 'garbage', 'html_url': f'https://github.com/{slug}'}, today=naive))
+        self.assertTrue(bad_date and all(r['status'] == 'ok' for r in bad_date))
+        other = checked(check_references(fetch=lambda s: {'_error': 'rate limit 1404'}, today=naive))
+        self.assertTrue(all(r['status'] == 'error' for r in other))
+        gone = checked(check_references(fetch=lambda s: {'_error': 'gh: Not Found (HTTP 404)'}, today=naive))
+        self.assertTrue(all(r['status'] == 'missing' for r in gone))
+
+    def test_curate_cli_distinguishes_no_source_from_empty(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            empty = Path(temporary) / 'e.json'
+            empty.write_text('[]', encoding='utf-8')
+
+            def run(*a):
+                return subprocess.run([sys.executable, '-m', 'aiwh', '--home', temporary, 'curate', *a],
+                                      cwd=str(ROOT / 'src'), capture_output=True, text=True, encoding='utf-8', timeout=60)
+            self.assertEqual(run().returncode, 2)
+            zero = run('--stars-json', str(empty))
+            self.assertEqual(zero.returncode, 0, zero.stderr)
+            self.assertIn('yielded 0 items', zero.stdout)
 
 
 class HtmlReportTests(unittest.TestCase):
