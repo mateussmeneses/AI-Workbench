@@ -42,6 +42,7 @@ Areas: `ai-automation`
 | Harnesses: [hermes-agent](https://github.com/NousResearch/hermes-agent) | repository | ai-automation | - | - |
 | Harnesses: [jcode](https://github.com/1jehuang/jcode) | repository | ai-automation | - | - |
 | Harnesses: [opencode](https://github.com/anomalyco/opencode) | repository | ai-automation | - | - |
+| Research skills: [dansugc/reverse-engineer-marketing](https://github.com/dansugc/reverse-engineer-marketing) | repository | marketing, ai-automation | tos-check | - |
 | Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - | - |
 | Skill collections: [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | repository | ai-automation | - | - |
 | Skill collections: [flawless-ui-ux](https://github.com/smokeeaasd/flawless-ui-ux) | repository | ux-design, frontend | - | 2026-11-10 (MIT) |
@@ -103,8 +104,12 @@ Areas: `content-creation`, `marketing`
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
 | [clonechat](https://github.com/felipeadeildo/clonechat) | repository | content-creation | tos-check, licensing-check | - |
+| Android/TV: [TeamNewPipe/NewPipe](https://github.com/TeamNewPipe/NewPipe) | repository | mobile-app | tos-check | - |
+| Downloads/media: [OpenSelena/libreget](https://github.com/OpenSelena/libreget) | repository | content-creation | tos-check, licensing-check | - |
 | Media and file utilities: [AnyConv](https://anyconv.com/) | site | content-creation | - | - |
+| Media and file utilities: [chidiwilliams/buzz](https://github.com/chidiwilliams/buzz) | repository | content-creation | - | - |
 | Media and file utilities: [ClipConverter](https://www.clipconverter.cc/) | site | content-creation | tos-check | - |
+| Media and file utilities: [danielgatis/rembg](https://github.com/danielgatis/rembg) | repository | content-creation, ux-design | - | - |
 | Media and file utilities: [Imagy poster print](https://imagy.app/pt/print-image-on-multiple-pages/) | site | content-creation | - | - |
 | Media and file utilities: [MP3Cut](https://mp3cut.net/) | site | content-creation | - | - |
 | Media and file utilities: [Myinstants](https://www.myinstants.com/) | site | content-creation | - | - |
@@ -113,13 +118,17 @@ Areas: `content-creation`, `marketing`
 | Media and file utilities: [Scribd Downloader](https://scribd.vdownloaders.com/) | site | content-creation | tos-check | - |
 | Media and file utilities: [SlideSaver](https://slidesaver.app/) | site | content-creation | tos-check | - |
 | Media and file utilities: [Smallpdf](https://smallpdf.com/) | site | content-creation | - | - |
+| Media and file utilities: [upscayl/upscayl](https://github.com/upscayl/upscayl) | repository | content-creation | - | - |
 | Media and file utilities: [Watch2Gether](https://w2g.tv/) | site | content-creation | - | - |
 | Media and file utilities: [Y2meta](https://y2meta.is/) | site | content-creation | tos-check | - |
 | Research skills: [appllama-skills](https://github.com/Appllama/appllama-skills) | repository | content-creation, marketing | - | - |
 | Research skills: [last30days-skill](https://github.com/mvanhorn/last30days-skill) | repository | content-creation, marketing | - | - |
 | Research skills: [social-media-research-skills](https://github.com/ScrapeCreators/social-media-research-skills) | repository | content-creation, marketing | - | - |
 | Video/media: [anatomy](https://github.com/wheresryan22/anatomy) | repository | content-creation, marketing | - | - |
+| Video/media: [Editar vídeo com o Claude — Matheus Gobbi](https://matheusgobbi.com/edit) | site | content-creation, ai-automation | - | - |
 | Video/media: [HeliosGen](https://github.com/SegFault42/HeliosGen) | repository | content-creation, marketing | - | - |
+| Video/media: [iv-org/invidious](https://github.com/iv-org/invidious) | repository | content-creation | tos-check | - |
+| Video/media: [jellyfin/jellyfin](https://github.com/jellyfin/jellyfin) | repository | operations | licensing-check | - |
 | Video/media: [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | repository | content-creation, marketing | licensing-check | - |
 | Video/media: [motion-graphics-skills](https://github.com/charlie947/motion-graphics-skills) | repository | content-creation, marketing | - | - |
 | Video/media: [OpenCut](https://github.com/OpenCut-app/OpenCut) | repository | content-creation, marketing | - | - |
@@ -165,6 +174,7 @@ Areas: `qa-testing`
 | QA tools: [OWASP ZAP](https://www.zaproxy.org/) | site | qa-testing | authorized-only | - |
 | QA tools: [PageSpeed Insights](https://pagespeed.web.dev/) | site | qa-testing | - | - |
 | QA tools: [Pairwise testing tools](https://www.pairwise.org/tools.html) | site | qa-testing | - | - |
+| QA tools: [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | repository | qa-testing, security, ai-automation | - | - |
 | QA tools: [SonarQube](https://www.sonarqube.org/) | site | qa-testing | - | - |
 | QA tools: [T-PAIN Android test heuristic](https://medium.com/revista-tspi/t-pain-heur%C3%ADstica-de-testes-para-aplica%C3%A7%C3%B5es-android-11260f9f98c1) | site | qa-testing | - | - |
 | QA tools: [TestDataHub](https://testdatahub.com/generate_files) | site | qa-testing | - | - |
@@ -177,6 +187,9 @@ Areas: `security`
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
 | Android privilege escalation research: [CVE-2026-43499-root-KernelSU](https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU) | repository | security | authorized-only | - |
+| Audits and pentest automation: [BaaRai/ARTEX (English, AGPL-3.0)](https://github.com/BaaRai/ARTEX) | repository | security | authorized-only, experimental | - |
+| Audits and pentest automation: [failsafe-security/artex](https://github.com/failsafe-security/artex) | repository | security | authorized-only, experimental | - |
+| Audits and pentest automation: [s0ld13rr/pentestcode](https://github.com/s0ld13rr/pentestcode) | repository | security, ai-automation | authorized-only, experimental | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [ai-jailbreaks](https://github.com/Alejandros17487/ai-jailbreaks) | repository | security | authorized-only | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [antigravity-filter-bypass](https://github.com/v1ktorrr0x/antigravity-filter-bypass) | repository | security, ai-automation | authorized-only, tos-check, experimental | - |
 | LLM safety/jailbreak corpora (red-teaming evaluation): [togg53192-cmd/jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | repository | security | authorized-only | - |
@@ -232,8 +245,10 @@ Areas: `ai-automation`
 | Chat UIs and routers: [Grok](https://grok.com/) | site | ai-automation | - | - |
 | Chat UIs and routers: [LarpRouter](https://larprouter.com/) | site | ai-automation | tos-check, experimental | - |
 | Chat UIs and routers: [Microsoft 365 Copilot Chat](https://m365.cloud.microsoft/chat) | site | ai-automation | - | - |
+| Chat UIs and routers: [open-webui/open-webui](https://github.com/open-webui/open-webui) | repository | ai-automation | - | - |
 | Free LLM API lists: [awesome-freellm-apis](https://github.com/open-free-llm-api/awesome-freellm-apis) | list | ai-automation, api-integration | tos-check, experimental | - |
 | Free LLM API lists: [BitLLM (P2P inference)](https://bitllm.org/) | site | ai-automation | experimental | - |
+| Local inference: [LibreTranslate/LibreTranslate](https://github.com/LibreTranslate/LibreTranslate) | repository | api-integration, content-creation | - | - |
 
 ## Desktop, mobile and productivity tools
 
@@ -248,11 +263,16 @@ Areas: `desktop`, `mobile-app`
 | Browser: [awesome-userscripts](https://github.com/awesome-scripts/awesome-userscripts) | list | desktop, mobile-app, browser-extension | - | - |
 | Downloads/media: [omniget](https://github.com/OpenSelena/omniget) | repository | desktop, mobile-app | licensing-check, tos-check | - |
 | Downloads/media: [yoinks](https://github.com/pablostanley/yoinks) | repository | desktop, mobile-app | licensing-check, tos-check | - |
+| General utilities: [localsend/localsend](https://github.com/localsend/localsend) | repository | desktop | - | - |
+| General utilities: [pi-hole/pi-hole](https://github.com/pi-hole/pi-hole) | repository | operations, security | - | - |
+| Media and file utilities: [immich-app/immich](https://github.com/immich-app/immich) | repository | operations | - | - |
+| Media and file utilities: [Stirling-Tools/Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF) | repository | operations | - | - |
 | Messaging: [WA-AKG](https://github.com/mrifqidaffaaditya/WA-AKG) | repository | desktop, mobile-app, api-integration | - | - |
 | Messaging: [zapfast](https://github.com/crmne/zapfast) | repository | desktop, mobile-app, api-integration | - | - |
 | Windows setup: [HeiDoc Windows/Office ISO downloader](https://www.heidoc.net/joomla/technology-science/microsoft/67-microsoft-windows-and-office-iso-download-tool) | site | desktop | tos-check | - |
 | Windows setup: [Microsoft Activation Scripts](https://github.com/massgravel/microsoft-activation-scripts) | repository | desktop | licensing-check, tos-check | - |
 | Windows setup: [Offline NT Password & Registry Editor](https://pogostick.net/~pnh/ntpasswd/) | site | desktop | authorized-only | - |
+| Windows setup: [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat) | repository | desktop | experimental | - |
 | Windows setup: [Schneegans unattend generator](https://schneegans.de/windows/unattend-generator/) | site | desktop | - | - |
 | Windows setup: [winstall](https://winstall.app/) | site | desktop | - | - |
 | Windows/PC: [g-helper](https://github.com/seerge/g-helper) | repository | desktop, mobile-app | - | - |
@@ -336,6 +356,7 @@ Areas: `reverse-engineering`, `mobile-app`
 | [Apktool](https://github.com/iBotPeaches/Apktool) | tool | reverse-engineering, mobile-app | - | - |
 | [ILSpy](https://github.com/icsharpcode/ILSpy) | tool | reverse-engineering, mobile-app | - | - |
 | [jadx](https://github.com/skylot/jadx) | tool | reverse-engineering, mobile-app | - | - |
+| Android/TV: [RoutineMiku/apkstart](https://github.com/RoutineMiku/apkstart) | repository | mobile-app, desktop | experimental | - |
 | Watch it run: [objection](https://github.com/sensepost/objection) | tool | reverse-engineering, mobile-app | - | - |
 
 ## Web, Electron and API analysis
@@ -355,6 +376,7 @@ Areas: `reverse-engineering`, `api-integration`, `security`
 | Dev utilities: [ConvertCSV](https://www.convertcsv.com/) | site | api-integration, frontend | - | - |
 | Dev utilities: [CSS Diner](https://flukeout.github.io/) | site | api-integration, frontend | - | - |
 | Dev utilities: [Diffchecker](https://www.diffchecker.com/) | site | api-integration, frontend | - | - |
+| Dev utilities: [gabrielbuzziv/emissor-nfse-nacional](https://github.com/gabrielbuzziv/emissor-nfse-nacional) | repository | api-integration | - | - |
 | Dev utilities: [JSON Formatter](https://jsonformatter.org/) | site | api-integration, frontend | - | - |
 | Dev utilities: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web) | site | api-integration, frontend | - | - |
 | Dev utilities: [PrimeNG](https://primeng.org/) | site | api-integration, frontend | - | - |
@@ -373,10 +395,13 @@ Areas: `game-port`
 | [PS-Game-Patch](https://github.com/illusionyy/PS-Game-Patch) | repository | game-modding | licensing-check | - |
 | [SCSKiller](https://github.com/BlueHeisenberg/SCSKiller) | tool | game-port | - | - |
 | [shadPS4 (AYOUB1080p fork)](https://github.com/weshayoub92/shadPS4-AYOUB1080p) | repository | game-port | licensing-check, experimental | - |
+| Additional ports/runtimes: [adriadam10/mkw-recomp](https://github.com/adriadam10/mkw-recomp) | repository | game-port, decompilation | licensing-check, experimental | - |
 | Console homebrew: [Can I Root My TV?](https://cani.rootmy.tv/) | site | game-modding, game-port | authorized-only | - |
 | Console homebrew: [evoX Pegasus Store](https://nexgen999.github.io/evoX-CoreOS-WebUI/pegasus-store_en.html) | site | game-modding, game-port | experimental | - |
 | Console homebrew: [Prospero Patches](https://prosperopatches.com/) | site | game-modding, game-port | licensing-check | - |
 | Console homebrew: [PS3 updates (aldostools)](https://ps3.aldostools.org/updates.html) | site | game-modding, game-port | licensing-check | - |
+| Launchers/catalogs (verify content licensing): [OpenPortsGames — Android ports](https://openportsgames.com/en/android/) | site | game-port, mobile-app | licensing-check | - |
+| Launchers/catalogs (verify content licensing): [RecompLauncher](https://recomplauncher.com/) | site | game-port | licensing-check | - |
 
 ## Reverse engineering learning path
 
@@ -425,6 +450,8 @@ Areas: `content-creation`, `frontend`, `ux-design`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [apex-compute/ANR](https://github.com/apex-compute/ANR) | repository | ai-automation | experimental | - |
+| [apex-compute/unified-engine](https://github.com/apex-compute/unified-engine) | repository | ai-automation | experimental | - |
 | Clean-room examples: [Dolly (screen recorder rebuilt from a spec)](https://github.com/percyitchy/dolly) | repository | content-creation, desktop | - | - |
 | Clean-room examples: [FilmCraft](https://github.com/storytold/filmcraft) | repository | content-creation | - | - |
 | Clean-room examples: [LightCraft](https://github.com/storytold/lightcraft) | repository | content-creation | - | - |

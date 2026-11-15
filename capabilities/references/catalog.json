@@ -3594,6 +3594,347 @@
       ],
       "risk": [],
       "group": "General utilities"
+    },
+    "mkw-recomp": {
+      "title": "adriadam10/mkw-recomp",
+      "url": "https://github.com/adriadam10/mkw-recomp",
+      "category": "pc-gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port",
+        "decompilation"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ],
+      "group": "Additional ports/runtimes"
+    },
+    "recomp-launcher": {
+      "title": "RecompLauncher",
+      "url": "https://recomplauncher.com/",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-port"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Launchers/catalogs (verify content licensing)"
+    },
+    "openportsgames-android": {
+      "title": "OpenPortsGames — Android ports",
+      "url": "https://openportsgames.com/en/android/",
+      "category": "pc-gaming",
+      "kind": "site",
+      "areas": [
+        "game-port",
+        "mobile-app"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Launchers/catalogs (verify content licensing)"
+    },
+    "apex-anr": {
+      "title": "apex-compute/ANR",
+      "url": "https://github.com/apex-compute/ANR",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ]
+    },
+    "apex-unified-engine": {
+      "title": "apex-compute/unified-engine",
+      "url": "https://github.com/apex-compute/unified-engine",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ]
+    },
+    "artex-en": {
+      "title": "BaaRai/ARTEX (English, AGPL-3.0)",
+      "url": "https://github.com/BaaRai/ARTEX",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only",
+        "experimental"
+      ],
+      "group": "Audits and pentest automation"
+    },
+    "failsafe-artex": {
+      "title": "failsafe-security/artex",
+      "url": "https://github.com/failsafe-security/artex",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security"
+      ],
+      "risk": [
+        "authorized-only",
+        "experimental"
+      ],
+      "group": "Audits and pentest automation"
+    },
+    "pentestcode": {
+      "title": "s0ld13rr/pentestcode",
+      "url": "https://github.com/s0ld13rr/pentestcode",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "ai-automation"
+      ],
+      "risk": [
+        "authorized-only",
+        "experimental"
+      ],
+      "group": "Audits and pentest automation"
+    },
+    "promptfoo": {
+      "title": "promptfoo/promptfoo",
+      "url": "https://github.com/promptfoo/promptfoo",
+      "category": "qa",
+      "kind": "repository",
+      "areas": [
+        "qa-testing",
+        "security",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "QA tools"
+    },
+    "open-webui": {
+      "title": "open-webui/open-webui",
+      "url": "https://github.com/open-webui/open-webui",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Chat UIs and routers"
+    },
+    "libretranslate": {
+      "title": "LibreTranslate/LibreTranslate",
+      "url": "https://github.com/LibreTranslate/LibreTranslate",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "api-integration",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Local inference"
+    },
+    "buzz": {
+      "title": "chidiwilliams/buzz",
+      "url": "https://github.com/chidiwilliams/buzz",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "rembg": {
+      "title": "danielgatis/rembg",
+      "url": "https://github.com/danielgatis/rembg",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "upscayl": {
+      "title": "upscayl/upscayl",
+      "url": "https://github.com/upscayl/upscayl",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "stirling-pdf": {
+      "title": "Stirling-Tools/Stirling-PDF",
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "operations"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "matheusgobbi-claude-video": {
+      "title": "Editar vídeo com o Claude — Matheus Gobbi",
+      "url": "https://matheusgobbi.com/edit",
+      "category": "content-media",
+      "kind": "site",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Video/media"
+    },
+    "immich": {
+      "title": "immich-app/immich",
+      "url": "https://github.com/immich-app/immich",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "operations"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "jellyfin": {
+      "title": "jellyfin/jellyfin",
+      "url": "https://github.com/jellyfin/jellyfin",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "operations"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Video/media"
+    },
+    "invidious": {
+      "title": "iv-org/invidious",
+      "url": "https://github.com/iv-org/invidious",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Video/media"
+    },
+    "newpipe": {
+      "title": "TeamNewPipe/NewPipe",
+      "url": "https://github.com/TeamNewPipe/NewPipe",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "mobile-app"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Android/TV"
+    },
+    "libreget": {
+      "title": "OpenSelena/libreget",
+      "url": "https://github.com/OpenSelena/libreget",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check",
+        "licensing-check"
+      ],
+      "group": "Downloads/media"
+    },
+    "localsend": {
+      "title": "localsend/localsend",
+      "url": "https://github.com/localsend/localsend",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "pi-hole": {
+      "title": "pi-hole/pi-hole",
+      "url": "https://github.com/pi-hole/pi-hole",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "operations",
+        "security"
+      ],
+      "risk": [],
+      "group": "General utilities"
+    },
+    "win11debloat": {
+      "title": "Raphire/Win11Debloat",
+      "url": "https://github.com/Raphire/Win11Debloat",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Windows setup"
+    },
+    "apkstart": {
+      "title": "RoutineMiku/apkstart",
+      "url": "https://github.com/RoutineMiku/apkstart",
+      "category": "android-managed",
+      "kind": "repository",
+      "areas": [
+        "mobile-app",
+        "desktop"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "group": "Android/TV"
+    },
+    "reverse-engineer-marketing": {
+      "title": "dansugc/reverse-engineer-marketing",
+      "url": "https://github.com/dansugc/reverse-engineer-marketing",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "marketing",
+        "ai-automation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Research skills"
+    },
+    "emissor-nfse-nacional": {
+      "title": "gabrielbuzziv/emissor-nfse-nacional",
+      "url": "https://github.com/gabrielbuzziv/emissor-nfse-nacional",
+      "category": "web-api",
+      "kind": "repository",
+      "areas": [
+        "api-integration"
+      ],
+      "risk": [],
+      "group": "Dev utilities"
     }
   }
 }
