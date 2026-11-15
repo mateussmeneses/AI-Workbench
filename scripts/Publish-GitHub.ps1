@@ -1,5 +1,7 @@
 # Run from the root of the extracted AI Workbench repository.
-param([string]$Repository = "mateussmeneses/ai-workbench")
+param([string]$Repository = "mateussmeneses/AI-Workbench")
+$version = (Select-String -Path pyproject.toml -Pattern '^version = "(.+)"').Matches[0].Groups[1].Value
+if ($version -match '[a-z]') { throw "Refusing to tag pre-release version $version; bump pyproject.toml first" }
 $ErrorActionPreference = 'Stop'
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) { throw 'Install GitHub CLI (gh) and run gh auth login' }
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw 'Install Git for Windows' }
@@ -26,7 +28,7 @@ if ($LASTEXITCODE -ne 0) {
   if ($LASTEXITCODE -ne 0) { throw 'Push failed' }
 }
 Write-Host "Pushed: https://github.com/$Repository"
-$tag = 'v0.3.0'
+$tag = "v$version"
 # Tag only the exact verified local main commit. GitHub Actions re-verifies
 # this tag and creates the release; this script never bypasses CI.
 git rev-parse -q --verify "refs/tags/$tag" *> $null

@@ -4,7 +4,7 @@ This is a standalone repository consolidated from the previous **AI Workbench St
 
 ## Current baseline
 
-- Version 0.4.0.dev0. Python CLI (`src/aiwh`) with `init`, `resume`, `audit`, `profiles`, `areas`, `recommend`, `capabilities`, `sync`, `attach`, `report`, `doctor` and `global-integration`. Use `aiwh --help` and command-specific `--help` for current options.
+- Version 0.4.0.dev0. Python CLI (`src/aiwh`) with `init`, `resume`, `audit`, `handoff`, `managed`, `profiles`, `areas`, `recommend`, `capabilities`, `skills`, `mcp`, `game-port`, `inspect`, `spec`, `cleanroom`, `sync`, `curate`, `references`, `catalog`, `attach`, `report`, `doctor` and `global-integration`. Use `aiwh --help` and command-specific `--help` for current options.
 - Canonical library in `capabilities/`; use `aiwh capabilities` and `aiwh areas` for current counts and identifiers rather than relying on cached totals.
 - CLI installs only relevant project skills; private handoffs and optional bookmark/GitHub catalogs are not committed.
 - Project file adapters for Codex, Claude Code, Google Antigravity, Hermes and OpenClaude have synthetic path tests, not real-runtime certification. See [adapter evidence](docs/AGENTS.md).
@@ -26,6 +26,6 @@ This is a standalone repository consolidated from the previous **AI Workbench St
 
 The term **continuity** does not imply that AI Workbench can read or export proprietary agent chat histories. It preserves portable, local context and code evidence instead.
 
-## New: cross-domain area routing
+## Cross-domain area routing
 
 Use `aiwh areas` to list 27 areas. Use `aiwh recommend . --goal "..." --json` to inspect a read-only contextual plan; use multiple explicit `--area` values or opt in with `--auto-areas` during `aiwh init`. Agent roles are reference templates. MCP/plugin recommendations never activate external connections or require private tokens. See `docs/AREAS.md` and `docs/RESEARCH.md` before extending the catalog.

@@ -36,7 +36,7 @@ At runtime, `workbench.py` prefers the capability directory beside the installed
 
 The existing CI and release workflows now install declared dependencies, build wheel/sdist artifacts and run the clean-wheelhouse verifier. Release publishing remains conditional on an explicitly authorized tag and passing checks; modifying workflow files does not execute or publish them.
 
-The Python floor remains 3.10. CI is configured for Windows and Ubuntu with Python 3.10/3.12/3.14; hosted CI was not observed during local validation. Local evidence: Windows/Python 3.10.22, clean wheelhouse installation of PyYAML 6.0.3, 49 unit tests and `aiwh doctor` passed. The verifier also passed wheel/sdist asset checks and CLI smoke against the installed package outside the checkout. Python 3.13/3.14 porting guidance was consulted; the verifier uses APIs available on 3.10.
+The Python floor remains 3.10. CI is configured for Windows and Ubuntu with Python 3.10/3.12/3.14; hosted CI was not observed during local validation. Local evidence: Windows/Python 3.10.22, clean wheelhouse installation of PyYAML 6.0.3 and `aiwh doctor` passed; the current 125-test suite passes on Windows/Python 3.14.6 (2026-11-15). The verifier also passed wheel/sdist asset checks and CLI smoke against the installed package outside the checkout. Python 3.13/3.14 porting guidance was consulted; the verifier uses APIs available on 3.10.
 
 ## Data flow
 

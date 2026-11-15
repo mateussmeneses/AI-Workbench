@@ -203,7 +203,7 @@ See [architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [agents](d
 
 ## Project status
 
-Package version **0.4.0.dev0** is an unreleased development build; the latest documented stable changelog entry is **0.3.0**. Bootstrapping, continuation, local catalog and agent file adapters have synthetic test coverage. The distribution also passed a clean local wheelhouse install and 49 unit tests on Windows/Python 3.10.22. This does not certify real agent runtimes or hosted CI. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
+Package version **0.4.0.dev0** is an unreleased development build; the latest documented stable changelog entry is **0.3.0**. Bootstrapping, continuation, local catalog and agent file adapters have synthetic test coverage. The distribution passed a clean local wheelhouse install on Windows/Python 3.10.22; the current suite (125 unit tests) passes on Windows/Python 3.14.6 (2026-11-15). This does not certify real agent runtimes or hosted CI. See the [versioned roadmap](docs/ROADMAP.md) for acceptance gates and the next task.
 
 Managed capability updates/removal, versioned private state and bounded session history/deltas are available. Native startup hooks and recurring monitoring are deferred opt-in opportunities. MCPs/plugins remain recommendations; proprietary chat-session migration is not supported.
 
