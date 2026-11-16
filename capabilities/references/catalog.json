@@ -5784,6 +5784,313 @@
         "experimental"
       ],
       "group": "Short-form clipping"
+    },
+    "langchain-ai-langchain": {
+      "title": "langchain-ai/langchain",
+      "url": "https://github.com/langchain-ai/langchain",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "backend"
+      ],
+      "risk": [],
+      "group": "Harnesses"
+    },
+    "langchain-ai-social-media-agent": {
+      "title": "langchain-ai/social-media-agent",
+      "url": "https://github.com/langchain-ai/social-media-agent",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "marketing",
+        "content-creation"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Harnesses"
+    },
+    "oxylabs-web-api-mcp": {
+      "title": "oxylabs/web-api-mcp",
+      "url": "https://github.com/oxylabs/web-api-mcp",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "api-integration"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Computer/browser use"
+    },
+    "learningcircuit-local-deep-research": {
+      "title": "LearningCircuit/local-deep-research",
+      "url": "https://github.com/LearningCircuit/local-deep-research",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Research skills"
+    },
+    "dosukasol-pushfps": {
+      "title": "DosukaSOL/PushFPS",
+      "url": "https://github.com/DosukaSOL/PushFPS",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "alztrk-opentaskbar": {
+      "title": "alztrk/opentaskbar",
+      "url": "https://github.com/alztrk/opentaskbar",
+      "category": "desktop-tools",
+      "kind": "repository",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "group": "Windows/PC"
+    },
+    "unstructured-io-unstructured": {
+      "title": "Unstructured-IO/unstructured",
+      "url": "https://github.com/Unstructured-IO/unstructured",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "allenai-olmocr": {
+      "title": "allenai/olmocr",
+      "url": "https://github.com/allenai/olmocr",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Media and scientific libraries"
+    },
+    "facebookresearch-nougat": {
+      "title": "facebookresearch/nougat",
+      "url": "https://github.com/facebookresearch/nougat",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "content-creation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Media and scientific libraries"
+    },
+    "datalab-to-surya": {
+      "title": "datalab-to/surya",
+      "url": "https://github.com/datalab-to/surya",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Media and scientific libraries"
+    },
+    "opendatalab-mineru": {
+      "title": "opendatalab/MinerU",
+      "url": "https://github.com/opendatalab/MinerU",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Media and scientific libraries"
+    },
+    "paddlepaddle-paddleocr": {
+      "title": "PaddlePaddle/PaddleOCR",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Media and scientific libraries"
+    },
+    "docling-project-docling": {
+      "title": "docling-project/docling",
+      "url": "https://github.com/docling-project/docling",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Media and scientific libraries"
+    },
+    "ocrmypdf-ocrmypdf": {
+      "title": "ocrmypdf/OCRmyPDF",
+      "url": "https://github.com/ocrmypdf/OCRmyPDF",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "data-engineering"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "jsvine-pdfplumber": {
+      "title": "jsvine/pdfplumber",
+      "url": "https://github.com/jsvine/pdfplumber",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "data-engineering",
+        "data-analytics"
+      ],
+      "risk": [],
+      "group": "Media and file utilities"
+    },
+    "krillinai-awesome-opus-animation": {
+      "title": "krillinai/awesome-opus-animation",
+      "url": "https://github.com/krillinai/awesome-opus-animation",
+      "category": "agent-tooling",
+      "kind": "list",
+      "areas": [
+        "content-creation",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Curated lists"
+    },
+    "davixavier-coder-skill-clips": {
+      "title": "davixavier-coder/skill-clips",
+      "url": "https://github.com/davixavier-coder/skill-clips",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "licensing-check",
+        "experimental"
+      ],
+      "group": "Short-form clipping"
+    },
+    "krillinai-opencreator": {
+      "title": "krillinai/OpenCreator",
+      "url": "https://github.com/krillinai/OpenCreator",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Video/media"
+    },
+    "ace-step-ace-step-1-5": {
+      "title": "ace-step/ACE-Step-1.5",
+      "url": "https://github.com/ace-step/ACE-Step-1.5",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Audio and speech"
+    },
+    "souzatharsis-podcastfy": {
+      "title": "souzatharsis/podcastfy",
+      "url": "https://github.com/souzatharsis/podcastfy",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "group": "Audio and speech"
+    },
+    "black-forest-labs-flux2": {
+      "title": "black-forest-labs/flux2",
+      "url": "https://github.com/black-forest-labs/flux2",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Video/media"
+    },
+    "flashml-org-freevideo": {
+      "title": "FlashML-org/FreeVideo",
+      "url": "https://github.com/FlashML-org/FreeVideo",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "group": "Motion and video generation"
+    },
+    "finktheartist-sakuga-vfx": {
+      "title": "finktheartist/sakuga-vfx",
+      "url": "https://github.com/finktheartist/sakuga-vfx",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "Web 3D and graphics libraries"
+    },
+    "yils-lin-short-video-factory": {
+      "title": "YILS-LIN/short-video-factory",
+      "url": "https://github.com/YILS-LIN/short-video-factory",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "marketing"
+      ],
+      "risk": [
+        "tos-check"
+      ],
+      "group": "Short-form clipping"
     }
   }
 }
