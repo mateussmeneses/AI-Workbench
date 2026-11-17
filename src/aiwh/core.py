@@ -282,7 +282,7 @@ def save_catalog(items, home=DEFAULT_HOME, last_sync=None, sync_history=None):
 
 def project_profile(repo):
     repo = Path(repo)
-    signals = {x.name.lower() for x in repo.iterdir()} if repo.exists() else set()
+    signals = {x.name.lower() for x in repo.iterdir()} if repo.exists() and repo.is_dir() else set()
     sample = []
     for folder in (repo, repo / 'src', repo / 'tests'):
         if folder.exists() and folder.is_dir():
@@ -291,17 +291,34 @@ def project_profile(repo):
     full = ' '.join(signals)
     scores = {'qa-dotnet': 0, 'game-port': 0, 'browser-extension': 0,
               'mobile-app': 0, 'windows-tooling': 0, 'ai-agents': 0, 'devops': 0}
-    if any(p.endswith(('.sln', '.slnx', '.csproj', '.feature')) for p in signals): scores['qa-dotnet'] += 5
-    if 'manifest.json' in signals: scores['browser-extension'] += 3
-    if 'build.gradle' in signals or 'build.gradle.kts' in signals or 'androidmanifest.xml' in signals: scores['mobile-app'] += 5
-    if any(p.endswith(('.vcxproj', '.sln')) for p in signals): scores['windows-tooling'] += 2
-    for needle in ('vulkan', 'shader', 'renderer', 'game', 'port', 'dxvk', 'emulator'):
-        if needle in full or needle in repo.name.lower(): scores['game-port'] += 2
+    if any(p.endswith(('.sln', '.slnx', '.csproj', '.feature')) for p in signals):
+        scores['qa-dotnet'] += 5
+    if 'manifest.json' in signals:
+        scores['browser-extension'] += 3
+    if 'build.gradle' in signals or 'build.gradle.kts' in signals or 'androidmanifest.xml' in signals:
+        scores['mobile-app'] += 5
+    if any(p.endswith(('.vcxproj', '.sln')) for p in signals):
+        scores['windows-tooling'] += 2
+    for needle in ('vulkan', 'shader', 'renderer', 'dxvk', 'emulator'):
+        if needle in full or needle in repo.name.lower():
+            scores['game-port'] += 2
     for needle in ('agent', 'llm', 'mcp', 'ai-workbench', 'codex'):
-        if needle in full or needle in repo.name.lower(): scores['ai-agents'] += 2
+        if needle in full or needle in repo.name.lower():
+            scores['ai-agents'] += 2
     for needle in ('github', 'dockerfile', 'azure-pipelines', 'pipeline'):
-        if needle in full: scores['devops'] += 1
+        if needle in full:
+            scores['devops'] += 1
     active = [k for k, v in sorted(scores.items(), key=lambda kv: (-kv[1], kv[0])) if v >= 2]
+    if repo.is_dir():
+        try:
+            from .areas import catalog as area_catalog, resolve_areas
+            area_map = area_catalog()
+            for area_id in resolve_areas(repo)['areas']:
+                for profile in area_map.get(area_id, {}).get('profiles', []):
+                    if profile not in active:
+                        active.append(profile)
+        except (OSError, ValueError):
+            pass
     return active[:3] if active else ['devops']
 
 
@@ -349,10 +366,10 @@ def attach(repo, items, profiles=None, limit=25, dry_run=False):
              'title': x.get('title',''), 'categories': x.get('categories', []),
              'sources': x.get('sources', []), 'archived': x.get('archived', False),
              'risk': risks.get(canonical_url(x['url']), [])} for x in chosen]}
-    lines = ['# Recursos sugeridos pelo AI Workbench Hub', '',
-             '> Gerado localmente. Estas referências não são recomendações para executar código automaticamente.',
-             '', f'**Perfis detectados:** {", ".join(profiles)}',
-             f'**Recursos selecionados:** {len(chosen)} / {len(items)}', '']
+    lines = ['# Suggested resources by AI Workbench Hub', '',
+             '> Generated locally. These references are not recommendations to execute code automatically.',
+             '', f'**Detected profiles:** {", ".join(profiles)}',
+             f'**Selected resources:** {len(chosen)} / {len(items)}', '']
     for x in chosen:
         title = md_text(x.get('title') or x['url'])
         labels = risks.get(canonical_url(x['url']), [])
