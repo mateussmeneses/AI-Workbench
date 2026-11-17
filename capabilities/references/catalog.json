@@ -6091,6 +6091,261 @@
         "tos-check"
       ],
       "group": "Short-form clipping"
+    },
+    "renanleonel-windows-taskbar-battery": {
+      "title": "renanleonel/windows-taskbar-battery",
+      "url": "https://github.com/renanleonel/windows-taskbar-battery",
+      "category": "desktop-tools",
+      "kind": "tool",
+      "areas": [
+        "desktop"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "smoovplay-smoovplay": {
+      "title": "smoovplay/smoovplay",
+      "url": "https://github.com/smoovplay/smoovplay",
+      "category": "gaming",
+      "kind": "repository",
+      "areas": [
+        "game-port",
+        "game-modding"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "cathrynlavery-diagram-design": {
+      "title": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "frontend",
+        "ux-design"
+      ],
+      "risk": [],
+      "group": "Skill collections",
+      "reviewed": "2026-11-17"
+    },
+    "senlindesign-taste-skill": {
+      "title": "senlindesign/taste-skill",
+      "url": "https://github.com/senlindesign/taste-skill",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "ux-design",
+        "frontend"
+      ],
+      "risk": [],
+      "group": "Skill collections",
+      "reviewed": "2026-11-17"
+    },
+    "graphify-labs-graphify": {
+      "title": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "data-engineering"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "blader-humanizer": {
+      "title": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer",
+      "category": "agent-tooling",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "content-creation"
+      ],
+      "risk": [],
+      "group": "Skill collections",
+      "reviewed": "2026-11-17"
+    },
+    "erkamyaman-rust-anything": {
+      "title": "erkamyaman/rust-anything",
+      "url": "https://github.com/erkamyaman/rust-anything",
+      "category": "rebuild-stack",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "reverse-engineering",
+        "backend"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "armur-ai-pentest-swarm-ai": {
+      "title": "Armur-Ai/Pentest-Swarm-AI",
+      "url": "https://github.com/Armur-Ai/Pentest-Swarm-AI",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "ai-automation"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "zaproxy-zaproxy": {
+      "title": "zaproxy/zaproxy",
+      "url": "https://github.com/zaproxy/zaproxy",
+      "category": "review-security",
+      "kind": "tool",
+      "areas": [
+        "security",
+        "qa-testing",
+        "api-integration"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "usestrix-strix": {
+      "title": "usestrix/strix",
+      "url": "https://github.com/usestrix/strix",
+      "category": "red-team",
+      "kind": "repository",
+      "areas": [
+        "security",
+        "ai-automation"
+      ],
+      "risk": [
+        "authorized-only"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "diegosouzapw-omniroute": {
+      "title": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "category": "llm-gateways",
+      "kind": "repository",
+      "areas": [
+        "ai-automation",
+        "api-integration"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "plusxbt-motion-design-x": {
+      "title": "plusxbt: Motion design workflow (X post)",
+      "url": "https://x.com/plusxbt/status/2119418263029297167",
+      "category": "content-media",
+      "kind": "guide",
+      "areas": [
+        "content-creation",
+        "frontend",
+        "ux-design"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "browser-use-video-use": {
+      "title": "browser-use/video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "bradautomates-claude-video": {
+      "title": "bradautomates/claude-video",
+      "url": "https://github.com/bradautomates/claude-video",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "zarazhangrui-frontend-slides": {
+      "title": "zarazhangrui/frontend-slides",
+      "url": "https://github.com/zarazhangrui/frontend-slides",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "frontend",
+        "content-creation"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "hugohe3-ppt-master": {
+      "title": "hugohe3/ppt-master",
+      "url": "https://github.com/hugohe3/ppt-master",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "operations"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "kyutai-labs-pocket-tts": {
+      "title": "kyutai-labs/pocket-tts",
+      "url": "https://github.com/kyutai-labs/pocket-tts",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [],
+      "reviewed": "2026-11-17"
+    },
+    "zyphra-zonos3-mini": {
+      "title": "Zyphra/ZONOS3-Mini",
+      "url": "https://github.com/Zyphra/ZONOS3-Mini",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [
+        "licensing-check"
+      ],
+      "reviewed": "2026-11-17"
+    },
+    "gradium-ai-xn-ptts": {
+      "title": "gradium-ai/xn-ptts",
+      "url": "https://github.com/gradium-ai/xn-ptts",
+      "category": "content-media",
+      "kind": "repository",
+      "areas": [
+        "content-creation",
+        "ai-automation"
+      ],
+      "risk": [
+        "experimental"
+      ],
+      "reviewed": "2026-11-17"
     }
   }
 }

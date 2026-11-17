@@ -22,6 +22,7 @@ Areas: `ai-automation`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | repository | ai-automation, data-engineering | - | 2026-11-17 |
 | Code understanding: [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) | list | ai-automation | - | - |
 | Code understanding: [craft-anything](https://github.com/storytold/craft-anything) | repository | ai-automation | - | - |
 | Code understanding: [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything) | repository | ai-automation | - | - |
@@ -64,6 +65,8 @@ Areas: `ai-automation`
 | Research skills: [LearningCircuit/local-deep-research](https://github.com/LearningCircuit/local-deep-research) | repository | ai-automation | - | - |
 | Skill collections: [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) | repository | ai-automation | - | - |
 | Skill collections: [anthropics/skills](https://github.com/anthropics/skills) | repository | ai-automation | - | - |
+| Skill collections: [blader/humanizer](https://github.com/blader/humanizer) | repository | ai-automation, content-creation | - | 2026-11-17 |
+| Skill collections: [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) | repository | ai-automation, frontend, ux-design | - | 2026-11-17 |
 | Skill collections: [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) | repository | ai-automation | - | - |
 | Skill collections: [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | repository | ai-automation | - | - |
 | Skill collections: [flawless-ui-ux](https://github.com/smokeeaasd/flawless-ui-ux) | repository | ux-design, frontend | - | 2026-11-10 (MIT) |
@@ -71,6 +74,7 @@ Areas: `ai-automation`
 | Skill collections: [improve](https://github.com/shadcn/improve) | repository | ai-automation, qa-testing | - | 2026-11-10 (MIT) |
 | Skill collections: [mattpocock/skills](https://github.com/mattpocock/skills) | repository | ai-automation | - | - |
 | Skill collections: [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | repository | ai-automation | - | - |
+| Skill collections: [senlindesign/taste-skill](https://github.com/senlindesign/taste-skill) | repository | ai-automation, ux-design, frontend | - | 2026-11-17 |
 | Skill collections: [TechNomadCode/AI-Product-Development-Toolkit](https://github.com/TechNomadCode/AI-Product-Development-Toolkit) | repository | ai-automation | - | - |
 
 ## Code review and security
@@ -79,6 +83,7 @@ Areas: `security`, `qa-testing`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [zaproxy/zaproxy](https://github.com/zaproxy/zaproxy) | tool | security, qa-testing, api-integration | authorized-only | 2026-11-17 |
 | AI PR review: [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | repository | security, qa-testing | - | - |
 | AI PR review: [opencodereview](https://github.com/BridgLabs/opencodereview) | repository | security, qa-testing | - | - |
 | Anti-AI reverse-engineering hardening: [BLA (Blind LLM Agents)](https://github.com/qybaihe/bla) | repository | security, reverse-engineering, desktop | experimental | - |
@@ -125,7 +130,15 @@ Areas: `content-creation`, `marketing`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [bradautomates/claude-video](https://github.com/bradautomates/claude-video) | repository | content-creation, ai-automation | experimental | 2026-11-17 |
+| [browser-use/video-use](https://github.com/browser-use/video-use) | repository | content-creation, ai-automation | experimental | 2026-11-17 |
 | [clonechat](https://github.com/felipeadeildo/clonechat) | repository | content-creation | tos-check, licensing-check | - |
+| [gradium-ai/xn-ptts](https://github.com/gradium-ai/xn-ptts) | repository | content-creation, ai-automation | experimental | 2026-11-17 |
+| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | repository | content-creation, operations | - | 2026-11-17 |
+| [kyutai-labs/pocket-tts](https://github.com/kyutai-labs/pocket-tts) | repository | content-creation, ai-automation | - | 2026-11-17 |
+| [plusxbt: Motion design workflow (X post)](https://x.com/plusxbt/status/2119418263029297167) | guide | content-creation, frontend, ux-design | - | 2026-11-17 |
+| [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides) | repository | frontend, content-creation | - | 2026-11-17 |
+| [Zyphra/ZONOS3-Mini](https://github.com/Zyphra/ZONOS3-Mini) | repository | content-creation, ai-automation | licensing-check | 2026-11-17 |
 | Android/TV: [TeamNewPipe/NewPipe](https://github.com/TeamNewPipe/NewPipe) | repository | mobile-app | tos-check | - |
 | Audio and speech: [ace-step/ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5) | repository | content-creation | licensing-check | - |
 | Audio and speech: [audacity/audacity](https://github.com/audacity/audacity) | repository | content-creation | - | - |
@@ -284,6 +297,8 @@ Areas: `security`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [Armur-Ai/Pentest-Swarm-AI](https://github.com/Armur-Ai/Pentest-Swarm-AI) | repository | security, ai-automation | authorized-only | 2026-11-17 |
+| [usestrix/strix](https://github.com/usestrix/strix) | repository | security, ai-automation | authorized-only | 2026-11-17 |
 | Android privilege escalation research: [CVE-2026-43499-root-KernelSU](https://github.com/woshimaniubi8/CVE-2026-43499-root-KernelSU) | repository | security | authorized-only | - |
 | Audits and pentest automation: [BaaRai/ARTEX (English, AGPL-3.0)](https://github.com/BaaRai/ARTEX) | repository | security | authorized-only, experimental | - |
 | Audits and pentest automation: [failsafe-security/artex](https://github.com/failsafe-security/artex) | repository | security | authorized-only, experimental | - |
@@ -329,6 +344,7 @@ Areas: `ai-automation`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | repository | ai-automation, api-integration | experimental | 2026-11-17 |
 | [free-claude-code](https://github.com/Alishahryar1/free-claude-code) | repository | ai-automation | tos-check | - |
 | [freellmapi](https://github.com/tashfeenahmed/freellmapi) | repository | ai-automation | tos-check | - |
 | [locally-uncensored](https://github.com/PurpleDoubleD/locally-uncensored) | repository | ai-automation | tos-check | - |
@@ -354,6 +370,7 @@ Areas: `desktop`, `mobile-app`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [renanleonel/windows-taskbar-battery](https://github.com/renanleonel/windows-taskbar-battery) | tool | desktop | - | 2026-11-17 |
 | Android/TV: [blockads-android](https://github.com/pass-with-high-score/blockads-android) | repository | desktop, mobile-app | - | - |
 | Android/TV: [cleanyourtv](https://github.com/Gathin23/cleanyourtv) | repository | desktop, mobile-app | - | - |
 | Android/TV: [FreeMyTvWebOS](https://github.com/danielthejoker18/FreeMyTvWebOS) | repository | desktop, mobile-app | - | - |
@@ -389,6 +406,7 @@ Areas: `game-modding`, `game-port`
 
 | Reference | Kind | Areas | Risk | Reviewed |
 |---|---|---|---|---|
+| [smoovplay/smoovplay](https://github.com/smoovplay/smoovplay) | repository | game-port, game-modding | experimental | 2026-11-17 |
 | 3D and game-engine agents: [ahujasid/mcp-for-blender](https://github.com/ahujasid/mcp-for-blender) | repository | game-modding, ai-automation | - | - |
 | 3D and game-engine agents: [blender/blender](https://github.com/blender/blender) | repository | game-modding, ai-automation | - | - |
 | 3D and game-engine agents: [CoplayDev/unity-mcp](https://github.com/CoplayDev/unity-mcp) | repository | game-modding, ai-automation | - | - |
@@ -562,6 +580,7 @@ Areas: `content-creation`, `frontend`, `ux-design`
 |---|---|---|---|---|
 | [apex-compute/ANR](https://github.com/apex-compute/ANR) | repository | ai-automation | experimental | - |
 | [apex-compute/unified-engine](https://github.com/apex-compute/unified-engine) | repository | ai-automation | experimental | - |
+| [erkamyaman/rust-anything](https://github.com/erkamyaman/rust-anything) | repository | ai-automation, reverse-engineering, backend | experimental | 2026-11-17 |
 | Clean-room examples: [Dolly (screen recorder rebuilt from a spec)](https://github.com/percyitchy/dolly) | repository | content-creation, desktop | - | - |
 | Clean-room examples: [FilmCraft](https://github.com/storytold/filmcraft) | repository | content-creation | - | - |
 | Clean-room examples: [LightCraft](https://github.com/storytold/lightcraft) | repository | content-creation | - | - |
