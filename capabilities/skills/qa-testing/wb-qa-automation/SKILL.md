@@ -1,21 +1,21 @@
 ---
 name: wb-qa-automation
-description: QA Automation workflows for relevant projects
+description: Use when designing test suites, E2E browser/API automation, fixture factories, flakiness fixes, or CI test-coverage gates.
 ---
 
 # QA Automation
 
-## Evidence first
-Prioritize tests by risk, isolate fixtures and distinguish flaky from deterministic failures.
+## When to apply
+- Adding unit, integration, or end-to-end (Playwright/Selenium/API) test coverage for critical user journeys.
+- Eliminating flaky tests, slow test setups, or brittle selectors/mocks.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Classify coverage by risk: put fast logic/edge cases in unit tests, contracts in integration tests, and critical paths in E2E.
+2. Build isolated, deterministic fixtures (temp dirs, seeded DBs, explicit clocks) with zero dependency on global host state.
+3. Replace arbitrary `sleep` waits with explicit state/condition assertions and stable `data-testid`/role selectors.
+4. Test failure paths explicitly: invalid inputs, timeouts, permission denials, partial failures, and concurrency.
+5. Verify tests fail when the target behavior is broken (mutation/regression check) before trusting green runs.
 
-## Deliverables
-Report coverage gaps with runnable tests and baseline versus new behavior.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Test suite passes repeatedly in isolation and parallel/CI runs without flakes.
+- No tests silently skip assertions or hit live external paid services.

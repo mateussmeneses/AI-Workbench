@@ -1,21 +1,21 @@
 ---
 name: wb-binary-recompilation
-description: Binary Recompilation workflows for relevant projects
+description: Use when building or debugging static recompilation pipelines, lifted IR/C translation, ABI shims, and runtime parity checks.
 ---
 
 # Binary Recompilation
 
-## Evidence first
-Inventory original ABI, calling conventions, translated code and runtime imports.
+## When to apply
+- Lifting native machine code (MIPS, PowerPC, ARM, x86) into portable C/C++ or LLVM IR.
+- Resolving register-state mismatches, endianness bugs, or OS/SDK shim divergences in a recompiled target.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Verify container format, memory map, relocations, and entry symbols before generating lifted code.
+2. Separate generated lifted functions from hand-written runtime/OS shims so regeneration never overwrites manual fixes.
+3. Model calling conventions, stack frames, status flags, and endianness explicitly at every shim boundary.
+4. Instrument differential/oracle tests comparing lifted function outputs and memory side effects against reference traces.
+5. Isolate graphics/audio/input backend translation into replaceable abstraction layers rather than hardcoding host APIs.
 
-## Deliverables
-Verify target build and compare deterministic behavior with golden traces.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Differential state checks pass on deterministic test inputs for modified functions.
+- Re-running the lifter produces reproducible output without clobbering shim code.

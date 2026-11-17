@@ -1,21 +1,21 @@
 ---
 name: wb-marketing-strategy
-description: Marketing Strategy workflows for relevant projects
+description: Use when designing positioning, landing-page messaging, launch campaigns, SEO/distribution loops, or conversion experiments.
 ---
 
 # Marketing Strategy
 
-## Evidence first
-Clarify audience, positioning, channel mix, budget and success metrics.
+## When to apply
+- Positioning a developer tool, SaaS product, or open-source launch for a specific ICP.
+- Auditing landing-page copy, onboarding activation funnels, or organic/paid acquisition channels.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Clarify the Ideal Customer Profile (ICP), concrete pain point, current alternative, and measurable value proposition.
+2. Anchor messaging in verifiable product capabilities and real user workflows rather than generic hype.
+3. Map the acquisition-to-activation funnel (discovery -> landing page -> install/signup -> first "aha" moment) and find the biggest drop-off.
+4. Propose focused channel experiments (docs/SEO, GitHub/community demos, comparison pages) with clear success metrics and timeboxes.
+5. Respect platform rules, privacy regulations, and spam/automation limits on every outbound or social channel.
 
-## Deliverables
-Create testable campaign hypotheses, attribution rules and content briefs.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Every claim on landing pages or launch posts maps to an implemented, working feature.
+- Experiment plan defines baseline conversion, target metric, and stop/pivot criteria.

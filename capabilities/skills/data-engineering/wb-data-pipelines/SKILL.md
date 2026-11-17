@@ -1,21 +1,21 @@
 ---
 name: wb-data-pipelines
-description: Data Pipelines workflows for relevant projects
+description: Use when building or debugging ETL/ELT jobs, streaming/batch ingestion, schema evolution, partitioning, and data-quality assertions.
 ---
 
 # Data Pipelines
 
-## Evidence first
-Document sources, schemas, lineage, backfills, PII controls and quality checks.
+## When to apply
+- Creating new ingestion connectors, dbt/SQL transformations, or scheduled batch workflows.
+- Fixing late-arriving data, duplicate rows, OOM transformations, or broken downstream tables.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Map source schemas, update cadence, volume growth, and downstream SLA consumers before writing transforms.
+2. Make every stage idempotent and replayable by partition/watermark so backfills never duplicate records.
+3. Separate raw landing, cleaned/typed staging, and business-mart layers with explicit schema contracts.
+4. Add automated data-quality checks (row counts, non-null keys, freshness, referential integrity) that fail loudly before publishing.
+5. Benchmark memory/disk footprint on a bounded sample before running full historical backfills.
 
-## Deliverables
-Prove repeatability, deduplication and recovery with fixture datasets.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Re-running the pipeline twice on the same input partition yields identical output counts and checksums.
+- Lineage and PII/retention rules are documented for new datasets.

@@ -1,21 +1,21 @@
 ---
 name: wb-ecommerce-operations
-description: E-commerce Operations workflows for relevant projects
+description: Use when building or auditing checkout flows, cart/inventory state, pricing/tax rules, payment webhooks, or order fulfillment pipelines.
 ---
 
-# E-commerce Operations
+# Ecommerce Operations
 
-## Evidence first
-Audit product catalog, fulfillment, returns, checkout and consent.
+## When to apply
+- Implementing cart calculations, discount stacking, inventory reservation, or payment gateway webhooks.
+- Investigating order state mismatches, double charges, or currency rounding bugs.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Use integer minor units (cents) or fixed-precision decimals for all monetary amounts; never use binary floats.
+2. Separate quote/cart pricing from immutable order snapshots created at checkout confirmation.
+3. Enforce idempotency keys on payment intents and verify webhook cryptographic signatures before updating order status.
+4. Guard inventory decrements with atomic DB checks/locks so concurrent checkouts cannot oversell stock.
+5. Test refunds, partial captures, expired carts, failed webhooks, and tax/shipping edge cases in sandbox mode.
 
-## Deliverables
-Model conversion, abandonment and order accuracy with testable workflows.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Order totals equal sum of line items + tax + shipping - discounts to the exact cent.
+- Duplicate webhook deliveries are safely ignored without double-fulfilling orders.

@@ -1,21 +1,21 @@
 ---
 name: wb-mobile-quality
-description: Mobile Quality workflows for relevant projects
+description: Use when building, testing, or profiling Android/iOS mobile apps for offline resilience, permissions, battery/memory usage, and store readiness.
 ---
 
 # Mobile Quality
 
-## Evidence first
-Inspect platform entrypoints, permissions, lifecycle and offline behavior.
+## When to apply
+- Implementing mobile screens, background sync, push notifications, or native device permissions.
+- Diagnosing ANRs, crashes, cold-start lag, or platform-store policy rejections.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Check target OS SDK levels, permission manifests, and offline/poor-network behavior before adding features.
+2. Request runtime permissions contextually at point of use with graceful degradation if denied.
+3. Keep main/UI threads free of disk/network I/O; cancel in-flight work cleanly across lifecycle pauses and rotations.
+4. Profile memory allocations, image caching, and wake-locks to prevent OOM crashes and battery drain.
+5. Verify release builds with ProGuard/R8/strip enabled on both physical/emulator targets and check store privacy declarations.
 
-## Deliverables
-Test install, launch, accessibility, background and release build.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Automated UI/unit tests pass on target API levels including offline and permission-denied cases.
+- Release build starts cleanly with obfuscation/shrinking enabled and no leaked debug keys.

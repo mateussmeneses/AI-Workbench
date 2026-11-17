@@ -1,21 +1,21 @@
 ---
 name: wb-api-integration
-description: API Integration workflows for relevant projects
+description: Use when integrating third-party REST, GraphQL, or webhook APIs with retries, rate-limit handling, schema validation, and idempotency.
 ---
 
 # API Integration
 
-## Evidence first
-Define schemas, idempotency, rate limits, retries, webhooks and error contracts.
+## When to apply
+- Adding a new external API client, webhook consumer, or OAuth/token flow.
+- Hardening flaky integrations against timeouts, pagination bugs, or rate limits.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Read the provider's official contract: auth mechanism, rate-limit headers, pagination cursor rules, and error payload formats.
+2. Isolate the integration behind a thin adapter interface so business logic never depends directly on raw HTTP responses.
+3. Enforce explicit connect/read timeouts, bounded exponential backoff with jitter on transient 429/5xx errors, and idempotency keys on mutations.
+4. Validate incoming payloads at the boundary and verify webhook signatures before parsing bodies.
+5. Test with recorded HTTP fixtures (success, 401/403, 429 Retry-After, malformed JSON, timeout) without hitting live paid endpoints in CI.
 
-## Deliverables
-Test integration with mock services and representative failure paths.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Contract tests cover pagination boundaries, error mapping, and secret redaction in logs.
+- Credentials remain in environment/secret stores, never hardcoded or logged.

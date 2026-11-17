@@ -1,21 +1,21 @@
 ---
 name: wb-security-review
-description: Secure Engineering workflows for relevant projects
+description: Use when auditing code, dependencies, auth flows, file I/O, or agent integrations for vulnerabilities, injection, and secret exposure.
 ---
 
-# Secure Engineering
+# Security Review
 
-## Evidence first
-Review inputs, output encoding, secrets, permissions and dependencies.
+## When to apply
+- Reviewing PRs touching authentication, authorization, file paths, subprocesses, deserialization, or external inputs.
+- Auditing third-party skills, MCP configs, or dependency trees for supply-chain risks.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Map trust boundaries, entry points, and attacker-controlled inputs (files, URLs, CLI args, headers, LLM/tool outputs).
+2. Check for path traversal/symlink escapes, command injection (`shell=True`), unsafe deserialization (`yaml.load`, `pickle`), and SSRF/XSS.
+3. Verify authn/authz enforcement on every sensitive action (fail-closed defaults, constant-time token comparison, least privilege).
+4. Scan for hardcoded secrets, overly broad permissions, and sensitive data written to logs, errors, or git-tracked files.
+5. Provide minimal proof-of-concept reproductions, severity rationale, and targeted regression tests for each confirmed finding.
 
-## Deliverables
-Prioritize verifiable findings with minimal reproductions and tests.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Regression tests confirm rejected malicious inputs fail closed without side effects.
+- Confirmed findings include exact file/line references and remediation verification.

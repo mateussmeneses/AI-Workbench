@@ -1,21 +1,21 @@
 ---
 name: wb-operations-process
-description: Operations Process workflows for relevant projects
+description: Use when designing SOPs, incident runbooks, SLA/support workflows, or internal operational automations with human-in-the-loop checks.
 ---
 
 # Operations Process
 
-## Evidence first
-Map inputs, handoffs, ownership, exceptions and repeatable SOPs.
+## When to apply
+- Documenting recurring operational runbooks, support triage, or back-office automation scripts.
+- Reducing manual toil while keeping approval gates on irreversible actions.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Map the current end-to-end process: triggers, inputs, manual handoffs, failure points, and time spent per step.
+2. Identify high-frequency, deterministic steps safe to automate versus judgment calls requiring human approval.
+3. Build idempotent scripts/runbooks with dry-run previews, audit logs, and clear escalation paths on failure.
+4. Define measurable SLAs/SLOs and alert thresholds so silent failures are caught early.
+5. Rehearse the runbook against a realistic failure scenario and update steps based on observed friction.
 
-## Deliverables
-Produce process controls, checkpoints, service-level metrics and automation opportunities.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Runbook can be executed by a second operator without tribal knowledge.
+- Automation supports `--dry-run` or preview mode before mutating live operational state.

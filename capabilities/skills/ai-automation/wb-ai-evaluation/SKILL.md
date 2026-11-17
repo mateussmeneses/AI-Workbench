@@ -1,21 +1,21 @@
 ---
 name: wb-ai-evaluation
-description: AI Evaluation workflows for relevant projects
+description: Use when evaluating LLM prompts, RAG retrieval, embeddings, or agent tool-use workflows for accuracy, latency, cost, and fallback behavior.
 ---
 
 # AI Evaluation
 
-## Evidence first
-Define model/provider inputs, latency, cost, reliability, privacy and evaluation dataset.
+## When to apply
+- Measuring prompt, retrieval, or model-routing changes before shipping.
+- Comparing local models (Ollama/ONNX) against deterministic baselines or cloud APIs.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Lock a fixed evaluation dataset of representative inputs, edge cases, and expected invariants (separate from training/tuning examples).
+2. Define quantitative metrics: exact/semantic pass rate, p95 latency, token/VRAM budget, and structured-output schema validity.
+3. Run the deterministic or baseline system first, then evaluate candidate prompts/models under identical seeds and temperature settings.
+4. Inspect failure modes (hallucinations, schema violations, prompt-injection susceptibility, timeout/offline fallbacks) before tuning.
+5. Record observed scores, dataset version, and hardware/model identifiers; never report mock adapter runs as live inference.
 
-## Deliverables
-Measure accuracy and fallback behavior; do not confuse mock adapters with live inference.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Reproducible evaluation script or fixture suite with pass/fail thresholds.
+- Documented fallback behavior when the model or local runtime is unavailable.

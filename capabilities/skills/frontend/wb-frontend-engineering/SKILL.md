@@ -1,21 +1,21 @@
 ---
 name: wb-frontend-engineering
-description: Frontend Engineer workflows for relevant projects
+description: Use when building or refactoring web UI components, client-side state, routing, forms, responsive layouts, or bundle performance.
 ---
 
-# Frontend Engineer
+# Frontend Engineering
 
-## Evidence first
-Inspect routing, components, data flow, accessibility and rendering budgets.
+## When to apply
+- Creating React/Vue/Svelte/vanilla UI components, client state stores, or form validation flows.
+- Debugging layout shifts, unnecessary re-renders, hydration mismatches, or slow bundle loads.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Inspect existing design tokens, component primitives, routing conventions, and state management patterns first.
+2. Design components with explicit loading, empty, error, and success states before wiring live data.
+3. Keep server/async state separate from local UI state; avoid prop-drilling or redundant derived-state effects.
+4. Verify keyboard navigation, semantic HTML landmarks, responsive breakpoints (mobile/desktop), and contrast ratios.
+5. Check bundle size, lazy-load heavy routes/charts, and prevent XSS by avoiding raw HTML injection of untrusted strings.
 
-## Deliverables
-Create a UI change plan, tests for interaction and a measurable Lighthouse/interaction baseline.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- Typecheck, linter, and component/UI tests pass across key viewport sizes.
+- Zero console errors or unhandled promise rejections during primary user flows.

@@ -1,21 +1,21 @@
 ---
 name: wb-deployment-operations
-description: Deployment Operations workflows for relevant projects
+description: Use when configuring CI/CD pipelines, Docker builds, release automation, health probes, or zero-downtime deployment rollbacks.
 ---
 
 # Deployment Operations
 
-## Evidence first
-Inspect CI stages, secrets, immutable artifacts and rollback gates.
+## When to apply
+- Editing GitHub Actions/CI workflows, Dockerfiles, systemd/service units, or release scripts.
+- Investigating flaky pipelines, slow builds, or failed production rollouts.
 
 ## Procedure
-1. Inspect project documentation, source and baseline tests.
-2. Establish the stated goal, available resources, constraints and risks.
-3. Prepare a minimal change plan with objective acceptance criteria.
-4. Implement or evaluate incrementally; capture observed results.
-5. Review regressions, maintainability and the next milestone.
+1. Audit current build triggers, secrets scope, runner OS/versions, and artifact retention rules.
+2. Pin base images, action SHAs/versions, and lockfiles so builds remain reproducible over time.
+3. Structure pipelines into fast fail-early stages (lint/unit tests) before expensive packaging or deployment steps.
+4. Include readiness/liveness checks, graceful shutdown handling, and a tested rollback procedure for every deployable unit.
+5. Run local smoke verification on built artifacts before pushing workflow or release-script changes.
 
-## Deliverables
-Validate release with versioned artifacts, smoke tests and rollback procedure.
-
-Do not assume integrations or credentials are available; propose them for user approval.
+## Verification
+- CI/release dry-runs or local packaging checks pass with zero leaked secrets.
+- Rollback steps are documented and do not depend on manual memory during an outage.

@@ -29,6 +29,11 @@ RISK_PATTERNS = {
     'credential-request': r'(paste|send|upload)[^\n]{0,40}(api key|token|password|secret)',
 }
 GENERIC_DESCRIPTION = re.compile(r'workflows for relevant projects$', re.IGNORECASE)
+HYPE_PHRASES = re.compile(
+    r'\b(delve into|in today\'s fast-paced|leverage cutting-edge|unlock the power|'
+    r'game-changer|seamless integration|robust and scalable|testament to)\b',
+    re.IGNORECASE,
+)
 
 
 def _frontmatter_and_body(path):
@@ -84,6 +89,10 @@ def lint_skills(skills=None, *, shared_threshold=None, similarity=0.6):
                 findings.append({'skill': name, 'rule': 'boilerplate',
                                  'detail': f'{ratio:.0%} of body lines are shared with {threshold}+ skills; '
                                            'add domain-specific procedure'})
+        hype = HYPE_PHRASES.search(entry['body'])
+        if hype:
+            findings.append({'skill': name, 'rule': 'inflated-prose',
+                             'detail': f'Replace generic AI phrasing ({hype.group(0)!r}) with concrete steps.'})
     parent = {name: name for name in data}
 
     def root(name):
