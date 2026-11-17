@@ -4,13 +4,13 @@
 
 Workbench implements file adapters, not a guarantee that every runtime discovers or follows the generated content. Current evidence is limited to the source mapping and synthetic tests in `tests/test_workbench.py`:
 
-| Agent | Implemented skill path | Synthetic path contract | Real-runtime discovery/workflow |
-| --- | --- | --- | --- |
-| Codex | `.agents/skills/` | Covered by `test_native_paths` | Unverified |
-| Claude Code | `.claude/skills/` | Covered by `test_native_paths` | Unverified |
-| Google Antigravity | `.agents/skills/` | Covered by `test_native_paths` | Unverified |
-| Hermes Agent | `.agents/skills/` | Covered by `test_native_paths` | Unverified |
-| OpenClaude | `.openclaude/skills/` | Covered by `test_native_paths` | Unverified |
+| Agent | Implemented skill path | Detected CLI / Version (2026-11-17) | Synthetic path contract | Real-runtime discovery/workflow |
+| --- | --- | --- | --- | --- |
+| Codex | `.agents/skills/` | `codex.CMD` on PATH (blocked: `node.exe` not on PATH) | Covered by `test_native_paths` | Unverified |
+| Claude Code | `.claude/skills/` | `2.1.326 (Claude Code)` | Covered by `test_native_paths` | Unverified |
+| Google Antigravity | `.agents/skills/` | Not probed by CLI | Covered by `test_native_paths` | Unverified |
+| Hermes Agent | `.agents/skills/` | `Hermes Agent v0.23.1 (2026.9.24)` | Covered by `test_native_paths` | Unverified |
+| OpenClaude | `.openclaude/skills/` | Not probed by CLI | Covered by `test_native_paths` | Unverified |
 
 `test_preserves_custom_agents_and_can_run_twice` checks generated files and idempotence for the three distinct directories through `--agent all`; it does not launch any agent. `test_opt_in_global_activation_is_reversible` exercises the global managed block with a temporary Codex home, not every runtime's configuration.
 

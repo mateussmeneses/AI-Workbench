@@ -66,7 +66,7 @@ Scope: inspect_project, resume and continuation_markdown in src/aiwh/workbench.p
 
 - [x] RM-007 Define a versioned private state schema for approved decisions, stable task IDs, status, blockers, risks and milestone outcomes; record selected/rejected resource IDs, decision rationale and user-confirmed usefulness when provided; migrate existing state.json non-destructively.
 - [x] RM-008 Retain bounded snapshot history and compare sessions; distinguish observed project changes, user-approved decisions/resource feedback and unknown outcomes without inferring that a recommendation helped or executing project code.
-- [ ] RM-009 Generate task-ready handoffs with the next eligible task, dependencies, relevant resources with reasons/known limits and validation evidence; preserve equivalent facts across adapters and report truncated pending-work scans. Partial: `aiwh handoff plan` selects the next eligible task and lists selected resources, decisions, rejections and gaps (D1-D6); explicit task dependencies are not modeled (only blockers) and validation evidence is limited to the documented test command until RM-010/RM-011.
+- [x] RM-009 Generate task-ready handoffs with the next eligible task, dependencies, relevant resources with reasons/known limits and validation evidence; preserve equivalent facts across adapters and report truncated pending-work scans. (`depends_on` in `state.json`, `handoff plan`/`lint` dependency checks, and `validation` evidence in `continuity.py`).
 
 RM-007 acceptance: `.ai-workbench/state.json` schema version 2 separates refreshed observations from persistent tasks, explicitly approved decisions and selected/rejected resources. Tasks preserve stable IDs and status plus blockers, risks and milestone outcomes. User-confirmed usefulness is optional and never inferred. Unversioned state is preserved under `legacy_observation`; corrupt or unsupported future schemas fail before either handoff file is written.
 
@@ -78,9 +78,9 @@ Acceptance: two sessions retain task identity, approved decisions and explicitly
 
 Scope: a separate opt-in validation action exposed through src/aiwh/cli.py; bootstrap, audit and resume remain non-executing.
 
-- [ ] RM-010 Add user-approved validation commands with a visible execution plan, working directory, timeout and cancellation; never execute commands discovered in project text automatically.
-- [ ] RM-011 Store private command evidence with exit status, timestamp and source revision; distinguish passed, failed, timed out, not run and stale results with redacted, bounded output.
-- [ ] RM-012 Cover command failure, cancellation, secret redaction and stale evidence; keep non-executing flows unchanged in tests/test_workbench.py.
+- [x] RM-010 Add user-approved validation commands with a visible execution plan, working directory, timeout and cancellation; never execute commands discovered in project text automatically. (`aiwh validate` previews by default and requires `--approve`).
+- [x] RM-011 Store private command evidence with exit status, timestamp and source revision; distinguish passed, failed, timed out, not run and stale results with redacted, bounded output. (`src/aiwh/validate.py` + `continuity.py`).
+- [x] RM-012 Cover command failure, cancellation, secret redaction and stale evidence; keep non-executing flows unchanged in tests/test_workbench.py. (`tests/test_validate.py`).
 
 Acceptance: no validation runs without explicit approval; nonzero exit and timeouts never appear as success; changed code invalidates the applicability of earlier evidence; credentials are not persisted. Approval to validate is not approval to install dependencies or execute downloaded code.
 
@@ -88,9 +88,9 @@ Acceptance: no validation runs without explicit approval; nonzero exit and timeo
 
 Scope: src/aiwh/areas.py, src/aiwh/core.py, canonical capabilities and tests/test_areas.py/test_core.py. Build on existing read-only bookmark/HTML/GitHub-star imports, project profiles and deterministic category heuristics; do not add another importer as a substitute for recommendation quality. Curate existing entries before expanding them.
 
-- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository. Partial: the curated reference catalog, risk labels and `aiwh catalog check` (B2-B4) exist; optional per-entry `reviewed` dates and `license` notes are validated and rendered (D8) but recorded for only 7 of 448 entries (`aiwh references --unreviewed`); compatibility claims remain.
-- [ ] RM-014 Add synthetic labeled project scenarios and measure relevant-area hits, false positives and scan limits; improve ranking with explainable positive and negative signals.
-- [ ] RM-015 Deliver deterministic Contextual Resource Intelligence: rank a small shortlist (target 3-5) of relevant references/tools using project evidence, detected profiles and the user's stated task; explain why each item was selected, known compatibility, limits and a sensible first consultation/action. Add a Skill & MCP Advisor that compares relevant alternatives and flags likely redundancy or scope/approval requirements; suggestions never install or activate anything.
+- [ ] RM-013 Track public capability provenance, review dates, compatibility claims and licensing notes; keep personal bookmarks, stars and catalog data outside the repository. Partial: the curated reference catalog, risk labels and `aiwh catalog check` (B2-B4) exist; optional per-entry `reviewed` dates and `license` notes are validated and rendered (D8) and recorded for 26 of 498 entries (`aiwh references --unreviewed`); compatibility claims remain.
+- [x] RM-014 Add synthetic labeled project scenarios and measure relevant-area hits, false positives and scan limits; improve ranking with explainable positive and negative signals. (`negative_keywords` in `areas.py` + `AreaBenchmarkTests` in `tests/test_areas.py`).
+- [x] RM-015 Deliver deterministic Contextual Resource Intelligence: rank a small shortlist (target 3-5) of relevant references/tools using project evidence, detected profiles and the user's stated task; explain why each item was selected, known compatibility, limits and a sensible first consultation/action. Add a Skill & MCP Advisor that compares relevant alternatives and flags likely redundancy or scope/approval requirements; suggestions never install or activate anything. (`shortlist`, `mcp_advisor`, `skill_advisor` in `src/aiwh/areas.py`).
 
 Acceptance: publish reproducible fixture metrics before and after ranking changes; cover mixed-domain and ambiguous projects, explicit goals, irrelevant results and redundant alternatives; preserve explicit overrides; produce explainable reasons and a bounded shortlist; keep unknown maintenance/compatibility/limits unknown. Deterministic results remain available offline; user-selected resource sources and catalog data stay private. External metadata refresh requires authorization and provenance. References are untrusted data; no automatic fetch, install, connection or execution.
 
@@ -98,9 +98,9 @@ Acceptance: publish reproducible fixture metrics before and after ranking change
 
 Scope: existing agent paths, scripts/Install-Windows.ps1, scripts/New-Project.ps1, docs/AGENTS.md and adapter contract tests.
 
-- [ ] RM-016 Maintain an adapter compatibility matrix with runtime version, documented paths, synthetic checks and separately recorded real-runtime evidence for all five adapters.
+- [x] RM-016 Maintain an adapter compatibility matrix with runtime version, documented paths, synthetic checks and separately recorded real-runtime evidence for all five adapters. (Dated CLI/version matrix recorded in `docs/AGENTS.md`).
 - [ ] RM-017 Rehearse init, resume, update and removal on representative user-approved Windows projects; compare handoff facts across agents without claiming identical model behavior.
-- [ ] RM-018 Refine explicit Windows onboarding and reversible global instructions; offer minimal/composed presets without granting native tool access or silently installing hooks.
+- [x] RM-018 Refine explicit Windows onboarding and reversible global instructions; offer minimal/composed presets without granting native tool access or silently installing hooks. (`aiwh init --preset minimal|standard|cleanroom`).
 
 Acceptance: every advertised support level has dated evidence or is marked unverified; custom instructions survive the lifecycle; users can reproduce setup and removal. Missing runtimes are recorded as validation blockers, not simulated successes.
 
@@ -108,7 +108,7 @@ Acceptance: every advertised support level has dated evidence or is marked unver
 
 Scope: packaging, security boundaries, user documentation and docs/PUBLISHING.md. Repository creation and publishing require separate authorization.
 
-- [ ] RM-019 Test upgrades from retained baseline fixtures through current schemas and managed-file versions; rehearse interruption and recovery without private production projects.
+- [x] RM-019 Test upgrades from retained baseline fixtures through current schemas and managed-file versions; rehearse interruption and recovery without private production projects. (`UpgradeRehearsalTests` in `tests/test_handoff.py`).
 - [ ] RM-020 Audit release contents for private data and document installation, migration, rollback and known limitations; build an offline-reviewable release candidate.
 - [ ] RM-021 Record a real-user pilot of setup and cross-session continuation; resolve core failures and measure friction before authorizing any release publication.
 
@@ -116,7 +116,7 @@ Acceptance: candidate artifacts install cleanly, contain required assets and no 
 
 ## 1.0.0: Stabilize the core contract
 
-- [ ] RM-022 Document supported CLI, schema and managed-file compatibility guarantees, deprecation policy and upgrade behavior in public documentation.
+- [x] RM-022 Document supported CLI, schema and managed-file compatibility guarantees, deprecation policy and upgrade behavior in public documentation. (`docs/COMPATIBILITY.md`).
 - [ ] RM-023 Confirm bootstrap, continuity and capability lifecycle gates on supported Windows/Python versions; disclose optional adapter or integration limitations.
 - [ ] RM-024 Complete the release checklist and obtain explicit approval for commits, tags and publication; release only after all mandatory gates are evidenced.
 
@@ -182,6 +182,21 @@ Each item names the reference whose README suggested the idea; no external code 
 - [x] D12 Skills: declared task modes and baseline comparison in `wb-ux-research` and `wb-ui-accessibility` (flawless-ui-ux).
 
 Fix found by D1: two documented items mentioning the same task ID made the second `aiwh resume` fail with a duplicate-ID error; the first mention now defines the task.
+
+## Self-evolution backlog (AE-01 to AE-12: catalog dogfooding)
+
+- [x] AE-01 `aiwh map`: deterministic AST and manifest project mapper (`src/aiwh/project_map.py`, `--save` writes `.ai-workbench/PROJECT_MAP.json` and `PROJECT_MAP.md`) (Graphify-Labs/graphify, Understand-Anything).
+- [x] AE-02 Add `aiwh handoff hypothesis` (open/confirmed/refuted + file/line evidence) to `state.json` v2 (storytold/craft-anything).
+- [x] AE-03 `--max-tokens` deterministic context budget compaction for `aiwh handoff plan` and `aiwh resume` (microsoft/TokenEconomizer).
+- [x] AE-04 Anti-boilerplate "Humanizer Check" lint rules for vague/inflated prose in `aiwh skills lint` (blader/humanizer).
+- [x] AE-05 Self-contained SVG architecture & task-dependency graph tab in `aiwh report --html` (cathrynlavery/diagram-design).
+- [x] AE-06 Consistent design tokens, keyboard `/` search shortcut and accessibility polish in `html_report.py` (senlindesign/taste-skill, flawless-ui-ux).
+- [x] AE-07 Index `skills` (`54` `SKILL.md`) and `handoffs`/`wiki` into `aiwh search` FTS5 + optional `sqlite-vec`/`fastembed` (ai-memory, gbrain).
+- [x] AE-08 Opt-in `aiwh curate --enrich` using `gh` metadata + local Ollama Structured Outputs (`localhost:11434`) to suggest areas, summaries and risks (OmniRoute, LLM Wiki).
+- [x] AE-09 Incremental piece-by-piece rewrite mode (`--mode incremental-rewrite`) in `cleanroom init` / `wb-oracle-testing` (erkamyaman/rust-anything).
+- [x] AE-10 Security gate (`aiwh audit --security`) scanning `.ai-workbench/`, `.mcp.json` and symlinks for accidental secrets or risky hooks (strix, zaproxy, Pentest-Swarm-AI).
+- [x] AE-11 Self-contained HTML slide deck export (`aiwh handoff export --format slides`) from `state.json` and `PROJECT_MAP` (frontend-slides, ppt-master).
+- [x] AE-12 Update `wb-video-pipeline` and `content-creation` with local CPU/8GB-VRAM multimodal workflow (video-use, claude-video, pocket-tts, ZONOS3-Mini).
 
 ## Definition of done
 

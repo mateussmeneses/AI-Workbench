@@ -16,6 +16,7 @@ import json
 import re
 from pathlib import Path
 
+from .continuity import compact_markdown
 from .core import now
 from .handoff_checks import OPEN_STATUSES, lint_state, orphaned_tasks
 from .handoff_export import build_handoff
@@ -38,11 +39,18 @@ def _source_line(project, item):
     return None
 
 
-def _skip_reason(task, orphan_ids):
+def _skip_reason(task, orphan_ids, by_id=None):
     if task['status'] not in ('pending', 'in_progress'):
         return f'status is {task["status"]}'
     if task['blockers']:
         return 'blocked: ' + '; '.join(task['blockers'])
+    unmet = []
+    for dep in task.get('depends_on', []):
+        target = (by_id or {}).get(dep)
+        if target is None or target.get('status') not in ('completed', 'cancelled'):
+            unmet.append(dep)
+    if unmet:
+        return 'waiting on dependency: ' + ', '.join(unmet)
     if task.get('claimed_by'):
         return f'claimed by {task["claimed_by"]}'
     if task['id'] in orphan_ids:
@@ -74,7 +82,7 @@ def build_plan(project, task_id=None):
         if task_id not in by_id:
             raise ValueError(f'Unknown task: {task_id}')
         chosen = by_id[task_id]
-        reason = _skip_reason(chosen, orphan_ids)
+        reason = _skip_reason(chosen, orphan_ids, by_id)
         if reason:
             skipped.append({'id': task_id, 'reason': reason + ' (selected explicitly)'})
     else:
@@ -82,7 +90,7 @@ def build_plan(project, task_id=None):
             task = by_id[identifier]
             if task['status'] not in OPEN_STATUSES:
                 continue
-            reason = _skip_reason(task, orphan_ids)
+            reason = _skip_reason(task, orphan_ids, by_id)
             if reason is None:
                 chosen = task
                 break
@@ -105,7 +113,7 @@ def build_plan(project, task_id=None):
     }
 
 
-def plan_markdown(plan):
+def plan_markdown(plan, *, max_tokens=None):
     task = plan['task']
     title = f'{task["id"]} {task["title"]}' if task else 'no eligible task'
     revision = plan['source_revision'] or 'unknown'
@@ -143,6 +151,8 @@ def plan_markdown(plan):
     else:
         lines.append(f'- Source: `{task["source"]}` (recorded in private state; not found in a scanned document)')
     lines += [f'- Known risk: {risk}' for risk in task['risks']]
+    if task.get('depends_on'):
+        lines.append(f'- Depends on: {", ".join(task["depends_on"])}')
     lines += [f'- Earlier outcome: {outcome}' for outcome in task['milestone_outcomes']]
     lines += ['', '## Read first', '']
     read = [f'`{name}`' for name in plan['read_first']]
@@ -186,7 +196,7 @@ def plan_markdown(plan):
               '- Claude Code: run the executor as a subagent whose frontmatter sets `model:` to a cheaper tier. '
               'Other agents: select the model manually.',
               '- The reviewer reads the diff and the files, never the executor\'s summary.', '']
-    return '\n'.join(lines)
+    return compact_markdown('\n'.join(lines), max_tokens)
 
 
 def _read_state(project):
@@ -298,3 +308,129 @@ def lint_handoff(project):
     data, state = build_handoff(project)
     findings = lint_state(data, state, documented_task_ids(data), PENDING_DOCUMENTS)
     return {'findings': findings, 'tasks': len(state['tasks']), 'decisions': len(state['decisions'])}
+
+
+def _require_current_state(project):
+    path, state = _read_state(project)
+    if state is None or state.get('schema_version') != _STATE_SCHEMA_VERSION:
+        raise ValueError('No current private state; run `aiwh resume` first')
+    return path, state
+
+
+def record_decision(project, decision_id, *, text=None, rationale=None, source=None,
+                    confidence=None, last_verified=None, retract_reason=None, dry_run=False):
+    """Add, update, or retract an approved decision in private state."""
+    path, state = _require_current_state(project)
+    decisions = list(state.get('decisions', []))
+    existing = next((d for d in decisions if d.get('id') == decision_id), None)
+    if retract_reason is not None:
+        if existing is None:
+            raise ValueError(f'Unknown decision: {decision_id}')
+        updated = {**existing, 'retracted': True, 'retraction_reason': retract_reason}
+        decisions = [updated if d.get('id') == decision_id else d for d in decisions]
+        action = 'retracted'
+    else:
+        entry = dict(existing) if existing else {'id': decision_id, 'approved': True}
+        if text is not None:
+            entry['text'] = text
+        if rationale is not None:
+            entry['rationale'] = rationale
+        if source is not None:
+            entry['source'] = source
+        if confidence is not None:
+            entry['confidence'] = confidence
+        if last_verified is not None:
+            entry['last_verified'] = last_verified
+        decisions = [entry if d.get('id') == decision_id else d for d in decisions] if existing else [*decisions, entry]
+        action = 'updated' if existing else 'added'
+    _validate_records(decisions, 'decisions')
+    state['decisions'] = decisions
+    if not dry_run:
+        _write_private_state(path, state)
+    return {'id': decision_id, 'action': action, 'written': not dry_run}
+
+
+def record_rejection(project, rejection_id, *, text, rationale, dry_run=False):
+    """Record a rejected finding in private state so it is not re-raised."""
+    path, state = _require_current_state(project)
+    rejections = list(state.get('rejections', []))
+    entry = {'id': rejection_id, 'text': text, 'rationale': rationale}
+    existing = any(r.get('id') == rejection_id for r in rejections)
+    rejections = [entry if r.get('id') == rejection_id else r for r in rejections] if existing else [*rejections, entry]
+    _validate_records(rejections, 'rejections')
+    state['rejections'] = rejections
+    if not dry_run:
+        _write_private_state(path, state)
+    return {'id': rejection_id, 'action': 'updated' if existing else 'added', 'written': not dry_run}
+
+
+def record_resource_feedback(project, resource_id, *, selection, rationale, usefulness=None, dry_run=False):
+    """Record a resource selection and optional user-confirmed usefulness in private state."""
+    path, state = _require_current_state(project)
+    resources = list(state.get('resources', []))
+    entry = {'id': resource_id, 'selection': selection, 'rationale': rationale}
+    if usefulness is not None:
+        entry['usefulness'] = usefulness
+    existing = any(r.get('id') == resource_id for r in resources)
+    resources = [entry if r.get('id') == resource_id else r for r in resources] if existing else [*resources, entry]
+    _validate_records(resources, 'resources')
+    state['resources'] = resources
+    if not dry_run:
+        _write_private_state(path, state)
+    return {'id': resource_id, 'action': 'updated' if existing else 'added', 'written': not dry_run}
+
+
+def update_task(project, task_id, *, status=None, add_blockers=None, clear_blockers=None,
+                add_deps=None, clear_deps=None, dry_run=False):
+    """Update status, blockers, or depends_on for a task in private state."""
+    path, state = _require_current_state(project)
+    tasks = [dict(t) for t in state.get('tasks', [])]
+    task = next((t for t in tasks if t.get('id') == task_id), None)
+    if task is None:
+        raise ValueError(f'Unknown task: {task_id}')
+    if status is not None:
+        task['status'] = status
+    blockers = list(task.get('blockers', []))
+    for b in add_blockers or []:
+        if b not in blockers:
+            blockers.append(b)
+    for b in clear_blockers or []:
+        blockers = [item for item in blockers if item != b]
+    task['blockers'] = blockers
+    deps = list(task.get('depends_on', []))
+    for d in add_deps or []:
+        if d not in deps:
+            deps.append(d)
+    for d in clear_deps or []:
+        deps = [item for item in deps if item != d]
+    if deps:
+        task['depends_on'] = deps
+    else:
+        task.pop('depends_on', None)
+    _validate_records(tasks, 'tasks')
+    state['tasks'] = tasks
+    if not dry_run:
+        _write_private_state(path, state)
+    return {'id': task_id, 'status': task['status'], 'blockers': task['blockers'],
+            'depends_on': task.get('depends_on', []), 'written': not dry_run}
+
+
+def record_hypothesis(project, hypothesis_id, *, text=None, status='open', evidence=None, dry_run=False):
+    """Add or update an investigation hypothesis in private state."""
+    path, state = _require_current_state(project)
+    hypotheses = list(state.get('hypotheses', []))
+    existing = next((h for h in hypotheses if h.get('id') == hypothesis_id), None)
+    entry = dict(existing) if existing else {'id': hypothesis_id, 'status': status}
+    if text is not None:
+        entry['text'] = text
+    if status is not None:
+        entry['status'] = status
+    if evidence is not None:
+        entry['evidence'] = evidence
+    hypotheses = [entry if h.get('id') == hypothesis_id else h for h in hypotheses] if existing else [*hypotheses, entry]
+    _validate_records(hypotheses, 'hypotheses')
+    state['hypotheses'] = hypotheses
+    if not dry_run:
+        _write_private_state(path, state)
+    return {'id': hypothesis_id, 'status': entry['status'],
+            'action': 'updated' if existing else 'added', 'written': not dry_run}

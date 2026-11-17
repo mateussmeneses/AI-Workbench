@@ -77,5 +77,43 @@ class AreaTests(unittest.TestCase):
             self.assertEqual(main(['recommend',str(project),'--area','marketing','--json']),0)
 
 
+class AreaBenchmarkTests(unittest.TestCase):
+    def test_synthetic_labeled_scenarios_hit_rate_and_advisor(self):
+        scenarios = [
+            ('saas', {'README.md': 'FastAPI backend and React frontend with Playwright tests'},
+             ['src/App.tsx', 'api/main.py', 'playwright.config.ts'],
+             'Build a SaaS dashboard', {'frontend', 'backend'}, set()),
+            ('quant', {'README.md': 'Quantitative finance backtest engine with Sharpe ratio and drawdown'},
+             ['strategies/momentum.py'], 'Run backtest', {'quant-finance'}, {'game-port'}),
+            ('android-re', {'README.md': 'Android APK reverse engineering with jadx and frida'},
+             ['AndroidManifest.xml'], 'Analyze APK', {'reverse-engineering', 'mobile-app'}, {'quant-finance'}),
+            ('empty', {}, [], '', set(), {'frontend', 'backend', 'game-port', 'security'}),
+        ]
+        hits = total_expected = false_positives = 0
+        with tempfile.TemporaryDirectory() as d:
+            for name, files, tree_files, goal, expected, forbidden in scenarios:
+                repo = Path(d) / name
+                repo.mkdir()
+                for rel, content in files.items():
+                    (repo / rel).write_text(content, encoding='utf-8')
+                for rel in tree_files:
+                    p = repo / rel
+                    p.parent.mkdir(parents=True, exist_ok=True)
+                    p.write_text('', encoding='utf-8')
+                rec = recommend(repo, goal=goal)
+                got = set(rec['areas'])
+                hits += len(expected & got)
+                total_expected += len(expected)
+                false_positives += len(forbidden & got)
+                if not expected:
+                    self.assertEqual(got, set())
+
+            self.assertGreaterEqual(hits / total_expected, 0.85)
+            self.assertEqual(false_positives, 0)
+
+            overlap_rec = recommend(Path(d) / 'saas', selected=['frontend', 'qa-testing'])
+            self.assertTrue(overlap_rec['skill_advisor']['overlaps'])
+
+
 if __name__=='__main__':
     unittest.main()

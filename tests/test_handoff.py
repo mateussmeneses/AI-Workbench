@@ -385,5 +385,93 @@ class ReferenceReviewTests(unittest.TestCase):
         self.assertEqual(len(json.loads(output)), stats['references'] - stats['reviewed'])
 
 
+class TaskDependencyAndStateCliTests(unittest.TestCase):
+    def test_dependencies_block_plan_until_completed_and_lint_catches_cycles(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            project = repository(temporary, '- [ ] RM-401 First task\n- [ ] RM-402 Second task\n')
+            resume(project)
+            code, out = run_cli('handoff', 'task', str(project), '--id', 'RM-401',
+                                '--depends-on', 'RM-402', '--dry-run')
+            self.assertEqual(code, 0)
+            self.assertFalse(json.loads(out)['written'])
+            self.assertNotIn('depends_on', state_of(project)['tasks'][0])
+
+            code, _ = run_cli('handoff', 'task', str(project), '--id', 'RM-401', '--depends-on', 'RM-402')
+            self.assertEqual(code, 0)
+            plan = build_plan(project)
+            self.assertEqual(plan['task']['id'], 'RM-402')
+            self.assertEqual(plan['skipped'], [{'id': 'RM-401', 'reason': 'waiting on dependency: RM-402'}])
+
+            run_cli('handoff', 'task', str(project), '--id', 'RM-402', '--depends-on', 'RM-401')
+            rules = {f['rule'] for f in lint_handoff(project)['findings']}
+            self.assertIn('dependency-cycle', rules)
+
+            run_cli('handoff', 'task', str(project), '--id', 'RM-402',
+                    '--clear-depends-on', 'RM-401', '--status', 'completed')
+            plan = build_plan(project)
+            self.assertEqual(plan['task']['id'], 'RM-401')
+            self.assertIn('- Depends on: RM-402', plan_markdown(plan))
+
+            run_cli('handoff', 'task', str(project), '--id', 'RM-401', '--depends-on', 'RM-999')
+            rules = {f['rule'] for f in lint_handoff(project)['findings']}
+            self.assertIn('unknown-dependency', rules)
+
+    def test_decide_reject_and_feedback_cli(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            project = repository(temporary)
+            resume(project)
+            code, _ = run_cli('handoff', 'decide', str(project), '--id', 'D-1',
+                              '--text', 'Use SQLite', '--rationale', 'Local-first',
+                              '--source', 'docs/ARCHITECTURE.md', '--confidence', 'high',
+                              '--last-verified', '2026-11-17')
+            self.assertEqual(code, 0)
+            self.assertEqual(state_of(project)['decisions'][0]['id'], 'D-1')
+
+            code, _ = run_cli('handoff', 'decide', str(project), '--id', 'D-1', '--retract', 'Replaced by JSON')
+            self.assertEqual(code, 0)
+            self.assertTrue(state_of(project)['decisions'][0]['retracted'])
+
+            code, _ = run_cli('handoff', 'reject', str(project), '--id', 'R-1',
+                              '--text', 'Add cloud sync', '--rationale', 'Out of scope')
+            self.assertEqual(code, 0)
+            self.assertEqual(state_of(project)['rejections'][0]['id'], 'R-1')
+
+            code, _ = run_cli('handoff', 'feedback', str(project), '--id', 'res-1',
+                              '--selection', 'selected', '--rationale', 'Matched profile',
+                              '--usefulness', 'useful')
+            self.assertEqual(code, 0)
+            self.assertEqual(state_of(project)['resources'][0]['usefulness'], 'useful')
+
+            code, _ = run_cli('handoff', 'hypothesis', str(project), '--id', 'H-1',
+                              '--text', 'Cache causes stale reads', '--status', 'confirmed',
+                              '--evidence', 'src/cache.py:42')
+            self.assertEqual(code, 0)
+            self.assertEqual(state_of(project)['hypotheses'][0]['status'], 'confirmed')
+            self.assertIn('## Hypotheses', resume(project, dry_run=True)['markdown'])
+
+    def test_upgrade_rehearsal_and_onboarding_presets(self):
+        from aiwh.workbench import bootstrap, remove_managed
+        with tempfile.TemporaryDirectory() as temporary:
+            project = repository(temporary)
+            wb = project / '.ai-workbench'
+            wb.mkdir()
+            (wb / 'state.json').write_text(json.dumps({'legacy_note': 'v0-data'}), encoding='utf-8')
+            resume(project)
+            migrated = state_of(project)
+            self.assertEqual(migrated['schema_version'], 2)
+            self.assertEqual(migrated['legacy_observation'], {'legacy_note': 'v0-data'})
+
+            minimal = bootstrap(project, preset='minimal', dry_run=True)
+            self.assertEqual(minimal['profiles'], ['core'])
+            clean = bootstrap(project, preset='cleanroom', agent='codex')
+            self.assertIn('reverse-engineering', clean['areas'])
+
+            guide = project / 'AI-WORKBENCH.md'
+            guide.write_text(guide.read_text(encoding='utf-8') + '\n# User note\n', encoding='utf-8')
+            removed = remove_managed(project)
+            self.assertIn('AI-WORKBENCH.md', removed['conflicting'])
+            self.assertTrue(guide.is_file())
+
+
 if __name__ == '__main__':
     unittest.main()

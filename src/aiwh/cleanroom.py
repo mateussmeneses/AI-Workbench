@@ -78,7 +78,9 @@ def rea_tool_names(source=None):
     return ['mcp__rea__' + name for name in dict.fromkeys(names)]
 
 
-def cleanroom_init(target, *, dry_run=False, rea_tools=None):
+def cleanroom_init(target, *, dry_run=False, rea_tools=None, mode='clean-room'):
+    if mode not in ('clean-room', 'incremental-rewrite'):
+        raise ValueError(f'Unsupported cleanroom mode: {mode}')
     root = Path(target).expanduser().resolve()
     if root.exists() and not root.is_dir():
         raise ValueError(f'Not a directory: {root}')
@@ -89,11 +91,11 @@ def cleanroom_init(target, *, dry_run=False, rea_tools=None):
     plan = ManagedFilePlan(root, dry_run) if root.exists() else None
     if plan is None:
         if dry_run:
-            return {'target': str(root), 'dry_run': True, 'would_create': True,
-                    'files': sorted(_layout(source, oracle, tools))}
+            return {'target': str(root), 'dry_run': True, 'would_create': True, 'mode': mode,
+                    'files': sorted(_layout(source, oracle, tools, mode=mode))}
         root.mkdir(parents=True)
         plan = ManagedFilePlan(root, dry_run)
-    for relative, content in _layout(source, oracle, tools).items():
+    for relative, content in _layout(source, oracle, tools, mode=mode).items():
         plan.write(root / relative, content)
     gitignore = root / '.gitignore'
     current = gitignore.read_text(encoding='utf-8') if gitignore.exists() else ''
@@ -109,7 +111,7 @@ def cleanroom_init(target, *, dry_run=False, rea_tools=None):
                      'Run ./run-team.ps1 -Target lab/target/<file> -Feature "<one feature>"']}
 
 
-def _layout(source, oracle, tools):
+def _layout(source, oracle, tools, *, mode='clean-room'):
     def read(path):
         return path.read_text(encoding='utf-8')
     files = {
@@ -135,4 +137,12 @@ def _layout(source, oracle, tools):
         files[f'lab/templates/{name}'] = read(source / 'templates' / name)
     for name in ('devcontainer.json', 'Dockerfile', 'init-firewall.sh'):
         files[f'clean/.devcontainer/{name}'] = read(source / 'devcontainer' / name)
+    if mode == 'incremental-rewrite':
+        files['lab/templates/incremental-rewrite.md'] = (
+            '# Incremental Rewrite Parity Checklist\n\n'
+            '1. Freeze one module/function boundary and capture golden input/output fixtures from `lab/target/`.\n'
+            '2. Implement the replacement module in `clean/src/` against `handoff/SPEC.md`.\n'
+            '3. Run the oracle parity suite (`RESULT wrong=0 crash=0`) before swapping the module.\n'
+            '4. Keep the original module intact behind a reversible switch until parity passes.\n'
+        )
     return files

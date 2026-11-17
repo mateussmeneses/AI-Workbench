@@ -15,13 +15,14 @@ passes that path explicitly as ``output``.
 """
 from __future__ import annotations
 
+import html
 import json
 import re
 from pathlib import Path
 
 from .workbench import _continuity_state, continuation_markdown, inspect_project, state_gaps
 
-FORMATS = ('json', 'markdown', 'claude-memory', 'wiki')
+FORMATS = ('json', 'markdown', 'claude-memory', 'wiki', 'slides')
 
 
 def _slug(text):
@@ -85,6 +86,56 @@ def _log_entry(data, state):
             f'{len(state["decisions"])} decisions')
 
 
+def _slides_html(name, data, state):
+    open_tasks = [t for t in state['tasks'] if t.get('status') not in ('completed', 'cancelled')]
+    decisions = state.get('decisions', [])
+    hypotheses = state.get('hypotheses', [])
+    gaps = state_gaps(data, state)
+
+    def li(items):
+        return ''.join(f'<li>{html.escape(str(x))}</li>' for x in items) or '<li>None recorded.</li>'
+
+    slides = [
+        (f'{name} — Project Status', [
+            f'Branch: {data["branch"]}',
+            f'Revision: {(data.get("head_commit") or "unknown")[:12]}',
+            f'Profiles: {", ".join(data["profiles"])}',
+            f'Snapshot: {data["generated_at"]}',
+        ]),
+        (f'Open Work ({len(open_tasks)})', [
+            f'[{t.get("status", "pending")}] {t.get("id")}: {t.get("title", "")[:100]}' for t in open_tasks[:8]
+        ]),
+        (f'Decisions ({len(decisions)}) & Hypotheses ({len(hypotheses)})', [
+            f'Decision {d.get("id")}: {d.get("text", "")[:100]}' for d in decisions[:5]
+        ] + [
+            f'Hypothesis [{h.get("status")}] {h.get("id")}: {h.get("text", "")[:90]}' for h in hypotheses[:4]
+        ]),
+        (f'Known Gaps ({len(gaps)})', gaps[:8]),
+    ]
+    sections = ''.join(
+        f'<section class="slide"><h2>{html.escape(title)}</h2><ul>{li(items)}</ul></section>'
+        for title, items in slides
+    )
+    return (
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        f'<title>{html.escape(name)} — Status Slides</title>'
+        '<style>body{margin:0;font:18px/1.6 system-ui,sans-serif;background:#111827;color:#f9fafb}'
+        '.deck{max-width:860px;margin:48px auto;padding:32px}.slide{display:none;background:#1f2937;'
+        'border-radius:12px;padding:32px;min-height:320px}.slide.active{display:block}'
+        'h2{margin-top:0;color:#60a5fa}.nav{display:flex;justify-content:space-between;margin-top:16px}'
+        'button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid #374151;background:#1f2937;color:#f9fafb;cursor:pointer}'
+        '</style></head><body><main class="deck">' + sections +
+        '<div class="nav"><button id="prev">Prev</button><span id="idx"></span><button id="next">Next</button></div>'
+        '</main><script>const s=[...document.querySelectorAll(".slide")];let i=0;'
+        'function show(n){i=(n+s.length)%s.length;s.forEach((e,k)=>e.classList.toggle("active",k===i));'
+        'document.getElementById("idx").textContent=(i+1)+" / "+s.length;}'
+        'document.getElementById("prev").onclick=()=>show(i-1);'
+        'document.getElementById("next").onclick=()=>show(i+1);'
+        'document.addEventListener("keydown",e=>{if(e.key==="ArrowRight")show(i+1);if(e.key==="ArrowLeft")show(i-1);});'
+        'show(0);</script></body></html>\n'
+    )
+
+
 def export_handoff(project, fmt, output=None):
     if fmt not in FORMATS:
         raise ValueError('Unknown format: ' + fmt)
@@ -112,6 +163,8 @@ def export_handoff(project, fmt, output=None):
                   '**How to apply:** verify against the repository before acting; it may be stale.\n')
         files = {f'{slug}.md': memory,
                  'MEMORY.md': f'- [{name} continuity]({slug}.md) — exported AI Workbench handoff\n'}
+    elif fmt == 'slides':
+        files = {'slides.html': _slides_html(name, data, state)}
     else:
         files = {page: '\n'.join(lines) + '\n' for page, lines in _pages(data, state).items()}
         log_entry = _log_entry(data, state) + '\n'

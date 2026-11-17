@@ -105,8 +105,11 @@ def resolve_areas(project, *, goal='', selected=None, max_auto=4):
         file_matches=[p for p in paths if any(_matches(pat,p) for pat in signals.get('files',[]))]
         goal_matches=[term for term in signals.get('keywords',[]) if _word_occurs(term,goal_text)]
         meta_matches=[term for term in signals.get('keywords',[]) if _word_occurs(term,metadata_text)]
+        neg_matches=[term for term in signals.get('negative_keywords',[])
+                     if _word_occurs(term,goal_text) or _word_occurs(term,metadata_text)]
         # More weight to intentional user goals. Saturate evidence to stop giant repos dominating.
-        score=6*min(len(goal_matches),4)+3*min(len(file_matches),4)+min(len(meta_matches),3)
+        score=6*min(len(goal_matches),4)+3*min(len(file_matches),4)+min(len(meta_matches),3)-4*min(len(neg_matches),3)
+        score=max(0, score)
         if key in requested:
             score+=100
         if score:
@@ -114,7 +117,8 @@ def resolve_areas(project, *, goal='', selected=None, max_auto=4):
                             'explicit':key in requested,
                             'evidence':{'goal_terms':goal_matches[:8],
                                         'files':file_matches[:6],
-                                        'metadata_terms':meta_matches[:6]}})
+                                        'metadata_terms':meta_matches[:6],
+                                        'negative_terms':neg_matches[:4]}})
     results.sort(key=lambda x:(0, requested.index(x['id'])) if x['explicit'] else (1,-x['score'],x['id']))
     auto=[r for r in results if not r['explicit']]
     # Ensure explicit manual choices don't silently recruit unrelated areas.
@@ -137,6 +141,54 @@ def recommend(project, *, goal='', selected=None, max_auto=4):
     result['references_total']=len(refs)
     result['references']=[{'title':r['title'],'url':r['url'],'kind':r['kind'],'risk':r.get('risk',[])}
                           for r in refs[:10]]
+    goal_words = {w for w in re.findall(r'[a-z0-9]{3,}', goal.lower())}
+    area_set = set(match['areas'])
+
+    def _shortlist_key(ref):
+        overlap = len(area_set & set(ref.get('areas', [])))
+        title_words = set(re.findall(r'[a-z0-9]{3,}', (ref.get('title', '') + ' ' + ref.get('category', '')).lower()))
+        goal_hits = len(goal_words & title_words)
+        reviewed_bonus = 1 if ref.get('reviewed') else 0
+        risk_penalty = len(ref.get('risk', []))
+        return (-goal_hits, -overlap, -reviewed_bonus, risk_penalty, ref.get('title', '').lower())
+
+    shortlist = []
+    for r in sorted(refs, key=_shortlist_key)[:5]:
+        matched_areas = sorted(area_set & set(r.get('areas', [])))
+        limits = []
+        if not r.get('reviewed'):
+            limits.append('unreviewed maintenance/compatibility')
+        if r.get('risk'):
+            limits.append('risk: ' + ', '.join(r['risk']))
+        shortlist.append({
+            'id': r['id'], 'title': r['title'], 'url': r['url'], 'kind': r['kind'],
+            'why': f'matches areas ({", ".join(matched_areas)})' + (f' and goal terms' if goal_words & set(re.findall(r"[a-z0-9]{3,}", r.get("title", "").lower())) else ''),
+            'limits': '; '.join(limits) or f'reviewed {r["reviewed"]}',
+            'license': r.get('license', 'unknown'),
+        })
+    result['shortlist'] = shortlist
+    mcp_catalog = registry()['mcps']
+    overlap_pairs = []
+    if 'playwright' in result['mcps'] and 'chrome-devtools' in result['mcps']:
+        overlap_pairs.append('playwright and chrome-devtools both cover browser automation; enable only one unless both are needed')
+    result['mcp_advisor'] = [
+        {
+            'id': mcp_id,
+            'launch': 'verified-command' if 'server' in mcp_catalog.get(mcp_id, {}) else 'manual-setup',
+            'areas': [a for a in match['areas'] if mcp_id in areas[a].get('mcps', [])],
+            'enabled_by_default': False,
+        }
+        for mcp_id in result['mcps']
+    ]
+    result['skill_advisor'] = {
+        'selected_skills': len(result['skills']),
+        'overlaps': overlap_pairs,
+        'advice': (
+            f'{len(result["skills"])} area skills selected; use `aiwh init --exclude-skill NAME` if any domain skill is not needed.'
+            if len(result['skills']) > 10 else
+            'Skill selection is compact; no redundancy warnings.'
+        ),
+    }
     if any(area in ('game-port','reverse-engineering','decompilation',
                     'recompilation','game-modding') for area in result['areas']):
         from .game_porting import assess_game_port
@@ -170,6 +222,14 @@ def markdown_plan(result):
         for ref in result['references']:
             risk=f" (risk: {', '.join(ref['risk'])})" if ref['risk'] else ''
             lines.append(f"- [{ref['title']}]({ref['url']}){risk}")
+    if result.get('shortlist'):
+        lines.extend(['', 'Contextual shortlist (top 5):'])
+        for item in result['shortlist']:
+            lines.append(f"- [{item['title']}]({item['url']}) — {item['why']} (limits: {item['limits']})")
+    if result.get('mcp_advisor'):
+        lines.extend(['', 'MCP advisor (opt-in only):'])
+        for mcp in result['mcp_advisor']:
+            lines.append(f"- {mcp['id']}: {mcp['launch']} (areas: {', '.join(mcp['areas'])}; enabledByDefault=false)")
     if 'game_porting' in result:
         gp=result['game_porting']
         lines.extend(['', 'Game-porting triage: '+gp['workflow']['name']+'; platform: '+str(gp['platform'] or 'unverified'),

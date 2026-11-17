@@ -10,6 +10,9 @@ requires-python = ">=3.10"
 license = {text = "MIT"}
 dependencies = ["PyYAML>=6.0.3,<7"]
 
+[project.optional-dependencies]
+semantic = ["sqlite-vec>=0.1.6", "fastembed>=0.4.0"]
+
 [project.scripts]
 aiwh = "aiwh.cli:main"
 

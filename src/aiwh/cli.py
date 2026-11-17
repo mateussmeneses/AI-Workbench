@@ -37,6 +37,8 @@ def get_parser():
     cu.add_argument('--baseline-html', type=Path, action='append', default=[],
                     help='older bookmark export; links already in it are skipped')
     cu.add_argument('--json', action='store_true')
+    cu.add_argument('--enrich', action='store_true', help='opt-in local Ollama enrichment (summary, areas, risk)')
+    cu.add_argument('--model', help='local Ollama model name for --enrich')
     cu.add_argument('--output', type=Path, help='write the Markdown/JSON report to this file')
     rf = sub.add_parser('references', help='list curated public references with risk labels')
     rf.add_argument('--area', action='append', default=[])
@@ -79,11 +81,12 @@ def get_parser():
     ho_sub = ho.add_subparsers(dest='handoff_action', required=True)
     he = ho_sub.add_parser('export', help='export to json, markdown, claude-memory or wiki (read-only for the project)')
     he.add_argument('path', nargs='?', type=Path, default=Path.cwd())
-    he.add_argument('--format', choices=['json', 'markdown', 'claude-memory', 'wiki'], default='markdown')
+    he.add_argument('--format', choices=['json', 'markdown', 'claude-memory', 'wiki', 'slides'], default='markdown')
     he.add_argument('--output', type=Path, help='directory to write files; omitted prints to stdout')
     hp = ho_sub.add_parser('plan', help='self-contained execution plan for the next eligible task (read-only)')
     hp.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     hp.add_argument('--task', help='plan this task ID instead of the next eligible one')
+    hp.add_argument('--max-tokens', type=int, default=None, help='compact Markdown output to an approximate token budget')
     hp.add_argument('--json', action='store_true')
     hp.add_argument('--output', type=Path, help='file to write the plan; omitted prints to stdout')
     hc = ho_sub.add_parser('check', help='exit 0 when current, 1 when HEAD moved since the last handoff or plan was written, 2 when unknown')
@@ -100,6 +103,45 @@ def get_parser():
     hk.add_argument('--project', type=Path, default=Path.cwd())
     hk.add_argument('--release', action='store_true', help='release a claim held by --by')
     hk.add_argument('--dry-run', action='store_true')
+    hd = ho_sub.add_parser('decide', help='add, update or retract an approved decision in private state')
+    hd.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hd.add_argument('--id', required=True, help='decision identifier')
+    hd.add_argument('--text', help='decision summary')
+    hd.add_argument('--rationale', help='why this decision was approved')
+    hd.add_argument('--source', help='file, commit or discussion reference')
+    hd.add_argument('--confidence', choices=['high', 'medium', 'low'])
+    hd.add_argument('--last-verified', help='YYYY-MM-DD verification date')
+    hd.add_argument('--retract', dest='retract_reason', help='retract an existing decision with a reason')
+    hd.add_argument('--dry-run', action='store_true')
+    hr = ho_sub.add_parser('reject', help='record a rejected finding so it is not re-raised')
+    hr.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hr.add_argument('--id', required=True)
+    hr.add_argument('--text', required=True)
+    hr.add_argument('--rationale', required=True)
+    hr.add_argument('--dry-run', action='store_true')
+    hf = ho_sub.add_parser('feedback', help='record resource selection and optional usefulness feedback')
+    hf.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hf.add_argument('--id', required=True)
+    hf.add_argument('--selection', choices=['selected', 'rejected'], required=True)
+    hf.add_argument('--rationale', required=True)
+    hf.add_argument('--usefulness', choices=['useful', 'not_useful'])
+    hf.add_argument('--dry-run', action='store_true')
+    ht = ho_sub.add_parser('task', help='update task status, blockers or dependencies in private state')
+    ht.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    ht.add_argument('--id', required=True)
+    ht.add_argument('--status', choices=['pending', 'in_progress', 'blocked', 'completed', 'cancelled'])
+    ht.add_argument('--blocker', action='append', default=[])
+    ht.add_argument('--clear-blocker', action='append', default=[])
+    ht.add_argument('--depends-on', action='append', default=[])
+    ht.add_argument('--clear-depends-on', action='append', default=[])
+    ht.add_argument('--dry-run', action='store_true')
+    hh = ho_sub.add_parser('hypothesis', help='record or update an investigation hypothesis in private state')
+    hh.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    hh.add_argument('--id', required=True)
+    hh.add_argument('--text', help='hypothesis statement')
+    hh.add_argument('--status', choices=['open', 'confirmed', 'refuted'], default='open')
+    hh.add_argument('--evidence', help='file/line or observed evidence')
+    hh.add_argument('--dry-run', action='store_true')
     ins = sub.add_parser('inspect', help='identify an analysis target and route it to a method, tools and skills')
     ins.add_argument('target', type=Path)
     ins.add_argument('--json', action='store_true')
@@ -113,6 +155,7 @@ def get_parser():
     cri = cr_sub.add_parser('init', help='create lab/ and clean/ rooms, native subagents, templates and devcontainer')
     cri.add_argument('path', type=Path)
     cri.add_argument('--rea-tools', type=Path, help='file with REA tool names (e.g. rea doctor --json output)')
+    cri.add_argument('--mode', choices=['clean-room', 'incremental-rewrite'], default='clean-room')
     cri.add_argument('--dry-run', action='store_true')
     a = sub.add_parser('attach', help='attach private recommendations to an existing project')
     a.add_argument('--project', type=Path, default=Path.cwd())
@@ -129,6 +172,8 @@ def get_parser():
     b.add_argument('--auto-areas', action='store_true', help='opt in to top matching project areas')
     b.add_argument('--exclude-skill', action='append', default=[], metavar='SKILL',
                    help='leave out a skill selected by a profile or area; repeatable')
+    b.add_argument('--preset', choices=['minimal', 'standard', 'cleanroom'], default='standard',
+                   help='onboarding preset (minimal=core only, cleanroom=includes reverse-engineering)')
     b.add_argument('--dry-run', action='store_true')
     managed = sub.add_parser('managed', help='manage files recorded by aiwh init')
     managed_sub = managed.add_subparsers(dest='managed_action', required=True)
@@ -138,9 +183,22 @@ def get_parser():
     re = sub.add_parser('resume', help='generate an evidence-based next-session report')
     re.add_argument('path', nargs='?', type=Path, default=Path.cwd())
     re.add_argument('--agent', choices=[*AGENTS, 'all'], default='codex')
+    re.add_argument('--max-tokens', type=int, default=None, help='compact Markdown output to an approximate token budget')
     re.add_argument('--dry-run', action='store_true')
+    mp_cmd = sub.add_parser('map', help='build a deterministic AST and manifest project map (read-only by default)')
+    mp_cmd.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    mp_cmd.add_argument('--save', action='store_true', help='write .ai-workbench/PROJECT_MAP.json and PROJECT_MAP.md')
+    mp_cmd.add_argument('--json', action='store_true')
     au = sub.add_parser('audit', help='read-only project status in JSON')
     au.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    au.add_argument('--security', action='store_true', help='run non-executing workspace security gate')
+    au.add_argument('--strict', action='store_true', help='exit 1 when security findings exist')
+    va = sub.add_parser('validate', help='preview or run an explicitly approved validation command')
+    va.add_argument('path', nargs='?', type=Path, default=Path.cwd())
+    va.add_argument('--command', dest='run_command', help='explicit validation command (defaults to documented test command)')
+    va.add_argument('--timeout', type=int, default=120, help='timeout in seconds (default: 120)')
+    va.add_argument('--approve', action='store_true', help='execute the previewed validation plan')
+    va.add_argument('--json', action='store_true')
     gi = sub.add_parser('global-integration', help='optional global agent instruction hook (opt-in)')
     gi.add_argument('--agent', choices=['codex','claude','antigravity'], required=True)
     gi.add_argument('--apply', action='store_true', help='write to your user profile (default previews)')
@@ -165,8 +223,16 @@ def get_parser():
     rp.add_argument('--since', help='list resources first seen at/after YYYY-MM-DD, or "last" for the last sync')
     rp.add_argument('--html', nargs='?', type=Path, const=True, default=None,
                     help='write an offline HTML view (default: <home>/catalog.html)')
+    se = sub.add_parser('search', help='local hybrid/FTS5 search across catalog, references, skills and handoffs')
+    se.add_argument('query', help='search query')
+    se.add_argument('--source', choices=['all', 'catalog', 'references', 'skills', 'handoffs'], default='all')
+    se.add_argument('--project', type=Path, default=None, help='project path for indexing .ai-workbench handoffs')
+    se.add_argument('--limit', type=int, default=10)
+    se.add_argument('--reindex', action='store_true', help='rebuild the local SQLite search index')
+    se.add_argument('--json', action='store_true')
     d = sub.add_parser('doctor', help='check runtime and registry')
     d.add_argument('--project', type=Path, default=Path.cwd())
+    d.add_argument('--hardware', action='store_true', help='also probe CPU, RAM, GPU and local Ollama models')
     return p
 
 
@@ -199,7 +265,7 @@ def main(argv=None):
         report = bootstrap(args.path, agent=args.agent, profiles=args.profile or None,
                            areas=args.area or None, goal=args.goal, auto_areas=args.auto_areas,
                            create=args.create, dry_run=args.dry_run, home=home,
-                           exclude_skills=args.exclude_skill)
+                           exclude_skills=args.exclude_skill, preset=args.preset)
         print(json.dumps(report, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'managed' and args.managed_action == 'remove':
@@ -207,13 +273,52 @@ def main(argv=None):
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'resume':
-        result = resume(args.path, agent=args.agent, dry_run=args.dry_run)
+        result = resume(args.path, agent=args.agent, dry_run=args.dry_run, max_tokens=args.max_tokens)
         print(result['markdown'])
         print('Preview only.' if args.dry_run else 'Saved local .ai-workbench/CONTEXT.md')
         return 0
+    if args.command == 'map':
+        from .project_map import map_project, project_map_markdown, save_project_map
+        mapping = map_project(args.path)
+        saved = save_project_map(args.path, mapping) if args.save else None
+        if args.json:
+            payload = {**mapping, 'saved': saved} if saved else mapping
+            print(json.dumps(payload, indent=2, ensure_ascii=False))
+        else:
+            print(project_map_markdown(mapping), end='')
+            if saved:
+                print(f'Saved: {saved["json"]} and {saved["markdown"]}')
+        return 0
     if args.command == 'audit':
+        if args.security:
+            from .security_audit import security_audit
+            result = security_audit(args.path)
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+            return 1 if args.strict and not result['ok'] else 0
         print(json.dumps(inspect_project(args.path), indent=2, ensure_ascii=False))
         return 0
+    if args.command == 'validate':
+        from .validate import run_validation
+        try:
+            result = run_validation(args.path, command=args.run_command,
+                                    timeout=args.timeout, approve=args.approve)
+        except ValueError as error:
+            print(f'Validation error: {error}')
+            return 2
+        if args.json:
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+        else:
+            if not result['executed']:
+                print(f'Validation plan (not run; pass --approve to execute):')
+                print(f'- Command: {result["command"]}')
+                print(f'- Working directory: {result["cwd"]}')
+                print(f'- Timeout: {result["timeout"]}s')
+                print(f'- Revision: {result["head_commit"] or "unknown"}')
+            else:
+                print(f'Validation {result["status"]} (exit={result["exit_code"]}, {result["duration_seconds"]}s)')
+                if result['output'].strip():
+                    print(result['output'])
+        return 0 if result['status'] in ('not_run', 'passed') else 1
     if args.command == 'global-integration':
         print(json.dumps(global_integration(args.agent, dry_run=not args.apply, disable=args.disable), indent=2))
         return 0
@@ -309,7 +414,7 @@ def main(argv=None):
         return 0 if result['ok'] else 1
     if args.command == 'cleanroom' and args.cleanroom_action == 'init':
         from .cleanroom import cleanroom_init
-        result = cleanroom_init(args.path, dry_run=args.dry_run, rea_tools=args.rea_tools)
+        result = cleanroom_init(args.path, dry_run=args.dry_run, rea_tools=args.rea_tools, mode=args.mode)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'curate':
@@ -331,6 +436,9 @@ def main(argv=None):
             return 0
         baseline = [x for path in args.baseline_html for x in browser_html_export(path)]
         candidates = curate(incoming, baseline=baseline)
+        if args.enrich and candidates:
+            from .enrich import enrich_candidates
+            candidates = enrich_candidates(candidates, model=args.model)
         text = (json.dumps(candidates, indent=2, ensure_ascii=False) + '\n') if args.json else curate_markdown(candidates)
         if args.output:
             args.output.write_text(text, encoding='utf-8')
@@ -425,7 +533,8 @@ def main(argv=None):
     if args.command == 'handoff' and args.handoff_action == 'plan':
         from .handoff_plan import build_plan, plan_markdown
         plan = build_plan(args.path, task_id=args.task)
-        text = (json.dumps(plan, indent=2, ensure_ascii=False) + '\n') if args.json else plan_markdown(plan)
+        text = (json.dumps(plan, indent=2, ensure_ascii=False) + '\n') if args.json else plan_markdown(
+            plan, max_tokens=args.max_tokens)
         if args.output:
             args.output.write_text(text, encoding='utf-8')
             print(f'Plan written: {args.output}')
@@ -455,6 +564,40 @@ def main(argv=None):
         except ValueError as error:
             print(f'Not claimed: {error}')
             return 1
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'decide':
+        from .handoff_plan import record_decision
+        result = record_decision(args.path, args.id, text=args.text, rationale=args.rationale,
+                                 source=args.source, confidence=args.confidence,
+                                 last_verified=args.last_verified, retract_reason=args.retract_reason,
+                                 dry_run=args.dry_run)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'reject':
+        from .handoff_plan import record_rejection
+        result = record_rejection(args.path, args.id, text=args.text, rationale=args.rationale,
+                                  dry_run=args.dry_run)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'feedback':
+        from .handoff_plan import record_resource_feedback
+        result = record_resource_feedback(args.path, args.id, selection=args.selection,
+                                          rationale=args.rationale, usefulness=args.usefulness,
+                                          dry_run=args.dry_run)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'task':
+        from .handoff_plan import update_task
+        result = update_task(args.path, args.id, status=args.status, add_blockers=args.blocker,
+                             clear_blockers=args.clear_blocker, add_deps=args.depends_on,
+                             clear_deps=args.clear_depends_on, dry_run=args.dry_run)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
+    if args.command == 'handoff' and args.handoff_action == 'hypothesis':
+        from .handoff_plan import record_hypothesis
+        result = record_hypothesis(args.path, args.id, text=args.text, status=args.status,
+                                   evidence=args.evidence, dry_run=args.dry_run)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
     if args.command == 'report':
@@ -500,6 +643,19 @@ def main(argv=None):
         if args.dry_run:
             print(result['markdown'])
         return 0
+    if args.command == 'search':
+        from .semantic import search_index
+        proj = args.project or (Path.cwd() if args.source == 'handoffs' else None)
+        result = search_index(args.query, home=home, source=args.source, project=proj,
+                              limit=args.limit, reindex=args.reindex)
+        if args.json:
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+        else:
+            print(f'Search ({result["mode"]}): {len(result["results"])} result(s)')
+            for row in result['results']:
+                tags = f' [{", ".join(row["tags"][:4])}]' if row['tags'] else ''
+                print(f'- {row["title"]} <{row["url"]}>{tags}')
+        return 0
     if args.command == 'doctor':
         reg = registry()
         print('Area catalog:', validate_catalog())
@@ -517,6 +673,11 @@ def main(argv=None):
         for variable in ('GHIDRA_INSTALL_DIR', 'JAVA_HOME'):
             print(f'{variable}: {os.environ.get(variable) or "not set"}')
         print('Detected profiles:', ', '.join(project_profile(args.project)))
+        if args.hardware:
+            from .runtime_probe import probe_hardware
+            from .semantic import semantic_capabilities
+            print('Hardware:', json.dumps(probe_hardware(), ensure_ascii=False))
+            print('Semantic:', json.dumps(semantic_capabilities(), ensure_ascii=False))
         return 0
     return 2
 

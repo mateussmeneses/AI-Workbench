@@ -130,6 +130,30 @@ def lint_state(data, state, documented_ids, scanned_documents, today=None):
         if task.get('claimed_by') and task.get('status') not in OPEN_STATUSES:
             add('claimed-closed-task', task['id'],
                 f'Claimed by {task["claimed_by"]} but status is {task["status"]}; release the claim.')
+    all_task_ids = {t['id'] for t in state.get('tasks', [])}
+    dep_graph = {t['id']: list(t.get('depends_on', [])) for t in state.get('tasks', [])}
+    for task in open_tasks(state):
+        for dep in task.get('depends_on', []):
+            if dep not in all_task_ids:
+                add('unknown-dependency', task['id'], f'Depends on unknown task {dep}.')
+    visiting, visited = set(), set()
+
+    def _has_cycle(node):
+        if node in visiting:
+            return True
+        if node in visited:
+            return False
+        visiting.add(node)
+        for dep in dep_graph.get(node, []):
+            if dep in dep_graph and _has_cycle(dep):
+                return True
+        visiting.remove(node)
+        visited.add(node)
+        return False
+
+    for task in open_tasks(state):
+        if _has_cycle(task['id']):
+            add('dependency-cycle', task['id'], 'Task dependency graph contains a cycle.')
     for decision in active_decisions(state):
         if not decision.get('source'):
             add('decision-without-source', decision['id'], 'No source (file, commit or discussion) is recorded.')
